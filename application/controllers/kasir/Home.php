@@ -8,8 +8,48 @@ class Home extends CI_Controller
     }
     public function index()
     {
-        $data['record'] = $this->M_home->tampil_data();
-        $this->template->load('view_1/template/kasir', 'view_1/konten/kasir/home/tampil',$data);
+        $this->template->load('view_1/template/kasir', 'view_1/konten/kasir/home/tampil');
+    }
+    function fetch()
+    {
+        $output = '';
+        $query = '';
+            if($this->input->post('query'))
+            {
+                $query = $this->input->post('query');
+            }
+                $data = $this->M_home->fetch_data($query);
+                $output .= '<div>';
+    	        if($data->num_rows() > 0)
+    	        {
+    	            foreach($data->result() as $row)
+    	            {
+    	            $output .= '
+    	            <div style="margin-bottom:5px;" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+    		            <div class="thumbnail">
+    			            <div class="caption">
+    				        <input type="hidden" name="id" value="'.$row->id_stok_b.'"/>
+                            <input type="hidden" name="name" value="'. $row->nama .'"/>
+                            <input type="hidden" name="price" value="0"/>
+                            <input type="hidden" name="qty" value="1"/>
+                            
+                            <p style="font-size:15px">'.$row->nama.'</p>
+                            <p style="font-size:15px">'.date('d-m-Y', strtotime($row->tanggal)).'</p>
+                            <p class="text-center"><button type="submit" class="btn btn-primary " role="button"><i
+                                        class="glyphicon glyphicon-shopping-cart"></i>
+                                    Beli</button></p>
+                            </div>
+                        </div>
+                    </div>';
+                    }           
+                } 
+                else 
+                {
+                    $output .= '
+                            <div>No Data Found</div>';
+                }
+                $output .= '</div>';
+                echo $output;
     }
     public function add_cart()
     {
@@ -26,12 +66,14 @@ class Home extends CI_Controller
     {
         if ($rowid == "all") {
         $this->cart->destroy();
-        } else {
-        $data = array(
-        'rowid' => $rowid,
-        'qty' => 0
-        );
-        $this->cart->update($data);
+        } 
+        else 
+        {
+            $data = array(
+            'rowid' => $rowid,
+            'qty' => 0 
+            );
+            $this->cart->update($data);
         }
         redirect('kasir/home');
     }

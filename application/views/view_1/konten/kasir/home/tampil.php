@@ -6,7 +6,8 @@
 					<div class="row">
 						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 							<div style="margin-bottom:10px;" class="input-group">
-								<input type="text" class="form-control" placeholder="Cari Barang">
+								<input type="text" name="search_text" id="search_text" class="form-control"
+									placeholder="Cari Barang">
 								<span class="input-group-btn">
 									<button class="btn btn-default" type="button">Go!</button>
 								</span>
@@ -15,33 +16,7 @@
 					</div>
 					<div class="row">
 						<form action="<?php echo base_url(); ?>kasir/home/add_cart" method="POST">
-							<?php foreach($record as $row) { ?>
-							<div style="margin-bottom:5px;" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-								<div class="thumbnail">
-									<div class="caption">
-										<input type="hidden" name="id" value="<?= $row->id_stok_b ?>" />
-										<input type="hidden" name="name" value="<?= $row->nama ?>" />
-										<input type="hidden" name="price" value="0" />
-										<input type="hidden" name="qty" value="1" />
-										<?php 
-										$tanggal = date('d-m-Y', strtotime($row->tanggal));
-										if($row->kode_unik == "kosong")
-										{
-											echo '<p class="text-center"><b>'.$row->barcode.'</b></p>';
-										} else {
-											echo '<p class="text-center"><b>'.$row->kode_unik.'</b></p>';
-										}
-									?>
-										<p style="font-size:15px"><?= $row->nama; ?></p>
-										<p style="font-size:15px"><?= $tanggal; ?></p>
-										<p class="text-center"><button type="submit" class="btn btn-primary "
-												role="button"><i class="glyphicon glyphicon-shopping-cart"></i>
-												Beli</button>
-										</p>
-									</div>
-								</div>
-							</div>
-							<?php } ?>
+							<div id="result"></div>
 						</form>
 					</div>
 				</div>
@@ -101,8 +76,7 @@
 										<td class="text-right"><input type="text" name="harga_jual"
 												class="form-control text-right"></td>
 										<td class="text-center"><?= $item['qty'] ?></td>
-										<td><a onclick="return confirm('Yakin ingin menghapus data ?')"
-												href="<?= base_url() ?>kasir/home/delete_cart/<?= $item['rowid']; ?>"><i
+										<td><a href="<?= base_url() ?>kasir/home/delete_cart/<?= $item['rowid']; ?>"><i
 													class="btn btn-xs btn-danger glyphicon glyphicon-remove"></i></a>
 										</td>
 									</tr>
@@ -163,3 +137,33 @@
 		</div>
 	</div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script>
+	$(document).ready(function () {
+
+		load_data();
+
+		function load_data(query) {
+			$.ajax({
+				url: "<?php echo base_url(); ?>kasir/home/fetch",
+				method: "POST",
+				data: {
+					query: query
+				},
+				success: function (data) {
+					$('#result').html(data);
+				}
+			})
+		}
+
+		$('#search_text').keyup(function () {
+			var search = $(this).val();
+			if (search != '') {
+				load_data(search);
+			} else {
+				load_data();
+			}
+		});
+	});
+
+</script>
