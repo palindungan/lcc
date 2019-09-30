@@ -18,8 +18,14 @@
 						<div style="margin-bottom:5px;" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
 							<div class="thumbnail">
 								<div class="caption">
-									<p class="text-center"><b><?= $row->kode_unik; ?></b>
-									</p>
+									<?php 
+										if($row->kode_unik == "kosong")
+										{
+											echo '<p class="text-center"><b>'.$row->barcode.'</b></p>';
+										} else {
+											echo '<p class="text-center"><b>'.$row->kode_unik.'</b></p>';
+										}
+									?>
 									<p style="font-size:15px"><?= $row->nama; ?></p>
 									<p style="font-size:15px"><?= $row->tanggal; ?></p>
 									<p class="text-center"><a href="#" class="btn btn-primary " role="button"><i
