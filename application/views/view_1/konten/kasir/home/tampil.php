@@ -14,11 +14,17 @@
 						</div>
 					</div>
 					<div class="row">
-						<?php foreach($record as $row) { ?>
-						<div style="margin-bottom:5px;" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-							<div class="thumbnail">
-								<div class="caption">
-									<?php 
+						<form action="<?php echo base_url(); ?>kasir/home/add_cart" method="POST">
+							<?php foreach($record as $row) { ?>
+							<div style="margin-bottom:5px;" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+								<div class="thumbnail">
+									<div class="caption">
+										<input type="hidden" name="id" value="<?= $row->id_stok_b ?>" />
+										<input type="hidden" name="name" value="<?= $row->nama ?>" />
+										<input type="hidden" name="price" value="0" />
+										<input type="hidden" name="qty" value="1" />
+										<?php 
+										$tanggal = date('d-m-Y', strtotime($row->tanggal));
 										if($row->kode_unik == "kosong")
 										{
 											echo '<p class="text-center"><b>'.$row->barcode.'</b></p>';
@@ -26,14 +32,17 @@
 											echo '<p class="text-center"><b>'.$row->kode_unik.'</b></p>';
 										}
 									?>
-									<p style="font-size:15px"><?= $row->nama; ?></p>
-									<p style="font-size:15px"><?= $row->tanggal; ?></p>
-									<p class="text-center"><a href="#" class="btn btn-primary " role="button"><i
-												class="glyphicon glyphicon-shopping-cart"></i> Beli</a></p>
+										<p style="font-size:15px"><?= $row->nama; ?></p>
+										<p style="font-size:15px"><?= $tanggal; ?></p>
+										<p class="text-center"><button type="submit" class="btn btn-primary "
+												role="button"><i class="glyphicon glyphicon-shopping-cart"></i>
+												Beli</button>
+										</p>
+									</div>
 								</div>
 							</div>
-						</div>
-						<?php } ?>
+							<?php } ?>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -68,45 +77,44 @@
 						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 							<h4 class="text-center">Keranjang Belanja</h4>
 							<div class="table-responsive">
+								<?php 
+									$cart = $this->cart->contents();
+								if (empty($cart)) {
+								?>
 								<h6 style="margin-top:20px;" class="text-center"> Keranjang Masih Kosong</h6>
-								<!-- <table width="100%" class="table">
-									<thead>
-										<tr>
-											<th class="text-center" width="68%">NAMA</th>
-											<th class="text-center" width="30%">HARGA</th>
-											<th width="1%">QTY</th>
-											<th width="1%">.</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>Asus X453 MA</td>
-											<td class="text-right">3.500.000</td>
-											<td class="text-center">1</td>
-											<td><a onclick="return confirm('Yakin ingin menghapus data ?')" href=""><i
-														class="btn btn-xs btn-danger glyphicon glyphicon-remove"></i></a>
-											</td>
-										</tr>
-										<tr>
-											<td>Acer X453 MA</td>
-											<td class="text-right">3.500.000</td>
-											<td class="text-center">2</td>
-											<td><a onclick="return confirm('Yakin ingin menghapus data ?')" href=""><i
-														class="btn btn-xs btn-danger glyphicon glyphicon-remove"></i></a>
-											</td>
+								<?php
+                        } else {
+							echo "<table width='100%' class='table'>";
+								foreach ($cart as $item) {
+								?>
+								<thead>
+									<tr>
+										<th class="text-center" width="58%">NAMA</th>
+										<th class="text-center" width="40%">HARGA</th>
+										<th width="1%">QTY</th>
+										<th width="1%">.</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td><?= $item['name'] ?></td>
+										<td class="text-right"><input type="text" name="harga_jual"
+												class="form-control text-right"></td>
+										<td class="text-center"><?= $item['qty'] ?></td>
+										<td><a onclick="return confirm('Yakin ingin menghapus data ?')"
+												href="<?= base_url() ?>kasir/home/delete_cart/<?= $item['rowid']; ?>"><i
+													class="btn btn-xs btn-danger glyphicon glyphicon-remove"></i></a>
+										</td>
+									</tr>
+								</tbody>
+								<?php
+                            }
+                            ?>
 
-										</tr>
-										<tr>
-											<td>Lenovo X453 MA</td>
-											<td class="text-right">3.500.000</td>
-											<td class="text-center">1</td>
-											<td><a onclick="return confirm('Yakin ingin menghapus data ?')" href=""><i
-														class="btn btn-xs btn-danger glyphicon glyphicon-remove"></i></a>
-											</td>
-
-										</tr>
-									</tbody>
-								</table> -->
+								<?php
+                        }
+                        ?>
+								</table>
 							</div>
 						</div>
 					</div>
