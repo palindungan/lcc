@@ -53,7 +53,7 @@ class Home extends CI_Controller
                 else 
                 {
                     $output .= '
-                            <div>No Data Found</div>';
+                            <div><p style="font-size:30px;font-weight:bold" class="text-center">Data Tidak Ditemukan</p></div>';
                 }
                 $output .= '</div>';
                 echo $output;
@@ -82,6 +82,41 @@ class Home extends CI_Controller
             );
             $this->cart->update($data);
         }
+        redirect('kasir/home');
+    }
+    public function store()
+    {
+        date_default_timezone_set("Asia/Jakarta");
+        $tanggal = Date('Y-m-d h:i:s');
+        $data_customer = array(
+            'id_customer' => 'C20190930001',
+            'nama' => $this->input->post('nama_customer'),
+            'no_hp' => $this->input->post('no_hp_customer')  
+        );
+        $data_penjualan = array(
+            'id_penjualan' => 'P20190930002',
+            'id_user' => 'U01',
+            'id_customer' => 'C20190930001',
+            'tanggal' => $tanggal,
+            'total' => $this->input->post('total'),
+            'bayar' => $this->input->post('bayar'),
+            'kembalian' => $this->input->post('kembalian')
+        );
+        $this->M_home->input_data($data_customer, 'customer');
+        $this->M_home->input_data($data_penjualan, 'penjualan');
+        if ($cart = $this->cart->contents()) {
+        foreach ($cart as $item) {
+            $data_detail = array(
+            'id_penjualan' => 'P20190930002',
+            'id_stok_b' => $item['id'],
+            'harga_jual' => $this->input->post('harga_jual'),
+            'qty' => $item['qty'],
+            'total_hrg' => $this->input->post('harga_jual') * $item['qty']
+            );
+        $this->M_home->input_data($data_detail, 'detail_penjualan');
+        }
+        }
+        $this->cart->destroy();
         redirect('kasir/home');
     }
 }

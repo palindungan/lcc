@@ -14,5 +14,10 @@ class M_home extends CI_Model
 		}
 		return $this->db->get();
 	}
+	function input_data($data, $table)
+	{
+	$this->db->insert($table, $data);
+	}
+
 	
 }
