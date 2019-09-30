@@ -14,18 +14,20 @@
 						</div>
 					</div>
 					<div class="row">
+						<?php foreach($record as $row) { ?>
 						<div style="margin-bottom:5px;" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
 							<div class="thumbnail">
 								<div class="caption">
-									<p class="text-center"><b>NOMOR SN</b>
+									<p class="text-center"><b><?= $row->kode_unik; ?></b>
 									</p>
-									<p style="font-size:15px">Asus X453 MA</p>
-									<p style="font-size:15px">29-05-2019</p>
+									<p style="font-size:15px"><?= $row->nama; ?></p>
+									<p style="font-size:15px"><?= $row->tanggal; ?></p>
 									<p class="text-center"><a href="#" class="btn btn-primary " role="button"><i
 												class="glyphicon glyphicon-shopping-cart"></i> Beli</a></p>
 								</div>
 							</div>
 						</div>
+						<?php } ?>
 					</div>
 				</div>
 			</div>
