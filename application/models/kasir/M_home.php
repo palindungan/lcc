@@ -12,7 +12,6 @@ class M_home extends CI_Model
 		$this->db->or_like('kode_unik', $query);
 		$this->db->or_like('barcode', $query);
 		}
-		$this->db->order_by('id_stok_b', 'DESC');
 		return $this->db->get();
 	}
 	

@@ -24,6 +24,13 @@ class Home extends CI_Controller
     	        {
     	            foreach($data->result() as $row)
     	            {
+                        $kode = "";
+                        if($row->kode_unik == "kosong")
+                        {
+                            $kode = $row->barcode;
+                        } else {
+                            $kode = $row->kode_unik;
+                        }
     	            $output .= '
     	            <div style="margin-bottom:5px;" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
     		            <div class="thumbnail">
@@ -32,7 +39,7 @@ class Home extends CI_Controller
                             <input type="hidden" name="name" value="'. $row->nama .'"/>
                             <input type="hidden" name="price" value="0"/>
                             <input type="hidden" name="qty" value="1"/>
-                            
+                            <p class="text-center"><b>'.$kode.'</b></p>
                             <p style="font-size:15px">'.$row->nama.'</p>
                             <p style="font-size:15px">'.date('d-m-Y', strtotime($row->tanggal)).'</p>
                             <p class="text-center"><button type="submit" class="btn btn-primary " role="button"><i
