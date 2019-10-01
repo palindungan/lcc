@@ -120,10 +120,8 @@
 											<label for="inputEmail3" class="col-sm-2 control-label">Bayar</label>
 											<div class="col-sm-10">
 												<input type="text" name="bayar" class="form-control text-right"
-													id="bayar" onkeyup="update_kembalian()"
-													onchange="update_kembalian()" placeholder="Masukan jumlah
+													id="bayar" placeholder="Masukan jumlah
 													pembayaran">
-												<input type="hidden" id="total" name="totals">
 
 											</div>
 										</div>
@@ -181,58 +179,3 @@
 	});
 
 </script>
-<!-- <script>
-	$(document).on('keyup', '.harga_jual', function (event) {
-		event.preventDefault();
-		var form_data = $("#transaksi_form").serialize();
-		$.ajax({
-			url: "<?php echo base_url(); ?>kasir/home",
-			method: "POST",
-			data: form_data,
-			success: function (data) {
-				$('.total_harga').val(data);
-				update_kembalian();
-			}
-		});
-
-		// start of  update value sub_total inputan
-		// proses ambil index
-		var get_no_id = $(this).attr("id"); //---jumlah_barang + index
-		var no_id_nya = get_no_id.substring(13); //---ambil indexnya saja
-
-		// objek yg spesifik
-		var harga_jual = document.getElementById("harga_jual" + no_id_nya);
-		var jumlah_barang = document.getElementById("jumlah_barang" + no_id_nya);
-		var sub_total = document.getElementById("sub_total" + no_id_nya);
-
-		var v_sub_total = parseInt(harga_jual.value) * parseInt(jumlah_barang.value);
-
-		if (v_sub_total >= 0) {
-			sub_total.value = v_sub_total;
-		}
-	});
-
-	// Menghitung 
-
-	// Menghitung kembalian
-	function update_kembalian() {
-		var total_harga = document.getElementById("total_harga");
-		var total = document.getElementById("total");
-		var bayar = document.getElementById("bayar");
-		var kembalian = document.getElementById("kembalian");
-
-		// parsing dan perhitungan
-		var v_total = parseInt(total_harga.value);
-		var v_bayar = parseInt(bayar.value);
-
-		total.value = v_total;
-
-		if (v_bayar >= v_total) {
-			kembalian.value = bayar.value - v_total;
-		} else {
-			kembalian.value = null;
-		}
-	}
-	// Menghitung kembalian
-
-</script> -->
