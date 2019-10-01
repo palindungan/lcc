@@ -8,7 +8,8 @@ class Home extends CI_Controller
     }
     public function index()
     {
-        $this->template->load('view_1/template/kasir', 'view_1/konten/kasir/home/tampil');
+        $data['kode'] = $this->M_home->id_customer();
+        $this->template->load('view_1/template/kasir', 'view_1/konten/kasir/home/tampil',$data);
     }
     function fetch()
     {
@@ -88,15 +89,17 @@ class Home extends CI_Controller
     {
         date_default_timezone_set("Asia/Jakarta");
         $tanggal = Date('Y-m-d h:i:s');
+        $id_customer = $this->M_home->id_customer();
+        $id_penjualan = $this->M_home->id_penjualan();
         $data_customer = array(
-            'id_customer' => 'C20190930001',
+            'id_customer' => $id_customer,
             'nama' => $this->input->post('nama_customer'),
             'no_hp' => $this->input->post('no_hp_customer')  
         );
         $data_penjualan = array(
-            'id_penjualan' => 'P20190930002',
+            'id_penjualan' => $id_penjualan,
             'id_user' => 'U01',
-            'id_customer' => 'C20190930001',
+            'id_customer' => $id_customer,
             'tanggal' => $tanggal,
             'total' => $this->input->post('total'),
             'bayar' => $this->input->post('bayar'),
@@ -107,7 +110,7 @@ class Home extends CI_Controller
         if ($cart = $this->cart->contents()) {
         foreach ($cart as $item) {
             $data_detail = array(
-            'id_penjualan' => 'P20190930002',
+            'id_penjualan' => $id_penjualan,
             'id_stok_b' => $item['id'],
             'harga_jual' => $this->input->post('harga_jual'),
             'qty' => $item['qty'],
