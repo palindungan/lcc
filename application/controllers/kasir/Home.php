@@ -42,7 +42,7 @@ class Home extends CI_Controller
                             <input type="hidden" name="qty" value="1"/>
                             <p class="text-center"><b>'.$kode.'</b></p>
                             <p style="font-size:15px">'.$row->nama.'</p>
-                            <p style="font-size:15px">'.date('d-m-Y', strtotime($row->tanggal)).'</p>
+                            <p style="font-size:15px">'.date('d F Y', strtotime($row->tanggal)).'</p>
                             <p class="text-center"><button type="submit" class="btn btn-primary " role="button"><i
                                         class="glyphicon glyphicon-shopping-cart"></i>
                                     Beli</button></p>

@@ -119,9 +119,9 @@
 										<div class="form-group">
 											<label for="inputEmail3" class="col-sm-2 control-label">Bayar</label>
 											<div class="col-sm-10">
-												<input type="text" name="bayar" class="form-control text-right"
-													id="bayar" placeholder="Masukan jumlah
-													pembayaran">
+												<input type="text" name="bayar"
+													class="form-control text-right total_harga" id="total_harga"
+													placeholder="Masukan Jumlah Bayar">
 
 											</div>
 										</div>
