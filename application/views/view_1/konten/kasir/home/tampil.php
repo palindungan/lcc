@@ -22,7 +22,7 @@
 				</div>
 			</div>
 			<div class="col-lg-4 col-md-5 col-sm-5 col-xs-12">
-				<form action="<?php echo base_url(); ?>kasir/home/store" method="POST">
+				<form action="<?php echo base_url(); ?>kasir/home/store" method="POST" id="transaksi_form">
 					<div class="contact-inner">
 						<div class="row">
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -76,12 +76,13 @@
 											value="<?= $item['id']; ?>" />
 										<input type="hidden" name="cart[<?= $item['id']; ?>][name]"
 											value="<?= $item['name']; ?>" />
-										<input type="hidden" name="cart[<?= $item['id']; ?>][qty]"
+										<input type="hidden" id="jumlah_barang" name="cart[<?= $item['id']; ?>][qty]"
 											value="<?= $item['qty']; ?>" />
+										<input type="hidden" id="sub_total">
 										<tr>
 											<td><?= $item['name'] ?></td>
-											<td class="text-right"><input type="text" name="harga_jual"
-													class="form-control text-right"></td>
+											<td class="text-right"><input type="text" id="harga_jual" name="harga_jual"
+													class="form-control text-right harga_jual"></td>
 											<td class="text-center"><?= $item['qty'] ?></td>
 											<td><a
 													href="<?= base_url() ?>kasir/home/delete_cart/<?= $item['rowid']; ?>"><i
@@ -110,22 +111,27 @@
 										<div class="form-group">
 											<label for="inputEmail3" class="col-sm-2 control-label">Total</label>
 											<div class="col-sm-10">
-												<input type="text" name="total" class="form-control text-right"
-													id="inputEmail3" placeholder="Masukan Jumlah Total">
+												<input type="text" name="total"
+													class="form-control text-right total_harga" id="total_harga"
+													placeholder="Masukan Jumlah Total">
 											</div>
 										</div>
 										<div class="form-group">
 											<label for="inputEmail3" class="col-sm-2 control-label">Bayar</label>
 											<div class="col-sm-10">
 												<input type="text" name="bayar" class="form-control text-right"
-													id="inputEmail3" placeholder="Masukan jumlah pembayaran">
+													id="bayar" onkeyup="update_kembalian()"
+													onchange="update_kembalian()" placeholder="Masukan jumlah
+													pembayaran">
+												<input type="hidden" id="total" name="totals">
+
 											</div>
 										</div>
 										<div class="form-group">
 											<label for="inputEmail3" class="col-sm-2 control-label">Kembali</label>
 											<div class="col-sm-10">
 												<input type="text" name="kembalian" class="form-control text-right"
-													id="inputEmail3" placeholder="Masukan Jumlah Kembalian">
+													id="kembalian" placeholder="Masukan Jumlah Kembalian">
 											</div>
 										</div>
 										<div class="form-group">
@@ -175,3 +181,58 @@
 	});
 
 </script>
+<!-- <script>
+	$(document).on('keyup', '.harga_jual', function (event) {
+		event.preventDefault();
+		var form_data = $("#transaksi_form").serialize();
+		$.ajax({
+			url: "<?php echo base_url(); ?>kasir/home",
+			method: "POST",
+			data: form_data,
+			success: function (data) {
+				$('.total_harga').val(data);
+				update_kembalian();
+			}
+		});
+
+		// start of  update value sub_total inputan
+		// proses ambil index
+		var get_no_id = $(this).attr("id"); //---jumlah_barang + index
+		var no_id_nya = get_no_id.substring(13); //---ambil indexnya saja
+
+		// objek yg spesifik
+		var harga_jual = document.getElementById("harga_jual" + no_id_nya);
+		var jumlah_barang = document.getElementById("jumlah_barang" + no_id_nya);
+		var sub_total = document.getElementById("sub_total" + no_id_nya);
+
+		var v_sub_total = parseInt(harga_jual.value) * parseInt(jumlah_barang.value);
+
+		if (v_sub_total >= 0) {
+			sub_total.value = v_sub_total;
+		}
+	});
+
+	// Menghitung 
+
+	// Menghitung kembalian
+	function update_kembalian() {
+		var total_harga = document.getElementById("total_harga");
+		var total = document.getElementById("total");
+		var bayar = document.getElementById("bayar");
+		var kembalian = document.getElementById("kembalian");
+
+		// parsing dan perhitungan
+		var v_total = parseInt(total_harga.value);
+		var v_bayar = parseInt(bayar.value);
+
+		total.value = v_total;
+
+		if (v_bayar >= v_total) {
+			kembalian.value = bayar.value - v_total;
+		} else {
+			kembalian.value = null;
+		}
+	}
+	// Menghitung kembalian
+
+</script> -->
