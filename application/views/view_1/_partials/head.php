@@ -8,7 +8,7 @@
 <link rel="shortcut icon" type="image/x-icon" href="<?= base_url(); ?>assets/notika/img/favicon.ico">
 <!-- Google Fonts
 		============================================ -->
-<link href="<?= base_url(); ?>assets/notika/https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
 <!-- Bootstrap CSS
 		============================================ -->
 <link rel="stylesheet" href="<?= base_url(); ?>assets/notika/css/bootstrap.min.css">
