@@ -41,12 +41,18 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-sm-12">
-                                <a href="<?= base_url() ?>manager/laporan/print_laporan"class="btn btn-info btn-sm pull-right">Print</a>
                             </div>
                         </div>
                         <hr>
                         <div class="row">
                             <div class="col-sm-12">
+                                <form action="<?php echo base_url('manager/laporan/print_laporan') ?>" method="post" target="_blank">
+                                <p>tanggal mulai</p>
+                                <input type="date" name="tgl_mulai">
+                                <p>tanggal akhir</p> 
+                                <input type="date" name="tgl_akhir">
+                                <button type="submit" class="btn btn-info btn-sm pull-right">Print</button>
+                                </form>
                                 <table class="table table-hover" id="tbl_users">
                                     <thead>
                                         <th>No</th>

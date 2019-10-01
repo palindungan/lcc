@@ -15,8 +15,12 @@ class Laporan extends CI_Controller {
 	}
     public function print_laporan()
     {
-        $data['laporanku'] = $this->M_laporan->tampil_data()->result();
+        $tgl1 = $this->input->post('tgl_mulai');
+        $tgl2 = $this->input->post('tgl_akhir');
+        $tgl_mulai = $tgl1." 00:00:01";
+        $tgl_akhir = $tgl2." 23:59:59";
+        $data['tgl'] = $tgl_akhir;
+        $data['laporankus'] = $this->M_laporan->tampil_data2($tgl_mulai,$tgl_akhir)->result();
         $this->load->view('view_1/konten/manager/laporan/print_laporan',$data);
-
     }
 }

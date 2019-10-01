@@ -21,14 +21,14 @@ ob_start();
   </tr>
 <?php 
 $no = 1;
-foreach($laporanku as $l){ 
+foreach($laporankus as $l){ 
 ?>
 <tr>
     <td><?php echo $no++ ?></td>
     <td><?php echo $l->tanggal ?></td>
-    <td><?php echo $l->total ?></td>
-    <td><?php echo $l->bayar ?></td>
-    <td><?php echo $l->kembalian ?></td>
+    <td style="text-align:right; "><?php echo $l->total ?></td>
+    <td style="text-align:right; "><?php echo $l->bayar ?></td>
+    <td style="text-align:right; "><?php echo $l->kembalian ?></td>
 </tr>
 <?php } ?>
 </table>
