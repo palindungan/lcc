@@ -39,11 +39,11 @@
 							<thead>
 								<tr>
 									<th width="1%">No</th>
-									<th width="15%">Kode</th>
+									<th width="17%">Kode</th>
 									<th width="25%">Nama</th>
 									<th width="2%">Stok</th>
 									<th width="20%" style="text-align:center">Harga Beli</th>
-									<th width="17%">Tanggal Suplai</th>
+									<th width="15%">Tanggal Suplai</th>
 									<th width="10%">Jam Suplai</th>
 								</tr>
 							</thead>
