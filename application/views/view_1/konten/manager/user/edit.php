@@ -44,7 +44,7 @@ foreach($edit as $data){
                                 <div class="nk-int-st">
                                     <label>Nama</label>
                                     <input type="hidden" name="id_user" value="<?php echo $data->id_user ?>">
-                                    <input type="text" class="form-control" value="<?php echo $data->nama_user ?>" name="nama">
+                                    <input type="text" class="form-control" value="<?php echo $data->nama_user ?>" name="nama_user">
                                 </div>
                             </div>
                         </div>

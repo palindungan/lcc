@@ -52,7 +52,7 @@ class User extends CI_controller
 		$id_toko = $this->input->post('id_toko');
 
 		$data = array(
-			'nama'  => $nama,
+			'nama_user'  => $nama_user,
 			'username' => $username,
 			'password' => $password,
 			'jenis_akses' => $jenis_akses,
