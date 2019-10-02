@@ -62,6 +62,30 @@
                         </ul>
                     </div>
 
+                    <div id="Home4" class="tab-pane in notika-tab-menu-bg animated flipInX">
+                        <ul class="notika-main-menu-dropdown">
+                            <li>
+                                <a href="">Pemasokan</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div id="Home5" class="tab-pane in notika-tab-menu-bg animated flipInX">
+                        <ul class="notika-main-menu-dropdown">
+                            <li>
+                                <a href="">Barcode</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div id="Home6" class="tab-pane in notika-tab-menu-bg animated flipInX">
+                        <ul class="notika-main-menu-dropdown">
+                            <li>
+                                <a href="">Laporan</a>
+                            </li>
+                        </ul>
+                    </div>
+
                 </div>
             </div>
         </div>

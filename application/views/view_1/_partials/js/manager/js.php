@@ -82,9 +82,6 @@
 <!--  chosen JS
 		============================================ -->
 <script src="<?= base_url(); ?>assets/notika/js/chosen/chosen.jquery.js"></script>
-<!--  Chat JS
-		============================================ -->
-<script src="<?= base_url(); ?>assets/notika/js/chat/jquery.chat.js"></script>
 <!--  todo JS
 		============================================ -->
 <script src="<?= base_url(); ?>assets/notika/js/todo/jquery.todo.js"></script>
@@ -94,6 +91,3 @@
 <!-- main JS
 		============================================ -->
 <script src="<?= base_url(); ?>assets/notika/js/main.js"></script>
-<!-- tawk chat JS
-		============================================ -->
-<script src="<?= base_url(); ?>assets/notika/js/tawk-chat.js"></script>
