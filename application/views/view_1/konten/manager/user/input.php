@@ -40,7 +40,7 @@
                                 </div>
                                 <div class="nk-int-st">
                                     <label>Nama</label>
-                                    <input type="text" class="form-control" placeholder="Masukan Nama" name="nama_user">
+                                    <input type="text" class="form-control" placeholder="Masukan Nama" name="nama_user" required>
                                 </div>
                             </div>
                         </div>
@@ -50,7 +50,7 @@
                                 </div>
                                 <div class="nk-int-st">
                                     <label>Username</label>
-                                    <input type="text" class="form-control" placeholder="Masukan Username" name="username">
+                                    <input type="text" class="form-control" placeholder="Masukan Username" name="username" required>
                                 </div>
                             </div>
                         </div>
@@ -60,7 +60,7 @@
                                 </div>
                                 <div class="nk-int-st">
                                     <label>password</label>
-                                    <input type="text" class="form-control" placeholder="Masukan password" name="password">
+                                    <input type="text" class="form-control" placeholder="Masukan password" name="password" required>
                                 </div>
                             </div>
                         </div>
@@ -72,7 +72,7 @@
                                 </div>
                                 <div class="nk-int-st">
                                     <label>jenis akses</label>
-                                    <select class="form-control" name="jenis_akses">
+                                    <select class="form-control" name="jenis_akses" required>
                                        <option>pilih</option>
                                        <option>manager</option>
                                        <option>kasir</option>
@@ -86,7 +86,7 @@
                                 </div>
                                 <div class="nk-int-st">
                                     <label>toko</label>
-                                    <select class="form-control" name="id_toko">
+                                    <select class="form-control" name="id_toko" required>
                                         <option>pilih</option>
                                         <?php 
                                         foreach($toko as $t){

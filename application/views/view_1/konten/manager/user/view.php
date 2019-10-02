@@ -18,7 +18,7 @@
 				 ?>
 				 <tr>
 				 	<td><?php echo $no++ ?></td>
-				 	<td><?php echo $data->nama_user ?></td>
+				 	<td><?php echo $data->nama_user?></td>
 				 	<td><?php echo $data->username ?></td>
 				 	<td><?php echo $data->jenis_akses ?></td>
 				 	<td><?php echo $data->id_toko ?></td>
@@ -26,6 +26,7 @@
                                         <div class="table-actions">
                                             <a href="<?php echo base_url("manager/User/edit/".$data->id_user) ?>">Edit</a>
                                             <a href="<?php echo base_url("manager/User/hapus/".$data->id_user) ?>">Hapus</a>
+                                            <a href="<?php echo base_url("manager/User/ganti_password/".$data->id_user) ?>">ganti password</a>
                                         </div>
                                     </td>
 				 </tr>
