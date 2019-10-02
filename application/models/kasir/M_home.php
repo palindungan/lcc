@@ -4,8 +4,11 @@ class M_home extends CI_Model
 
 	function fetch_data($query)
 	{
-		$this->db->select("*");
-		$this->db->from("barang_kasir");
+		$id_toko = "T1";
+		$this->db->select('*');
+		$this->db->from('barang_kasir');
+		$this->db->where('id_toko', $id_toko);
+		$this->db->where('qty >', 0); 
 		if($query != '')
 		{
 		$this->db->like('nama', $query);
