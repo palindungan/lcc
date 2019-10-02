@@ -21,6 +21,7 @@ class Barang extends CI_Controller
     {
         $data['record_minggu'] = $this->M_barang->best_sell_minggu()->result();
         $data['record_bulan'] = $this->M_barang->best_sell_bulan()->result();
+        $data['record_tahun'] = $this->M_barang->best_sell_tahun()->result();
         $this->template->load('view_1/template/manager', 'view_1/konten/manager/barang/barang_terlaris',$data);
     }
 }

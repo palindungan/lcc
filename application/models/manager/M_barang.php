@@ -28,9 +28,16 @@ class M_barang extends CI_Model
 	}
 	function best_sell_bulan()
 	{
-	$id_toko = "T1";
-	$limit = 10;
-	return $this->db->get_where('best_sell_bulan', array(
-	'id_toko' => $id_toko),$limit);
+		$id_toko = "T1";
+		$limit = 10;
+		return $this->db->get_where('best_sell_bulan', array(
+		'id_toko' => $id_toko),$limit);
+	}
+	function best_sell_tahun()
+	{
+		$id_toko = "T1";
+		$limit = 10;
+		return $this->db->get_where('best_sell_tahun', array(
+		'id_toko' => $id_toko),$limit);
 	}
 }
