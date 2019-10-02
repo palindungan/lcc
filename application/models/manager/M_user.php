@@ -39,7 +39,7 @@ class M_user extends CI_model
         return $kd;
     }
     function edit($where,$table){
-        return $this->db->get_where($table,$where);
+        return $this->db->get_where($table,$where)->result();
     }
     function update($where,$data,$table){
         $this->db->where($where);
