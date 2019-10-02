@@ -15,7 +15,7 @@
                     </li>
                     <li>
                         <a data-toggle="tab" href="#Home3">
-                            <i class="glyphicon glyphicon-th-large"></i> Gudang
+                            <i class="glyphicon glyphicon-th-large"></i> Barang
                         </a>
                     </li>
                     <li>
@@ -39,14 +39,14 @@
                     <div id="Home" class="tab-pane in notika-tab-menu-bg animated flipInX">
                         <ul class="notika-main-menu-dropdown">
                             <li>
-                                <a href="">Dashboard</a>
+                                <a href="<?= base_url('manager/home'); ?>">Dashboard</a>
                             </li>
                         </ul>
                     </div>
                     <div id="Home2" class="tab-pane in notika-tab-menu-bg animated flipInX">
                         <ul class="notika-main-menu-dropdown">
                             <li>
-                                <a href="">Data Kasir</a>
+                                <a href="<?= base_url('manager/user'); ?>">Data Kasir</a>
                             </li>
                         </ul>
                     </div>
@@ -65,7 +65,7 @@
                     <div id="Home4" class="tab-pane in notika-tab-menu-bg animated flipInX">
                         <ul class="notika-main-menu-dropdown">
                             <li>
-                                <a href="">Pemasokan</a>
+                                <a href="<?= base_url('manager/pemasokan'); ?>">Pemasokan</a>
                             </li>
                         </ul>
                     </div>
@@ -81,7 +81,7 @@
                     <div id="Home6" class="tab-pane in notika-tab-menu-bg animated flipInX">
                         <ul class="notika-main-menu-dropdown">
                             <li>
-                                <a href="">Laporan</a>
+                                <a href="<?= base_url('manager/laporan'); ?>">Laporan</a>
                             </li>
                         </ul>
                     </div>
