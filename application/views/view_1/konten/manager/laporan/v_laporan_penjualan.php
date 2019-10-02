@@ -51,6 +51,12 @@
                                 <input type="date" name="tgl_mulai">
                                 <p>tanggal akhir</p> 
                                 <input type="date" name="tgl_akhir">
+                                <select name="filter">
+                                    <option>--pilih pencarian--</option>
+                                    <option>Hari</option>
+                                    <option>Minggu</option>
+                                    <option>Bulan</option>
+                                </select>
                                 <button type="submit" class="btn btn-info btn-sm pull-right">Print</button>
                                 </form>
                                 <table class="table table-hover" id="tbl_users">
