@@ -71,13 +71,19 @@
                             <div class="row">
                                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                                     <div class="form-group">
-                                        <button class="form-control btn btn-primary">+ Tambah Baris</button>
+                                        <button type="button" id="add_baris" class="form-control btn btn-primary">+ Tambah Baris</button>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                    <div class="form-group">
+                                        <button type="button" class="form-control btn btn-success" data-toggle="modal" data-target="#myModalthree"><i class="notika-icon notika-search"></i> Cari Barang</button>
                                     </div>
                                 </div>
 
                                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                                     <div class="form-group">
-                                        <button type="button" class="form-control btn btn-success" data-toggle="modal" data-target="#myModalthree"><i class="notika-icon notika-search"></i> Cari Barang</button>
+                                        <button onclick="return confirm('Lakukan Pemasokan ?')" id="action" type="submit" name="simpan" class="form-control btn btn-danger">Simpan Pemasokan</button>
                                     </div>
                                 </div>
 
@@ -102,29 +108,12 @@
                             </div>
                         </div>
 
-                        <div id="span_product_details">
+                        <div id="detail_list">
                             <!-- disini isi detail -->
 
-                            <div id="row" class="row">
-                                <br />
-                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                    <input type="text" class="form-control" placeholder="Kode/Barcode" value="">
-                                </div>
-                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                    <input type="text" class="form-control" placeholder="Nama Barang" value="">
-                                </div>
-                                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12">
-                                    <input type="number" class="form-control" placeholder="qty" value="">
-                                </div>
-                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                    <input type="number" class="form-control" placeholder="Harga" value="">
-                                </div>
-                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
-                                    <button id="" name="remove" class="remove btn btn-danger"><i class="notika-icon notika-trash"></i></button>
-                                </div>
-                            </div>
-
                         </div>
+
+
 
                     </form>
                 </div>
@@ -182,3 +171,57 @@
 </div>
 
 <script src="<?= base_url(); ?>assets/notika/js/vendor/jquery-3.3.1.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+
+        // first state
+        var count1 = 0;
+        tampilDetail(count1);
+
+        // tambah ke database Start
+
+        // tambah ke database End
+
+        // script untuk tampil detail paket
+        function tampilDetail(count1) {
+
+            $('#detail_list').append(`
+
+                <div id="row` + count1 + `" class="row">
+                    <br />
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <input type="text" class="form-control" placeholder="Kode/Barcode" value="` + count1 + `">
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <input type="text" class="form-control" placeholder="Nama Barang" value="">
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12">
+                        <input type="number" class="form-control" placeholder="qty" value="">
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <input type="number" class="form-control" placeholder="Harga" value="">
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                        <button type="button" id="` + count1 + `" class="remove_baris btn btn-danger"><i class="notika-icon notika-trash"></i>` + count1 + `</button>
+                    </div>
+                </div>
+
+            `);
+
+        }
+
+        // jika kita tekan tambah / click button
+        $('#add_baris').on('click', function() {
+            count1 = count1 + 1;
+            tampilDetail(count1);
+        });
+
+        // jika kita tekan hapus / click button
+        $(document).on('click', '.remove_baris', function() {
+            var row_no = $(this).attr("id");
+            $('#row' + row_no).remove();
+        });
+
+    });
+</script>
