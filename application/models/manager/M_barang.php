@@ -19,4 +19,11 @@ class M_barang extends CI_Model
 		'stok <=' => '2'
 		));
 	}
+	function best_sell_minggu()
+	{
+		$id_toko = "T1";
+		$limit = 10;
+		return $this->db->get_where('best_sell_minggu', array(
+		'id_toko' => $id_toko),$limit);
+	}
 }

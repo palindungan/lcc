@@ -17,4 +17,9 @@ class Barang extends CI_Controller
         $this->template->load('view_1/template/manager', 'view_1/konten/manager/barang/stok_habis',$data);
         
     }
+    public function barang_terlaris()
+    {
+        $data['record'] = $this->M_barang->best_sell_minggu()->result();
+        $this->template->load('view_1/template/manager', 'view_1/konten/manager/barang/barang_terlaris',$data);
+    }
 }
