@@ -43,7 +43,7 @@
 								<div class="tab-ctn">
 									<div class="data-table-list">
 										<div class="table-responsive">
-											<table width="100%" id="data-table-basic" class="table table-striped">
+											<table width="100%" class="table table-striped">
 												<thead>
 													<tr>
 														<th width="5%">No</th>
@@ -79,7 +79,7 @@
 								<div class="tab-ctn">
 									<div class="data-table-list">
 										<div class="table-responsive">
-											<table width="100%" id="data-table-basic" class="table table-striped">
+											<table width="100%" class="table table-striped">
 												<thead>
 													<tr>
 														<th width="5%">No</th>
@@ -115,7 +115,7 @@
 								<div class="tab-ctn">
 									<div class="data-table-list">
 										<div class="table-responsive">
-											<table width="100%" id="data-table-basic" class="table table-striped">
+											<table width="100%" class="table table-striped">
 												<thead>
 													<tr>
 														<th width="5%">No</th>
