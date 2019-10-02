@@ -30,9 +30,6 @@
 <!-- Breadcomb area End-->
 
 <!-- Form Element area Start-->
-
-<!-- Form Element area End-->
-
 <div class="form-element-area">
     <div class="container">
         <div class="row">
@@ -135,6 +132,7 @@
         </div>
     </div>
 </div>
+<!-- Form Element area End-->
 
 <div class="modal fade" id="myModalthree" role="dialog">
     <div class="modal-dialog modal-large">
@@ -182,3 +180,5 @@
         </div>
     </div>
 </div>
+
+<script src="<?= base_url(); ?>assets/notika/js/vendor/jquery-3.3.1.min.js"></script>
