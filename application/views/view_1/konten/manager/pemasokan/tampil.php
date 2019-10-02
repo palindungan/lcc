@@ -75,11 +75,13 @@
                                     </div>
                                 </div>
 
-                                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                                     <div class="form-group">
                                         <button type="button" class="form-control btn btn-success" data-toggle="modal" data-target="#myModalthree"><i class="notika-icon notika-search"></i> Cari Barang</button>
                                     </div>
                                 </div>
+
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"></div>
 
                                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                                     <div class="form-group">
