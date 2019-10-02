@@ -74,3 +74,7 @@
 <!-- modernizr JS
 		============================================ -->
 <script src="<?= base_url(); ?>assets/notika/js/vendor/modernizr-2.8.3.min.js"></script>
+
+<!-- Data Table JS
+		============================================ -->
+<link rel="stylesheet" href="<?= base_url(); ?>assets/notika/css/jquery.dataTables.min.css">

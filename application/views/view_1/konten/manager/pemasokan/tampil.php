@@ -143,51 +143,42 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-                <h2>Cari Barang</h2>
-                <p>daftar barang di toko anda.</p>
 
                 <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="data-table-list">
-                            <div class="basic-tb-hd">
-                                <h2>Basic Example</h2>
-                                <p>It's just that simple. Turn your simple table into a sophisticated data table and offer your users a nice experience and great features without any effort.</p>
-                            </div>
-                            <div class="table-responsive">
-                                <table id="data-table-basic" class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-
-                                    </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                        </tr>
-                                    </tfoot>
-                                </table>
-                            </div>
+                    <div class="data-table-list">
+                        <div class="basic-tb-hd">
+                            <h3>Pencarian Barang</h3>
+                            <p>*stok barang di toko anda*</p>
+                        </div>
+                        <div class="table-responsive">
+                            <table id="data-table-basic" class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Kode/Barcode</th>
+                                        <th>Nama</th>
+                                        <th>Opsi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>183091238</td>
+                                        <td>Laptop Acer Aspire E 14</td>
+                                        <td> <a class="btn btn-danger">Pilih</a></td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>Kode/Barcode</th>
+                                        <th>Nama</th>
+                                        <th>Opsi</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
                         </div>
                     </div>
                 </div>
+
             </div>
-            <!-- <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Save changes</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div> -->
         </div>
     </div>
 </div>
