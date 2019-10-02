@@ -74,14 +74,16 @@
                             <div class="row">
                                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                                     <div class="form-group">
-                                        <button class="form-control btn btn-primary"><i class="notika-icon notika-search"></i> Cari Barang</button>
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
-                                    <div class="form-group">
                                         <button class="form-control btn btn-primary">+ Tambah Baris</button>
                                     </div>
                                 </div>
+
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                    <div class="form-group">
+                                        <button type="button" class="form-control btn btn-success" data-toggle="modal" data-target="#myModalthree"><i class="notika-icon notika-search"></i> Cari Barang</button>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
 
@@ -130,6 +132,62 @@
                     </form>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="myModalthree" role="dialog">
+    <div class="modal-dialog modal-large">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h2>Cari Barang</h2>
+                <p>daftar barang di toko anda.</p>
+
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="data-table-list">
+                            <div class="basic-tb-hd">
+                                <h2>Basic Example</h2>
+                                <p>It's just that simple. Turn your simple table into a sophisticated data table and offer your users a nice experience and great features without any effort.</p>
+                            </div>
+                            <div class="table-responsive">
+                                <table id="data-table-basic" class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Position</th>
+                                            <th>Office</th>
+                                            <th>Age</th>
+                                            <th>Start date</th>
+                                            <th>Salary</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Position</th>
+                                            <th>Office</th>
+                                            <th>Age</th>
+                                            <th>Start date</th>
+                                            <th>Salary</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Save changes</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div> -->
         </div>
     </div>
 </div>
