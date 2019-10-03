@@ -1,9 +1,9 @@
 <?php
 class M_pemasokan extends CI_Model
 {
-    function tampil_data_distributor()
+    function tampil_data($data)
     {
-        return $this->db->get('distributor');
+        return $this->db->get($data);
     }
 
     function input_data($table, $data)
