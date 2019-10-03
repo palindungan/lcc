@@ -29,4 +29,7 @@ class Pemasokan extends CI_Controller
 
         echo $data;
     }
+
+    public function input_transaksi_form()
+    { }
 }

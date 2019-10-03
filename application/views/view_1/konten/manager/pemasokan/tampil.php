@@ -63,7 +63,7 @@
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Total">
+                                        <input type="text" class="form-control" name="total_hrg" placeholder="Total">
                                     </div>
                                 </div>
                             </div>
@@ -180,16 +180,16 @@
             <div id="row` + count1 + `" class="row">
                 <br />
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <input type="text" class="form-control" placeholder="Kode/Barcode" value="` + count1 + `">
+                    <input type="text" class="form-control" id="barcode` + count1 + `" name="barcode[]" placeholder="Kode/Barcode" value="">
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <input type="text" class="form-control" placeholder="Nama Barang" value="">
+                    <input type="text" class="form-control" id="nama` + count1 + `" name="nama[]" placeholder="Nama Barang" value="">
                 </div>
                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12">
-                    <input type="number" class="form-control" placeholder="qty" value="">
+                    <input type="number" class="form-control" id="qty` + count1 + `" name="qty[]" placeholder="qty" value="">
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <input type="number" class="form-control" placeholder="Harga" value="">
+                    <input type="number" class="form-control" id="hrg_distributor` + count1 + `" name="hrg_distributor[]" placeholder="Harga" value="">
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                     <button type="button" id="` + count1 + `" class="remove_baris btn btn-danger"><i class="notika-icon notika-trash"></i>` + count1 + `</button>
@@ -254,27 +254,46 @@
             <div id="row` + count1 + `" class="row">
                 <br />
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <input type="text" class="form-control" placeholder="Kode/Barcode" value="` + barcode + `">
+                    <input type="text" class="form-control" id="barcode` + count1 + `" name="barcode[]" placeholder="Kode/Barcode" value="` + barcode + `">
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <input type="text" class="form-control" placeholder="Nama Barang" value="` + nama + `">
+                    <input type="text" class="form-control" id="nama` + count1 + `" name="nama[]" placeholder="Nama Barang" value="` + nama + `">
                 </div>
                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12">
-                    <input type="number" class="form-control" placeholder="qty" value="" min="1">
+                    <input type="number" class="form-control" id="qty` + count1 + `" name="qty[]" placeholder="qty" value="" min="1">
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <input type="number" class="form-control" placeholder="Harga" value="" min="0">
+                    <input type="number" class="form-control"  id="hrg_distributor` + count1 + `" name="hrg_distributor[]" placeholder="Harga" value="" min="0">
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                     <button type="button" id="` + count1 + `" class="remove_baris btn btn-danger"><i class="notika-icon notika-trash"></i>` + count1 + `</button>
                 </div>
             </div>
 
-            `);
+        `);
 
         count1 = count1 + 1;
         $('#myModalthree').modal('hide');
     }
 
     // End pencarian
+
+    // tambah ke database
+    $(document).on('submit', '#transaksi_form', function(event) {
+        event.preventDefault();
+
+        // mengambil nilai di dalam form
+        var form_data = $(this).serialize();
+
+        $.ajax({
+            url: "<?php echo base_url() . 'manager/pemasokan/input_transaksi_form'; ?>",
+            method: "POST",
+            data: form_data,
+            success: function(data) {
+                alert("Data berhasil Ditambahkan");
+                location.reload();
+            }
+        });
+    });
+    // tambah ke database
 </script>
