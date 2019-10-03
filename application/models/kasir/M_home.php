@@ -2,20 +2,9 @@
 class M_home extends CI_Model
 {
 
-	function fetch_data($query)
+	function barang_kasir()
 	{
-		$id_toko = "T1";
-		$this->db->select('*');
-		$this->db->from('barang_kasir');
-		$this->db->where('id_toko', $id_toko);
-		$this->db->where('qty >', 0); 
-		if($query != '')
-		{
-		$this->db->like('nama', $query);
-		$this->db->or_like('kode_unik', $query);
-		$this->db->or_like('barcode', $query);
-		}
-		return $this->db->get();
+		return $this->db->get_where('barang_kasir',array('qty >' => 0));
 	}
 	function input_data($data, $table)
 	{

@@ -8,82 +8,30 @@ class Home extends CI_Controller
     }
     public function index()
     {
-        $data['kode'] = $this->M_home->id_customer();
+        $data['record'] = $this->M_home->barang_kasir()->result();
         $this->template->load('view_1/template/kasir', 'view_1/konten/kasir/home/tampil',$data);
-    }
-    function fetch()
-    {
-        $output = '';
-        $query = '';
-            if($this->input->post('query'))
-            {
-                $query = $this->input->post('query');
-            }
-                $data = $this->M_home->fetch_data($query);
-                $output .= '<div>';
-    	        if($data->num_rows() > 0)
-    	        {
-    	            foreach($data->result() as $row)
-    	            {
-                        $kode = "";
-                        if($row->kode_unik == "kosong")
-                        {
-                            $kode = $row->barcode;
-                        } else {
-                            $kode = $row->kode_unik;
-                        }
-    	            $output .= '
-    	            <div style="margin-bottom:5px;" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-    		            <div class="thumbnail">
-    			            <div class="caption">
-    				        <input type="hidden" name="id" value="'.$row->id_stok_b.'"/>
-                            <input type="hidden" name="name" value="'. $row->nama .'"/>
-                            <input type="hidden" name="price" value="0"/>
-                            <input type="hidden" name="qty" value="1"/>
-                            <p class="text-center"><b>'.$kode.'</b></p>
-                            <p style="font-size:14px">'.$row->nama.'</p>
-                            <p style="font-size:14px">'.date('d F Y', strtotime($row->tanggal)).'</p>
-                            <p class="text-center"><button type="submit" class="btn btn-primary " role="button"><i
-                                        class="glyphicon glyphicon-shopping-cart"></i>
-                                    Beli</button></p>
-                            </div>
-                        </div>
-                    </div>';
-                    }           
-                } 
-                else 
-                {
-                    $output .= '
-                            <div><p style="font-size:30px;font-weight:bold" class="text-center">Data Tidak Ditemukan</p></div>';
-                }
-                $output .= '</div>';
-                echo $output;
     }
     public function add_cart()
     {
-        $data_produk = array(
-        'id' => $this->input->post('id'),
-        'name' => $this->input->post('name'),
-        'price' => $this->input->post('price'),
-        'qty' => $this->input->post('qty')
+        $data = array(
+        "id" => $_POST["product_id"],
+        "name" => $_POST["product_name"],
+        "qty" => $_POST["quantity"],
+        "price" => $_POST["product_price"]
         );
-        $this->cart->insert($data_produk);
-        redirect('kasir/home');
+        $this->cart->insert($data); //return rowid
+        echo $this->view();
     }
-    public function delete_cart($rowid)
+    function delete_cart()
     {
-        if ($rowid == "all") {
-        $this->cart->destroy();
-        } 
-        else 
-        {
-            $data = array(
-            'rowid' => $rowid,
-            'qty' => 0 
-            );
-            $this->cart->update($data);
-        }
-        redirect('kasir/home');
+        $this->load->library("cart");
+        $row_id = $_POST["row_id"];
+        $data = array(
+        'rowid' => $row_id,
+        'qty' => 0
+    );
+        $this->cart->update($data);
+        echo $this->view();
     }
     public function store()
     {
@@ -122,4 +70,52 @@ class Home extends CI_Controller
         $this->cart->destroy();
         redirect('kasir/home');
     }
+     function load()
+     {
+     echo $this->view();
+     }
+    function view()
+    {
+    $output = '';
+    $output .= '
+    <div class="table-responsive">
+    	<table class="table">
+    		<thead>
+    			<tr>
+    				<th class="text-center" width="58%">NAMA</th>
+    				<th class="text-center" width="40%">HARGA</th>
+    				<th width="1%">QTY</th>
+    				<th width="1%">.</th>
+    			</tr>
+    		</thead>
+            <tbody>
+    		';
+    		$count = 0;
+    		foreach($this->cart->contents() as $item)
+    		{
+    		$count++;
+    		$output .= '
+    		<tr>
+    			<td>'. $item['name'] .'</td>
+<td class="text-right"><input type="text" id="harga_jual" name="harga_jual" class="form-control text-right harga_jual">
+</td>
+<td class="text-center">'. $item['qty'] .'</td>
+<td><button type="button" name="remove" class="btn btn-danger btn-xs remove_inventory"
+		id="'. $item['rowid'] .'"><i class="btn btn-xs btn-danger glyphicon glyphicon-remove"></i></button></td>
+</tr>
+</tbody>
+';
+}
+$output .= '
+</table>
+
+</div>
+';
+
+if($count == 0)
+{
+$output = '<h6 style="margin-top:20px;" class="text-center"> Keranjang Masih Kosong</h6>';
+}
+return $output;
+}
 }

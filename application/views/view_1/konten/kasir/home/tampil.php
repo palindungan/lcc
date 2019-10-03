@@ -15,9 +15,37 @@
 						</div>
 					</div>
 					<div class="row">
-						<form action="<?php echo base_url(); ?>kasir/home/add_cart" method="POST">
-							<div id="result"></div>
-						</form>
+						<?php 
+						foreach($record as $row)
+						{
+							$kode = "";
+							if($row->kode_unik == "kosong")
+							{
+								$kode = $row->barcode;
+							}
+							else {
+								$kode = $row->kode_unik;
+							}
+							$price = 2000;
+							$quantity = 1;
+						?>
+						<div style="margin-bottom:5px;" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+							<div class="thumbnail">
+								<div class="caption">
+									<p class="text-center"><b><?= $kode ?></b></p>
+									<p style="font-size:14px"><?= $row->nama ?></p>
+									<p style="font-size:14px"><?= date('d F Y', strtotime($row->tanggal)) ?></p>
+									<p class="text-center">
+										<button type="button" class="btn btn-success add_cart"
+											data-productname="<?= $row->nama ?>" data-quantity="<?= $quantity ?>"
+											data-price="<?= $price ?>" data-productid="<?= $row->id_stok_b ?>">Add
+											to
+											Cart</button>
+									</p>
+								</div>
+							</div>
+						</div>
+						<?php } ?>
 					</div>
 				</div>
 			</div>
@@ -53,51 +81,7 @@
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 								<h4 class="text-center">Keranjang Belanja</h4>
 								<div class="table-responsive">
-									<?php 
-									$cart = $this->cart->contents();
-								if (empty($cart)) {
-								?>
-									<h6 style="margin-top:20px;" class="text-center"> Keranjang Masih Kosong</h6>
-									<?php
-                        } else {
-							echo "<table width='100%' class='table'>";
-								foreach ($cart as $item) {
-								?>
-									<thead>
-										<tr>
-											<th class="text-center" width="58%">NAMA</th>
-											<th class="text-center" width="40%">HARGA</th>
-											<th width="1%">QTY</th>
-											<th width="1%">.</th>
-										</tr>
-									</thead>
-									<tbody>
-										<input type="hidden" name="cart[<?= $item['id']; ?>][id]"
-											value="<?= $item['id']; ?>" />
-										<input type="hidden" name="cart[<?= $item['id']; ?>][name]"
-											value="<?= $item['name']; ?>" />
-										<input type="hidden" id="jumlah_barang" name="cart[<?= $item['id']; ?>][qty]"
-											value="<?= $item['qty']; ?>" />
-										<input type="hidden" id="sub_total">
-										<tr>
-											<td><?= $item['name'] ?></td>
-											<td class="text-right"><input type="text" id="harga_jual" name="harga_jual"
-													class="form-control text-right harga_jual"></td>
-											<td class="text-center"><?= $item['qty'] ?></td>
-											<td><a
-													href="<?= base_url() ?>kasir/home/delete_cart/<?= $item['rowid']; ?>"><i
-														class="btn btn-xs btn-danger glyphicon glyphicon-remove"></i></a>
-											</td>
-										</tr>
-									</tbody>
-									<?php
-                            }
-                            ?>
-
-									<?php
-                        }
-                        ?>
-									</table>
+									<div id="cart_details"></div>
 								</div>
 							</div>
 						</div>
@@ -153,28 +137,40 @@
 <script>
 	$(document).ready(function () {
 
-		load_data();
-
-		function load_data(query) {
+		$('.add_cart').click(function () {
+			var product_id = $(this).data("productid");
+			var product_name = $(this).data("productname");
+			var product_price = $(this).data("price");
+			var quantity = $(this).data("quantity");
 			$.ajax({
-				url: "<?php echo base_url(); ?>kasir/home/fetch",
+				url: "<?php echo base_url(); ?>kasir/home/add_cart",
 				method: "POST",
 				data: {
-					query: query
+					product_id: product_id,
+					product_name: product_name,
+					product_price: product_price,
+					quantity: quantity
 				},
 				success: function (data) {
-					$('#result').html(data);
+					$('#cart_details').html(data);
 				}
-			})
-		}
+			});
+		});
 
-		$('#search_text').keyup(function () {
-			var search = $(this).val();
-			if (search != '') {
-				load_data(search);
-			} else {
-				load_data();
-			}
+		$('#cart_details').load("<?php echo base_url(); ?>kasir/home/load");
+
+		$(document).on('click', '.remove_inventory', function () {
+			var row_id = $(this).attr("id");
+			$.ajax({
+				url: "<?php echo base_url(); ?>kasir/home/delete_cart",
+				method: "POST",
+				data: {
+					row_id: row_id
+				},
+				success: function (data) {
+					$('#cart_details').html(data);
+				}
+			});
 		});
 	});
 
