@@ -44,11 +44,11 @@
                                         <div class="bootstrap-select fm-cmp-mg">
                                             <select class="selectpicker" data-live-search="true">
                                                 <option value="">Pilih Distributor</option>
-                                                <option>Distributor 1</option>
-                                                <option>Distributor 2</option>
-                                                <option>Distributor 3</option>
-                                                <option>Distributor 4</option>
-                                                <option>Distributor 5</option>
+                                                <?php foreach ($distributor as $d) {  ?>
+                                                    <option value="<?php echo $d->id_distributor ?>">
+                                                        <?php echo $d->nama ?>
+                                                    </option>
+                                                <?php } ?>
                                             </select>
                                         </div>
                                     </div>
@@ -114,8 +114,6 @@
                             <!-- disini isi detail -->
 
                         </div>
-
-
 
                     </form>
                 </div>
