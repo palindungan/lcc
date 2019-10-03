@@ -169,61 +169,59 @@
 <script src="<?= base_url(); ?>assets/notika/js/vendor/jquery-3.3.1.min.js"></script>
 
 <script>
-    $(document).ready(function() {
+    var count1 = 0;
+    tampil_detail();
 
-        // first state
-        var count1 = 0;
-        tampilDetail(count1);
+    // Start add_row
+    function tampil_detail() {
 
-        // tambah ke database Start
+        $('#detail_list').append(`
 
-        // tambah ke database End
-
-        // script untuk tampil detail paket
-        function tampilDetail(count1) {
-
-            $('#detail_list').append(`
-
-                <div id="row` + count1 + `" class="row">
-                    <br />
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                        <input type="text" class="form-control" placeholder="Kode/Barcode" value="` + count1 + `">
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                        <input type="text" class="form-control" placeholder="Nama Barang" value="">
-                    </div>
-                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12">
-                        <input type="number" class="form-control" placeholder="qty" value="">
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                        <input type="number" class="form-control" placeholder="Harga" value="">
-                    </div>
-                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
-                        <button type="button" id="` + count1 + `" class="remove_baris btn btn-danger"><i class="notika-icon notika-trash"></i>` + count1 + `</button>
-                    </div>
+            <div id="row` + count1 + `" class="row">
+                <br />
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <input type="text" class="form-control" placeholder="Kode/Barcode" value="` + count1 + `">
                 </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <input type="text" class="form-control" placeholder="Nama Barang" value="">
+                </div>
+                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12">
+                    <input type="number" class="form-control" placeholder="qty" value="">
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <input type="number" class="form-control" placeholder="Harga" value="">
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                    <button type="button" id="` + count1 + `" class="remove_baris btn btn-danger"><i class="notika-icon notika-trash"></i>` + count1 + `</button>
+                </div>
+            </div>
 
-            `);
+        `);
 
-        }
+        count1 = count1 + 1;
+    }
 
-        // jika kita tekan tambah / click button
-        $('#add_baris').on('click', function() {
-            count1 = count1 + 1;
-            tampilDetail(count1);
-        });
-
-        // jika kita tekan hapus / click button
-        $(document).on('click', '.remove_baris', function() {
-            var row_no = $(this).attr("id");
-            $('#row' + row_no).remove();
-        });
-
+    // jika kita tekan tambah / click button
+    $('#add_baris').on('click', function() {
+        tampil_detail();
     });
 
-    // script untuk menu pencarian
+    // End add_row
+
+    // jika kita tekan hapus / click button
+    $(document).on('click', '.remove_baris', function() {
+        var row_no = $(this).attr("id");
+        $('#row' + row_no).remove();
+    });
+
+
+    // Start pencarian
     function search_proses() {
-        $('#daftar_barang').html('');
+
+        var table;
+        table = $('.table_1').DataTable();
+
+        table.clear();
 
         $.ajax({
             url: "<?php echo base_url() . 'manager/pemasokan/tampil_daftar_barang'; ?>",
@@ -232,11 +230,9 @@
                 var obj = JSON.parse(hasil);
                 let data = obj['tbl_data'];
 
-                var table;
-                table = $('.table_1').DataTable();
                 if (data != '') {
                     $.each(data, function(i, item) {
-                        table.row.add([data[i].barcode, data[i].nama, `<a onclick="pilih_barang()" id="` + data[i].kode + `" class="btn btn-danger">Pilih</a>`]);
+                        table.row.add([data[i].barcode, data[i].nama, `<a onclick="myFunction('` + data[i].barcode + `','` + data[i].nama + `')" id="` + data[i].kode + `" class="btn btn-danger">Pilih</a>`]);
                     });
                 } else {
                     $('.table_1').html('<h3>No data are available</h3>');
@@ -251,4 +247,34 @@
     $('#btn_search').on('click', function() {
         search_proses();
     });
+
+    function myFunction(barcode, nama) {
+        $('#detail_list').append(`
+
+            <div id="row` + count1 + `" class="row">
+                <br />
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <input type="text" class="form-control" placeholder="Kode/Barcode" value="` + barcode + `">
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <input type="text" class="form-control" placeholder="Nama Barang" value="` + nama + `">
+                </div>
+                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12">
+                    <input type="number" class="form-control" placeholder="qty" value="" min="1">
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <input type="number" class="form-control" placeholder="Harga" value="" min="0">
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                    <button type="button" id="` + count1 + `" class="remove_baris btn btn-danger"><i class="notika-icon notika-trash"></i>` + count1 + `</button>
+                </div>
+            </div>
+
+            `);
+
+        count1 = count1 + 1;
+        $('#myModalthree').modal('hide');
+    }
+
+    // End pencarian
 </script>

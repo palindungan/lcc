@@ -20,4 +20,13 @@ class Pemasokan extends CI_Controller
 
         echo $data;
     }
+    public function get_barang_terdaftar()
+    {
+        $kode = $this->input->post('kode');
+        $data_barang['data'] = $this->M_pemasokan->get_data('barang_terdaftar_barcode', $kode)->result();
+
+        $data = json_encode($data_barang);
+
+        echo $data;
+    }
 }

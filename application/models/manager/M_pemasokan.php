@@ -20,7 +20,7 @@ class M_pemasokan extends CI_Model
         $this->db->delete($table);
     }
 
-    function edit_data($table, $where)
+    function get_data($table, $where)
     {
         return $this->db->get_where($table, $where);
     }
