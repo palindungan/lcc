@@ -70,52 +70,52 @@ class Home extends CI_Controller
         $this->cart->destroy();
         redirect('kasir/home');
     }
-     function load()
-     {
-     echo $this->view();
-     }
+    function load()
+    {
+        echo $this->view();
+    }
     function view()
     {
     $output = '';
-    $output .= '
-    <div class="table-responsive">
-    	<table class="table">
-    		<thead>
-    			<tr>
-    				<th class="text-center" width="58%">NAMA</th>
-    				<th class="text-center" width="40%">HARGA</th>
-    				<th width="1%">QTY</th>
-    				<th width="1%">.</th>
-    			</tr>
-    		</thead>
-            <tbody>
-    		';
-    		$count = 0;
-    		foreach($this->cart->contents() as $item)
-    		{
-    		$count++;
-    		$output .= '
-    		<tr>
-    			<td>'. $item['name'] .'</td>
-<td class="text-right"><input type="text" id="harga_jual" name="harga_jual" class="form-control text-right harga_jual">
-</td>
-<td class="text-center">'. $item['qty'] .'</td>
-<td><button type="button" name="remove" class="btn btn-danger btn-xs remove_inventory"
-		id="'. $item['rowid'] .'"><i class="btn btn-xs btn-danger glyphicon glyphicon-remove"></i></button></td>
-</tr>
-</tbody>
-';
-}
-$output .= '
-</table>
-
-</div>
-';
-
-if($count == 0)
-{
-$output = '<h6 style="margin-top:20px;" class="text-center"> Keranjang Masih Kosong</h6>';
-}
-return $output;
-}
+        $output .= '
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="text-center" width="58%">NAMA</th>
+                        <th class="text-center" width="40%">HARGA</th>
+                        <th width="1%">QTY</th>
+                        <th width="1%">.</th>
+                    </tr>
+                </thead>
+                <tbody>
+                ';
+                $count = 0;
+                foreach($this->cart->contents() as $item)
+                {
+                $count++;
+                $output .= '
+                <input type="hidden" name="cart['.$item['id'].'][id]" value="'.$item['id'].'" />
+                <input type="hidden" name="cart['.$item['id'].'][name]" value="'.$item['name'].'" />
+                <input type="hidden" id="jumlah_barang" name="cart['.$item['id'].'][qty]" value="'.$item['qty'].'"/>
+                    <tr>
+                            <td>'. $item['name'] .'</td>
+                            <td class="text-right"><input type="text" id="harga_jual" name="harga_jual"
+                                    class="form-control text-right harga_jual">
+                            </td>
+                            <td class="text-center">'. $item['qty'] .'</td>
+                            <td><button type="button" name="remove" class="btn btn-danger btn-xs remove_inventory" id="'. $item['rowid'] .'"><i
+                                        class="btn btn-xs btn-danger glyphicon glyphicon-remove"></i></button></td>
+                    </tr>
+                </tbody>';
+                }
+                $output .= '
+                </table>
+                </div>';
+            if($count == 0)
+            {
+                $output = '<h6 style="margin-top:20px;" class="text-center"> Keranjang Masih Kosong</h6>';
+            }
+        return $output;
+    }
 }
