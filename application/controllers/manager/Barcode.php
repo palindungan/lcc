@@ -15,6 +15,7 @@ class Barcode extends CI_Controller
     {
         $where = array('barcode' => $id);
         $data['record'] = $this->M_barcode->edit_data($where,'barang_toko')->result();
-        $this->load->view('view_1/konten/manager/barcode/print',$data);
+        $html = $this->load->view('view_1/konten/manager/barcode/print',$data,true);
+        $this->dompdf->PdfGenerator($html,'coba','A4','landscape');
     }
 }

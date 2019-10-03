@@ -11,8 +11,21 @@ class M_laporan extends CI_Model
 		$query = $this->db->query("SELECT * FROM penjualan WHERE tanggal
               between '$tgl_mulai' AND '$tgl_akhir'");
 		return $query;
-		$query1 = $this->db->query("SELECT * FROM penjualan WHERE tanggal >=DATE(NOW()) - INTERVAL 7 DAY");
-		return $query1;
+	}
+	function tampil_hari()
+	{
+		$query = $this->db->query("SELECT * FROM penjualan WHERE tanggal >= DATE(NOW())");
+		return $query;	
+	}
+	function tampil_Minggu()
+	{
 
+	$query = $this->db->query("SELECT * FROM penjualan WHERE  YEARWEEK(`tanggal`, 1) = YEARWEEK(CURDATE(), 1)");
+		return $query;
+	}
+	function tampil_bulan()
+	{
+		$query  = $this->db->query("SELECT * FROM penjualan WHERE YEAR(tanggal) = 2019 AND MONTH(tanggal) = 9");
+		return $query;
 	}
 }

@@ -44,11 +44,11 @@
                                         <div class="bootstrap-select fm-cmp-mg">
                                             <select class="selectpicker" data-live-search="true">
                                                 <option value="">Pilih Distributor</option>
-                                                <option>Distributor 1</option>
-                                                <option>Distributor 2</option>
-                                                <option>Distributor 3</option>
-                                                <option>Distributor 4</option>
-                                                <option>Distributor 5</option>
+                                                <?php foreach ($distributor as $d) {  ?>
+                                                    <option value="<?php echo $d->id_distributor ?>">
+                                                        <?php echo $d->nama ?>
+                                                    </option>
+                                                <?php } ?>
                                             </select>
                                         </div>
                                     </div>
@@ -63,7 +63,7 @@
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Total" readonly>
+                                        <input type="text" class="form-control" placeholder="Total">
                                     </div>
                                 </div>
                             </div>
@@ -77,7 +77,7 @@
 
                                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                                     <div class="form-group">
-                                        <button type="button" class="form-control btn btn-success" data-toggle="modal" data-target="#myModalthree"><i class="notika-icon notika-search"></i> Cari Barang</button>
+                                        <button id="btn_search" type="button" class="form-control btn btn-success" data-toggle="modal" data-target="#myModalthree"><i class="notika-icon notika-search"></i> Cari Barang</button>
                                     </div>
                                 </div>
 
@@ -115,8 +115,6 @@
 
                         </div>
 
-
-
                     </form>
                 </div>
             </div>
@@ -140,24 +138,20 @@
                             <p>*stok barang di toko anda*</p>
                         </div>
                         <div class="table-responsive">
-                            <table id="data-table-basic" class="table table-striped">
+                            <table id="data-table-basic" class="table table-striped table_1">
                                 <thead>
                                     <tr>
-                                        <th>Kode/Barcode</th>
+                                        <th>Barcode</th>
                                         <th>Nama</th>
                                         <th>Opsi</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>183091238</td>
-                                        <td>Laptop Acer Aspire E 14</td>
-                                        <td> <a class="btn btn-danger">Pilih</a></td>
-                                    </tr>
+                                <tbody id="daftar_barang">
+                                    <!-- isi tabel -->
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th>Kode/Barcode</th>
+                                        <th>Barcode</th>
                                         <th>Nama</th>
                                         <th>Opsi</th>
                                     </tr>
@@ -225,5 +219,36 @@
             $('#row' + row_no).remove();
         });
 
+    });
+
+    // script untuk menu pencarian
+    function search_proses() {
+        $('#daftar_barang').html('');
+
+        $.ajax({
+            url: "<?php echo base_url() . 'manager/pemasokan/tampil_daftar_barang'; ?>",
+            success: function(hasil) {
+
+                var obj = JSON.parse(hasil);
+                let data = obj['tbl_data'];
+
+                var table;
+                table = $('.table_1').DataTable();
+                if (data != '') {
+                    $.each(data, function(i, item) {
+                        table.row.add([data[i].barcode, data[i].nama, `<a id="` + data[i].kode + `" class="btn btn-danger">Pilih</a>`]);
+                    });
+                } else {
+                    $('.table_1').html('<h3>No data are available</h3>');
+                }
+                table.draw();
+
+            }
+        });
+    }
+
+    // jika kita tekan / click button search-button
+    $('#btn_search').on('click', function() {
+        search_proses();
     });
 </script>
