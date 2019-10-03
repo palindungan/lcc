@@ -236,7 +236,7 @@
                 table = $('.table_1').DataTable();
                 if (data != '') {
                     $.each(data, function(i, item) {
-                        table.row.add([data[i].barcode, data[i].nama, `<a id="` + data[i].kode + `" class="btn btn-danger">Pilih</a>`]);
+                        table.row.add([data[i].barcode, data[i].nama, `<a onclick="pilih_barang()" id="` + data[i].kode + `" class="btn btn-danger">Pilih</a>`]);
                     });
                 } else {
                     $('.table_1').html('<h3>No data are available</h3>');
