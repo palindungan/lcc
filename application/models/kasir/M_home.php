@@ -4,7 +4,7 @@ class M_home extends CI_Model
 
 	function barang_kasir()
 	{
-		return $this->db->get_where('barang_kasir',array('qty >' => 0));
+		return $this->db->get_where('barang_kasir',array('qty >' => 0))->result();
 	}
 	function input_data($data, $table)
 	{
@@ -61,6 +61,11 @@ class M_home extends CI_Model
 			}
 		}
 		return $kd;
+	}
+	public function search($keyword){
+		$this->db->like('nama', $keyword);
+		$result = $this->db->get_where('barang_kasir',array('qty >' => 0))->result(); // Tampilkan data siswa berdasarkan keyword
+		return $result;
 	}
 
 	

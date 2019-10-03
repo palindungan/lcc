@@ -5,47 +5,26 @@
 				<div style="margin-bottom:20px;overflow-y: scroll; height:585px; width: auto;" class="contact-inner">
 					<div class="row">
 						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-							<div style="margin-bottom:10px;" class="input-group">
-								<input type="text" name="search_text" id="search_text" class="form-control"
-									placeholder="Cari Barang">
-								<span class="input-group-btn">
-									<button class="btn btn-default" type="button">Go!</button>
-								</span>
-							</div><!-- /input-group -->
-						</div>
-					</div>
-					<div class="row">
-						<?php 
-						foreach($record as $row)
-						{
-							$kode = "";
-							if($row->kode_unik == "kosong")
-							{
-								$kode = $row->barcode;
-							}
-							else {
-								$kode = $row->kode_unik;
-							}
-							$price = 2000;
-							$quantity = 1;
-						?>
-						<div style="margin-bottom:5px;" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-							<div class="thumbnail">
-								<div class="caption">
-									<p class="text-center"><b><?= $kode ?></b></p>
-									<p style="font-size:14px"><?= $row->nama ?></p>
-									<p style="font-size:14px"><?= date('d F Y', strtotime($row->tanggal)) ?></p>
-									<p class="text-center">
-										<button type="button" class="btn btn-success add_cart"
-											data-productname="<?= $row->nama ?>" data-quantity="<?= $quantity ?>"
-											data-price="<?= $price ?>" data-productid="<?= $row->id_stok_b ?>">Add
-											to
-											Cart</button>
-									</p>
+							<div class="row" style="margin-bottom:20px;">
+								<div class="col-md-10">
+									<div class="input-group">
+										<input id="keyword" type="text" class="form-control"
+											placeholder="Cari Barang...">
+										<span class="input-group-btn">
+											<button id="btn-search" class="btn btn-primary" type="button">Cari</button>
+										</span>
+									</div>
+								</div>
+								<div class="col-md-2">
+									<a href="<?= base_url() ?>/kasir/home" class="btn btn-primary btn-block">Refresh</a>
 								</div>
 							</div>
 						</div>
-						<?php } ?>
+					</div>
+					<div id="view">
+						<?php
+						$this->load->view('view_1/konten/kasir/home/barang_kasir',array('siswa'=>$siswa));
+						?>
 					</div>
 				</div>
 			</div>
@@ -169,6 +148,41 @@
 				},
 				success: function (data) {
 					$('#cart_details').html(data);
+				}
+			});
+		});
+	});
+
+</script>
+<script>
+	$(document).ready(function () {
+		$("#btn-search").click(function () { // Ketika tombol simpan di klik
+			// Ubah text tombol search menjadi SEARCHING...
+			// Dan tambahkan atribut disable pada tombol nya agar tidak bisa diklik lagi
+			$(this).html("SEARCHING...").attr("disabled", "disabled");
+
+			$.ajax({
+				url: "<?php echo base_url(); ?>kasir/home/cari",
+				type: 'POST', // Tentukan type nya POST atau GET
+				data: {
+					keyword: $("#keyword").val()
+				}, // Set data yang akan dikirim
+				dataType: "json",
+				beforeSend: function (e) {
+					if (e && e.overrideMimeType) {
+						e.overrideMimeType("application/json;charset=UTF-8");
+					}
+				},
+				success: function (response) { // Ketika proses pengiriman berhasil
+					// Ubah kembali text button search menjadi SEARCH
+					// Dan hapus atribut disabled untuk meng-enable kembali button search nya
+					$("#btn-search").html("SEARCH").removeAttr("disabled");
+
+					// Ganti isi dari div view dengan view yang diambil dari controller siswa function search
+					$("#view").html(response.hasil);
+				},
+				error: function (xhr, ajaxOptions, thrownError) { // Ketika terjadi error
+					alert(xhr.responseText); // munculkan alert
 				}
 			});
 		});

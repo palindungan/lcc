@@ -8,7 +8,7 @@ class Home extends CI_Controller
     }
     public function index()
     {
-        $data['record'] = $this->M_home->barang_kasir()->result();
+        $data['siswa'] = $this->M_home->barang_kasir();
         $this->template->load('view_1/template/kasir', 'view_1/konten/kasir/home/tampil',$data);
     }
     public function add_cart()
@@ -117,5 +117,20 @@ class Home extends CI_Controller
                 $output = '<h6 style="margin-top:20px;" class="text-center"> Keranjang Masih Kosong</h6>';
             }
         return $output;
+    }
+    public function cari()
+    {
+    // Ambil data NIS yang dikirim via ajax post
+        $keyword = $this->input->post('keyword');
+        $siswa = $this->M_home->search($keyword);
+
+        // Kita load file view.php sambil mengirim data siswa hasil query function search di SiswaModel
+        $hasil = $this->load->view('view_1/konten/kasir/home/barang_kasir',array('siswa'=>$siswa),true);
+        // Buat sebuah array
+        $callback = array(
+        'hasil' => $hasil, // Set array hasil dengan isi dari view.php yang diload tadi
+        );
+
+        echo json_encode($callback); // konversi varibael $callback menjadi JSON
     }
 }
