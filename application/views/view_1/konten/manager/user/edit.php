@@ -1,4 +1,3 @@
-<!-- Breadcomb area Start-->
 <?php 
 foreach($edit as $data){
  ?>
@@ -58,19 +57,7 @@ foreach($edit as $data){
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                            <div class="form-group ic-cmp-int">
-                                <div class="form-ic-cmp">
-                                </div>
-                                <div class="nk-int-st">
-                                    <label>password</label>
-                                    <input type="text" class="form-control" value="<?php echo $data->password ?>" name="password">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                             <div class="form-group ic-cmp-int">
                                 <div class="form-ic-cmp">
                                 </div>
@@ -88,6 +75,8 @@ foreach($edit as $data){
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="row">
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                             <div class="form-group ic-cmp-int">
                                 <div class="form-ic-cmp">
@@ -99,7 +88,7 @@ foreach($edit as $data){
                                        <?php 
                                        foreach ($toko as $T){
                                         ?>
-                                        <option value="<?php echo $T->id_toko ?>"><?php echo $T->nama_toko ?></option>
+                                        <option value="<?php echo $T->id_toko ?>" <?php echo $T->id_toko==$data->id_toko ?  "selected" : "" ?>><?php echo $T->nama_toko ?></option>
                                         <?php } ?>
                                    </select>
                                 </div>
@@ -115,4 +104,4 @@ foreach($edit as $data){
     </div>
 </div>
 <?php } ?>
-<!-- Form Element area End-->
+<!-- Form Element area End

@@ -49,4 +49,15 @@ class M_user extends CI_model
         $this->db->where($where);
         $this->db->delete($table);
     }
+     function ambil_data($nama_user)
+    {
+        $this->db->select('*');
+        $this->db->from('user u');
+
+        $where = "u.nama_user ='" . $nama_user . "'";
+        $this->db->where($where);
+        $this->db->order_by('u.nama_user', 'ASC');
+
+        return $this->db->get();
+    }
 }

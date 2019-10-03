@@ -30,11 +30,16 @@ class User extends CI_controller
 		'id_toko' => $this->input->post('id_toko'),
 		'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT)
 		);
-		$input = $this->M_user->input($data);
-		if($input){
-				redirect('manager/user');
+		$cek = $this->M_user->ambil_data($this->input->post('username'))->num_rows();
+		if($cek > 0){
+				//pemberitahuan dan pindah ke page window
+			echo "<script>alert('tidak boleh 2 username yang sama');window.location = '". base_url("manager/user")."';</script>";
 		}else{
-			echo "gagal";
+			//mengirim data ke model untuk diinputkan
+			$this->M_user->input($data);
+			//kembali ke halaman utama
+			//redirect
+			 echo "<script>alert('Berhasil Menambah Data !'); window.location = '" . base_url('manager/user') . "';</script>";
 		}
 	}
 	function edit($id){
@@ -57,19 +62,24 @@ class User extends CI_controller
 		$password = $this->input->post('password');
 		$jenis_akses = $this->input->post('jenis_akses');
 		$id_toko = $this->input->post('id_toko');
-
-		$data = array(
-			'nama_user'  => $nama_user,
-			'username' => $username,
-			'password' => $password,
-			'jenis_akses' => $jenis_akses,
-			'id_toko' => $id_toko
-		);
-		$where = array(
-			'id_user' => $id_user
-		);
-		$this->M_user->update($where,$data,'user');
-		redirect('manager/user');
+		$cek = $this->M_user->edit(['username' => $username,  "id_user !=" => $id_user],  "user");
+		if(count($cek)==0){
+			$data = array(
+				'nama_user'  => $nama_user,
+				'username' => $username,
+				'password' => $password,
+				'jenis_akses' => $jenis_akses,
+				'id_toko' => $id_toko
+			);
+			$where = array(
+				'id_user' => $id_user
+			);
+			$this->M_user->update($where,$data,'user');
+			redirect('manager/user');
+		}
+		else{
+			echo "username ada yg sama";
+		}
 	}
 	function hapus($id){
 		$where =array('id_user'=>$id);
