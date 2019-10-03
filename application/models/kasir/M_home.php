@@ -64,6 +64,8 @@ class M_home extends CI_Model
 	}
 	public function search($keyword){
 		$this->db->like('nama', $keyword);
+		$this->db->or_like('barcode', $keyword);
+		$this->db->or_like('kode_unik', $keyword);
 		$result = $this->db->get_where('barang_kasir',array('qty >' => 0))->result(); // Tampilkan data siswa berdasarkan keyword
 		return $result;
 	}
