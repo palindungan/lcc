@@ -69,6 +69,10 @@ $route['user/add'] = 'manager/user/insert';
 $route['user/edit/(:any)'] = 'manager/user/edit/$1';
 $route['user/hapus/(:any)'] = 'manager/user/hapus/$1';
 $route['user/ganti_password/(:any)'] = 'manager/user/ganti_password/$1';
+
+$route['barang_toko'] = 'manager/barang';
+$route['barang_toko/stok_habis'] = 'manager/barang/stok_habis';
+$route['barang_toko/trending'] = 'manager/barang/barang_terlaris';
 /*
 | -------------------------------------------------------------------------
 | Sample REST API Routes
