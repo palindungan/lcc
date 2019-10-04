@@ -56,16 +56,33 @@ class Pemasokan extends CI_Controller
                 // tambah detail transaksi
                 for ($i = 0; $i < count($this->input->post('kode_atau_barcode')); $i++) {
 
+                    // data barang terdaftar
                     $kode = $this->input->post('kode'); // generate
-                    $kode_atau_barcode = $this->input->post('kode_atau_barcode')[$i];
+                    $nama = $this->input->post('nama');
+                    $barcode = "kosong";
+
+                    // data stok
                     $qty = $this->input->post('qty')[$i];
                     $hrg_distributor = $this->input->post('hrg_distributor')[$i];
-                    $total_hrg = $this->input->post('total_hrg')[$i];
+                    $total_hrg = $qty * $hrg_distributor;
+                    $kode_unik = "kosong";
+
+                    $kode_atau_barcode = $this->input->post('kode_atau_barcode')[$i];
+                    $validasi = substr($kode_atau_barcode, 0, 2); // CD-
 
                     // validasi barcode dan kode_unik 
-                    $kode_unik = $this->input->post('kode_unik')[$i];
+                    if ($validasi == "CD-") {
+                        $barcode = $kode_atau_barcode;
+                    } else {
+                        $kode_unik = $kode_atau_barcode;
+                    }
 
                     $data2 = array(
+                        'id_pemasokan' => $id_pemasokan,
+                        'id_menu' => $id_menu
+                    );
+
+                    $data3 = array(
                         'id_pemasokan' => $id_pemasokan,
                         'id_menu' => $id_menu
                     );
