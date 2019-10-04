@@ -35,16 +35,32 @@ class Home extends CI_Controller
     }
     public function store()
     {
-        date_default_timezone_set("Asia/Jakarta");
-        $tanggal = Date('Y-m-d h:i:s');
-        $id_customer = $this->M_home->id_customer();
-        $id_penjualan = $this->M_home->id_penjualan();
-        $data_customer = array(
+        $this->form_validation->set_rules('nama_customer', 'nama customer', 'required');
+        $this->form_validation->set_rules('no_hp_customer', 'nomor hp', 'required');
+        if($rows = count($this->cart->contents())==0) 
+        {
+            echo "<script>
+            alert('Keranjang Anda Masih Kosong');
+            window.location = '".base_url('kasir/home')."';
+            </script>";
+        }
+        else if($this->form_validation->run() == FALSE)
+        {
+            $data['siswa'] = $this->M_home->barang_kasir();
+            $this->template->load('view_1/template/kasir', 'view_1/konten/kasir/home/tampil',$data);
+        }
+        else
+        {
+            date_default_timezone_set("Asia/Jakarta");
+            $tanggal = Date('Y-m-d h:i:s');
+            $id_customer = $this->M_home->id_customer();
+            $id_penjualan = $this->M_home->id_penjualan();
+            $data_customer = array(
             'id_customer' => $id_customer,
             'nama' => $this->input->post('nama_customer'),
-            'no_hp' => $this->input->post('no_hp_customer')  
-        );
-        $data_penjualan = array(
+            'no_hp' => $this->input->post('no_hp_customer')
+            );
+            $data_penjualan = array(
             'id_penjualan' => $id_penjualan,
             'id_user' => 'U01',
             'id_customer' => $id_customer,
@@ -52,11 +68,11 @@ class Home extends CI_Controller
             'total' => $this->input->post('total'),
             'bayar' => $this->input->post('bayar'),
             'kembalian' => $this->input->post('kembalian')
-        );
-        $this->M_home->input_data($data_customer, 'customer');
-        $this->M_home->input_data($data_penjualan, 'penjualan');
-        if ($cart = $this->cart->contents()) {
-        foreach ($cart as $item) {
+            );
+            $this->M_home->input_data($data_customer, 'customer');
+            $this->M_home->input_data($data_penjualan, 'penjualan');
+            if ($cart = $this->cart->contents()) {
+            foreach ($cart as $item) {
             $data_detail = array(
             'id_penjualan' => $id_penjualan,
             'id_stok_b' => $item['id'],
@@ -64,11 +80,13 @@ class Home extends CI_Controller
             'qty' => $item['qty'],
             'total_hrg' => $this->input->post('harga_jual') * $item['qty']
             );
-        $this->M_home->input_data($data_detail, 'detail_penjualan');
+            $this->M_home->input_data($data_detail, 'detail_penjualan');
+            }
+            }
+            $this->cart->destroy();
+            redirect('kasir/home');
         }
-        }
-        $this->cart->destroy();
-        redirect('kasir/home');
+       
     }
     function load()
     {

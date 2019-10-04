@@ -32,7 +32,7 @@
 	</div>
 	<?php }
     } else{ // Jika data tidak ada
-    echo "Data tidak ketemu";
+	echo '<h3 style="margin-top:10px;" class="text-center">Barang tidak temukan</h3>';
     }
      ?>
 </div>

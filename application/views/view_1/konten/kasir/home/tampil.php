@@ -26,18 +26,25 @@
 								<h4 class="text-center">Customer</h4>
 								<div style="padding-left:20px;padding-right:20px;" class="row">
 									<div class="form-horizontal">
-										<div class="form-group">
+										<div
+											class="form-group <?php if(form_error('nama_customer')== true) { echo "has-error";} ?>">
 											<label for="inputEmail3" class="col-sm-2 control-label">Nama</label>
 											<div class="col-sm-10">
-												<input type="text" name="nama_customer" class="form-control"
+												<input type="text" name="nama_customer"
+													value="<?= set_value('nama_customer') ?>" class="form-control"
 													id="inputEmail3" placeholder="Masukan nama customer">
+												<span
+													class="help-block"><?php echo form_error('nama_customer'); ?></span>
 											</div>
 										</div>
-										<div class="form-group">
+										<div
+											class="form-group <?php if(form_error('no_hp_customer')== true) { echo "has-error";} ?>">
 											<label for="inputEmail3" class="col-sm-2 control-label">No.HP</label>
 											<div class="col-sm-10">
 												<input type="text" name="no_hp_customer" class="form-control"
 													id="inputEmail3" placeholder="Masukan nomor hp customer">
+												<span
+													class="help-block"><?php echo form_error('no_hp_customer'); ?></span>
 											</div>
 										</div>
 									</div>
