@@ -47,7 +47,7 @@
 <div class="data-table-area">
     <div class="container">
         <div class="row" style="margin-bottom:27px;">
-            <form action="<?php echo base_url('manager/laporan/print_laporan') ?>" method="post" target="_blank">
+            <form action="<?php echo base_url('laporan_manager/custom') ?>" method="post" target="_blank">
             <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12" style="margin-bottom:27px;">
             <input type="date" name="tgl_mulai" class="form-control" >
             </div>
@@ -78,8 +78,9 @@
                                         <div class="row">
                                                 <div class="input-group">
                                                     <span class="input-group-btn">
-                                                        <a style="float:right" class="btn btn-primary" style="align: right "
-                                                            href="<?php echo base_url().'manager/laporan/cetak_hari' ?>">Prin Data</a>
+                                                        <a target="_blank" style="float:right" class="btn btn-primary" style="align: right "
+                                                            href="<?php echo base_url().'laporan_manager/hari_ini' ?>">Prin
+                                                            Data</a>
                                                     </span>
                                                 </div><!-- /input-group -->
                                         </div>
@@ -129,16 +130,17 @@
                             <div id="menu1" class="tab-pane fade">
                                 <div class="tab-ctn">
                                     <div class="data-table-list">
+                                        <div class="row">
+                                            <div class="input-group">
+                                                <span class="input-group-btn">
+                                                    <a target="_blank" style="float:right" class="btn btn-primary"
+                                                        style="align: right "
+                                                        href="<?php echo base_url().'laporan_manager/minggu_ini' ?>">Prin
+                                                        Data</a>
+                                                </span>
+                                            </div><!-- /input-group -->
+                                        </div>
                                         <div class="table-responsive">
-                                            <div class="row">
-                                            <div class="col-md-3 col-md-offset-3">
-                                                <div class="input-group">
-                                                    <span class="input-group-btn">
-                                                      <a class="btn btn-primary btn-block"href="<?php echo base_url().'manager/laporan/cetak_minggu' ?>">print</a>
-                                                    </span>
-                                                </div><!-- /input-group -->
-                                            </div>
-                                            </div>
                                             <table width="100%" class="table table-striped">
                                                 <thead>
                                                     <tr>
@@ -185,16 +187,17 @@
                             <div id="menu2" class="tab-pane fade">
                                 <div class="tab-ctn">
                                     <div class="data-table-list">
+                                        <div class="row">
+                                            <div class="input-group">
+                                                <span class="input-group-btn">
+                                                    <a target="_blank" style="float:right" class="btn btn-primary"
+                                                        style="align: right "
+                                                        href="<?php echo base_url().'laporan_manager/bulan_ini' ?>">Prin
+                                                        Data</a>
+                                                </span>
+                                            </div><!-- /input-group -->
+                                        </div>
                                         <div class="table-responsive">
-                                            <div class="row">
-                                            <div class="col-md-3 col-md-offset-3">
-                                                <div class="input-group">
-                                                    <span class="input-group-btn">
-                                                      <a class="btn btn-primary btn-block"href="<?php echo base_url().'manager/laporan/cetak_bulan' ?>">print</a>
-                                                    </span>
-                                                </div><!-- /input-group -->
-                                            </div>
-                                            </div>
                                             <table width="100%" class="table table-striped">
                                                 <thead>
                                                     <tr>
