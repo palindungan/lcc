@@ -5,19 +5,9 @@
 				<div style="margin-bottom:20px;overflow-y: scroll; height:585px; width: auto;" class="contact-inner">
 					<div class="row">
 						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-							<div class="row" style="margin-bottom:20px;">
-								<div class="col-md-10">
-									<div class="input-group">
-										<input id="keyword" type="text" class="form-control"
-											placeholder="Cari Barang...">
-										<span class="input-group-btn">
-											<button id="btn-search" class="btn btn-primary" type="button">Cari</button>
-										</span>
-									</div>
-								</div>
-								<div class="col-md-2">
-									<a href="<?= base_url() ?>/kasir/home" class="btn btn-primary btn-block">Refresh</a>
-								</div>
+							<div style="margin-bottom:20px;">
+								<input autofocus id="keyword" type="text" class="form-control"
+									placeholder="Cari Barang...">
 							</div>
 						</div>
 					</div>
@@ -115,7 +105,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script>
 	$(document).ready(function () {
-
 		$('.add_cart').click(function () {
 			var product_id = $(this).data("productid");
 			var product_name = $(this).data("productname");
@@ -132,6 +121,8 @@
 				},
 				success: function (data) {
 					$('#cart_details').html(data);
+					$("#keyword").val('');
+					$("#keyword").focus();
 				}
 			});
 		});
@@ -148,6 +139,8 @@
 				},
 				success: function (data) {
 					$('#cart_details').html(data);
+					$("#keyword").val('');
+					$("#keyword").focus();
 				}
 			});
 		});
@@ -156,35 +149,77 @@
 </script>
 <script>
 	$(document).ready(function () {
-		$("#btn-search").click(function () { // Ketika tombol simpan di klik
+		$("#keyword").keypress(function () { // Ketika tombol simpan di klik
 			// Ubah text tombol search menjadi SEARCHING...
 			// Dan tambahkan atribut disable pada tombol nya agar tidak bisa diklik lagi
-			$(this).html("SEARCHING...").attr("disabled", "disabled");
+			var keycode = (event.keyCode ? event.keyCode : event.which);
+			if (keycode == '13') {
+				$(this).html("SEARCHING...").attr("disabled", "disabled");
+				$.ajax({
+					url: "<?php echo base_url(); ?>kasir/home/cari",
+					type: 'POST', // Tentukan type nya POST atau GET
+					data: {
+						keyword: $("#keyword").val()
+					}, // Set data yang akan dikirim
+					dataType: "json",
+					beforeSend: function (e) {
+						if (e && e.overrideMimeType) {
+							e.overrideMimeType("application/json;charset=UTF-8");
+						}
+					},
+					success: function (response) { // Ketika proses pengiriman berhasil
+						// Ubah kembali text button search menjadi SEARCH
+						// Dan hapus atribut disabled untuk meng-enable kembali button search nya
+						$("#keyword").html("SEARCH").removeAttr("disabled");
+						$("#keyword").val('');
+						$("#keyword").focus();
+						// Ganti isi dari div view dengan view yang diambil dari controller siswa function search
+						$("#view").html(response.hasil);
+						$('.add_cart').click(function () {
+							var product_id = $(this).data("productid");
+							var product_name = $(this).data("productname");
+							var product_price = $(this).data("price");
+							var quantity = $(this).data("quantity");
+							$.ajax({
+								url: "<?php echo base_url(); ?>kasir/home/add_cart",
+								method: "POST",
+								data: {
+									product_id: product_id,
+									product_name: product_name,
+									product_price: product_price,
+									quantity: quantity
+								},
+								success: function (data) {
+									$('#cart_details').html(data);
+									$("#keyword").val('');
+									$("#keyword").focus();
+								}
+							});
+						});
 
-			$.ajax({
-				url: "<?php echo base_url(); ?>kasir/home/cari",
-				type: 'POST', // Tentukan type nya POST atau GET
-				data: {
-					keyword: $("#keyword").val()
-				}, // Set data yang akan dikirim
-				dataType: "json",
-				beforeSend: function (e) {
-					if (e && e.overrideMimeType) {
-						e.overrideMimeType("application/json;charset=UTF-8");
+						$('#cart_details').load("<?php echo base_url(); ?>kasir/home/load");
+
+						$(document).on('click', '.remove_inventory', function () {
+							var row_id = $(this).attr("id");
+							$.ajax({
+								url: "<?php echo base_url(); ?>kasir/home/delete_cart",
+								method: "POST",
+								data: {
+									row_id: row_id
+								},
+								success: function (data) {
+									$('#cart_details').html(data);
+									$("#keyword").val('');
+									$("#keyword").focus();
+								}
+							});
+						});
+					},
+					error: function (xhr, ajaxOptions, thrownError) { // Ketika terjadi error
+						alert(xhr.responseText); // munculkan alert
 					}
-				},
-				success: function (response) { // Ketika proses pengiriman berhasil
-					// Ubah kembali text button search menjadi SEARCH
-					// Dan hapus atribut disabled untuk meng-enable kembali button search nya
-					$("#btn-search").html("SEARCH").removeAttr("disabled");
-
-					// Ganti isi dari div view dengan view yang diambil dari controller siswa function search
-					$("#view").html(response.hasil);
-				},
-				error: function (xhr, ajaxOptions, thrownError) { // Ketika terjadi error
-					alert(xhr.responseText); // munculkan alert
-				}
-			});
+				});
+			}
 		});
 	});
 
