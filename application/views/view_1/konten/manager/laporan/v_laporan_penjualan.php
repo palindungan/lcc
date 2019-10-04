@@ -75,16 +75,15 @@
                             <div id="home" class="tab-pane fade in active">
                                 <div class="tab-ctn">
                                     <div class="data-table-list">
-                                        <div class="table-responsive">
-                                           <div class="row">
-                                            <div class="col-md-4 col-md-offset-4">
+                                        <div class="row">
                                                 <div class="input-group">
                                                     <span class="input-group-btn">
-                                                      <a class="btn btn-primary btn-block" style="align: right " href="<?php echo base_url().'manager/laporan/cetak_hari' ?>">print</a>
+                                                        <a style="float:right" class="btn btn-primary" style="align: right "
+                                                            href="<?php echo base_url().'manager/laporan/cetak_hari' ?>">Prin Data</a>
                                                     </span>
                                                 </div><!-- /input-group -->
-                                            </div>
-                                            </div>
+                                        </div>
+                                        <div class="table-responsive">
                                             <table width="100%" class="table table-striped">
                                                 <thead>
                                                     <tr>
@@ -108,7 +107,7 @@
                                                         <td><?= $row_hari->bayar; ?></td>
                                                         <td><?= $row_hari->kembalian; ?></td>
                                                         <td>
-                                                            <button type="button" class="btn btn-sm btn-primary" onclick="detail('<?php echo $row_hari->id_penjualan; ?>')"><i class="icofont-ui-edit"></i>Detail</button>
+                                                            <button type="button" class="btn btn-sm btn-warning" onclick="detail('<?php echo $row_hari->id_penjualan; ?>')"><i class="icofont-ui-edit"></i>Detail</button>
                                                          </td>
                                                     </tr>
                                                     <?php   
