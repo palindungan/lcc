@@ -4,7 +4,8 @@ class M_home extends CI_Model
 
 	function barang_kasir()
 	{
-		return $this->db->get_where('barang_kasir',array('qty >' => 0))->result();
+		$id_toko = $this->session->userdata('id_toko');
+		return $this->db->get_where('barang_kasir',array('id_toko' => $id_toko,'qty >' => 0))->result();
 	}
 	function input_data($data, $table)
 	{
@@ -63,10 +64,11 @@ class M_home extends CI_Model
 		return $kd;
 	}
 	public function search($keyword){
+		$id_toko = $this->session->userdata('id_toko');
 		$this->db->like('nama', $keyword);
 		$this->db->or_like('barcode', $keyword);
 		$this->db->or_like('kode_unik', $keyword);
-		return $this->db->get_where('barang_kasir',array('qty >' => 0))->result(); // Tampilkan data siswa berdasarkan keyword
+		return $this->db->get_where('barang_kasir',array('id_toko' => $id_toko,'qty >' => 0))->result(); // Tampilkan data siswa berdasarkan keyword
 	}
 
 	
