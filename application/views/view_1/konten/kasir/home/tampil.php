@@ -95,7 +95,7 @@
 										<div class="form-group">
 											<label for="inputEmail3" class="col-sm-2 control-label"></label>
 											<div class="col-sm-10 text-right">
-												<button type="submit" class="btn btn-primary">Simpan</button>
+												<button type="submit" class="btn btn-custom">Simpan</button>
 												<a target="_blank" href="" class="btn btn-success">Print</a>
 											</div>
 										</div>
