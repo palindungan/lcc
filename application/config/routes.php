@@ -73,6 +73,8 @@ $route['user/ganti_password/(:any)'] = 'manager/user/ganti_password/$1';
 $route['barang_toko'] = 'manager/barang';
 $route['barang_toko/stok_habis'] = 'manager/barang/stok_habis';
 $route['barang_toko/trending'] = 'manager/barang/barang_terlaris';
+
+$route['pemasokan'] = 'manager/pemasokan';
 /*
 | -------------------------------------------------------------------------
 | Sample REST API Routes
