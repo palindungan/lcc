@@ -55,6 +55,7 @@ $route['translate_uri_dashes'] = true;
 
 $route['kasir'] = 'kasir/home';
 
+$route['dashboard_manager'] = 'manager/home';
 $route['barang_barcode'] = 'manager/barcode';
 $route['barang_barcode/(:any)'] = 'manager/barcode/print_barcode/$1';
 
