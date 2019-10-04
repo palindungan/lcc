@@ -42,7 +42,7 @@
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <div class="form-group">
                                         <div class="bootstrap-select fm-cmp-mg">
-                                            <select class="selectpicker" data-live-search="true">
+                                            <select class="selectpicker" name="distributor" data-live-search="true">
                                                 <option value="">Pilih Distributor</option>
                                                 <?php foreach ($distributor as $d) {  ?>
                                                     <option value="<?php echo $d->id_distributor ?>">
@@ -57,13 +57,13 @@
                                     <div class="form-group nk-datapk-ctm form-elet-mg" id="data_1">
                                         <div class="input-group date nk-int-st">
                                             <span class="input-group-addon"></span>
-                                            <input type="text" class="form-control" value="" placeholder="Tanggal">
+                                            <input type="text" class="form-control" name="tanggal" value="" placeholder="Tanggal">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="total_hrg" placeholder="Total">
+                                        <input type="text" class="form-control" name="total" placeholder="Total">
                                     </div>
                                 </div>
                             </div>
@@ -180,7 +180,7 @@
             <div id="row` + count1 + `" class="row">
                 <br />
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <input type="text" class="form-control" id="barcode` + count1 + `" name="barcode[]" placeholder="Kode/Barcode" value="">
+                    <input type="text" class="form-control" id="kode_atau_barcode` + count1 + `" name="barcode[]" placeholder="Kode/Barcode" value="">
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                     <input type="text" class="form-control" id="nama` + count1 + `" name="nama[]" placeholder="Nama Barang" value="">
