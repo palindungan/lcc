@@ -53,6 +53,7 @@ $route['default_controller'] = '';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = true;
 
+$route['kasir'] = 'kasir/home';
 /*
 | -------------------------------------------------------------------------
 | Sample REST API Routes

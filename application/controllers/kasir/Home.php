@@ -41,7 +41,7 @@ class Home extends CI_Controller
         {
             echo "<script>
             alert('Keranjang Anda Masih Kosong');
-            window.location = '".base_url('kasir/home')."';
+            window.location = '".base_url('kasir')."';
             </script>";
         }
         else if($this->form_validation->run() == FALSE)
@@ -84,7 +84,7 @@ class Home extends CI_Controller
             }
             }
             $this->cart->destroy();
-            redirect('kasir/home');
+            redirect('kasir');
         }
        
     }
