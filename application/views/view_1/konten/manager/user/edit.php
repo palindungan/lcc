@@ -13,7 +13,7 @@ foreach($edit as $data){
                                     <i class="notika-icon notika-form"></i>
                                 </div>
                                 <div class="breadcomb-ctn">
-                                    <h2>Data User</h2>
+                                    <h2>Edit Data</h2>
                                     <p>masukkan data anda</p>
                                 </div>
                             </div>
@@ -63,7 +63,7 @@ foreach($edit as $data){
                                 </div>
                                 <div class="nk-int-st">
                                     <label>jenis akses</label>
-                                    <select class="form-control" name="jenis_akses">
+                                    <select class="selectpicker" name="jenis_akses">
                                        <option>pilih</option>
                                        <option value="manager"<?php if($data->jenis_akses=="Manager"){
                                         echo "selected";
@@ -83,7 +83,7 @@ foreach($edit as $data){
                                 </div>
                                 <div class="nk-int-st">
                                     <label>toko</label>
-                                   <select class="form-control" name="id_toko">
+                                   <select class="selectpicker" name="id_toko">
                                        <option>pilih</option>
                                        <?php 
                                        foreach ($toko as $T){

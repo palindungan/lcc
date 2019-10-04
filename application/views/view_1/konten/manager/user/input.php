@@ -72,7 +72,7 @@
                                 </div>
                                 <div class="nk-int-st">
                                     <label>jenis akses</label>
-                                    <select class="form-control" name="jenis_akses" required>
+                                    <select class="selectpicker" name="jenis_akses" required>
                                        <option>pilih</option>
                                        <option>manager</option>
                                        <option>kasir</option>
@@ -86,7 +86,7 @@
                                 </div>
                                 <div class="nk-int-st">
                                     <label>toko</label>
-                                    <select class="form-control" name="id_toko" required>
+                                    <select class="selectpicker" name="id_toko" required>
                                         <option>pilih</option>
                                         <?php 
                                         foreach($toko as $t){
