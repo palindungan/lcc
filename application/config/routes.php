@@ -54,6 +54,9 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = true;
 
 $route['kasir'] = 'kasir/home';
+
+$route['barang_barcode'] = 'manager/barcode';
+$route['barang_barcode/(:any)'] = 'manager/barcode/print_barcode/$1';
 /*
 | -------------------------------------------------------------------------
 | Sample REST API Routes

@@ -55,7 +55,7 @@
 									<td><?= $row->barcode; ?></td>
 									<td>
 										<a class="btn btn-primary" target="_blank"
-											href="<?= base_url(); ?>manager/barcode/print_barcode/<?= $row->barcode ?>">Print
+											href="<?= base_url(); ?>barang_barcode/<?= $row->barcode ?>">Print
 											Barcode</a>
 									</td>
 								</tr>
