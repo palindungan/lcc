@@ -25,7 +25,13 @@ class M_laporan extends CI_Model
 	}
 	function tampil_bulan()
 	{
-		$query  = $this->db->query("SELECT * FROM penjualan WHERE YEAR(tanggal) = 2019 AND MONTH(tanggal) = 9");
+		$query  = $this->db->query("SELECT * FROM penjualan WHERE YEAR(tanggal) = 2019 AND MONTH(tanggal) = 10");
+		return $query;
+	}
+	function tampil_detail($id)
+	{
+		$query  = $this->db->query("SELECT * FROM penjualan INNER JOIN detail_penjualan 
+		ON penjualan.id_penjualan=detail_penjualan.id_penjualan where detail_penjualan.id_penjualan = '$id' ");
 		return $query;
 	}
 }

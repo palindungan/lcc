@@ -24,14 +24,14 @@
   </tr>
 <?php 
 $no = 1;
-foreach($hari as $row_hari){ 
+foreach($minggu as $row_minggu){ 
 ?>
 <tr>
     <td style="text-align: center;"><?php echo $no++ ?></td>
-    <td style="text-align: center;"><?php echo $row_hari->tanggal ?></td>
-    <td style="text-align:right; "><?php echo $row_hari->total ?></td>
-    <td style="text-align:right; "><?php echo $row_hari->bayar ?></td>
-    <td style="text-align:right; "><?php echo $row_hari->kembalian ?></td>
+    <td style="text-align: center;"><?php echo $row_minggu->tanggal ?></td>
+    <td style="text-align:right; "><?php echo $row_minggu->total ?></td>
+    <td style="text-align:right; "><?php echo $row_minggu->bayar ?></td>
+    <td style="text-align:right; "><?php echo $row_minggu->kembalian ?></td>
 </tr>
 <?php } ?>
 </table>
