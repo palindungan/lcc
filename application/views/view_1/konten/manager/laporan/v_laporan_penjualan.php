@@ -221,8 +221,8 @@
                                                         <td><?= $row_bulan->bayar; ?></td>
                                                         <td><?= $row_bulan->kembalian; ?></td>
                                                         <td>
-                                                             <button type="button" class="btn btn-sm btn-primary" onclick="detail(<?php echo $row_minggu->id_penjualan; ?>)"><i class="icofont-ui-edit"></i>Detail</button>
-                                                         </td>
+                                                            <button type="button" class="btn btn-sm btn-primary" onclick="detail(<?php echo $row_minggu->id_penjualan; ?>)"><i class="icofont-ui-edit"></i>Detail</button>
+                                                        </td>
                                                     </tr>
                                                     <?php   
                                                     }

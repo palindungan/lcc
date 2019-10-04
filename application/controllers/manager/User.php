@@ -33,13 +33,13 @@ class User extends CI_controller
 		$cek = $this->M_user->ambil_data($this->input->post('username'))->num_rows();
 		if($cek > 0){
 				//pemberitahuan dan pindah ke page window
-			echo "<script>alert('tidak boleh 2 username yang sama');window.location = '". base_url("manager/user")."';</script>";
+			echo "<script>alert('tidak boleh 2 username yang sama');window.location = '". base_url("user")."';</script>";
 		}else{
 			//mengirim data ke model untuk diinputkan
 			$this->M_user->input($data);
 			//kembali ke halaman utama
 			//redirect
-			 echo "<script>alert('Berhasil Menambah Data !'); window.location = '" . base_url('manager/user') . "';</script>";
+			 echo "<script>alert('Berhasil Menambah Data !'); window.location = '" . base_url('user') . "';</script>";
 		}
 	}
 	function edit($id){
