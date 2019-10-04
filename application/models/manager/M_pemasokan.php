@@ -32,12 +32,12 @@ class M_pemasokan extends CI_Model
     }
 
     // autogenerate kode / ID
-    function get_no()
+    function get_no_barang_terdaftar()
     {
-        $field = "id_paket";
-        $tabel = "tbl_paket";
-        $digit = "3";
-        $kode = "PK-";
+        $field = "kode";
+        $tabel = "barang_terdaftar";
+        $digit = "5";
+        $kode = "B";
 
         $q = $this->db->query("SELECT MAX(RIGHT($field,$digit)) AS kd_max FROM $tabel");
         $kd = "";
@@ -47,9 +47,35 @@ class M_pemasokan extends CI_Model
                 $kd = $kode . sprintf('%0' . $digit . 's',  $tmp);
             }
         } else {
-            $kd = "PK-001";
+            $kd = "B00001";
         }
 
+        return $kd;
+    }
+
+    function get_no_pemasokan()
+    {
+        $field = "id_pemasokan";
+        $tabel = "pemasokan";
+        $digit = "2";
+        date_default_timezone_set("Asia/Jakarta");
+        $tanggal = Date('Ymd');
+        $kodes = "M";
+        $kode = $kodes . $tanggal;
+        $q = $this->db->query("SELECT RIGHT($field,$digit) AS kd_max,id_pemasokan FROM $tabel ORDER BY $field DESC LIMIT 1");
+        $kd = "";
+        if ($q->num_rows() > 0) {
+            foreach ($q->result() as $k) {
+                $tgl_lama = substr($k->id_pemasokan, 1, 8);
+                if ($tgl_lama == $tanggal) {
+                    $tmp = ((int) $k->kd_max) + 1;
+                    $kd = $kode . sprintf('%0' . $digit . 's', $tmp);
+                } else {
+                    $a = "01";
+                    $kd = $kode . $a;
+                }
+            }
+        }
         return $kd;
     }
 }
