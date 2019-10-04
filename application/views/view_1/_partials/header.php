@@ -30,7 +30,7 @@
 										<br>
 									</div>
 									<div class="modal-footer">
-										<a href="<?= base_url() ?>login/login/logout" class="btn btn-default">Yes</a>
+										<a href="<?= base_url() ?>login/logout" class="btn btn-default">Yes</a>
 										<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
 									</div>
 								</div>

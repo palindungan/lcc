@@ -32,7 +32,7 @@
 			</div>
 			<br>
 			<div class="nk-form">
-				<form method="POST" action="<?= base_url(); ?>login/login/aksi_login">
+				<form method="POST" action="<?= base_url(); ?>login/aksi_login">
 					<div class="input-group">
 						<span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-support"></i></span>
 						<div class="nk-int-st">
