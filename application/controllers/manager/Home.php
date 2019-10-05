@@ -27,7 +27,13 @@ class Home extends CI_Controller
         $select = $this->input->post('pilih');
         $data['hari'] = $this->M_home->count_penjualan_hari();
         $data['minggu'] = $this->M_home->count_penjualan_minggu();
-        $data['bulan'] = $this->M_home->count_penjualan_bulan();
+		$data['bulan'] = $this->M_home->count_penjualan_bulan();
+		$data['keuntungan_hari'] = $this->M_home->keuntungan_hari();
+		$data['keuntungan_minggu'] = $this->M_home->keuntungan_minggu();
+		$data['keuntungan_bulan'] = $this->M_home->keuntungan_bulan();
+		$untung_hari = $data['keuntungan_hari']->harga_jual_barang - $data['keuntungan_hari']->harga_beli_barang;
+		$untung_minggu = $data['keuntungan_minggu']->harga_jual_barang - $data['keuntungan_minggu']->harga_beli_barang;
+		$untung_bulan = $data['keuntungan_bulan']->harga_jual_barang - $data['keuntungan_bulan']->harga_beli_barang;
         if($select=='hari')
         {
             echo '<a style="color:black" href="">
@@ -47,7 +53,7 @@ class Home extends CI_Controller
             		<div class="contact-inner">
             			<div class="contact-inner">
             				<h2 class="text-right">
-            					Rp 500.0000
+            					'.$untung_hari.'
             				</h2>
             				<span><strong>PEMASUKAN</strong></span>
             			</div>
@@ -86,7 +92,7 @@ class Home extends CI_Controller
             		<div class="contact-inner">
             			<div class="contact-inner">
             				<h2 class="text-right">
-            					Rp 500.0000
+            					'.$untung_minggu.'
             				</h2>
             				<span><strong>PEMASUKAN</strong></span>
             			</div>
@@ -126,7 +132,7 @@ class Home extends CI_Controller
          		<div class="contact-inner">
          			<div class="contact-inner">
          				<h2 class="text-right">
-         					Rp 500.0000
+         					'.$untung_bulan.'
          				</h2>
          				<span><strong>PEMASUKAN</strong></span>
          			</div>
