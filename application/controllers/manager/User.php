@@ -11,6 +11,12 @@ class User extends CI_controller
 		if(!$this->session->userdata('id_user')){
 			redirect('/');
 		}
+		else if($this->session->userdata('akses') != 'Manager')
+		{
+			echo '<script>
+				window.history.back();
+			</script>';
+		}
 		$this->load->model('manager/M_user');
 		$this->load->model('kasir/M_toko');
 	}

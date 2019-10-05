@@ -7,6 +7,12 @@ class Pemasokan extends CI_Controller
         if(!$this->session->userdata('id_user')){
             redirect('/');
         }
+        else if($this->session->userdata('akses') != 'Manager')
+        {
+            echo '<script>
+                window.history.back();
+            </script>';
+        }
         $this->load->model("manager/M_pemasokan");
     }
     public function index()

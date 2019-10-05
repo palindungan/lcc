@@ -10,6 +10,12 @@
 		 if(!$this->session->userdata('id_user')){
 		 	redirect('/');
 		 }
+		 else if($this->session->userdata('akses') != 'Manager')
+		 {
+			echo '<script>
+				window.history.back();
+			</script>';
+		 }
  		$this->load->model('kasir/M_distributor');
  	}
  	function index(){

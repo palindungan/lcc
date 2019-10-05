@@ -1193,7 +1193,7 @@ ul.notika-menu-wrap li a{
 }
 .widget-tabs-list .nav-tabs>li.active>a, .widget-tabs-list .nav-tabs>li.active>a:focus, .widget-tabs-list .nav-tabs>li.active>a:hover{
 	border: 0px solid #ddd;
-	color:#333;
+	color:white;
 }
 .widget-tabs-list .nav>li>a{
 	color:#333;
