@@ -13,9 +13,13 @@ class Home extends CI_Controller
                 window.history.back();
             </script>';
         }
+        $this->load->model('manager/M_home');
     }
     public function index()
     {
-        $this->template->load('view_1/template/manager', 'view_1/konten/manager/home/tampil');
+        $data['kasir'] = $this->M_home->count_kasir();
+        $data['barang'] = $this->M_home->count_jenis_barang();
+        $data['stok_habis'] = $this->M_home->count_stok_habis();
+        $this->template->load('view_1/template/manager', 'view_1/konten/manager/home/tampil',$data);
     }
 }

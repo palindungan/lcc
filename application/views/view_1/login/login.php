@@ -36,8 +36,8 @@
 					<div class="input-group">
 						<span class="input-group-addon nk-ic-st-pro"><i class="notika-icon notika-support"></i></span>
 						<div class="nk-int-st">
-							<input type="text" name="username" class="form-control" placeholder="Username" required=""
-								maxlength="50" oninvalid="this.setCustomValidity('Username Wajib Diisi')"
+							<input autofocus type="text" name="username" class="form-control" placeholder="Username"
+								required="" maxlength="50" oninvalid="this.setCustomValidity('Username Wajib Diisi')"
 								oninput="setCustomValidity('')">
 						</div>
 					</div>

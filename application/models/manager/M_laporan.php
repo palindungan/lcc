@@ -14,7 +14,7 @@ class M_laporan extends CI_Model
 	}
 	function tampil_hari()
 	{
-		$query = $this->db->query("SELECT * FROM penjualan WHERE tanggal <= DATE(NOW())");
+		$query = $this->db->query("SELECT * FROM penjualan WHERE tanggal = DATE(NOW())");
 		return $query;	
 	}
 	function tampil_Minggu()
