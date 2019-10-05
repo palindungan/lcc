@@ -49,14 +49,28 @@ class M_home extends CI_Model
     {
         $id_toko = $this->session->userdata('id_toko');
         return $this->db->query("SELECT SUM(hrg_distributor* detail_penjualan.qty) AS
-        harga_beli_barang,SUM(harga_jual*detail_penjualan.qty) AS harga_jual_barang,id_toko,tanggal FROM detail_penjualan JOIN stok_barang USING(id_stok_b) JOIN penjualan USING(id_penjualan) JOIN user USING(id_user) JOIN toko USING(id_toko)WHERE tanggal BETWEEN SUBDATE(now(), INTERVAL 7 DAY) AND NOW() AND id_toko='$id_toko'")->row();
+        harga_beli_barang,SUM(harga_jual*detail_penjualan.qty) AS harga_jual_barang,id_toko,tanggal FROM detail_penjualan JOIN stok_barang USING(id_stok_b) JOIN penjualan USING(id_penjualan) JOIN user USING(id_user) JOIN toko USING(id_toko) WHERE tanggal BETWEEN SUBDATE(now(), INTERVAL 7 DAY) AND NOW() AND id_toko='$id_toko'")->row();
     }
     function keuntungan_bulan()
     {
         $id_toko = $this->session->userdata('id_toko');
         return $this->db->query("SELECT SUM(hrg_distributor* detail_penjualan.qty) AS
         harga_beli_barang,SUM(harga_jual*detail_penjualan.qty) AS harga_jual_barang,id_toko,tanggal FROM
-        detail_penjualan JOIN stok_barang USING(id_stok_b) JOIN penjualan USING(id_penjualan) JOIN user USING(id_user)
-        JOIN toko USING(id_toko) WHERE MONTH(tanggal) = MONTH(CURRENT_DATE()) AND id_toko='$id_toko'")->row();
+        detail_penjualan JOIN stok_barang USING(id_stok_b) JOIN penjualan USING(id_penjualan) JOIN user USING(id_user) JOIN toko USING(id_toko) WHERE MONTH(tanggal) = MONTH(CURRENT_DATE()) AND id_toko='$id_toko'")->row();
+    }
+    function pengeluaran_hari()
+    {
+        $id_toko = $this->session->userdata('id_toko');
+        return $this->db->query("SELECT SUM(total) as total_pengeluaran,id_toko FROM pengeluaran_lain JOIN user USING(id_user) JOIN toko USING(id_toko) WHERE DATE(tanggal) = DATE(now()) AND id_toko='$id_toko'")->row();
+    }
+    function pengeluaran_minggu()
+    {
+        $id_toko = $this->session->userdata('id_toko');
+        return $this->db->query("SELECT SUM(total) as total_pengeluaran,id_toko FROM pengeluaran_lain JOIN user USING(id_user) JOIN toko USING(id_toko) WHERE tanggal BETWEEN SUBDATE(now(), INTERVAL 7 DAY) AND NOW() AND id_toko='$id_toko'")->row();
+    }
+    function pengeluaran_bulan()
+    {
+        $id_toko = $this->session->userdata('id_toko');
+        return $this->db->query("SELECT SUM(total) as total_pengeluaran,id_toko FROM pengeluaran_lain JOIN user USING(id_user) JOIN toko USING(id_toko) WHERE MONTH(tanggal) = MONTH(CURRENT_DATE()) AND id_toko='$id_toko'")->row();
     }
 }
