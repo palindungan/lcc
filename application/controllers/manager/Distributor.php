@@ -4,12 +4,13 @@
   */
  class Distributor extends CI_Controller
  {
- 	
  	function __construct()
  	{
- 		parent::__construct();
+		 parent::__construct();
+		 if(!$this->session->userdata('id_user')){
+		 	redirect('/');
+		 }
  		$this->load->model('kasir/M_distributor');
- 		$this->load->library('form_validation');	
  	}
  	function index(){
  		$data['data'] =$this->M_distributor->tampil();

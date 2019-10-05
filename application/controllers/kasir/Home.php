@@ -4,6 +4,9 @@ class Home extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        if(!$this->session->userdata('id_user')){
+            redirect('/');
+        }
         $this->load->model('kasir/M_home');
     }
     public function index()

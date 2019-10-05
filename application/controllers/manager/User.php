@@ -8,9 +8,11 @@ class User extends CI_controller
 	function __construct()
 	{
 		parent::__construct();
+		if(!$this->session->userdata('id_user')){
+			redirect('/');
+		}
 		$this->load->model('manager/M_user');
 		$this->load->model('kasir/M_toko');
-		$this->load->library('form_validation');
 	}
 	function index(){
 		$data['user'] = $this->M_user->tampil();

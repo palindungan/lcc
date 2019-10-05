@@ -4,6 +4,9 @@ class Barcode extends CI_Controller
     function __construct()
     {
         parent::__construct();
+        if(!$this->session->userdata('id_user')){
+            redirect('/');
+        }
         $this->load->model('manager/M_barcode');
     }
     public function index()
