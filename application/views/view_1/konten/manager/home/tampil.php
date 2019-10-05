@@ -36,6 +36,7 @@
 			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 				<form action="" method="post" id="myform">
 					<select name="pilih" id="xx" class="form-control">
+						<option>Pilih</option>
 						<option value="hari">Hari Ini</option>
 						<option value="minggu">Minggu Ini</option>
 						<option value="bulan">Bulan Ini</option>

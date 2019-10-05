@@ -28,7 +28,6 @@ class Home extends CI_Controller
         $data['hari'] = $this->M_home->count_penjualan_hari();
         $data['minggu'] = $this->M_home->count_penjualan_minggu();
         $data['bulan'] = $this->M_home->count_penjualan_bulan();
-        
         if($select=='hari')
         {
             echo '<a style="color:black" href="">
