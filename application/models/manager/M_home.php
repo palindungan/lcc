@@ -21,4 +21,23 @@ class M_home extends CI_Model
 		$id_toko = $this->session->userdata('id_toko');
         return $this->db->query("SELECT COUNT(*) AS jumlah_habis,id_toko FROM `barang_habis_toko` WHERE id_toko = '$id_toko'")->row();
     }
+    function count_penjualan_hari()
+    {
+		$id_toko = $this->session->userdata('id_toko');
+        return $this->db->query("SELECT COUNT(*) AS jumlah_hari,tanggal,id_toko FROM penjualan JOIN user USING(id_user)
+        JOIN toko USING(id_toko) WHERE DATE(tanggal) = DATE(now()) AND id_toko='$id_toko'")->row();
+    }
+    function count_penjualan_minggu()
+    {
+        $id_toko = $this->session->userdata('id_toko');
+        return $this->db->query("SELECT COUNT(*) AS jumlah_minggu,tanggal,id_toko FROM penjualan JOIN user
+        USING(id_user)
+        JOIN toko USING(id_toko) WHERE tanggal BETWEEN SUBDATE(now(), INTERVAL 7 DAY) AND NOW() AND id_toko='$id_toko'")->row();
+    }
+    function count_penjualan_bulan()
+    {
+        $id_toko = $this->session->userdata('id_toko');
+        return $this->db->query("SELECT COUNT(*) AS jumlah_bulan,tanggal,id_toko FROM penjualan JOIN user USING(id_user)
+        JOIN toko USING(id_toko) WHERE MONTH(tanggal) = MONTH(CURRENT_DATE()) AND id_toko='$id_toko'")->row();
+    }
 }

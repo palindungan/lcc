@@ -28,59 +28,27 @@
 		</div>
 	</div>
 </div>
+
 <!-- Breadcomb area End-->
 <div class="data-table-area">
 	<div class="container">
 		<div class="row" style="margin-bottom:27px;">
 			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-				<select class="form-control">
-					<option>HARI INI</option>
-					<option>MINGGU INI</option>
-					<option>BULAN INI</option>
-				</select>
+				<form action="" method="post" id="myform">
+					<select name="pilih" id="xx" class="form-control">
+						<option value="hari">Hari Ini</option>
+						<option value="minggu">Minggu Ini</option>
+						<option value="bulan">Bulan Ini</option>
+					</select>
+				</form>
 			</div>
 		</div>
 	</div>
 </div>
 <div class="container">
 	<div class="row">
-		<a style="color:black" href="">
-			<div style="margin-bottom: 30px;" class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-				<div class="contact-inner">
-					<div class="contact-inner">
-						<h2 class="text-right">
-							5
-						</h2>
-						<span><strong>JUMLAH TRANSAKSI</strong></span>
-					</div>
-				</div>
-			</div>
-		</a>
-		<a style="color:black" href="">
-			<div style="margin-bottom: 30px;" class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-				<div class="contact-inner">
-					<div class="contact-inner">
-						<h2 class="text-right">
-							Rp 500.0000
-						</h2>
-						<span><strong>PEMASUKAN</strong></span>
-					</div>
-				</div>
-			</div>
-		</a>
-
-		<a style="color:black" href="">
-			<div style="margin-bottom: 30px;" class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-				<div class="contact-inner">
-					<div class="contact-inner">
-						<h2 class="text-right">
-							Rp 40.0000
-						</h2>
-						<span><strong>PENGELUARAN</strong></span>
-					</div>
-				</div>
-			</div>
-		</a>
+		<div id="muncul">
+		</div>
 	</div>
 </div>
 <div class="container">
@@ -124,3 +92,19 @@
 		</a>
 	</div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script>
+	$(document).on('change', '#xx', function (event) {
+		event.preventDefault();
+		var form_data = $("#myform").serialize();
+		$.ajax({
+			url: "<?php echo base_url(); ?>manager/home/tampil",
+			method: "POST",
+			data: form_data,
+			success: function (data) {
+				$("#muncul").html(data);
+			}
+		});
+	});
+
+</script>
