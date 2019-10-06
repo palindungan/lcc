@@ -48,12 +48,6 @@
 </div>
 <div class="container">
 	<div class="row">
-		<div id="muncul">
-		</div>
-	</div>
-</div>
-<div class="container">
-	<div class="row">
 		<a style="color:black" href="">
 			<div style="margin-bottom: 30px;" class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
 				<div class="contact-inner">
@@ -93,19 +87,72 @@
 		</a>
 	</div>
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script>
-	$(document).on('change', '#xx', function (event) {
-		event.preventDefault();
-		var form_data = $("#myform").serialize();
-		$.ajax({
-			url: "<?php echo base_url(); ?>manager/home/tampil",
-			method: "POST",
-			data: form_data,
-			success: function (data) {
-				$("#muncul").html(data);
-			}
-		});
-	});
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<div id="chart_div" style="height: 500px;"></div>
+		</div </div> </div> <div class="container">
+		<div class="row">
+			<div id="muncul">
+			</div>
+		</div>
+	</div>
 
-</script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script>
+		$(document).on('change', '#xx', function (event) {
+			event.preventDefault();
+			var form_data = $("#myform").serialize();
+			$.ajax({
+				url: "<?php echo base_url(); ?>manager/home/tampil",
+				method: "POST",
+				data: form_data,
+				success: function (data) {
+					$("#muncul").html(data);
+				}
+			});
+		});
+
+	</script>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript">
+		google.charts.load('current', {
+			'packages': ['corechart', 'bar']
+		});
+		google.charts.setOnLoadCallback(drawStuff);
+
+		function drawStuff() {
+
+			var chartDiv = document.getElementById('chart_div');
+
+			var data = google.visualization.arrayToDataTable([
+				['Galaxy', 'Pemasukan', 'Pengeluaran'],
+				['Januari', 6000000, 3000000],
+				['Februari', 8000000, 5000000],
+				['Maret', 3000000, 1000000],
+				['April', 4000000, 2000000],
+				['Mei', 10000000, 2000000],
+				['Juni', 9000000, 3000000],
+				['Juli', 6000000, 3000000],
+				['Agustus', 8000000, 5000000],
+				['September', 7000000, 4000000],
+				['Oktober', 8000000, 1000000],
+				['November', 9000000, 2000000],
+				['Desember', 9500000, 1500000]
+			]);
+
+			var classicOptions = {
+				width: 1138,
+				title: 'Statistik Data Pemasukan dan Pengeluaran',
+			};
+
+
+			function drawClassicChart() {
+				var classicChart = new google.visualization.ColumnChart(chartDiv);
+				classicChart.draw(data, classicOptions);
+			}
+
+			drawClassicChart();
+		};
+
+	</script>
