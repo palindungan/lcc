@@ -62,7 +62,7 @@ class Home extends CI_Controller
             		<div class="contact-inner">
             			<div class="contact-inner">
             				<h2 class="text-right">
-            					'.$untung_hari.'
+            					'.rupiah($untung_hari).'
             				</h2>
             				<span><strong>PEMASUKAN</strong></span>
             			</div>
@@ -75,7 +75,7 @@ class Home extends CI_Controller
             		<div class="contact-inner">
             			<div class="contact-inner">
             				<h2 class="text-right">
-            					'.$pengeluaran_hari.'
+            					'.rupiah($pengeluaran_hari).'
             				</h2>
             				<span><strong>PENGELUARAN</strong></span>
             			</div>
@@ -101,7 +101,7 @@ class Home extends CI_Controller
             		<div class="contact-inner">
             			<div class="contact-inner">
             				<h2 class="text-right">
-            					'.$untung_minggu.'
+            					'.rupiah($untung_minggu).'
             				</h2>
             				<span><strong>PEMASUKAN</strong></span>
             			</div>
@@ -114,7 +114,7 @@ class Home extends CI_Controller
             		<div class="contact-inner">
             			<div class="contact-inner">
             				<h2 class="text-right">
-            					'.$pengeluaran_minggu.'
+            					'.rupiah($pengeluaran_minggu).'
             				</h2>
             				<span><strong>PENGELUARAN</strong></span>
             			</div>
@@ -141,7 +141,7 @@ class Home extends CI_Controller
          		<div class="contact-inner">
          			<div class="contact-inner">
          				<h2 class="text-right">
-         					'.$untung_bulan.'
+         					'.rupiah($untung_bulan).'
          				</h2>
          				<span><strong>PEMASUKAN</strong></span>
          			</div>
@@ -154,7 +154,7 @@ class Home extends CI_Controller
          		<div class="contact-inner">
          			<div class="contact-inner">
          				<h2 class="text-right">
-            				'.$pengeluaran_bulan.'
+            				'.rupiah($pengeluaran_bulan).'
          				</h2>
          				<span><strong>PENGELUARAN</strong></span>
          			</div>
