@@ -65,12 +65,13 @@ class User extends CI_controller
 		$this->template->load('view_1/template/manager', 'view_1/konten/manager/user/gantipassword', $data);	
 	}
 	function update(){
+		$id_toko = $this->session->userdata('id_toko');
 		$id_user = $this->input->post('id_user');
 		$nama_user = $this->input->post('nama_user');
 		$username = $this->input->post('username');
 		$password = $this->input->post('password');
-		$jenis_akses = $this->input->post('jenis_akses');
-		$id_toko = $this->input->post('id_toko');
+		$jenis_akses = "Kasir";
+		$id_toko = $id_toko;
 		$cek = $this->M_user->edit(['username' => $username,  "id_user !=" => $id_user],  "user");
 		if(count($cek)==0){
 			$data = array(
