@@ -54,7 +54,7 @@
 									<td><?= $row->nama; ?></td>
 									<td><?= $row->barcode; ?></td>
 									<td>
-										<a class="btn btn-primary" target="_blank"
+										<a class="btn btn-custom" target="_blank"
 											href="<?= base_url(); ?>barang_barcode/<?= $row->barcode ?>">Print
 											Barcode</a>
 									</td>
