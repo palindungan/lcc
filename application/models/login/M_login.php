@@ -3,9 +3,10 @@
 class M_login extends CI_Model
 {
 	public function cek_login(){
+        $password = $this->input->post("password", true);
         $where = array(
         'username' => $this->input->post('username'),
-        'password' => $this->input->post->password_hash('password', true)
+        'password' => password_hash($password, PASSWORD_BCRYPT)
         );
         $this->db->select('*'); // Select field
         $this->db->from('user'); // from Table1
