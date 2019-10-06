@@ -16,22 +16,26 @@
       <table style="width:100%; border-collapse: collapse;" border="1">
   <caption>Data Laporan</caption>
   <tr>
-    <th style="text-align: center;">No</th>
-    <th style="text-align: center;">Tanggal</th>
-    <th style="text-align: center;">Total</th>
-    <th style="text-align: center;">Bayar</th>
-    <th style="text-align: center;">Kembalian</th>
+  <th width="14%">No</th>
+  <th width="14%">Nama Customer</th>
+  <th width="14%">Tanggal</th>
+  <th width="14">Nama Barang</th>
+  <th width="14">Harga Jual</th>
+  <th width="14%">Jumlah Barang</th>
+  <th width="14%">Total</th>
   </tr>
 <?php 
-$no = 1;
+$no_bulan = 1;
 foreach($bulanan as $row_bulan){ 
 ?>
 <tr>
-    <td style="text-align: center;"><?php echo $no++ ?></td>
-    <td style="text-align: center;"><?php echo $row_bulan->tanggal ?></td>
-    <td style="text-align:right; "><?php echo $row_bulan->total ?></td>
-    <td style="text-align:right; "><?php echo $row_bulan->bayar ?></td>
-    <td style="text-align:right; "><?php echo $row_bulan->kembalian ?></td>
+  <td><?= $no_bulan++; ?></td>
+  <td><?= $row_bulan->nama_customer; ?></td>
+  <td><?= $row_bulan->tanggal_penjualan; ?></td>
+  <td><?= $row_bulan->nama_barang; ?></td>
+  <td><?= $row_bulan->harga_jual; ?></td>
+  <td><?= $row_bulan->jumlah_barang; ?></td>
+  <td><?= $row_bulan->total_harga; ?></td>
 </tr>
 <?php } ?>
 </table>

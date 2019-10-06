@@ -60,7 +60,7 @@ $route['barang_barcode'] = 'manager/barcode';
 $route['barang_barcode/(:any)'] = 'manager/barcode/print_barcode/$1';
 
 $route['laporan_manager'] = 'manager/laporan';
-$route['laporan_manager/custom'] = 'manager/laporan/print_laporan';
+$route['laporan_manager/custom'] = 'manager/laporan/custom';
 $route['laporan_manager/hari_ini'] = 'manager/laporan/cetak_hari';
 $route['laporan_manager/minggu_ini'] = 'manager/laporan/cetak_minggu';
 $route['laporan_manager/bulan_ini'] = 'manager/laporan/cetak_bulan';

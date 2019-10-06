@@ -1,20 +1,3 @@
-<script>
-    function detail(id_penjualan){
-        $.ajax ({
-            url: "<?php echo base_url(). 'manager/laporan/detail_data'; ?>",
-            type:"POST",
-            data:{id : id_penjualan},
-            success: function(ajaxData) {
-                $("#modaldetail").html(ajaxData);
-                $("#modaldetail").modal('show', {
-                    backdrop:'true'
-                });
-            }
-        });
-    }
-</script>
-    <div id="modaldetail" class="modal fade" role="dialog">
-    </div>
 <div class="breadcomb-area">
     <div class="container">
         <div class="row">
@@ -88,12 +71,13 @@
                                             <table width="100%" class="table table-striped">
                                                 <thead>
                                                     <tr>
-                                                        <th width="5%">No</th>
-                                                        <th width="17%">Tanggal</th>
-                                                        <th width="25%">Total</th>
-                                                        <th width="25%">Bayar</th>
-                                                        <th width="25%">Kembalian</th>
-                                                        <th width="25%">Action</th>
+                                                        <th width="14%">No</th>
+                                                        <th width="14%">Nama Customer</th>
+                                                        <th width="14%">Tanggal</th>
+                                                        <th width="14">Nama Barang</th>
+                                                        <th width="14">Harga Jual</th>
+                                                        <th width="14%">Jumlah Barang</th>
+                                                        <th width="14%">Total</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -103,24 +87,25 @@
                                                     ?>
                                                     <tr>
                                                         <td><?= $no_hari++; ?></td>
-                                                        <td><?= $row_hari->tanggal; ?></td>
-                                                        <td><?= $row_hari->total; ?></td>
-                                                        <td><?= $row_hari->bayar; ?></td>
-                                                        <td><?= $row_hari->kembalian; ?></td>
-                                                        <td>
-                                                            <button type="button" class="btn btn-sm btn-warning" onclick="detail('<?php echo $row_hari->id_penjualan; ?>')"><i class="icofont-ui-edit"></i>Detail</button>
-                                                         </td>
+                                                        <td><?= $row_hari->nama_customer; ?></td>
+                                                        <td><?= $row_hari->tanggal_penjualan; ?></td>
+                                                        <td><?= $row_hari->nama_barang; ?></td>
+                                                        <td><?= $row_hari->harga_jual; ?></td>
+                                                        <td><?= $row_hari->jumlah_barang; ?></td>
+                                                        <td><?= $row_hari->total_harga; ?></td>
                                                     </tr>
                                                     <?php   
                                                     }
                                                     ?>
                                                 </tbody>
                                                 <tfoot>
-                                                    <th>No</th>
-                                                    <th>Tanggal</th>
-                                                    <th>Total</th>
-                                                    <th>Bayar</th>
-                                                    <th>Kembalian</th>
+                                                        <th width="14%">No</th>
+                                                        <th width="14%">Nama Customer</th>
+                                                        <th width="14%">Tanggal</th>
+                                                        <th width="14">Nama Barang</th>
+                                                        <th width="14">Harga Jual</th>
+                                                        <th width="14%">Jumlah Barang</th>
+                                                        <th width="14%">Total</th>
                                                 </tfoot>
                                             </table>
                                         </div>
@@ -144,12 +129,13 @@
                                             <table width="100%" class="table table-striped">
                                                 <thead>
                                                     <tr>
-                                                        <th width="5%">No</th>
-                                                        <th width="17%">Tanggal</th>
-                                                        <th width="25%">Total</th>
-                                                        <th width="25%">Bayar</th>
-                                                        <th width="25%">Kembalian</th>
-                                                        <th width="25%">Action</th>
+                                                        <th width="14%">No</th>
+                                                        <th width="14%">Nama Customer</th>
+                                                        <th width="14%">Tanggal</th>
+                                                        <th width="14">Nama Barang</th>
+                                                        <th width="14">Harga Jual</th>
+                                                        <th width="14%">Jumlah Barang</th>
+                                                        <th width="14%">Total</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -159,25 +145,25 @@
                                                     ?>
                                                     <tr>
                                                         <td><?= $no_minggu++; ?></td>
-                                                        <td><?= $row_minggu->tanggal; ?></td>
-                                                        <td><?= $row_minggu->total; ?></td>
-                                                        <td><?= $row_minggu->bayar; ?></td>
-                                                        <td><?= $row_minggu->kembalian; ?></td>
-                                                        <td>
-                                                             <button type="button" class="btn btn-sm btn-primary" onclick="detail(<?php echo $row_minggu->id_penjualan; ?>)"><i class="icofont-ui-edit"></i>Detail</button>
- 
-                                                         </td>
+                                                        <td><?= $row_minggu->nama_customer; ?></td>
+                                                        <td><?= $row_minggu->tanggal_penjualan; ?></td>
+                                                        <td><?= $row_minggu->nama_barang; ?></td>
+                                                        <td><?= $row_minggu->harga_jual; ?></td>
+                                                        <td><?= $row_minggu->jumlah_barang; ?></td>
+                                                        <td><?= $row_minggu->total_harga; ?></td>
                                                     </tr>
                                                     <?php   
                                                     }
                                                     ?>
                                                 </tbody>
                                                 <tfoot>
-                                                    <th>No</th>
-                                                    <th>Tanggal</th>
-                                                    <th>Total</th>
-                                                    <th>Bayar</th>
-                                                    <th>Kembalian</th>
+                                                        <th width="14%">No</th>
+                                                        <th width="14%">Nama Customer</th>
+                                                        <th width="14%">Tanggal</th>
+                                                        <th width="14">Nama Barang</th>
+                                                        <th width="14">Harga Jual</th>
+                                                        <th width="14%">Jumlah Barang</th>
+                                                        <th width="14%">Total</th>
                                                 </tfoot>
                                             </table>
                                         </div>
@@ -201,12 +187,13 @@
                                             <table width="100%" class="table table-striped">
                                                 <thead>
                                                     <tr>
-                                                        <th width="5%">No</th>
-                                                        <th width="17%">Tanggal</th>
-                                                        <th width="25%">Total</th>
-                                                        <th width="25%">Bayar</th>
-                                                        <th width="25%">Kembalian</th>
-                                                        <th width="25%">Action</th>
+                                                        <th width="14%">No</th>
+                                                        <th width="14%">Nama Customer</th>
+                                                        <th width="14%">Tanggal</th>
+                                                        <th width="14">Nama Barang</th>
+                                                        <th width="14">Harga Jual</th>
+                                                        <th width="14%">Jumlah Barang</th>
+                                                        <th width="14%">Total</th
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -215,25 +202,25 @@
                                                     foreach($bulanan as $row_bulan){
                                                     ?>
                                                     <tr>
-                                                        <td><?= $no_bulan++; ?></td>
-                                                        <td><?= $row_bulan->tanggal; ?></td>
-                                                        <td><?= $row_bulan->total; ?></td>
-                                                        <td><?= $row_bulan->bayar; ?></td>
-                                                        <td><?= $row_bulan->kembalian; ?></td>
-                                                        <td>
-                                                            <button type="button" class="btn btn-sm btn-primary" onclick="detail(<?php echo $row_minggu->id_penjualan; ?>)"><i class="icofont-ui-edit"></i>Detail</button>
-                                                        </td>
-                                                    </tr>
+                                                       <td><?= $no_bulan++; ?></td>
+                                                        <td><?= $row_bulan->nama_customer; ?></td>
+                                                        <td><?= $row_bulan->tanggal_penjualan; ?></td>
+                                                        <td><?= $row_bulan->nama_barang; ?></td>
+                                                        <td><?= $row_bulan->harga_jual; ?></td>
+                                                        <td><?= $row_bulan->jumlah_barang; ?></td>
+                                                        <td><?= $row_bulan->total_harga; ?></td>                                                    </tr>
                                                     <?php   
                                                     }
                                                     ?>
                                                 </tbody>
                                                 <tfoot>
-                                                    <th>No</th>
-                                                    <th>Tanggal</th>
-                                                    <th>Total</th>
-                                                    <th>Bayar</th>
-                                                    <th>Kembalian</th>
+                                                        <th width="14%">No</th>
+                                                        <th width="14%">Nama Customer</th>
+                                                        <th width="14%">Tanggal</th>
+                                                        <th width="14">Nama Barang</th>
+                                                        <th width="14">Harga Jual</th>
+                                                        <th width="14%">Jumlah Barang</th>
+                                                        <th width="14%">Total</th>
                                                 </tfoot>
                                             </table>
                                         </div>
