@@ -65,11 +65,11 @@ $route['laporan_manager/hari_ini'] = 'manager/laporan/cetak_hari';
 $route['laporan_manager/minggu_ini'] = 'manager/laporan/cetak_minggu';
 $route['laporan_manager/bulan_ini'] = 'manager/laporan/cetak_bulan';
 
-$route['user'] = 'manager/user';
-$route['user/add'] = 'manager/user/insert';
-$route['user/edit/(:any)'] = 'manager/user/edit/$1';
-$route['user/hapus/(:any)'] = 'manager/user/hapus/$1';
-$route['user/ganti_password/(:any)'] = 'manager/user/ganti_password/$1';
+$route['user_kasir'] = 'manager/user';
+$route['user_kasir/add'] = 'manager/user/insert';
+$route['user_kasir/edit/(:any)'] = 'manager/user/edit/$1';
+$route['user_kasir/hapus/(:any)'] = 'manager/user/hapus/$1';
+$route['user_kasir/ganti_password/(:any)'] = 'manager/user/ganti_password/$1';
 
 $route['barang_toko'] = 'manager/barang';
 $route['barang_toko/stok_habis'] = 'manager/barang/stok_habis';

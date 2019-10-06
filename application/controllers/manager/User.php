@@ -42,13 +42,13 @@ class User extends CI_controller
 		$cek = $this->M_user->ambil_data($this->input->post('username'))->num_rows();
 		if($cek > 0){
 				//pemberitahuan dan pindah ke page window
-			echo "<script>alert('tidak boleh 2 username yang sama');window.location = '". base_url("user")."';</script>";
+			echo "<script>alert('tidak boleh 2 username yang sama');window.location = '". base_url("user_kasir")."';</script>";
 		}else{
 			//mengirim data ke model untuk diinputkan
 			$this->M_user->input($data);
 			//kembali ke halaman utama
 			//redirect
-			 echo "<script>alert('Berhasil Menambah Data !'); window.location = '" . base_url('user') . "';</script>";
+			 echo "<script>window.location = '" . base_url('user_kasir') . "';</script>";
 		}
 	}
 	function edit($id){
@@ -84,7 +84,7 @@ class User extends CI_controller
 				'id_user' => $id_user
 			);
 			$this->M_user->update($where,$data,'user');
-			redirect('manager/user');
+			redirect('user_kasir');
 		}
 		else{
 			echo "username ada yg sama";
@@ -93,7 +93,7 @@ class User extends CI_controller
 	function hapus($id){
 		$where =array('id_user'=>$id);
 		$this->M_user->hapus_data($where,'user');
-		redirect('manager/user');
+		redirect('user_kasir');
 	}
 	function update_password(){
 		$config = array(
@@ -124,7 +124,7 @@ class User extends CI_controller
 				'password' => password_hash($password_baru, PASSWORD_DEFAULT)
 			);
 			$this->M_user->update($where,$data,'user');
-			redirect("manager/user");
+			redirect("user_kasir");
 		}
 		else{
 			echo "error";

@@ -8,7 +8,7 @@
 							<i class="glyphicon glyphicon-home"></i> Home
 						</a>
 					</li>
-					<li <?= $this->uri->segment(1) == 'user' ? 'class="active"' : ''?>>
+					<li <?= $this->uri->segment(1) == 'user_kasir' ? 'class="active"' : ''?>>
 						<a data-toggle="tab" href="#Home2">
 							<i class="glyphicon glyphicon-user"></i> User
 						</a>
@@ -48,7 +48,7 @@
 						class="tab-pane <?= $this->uri->segment(1) == 'user' ? 'active' : ''?> in notika-tab-menu-bg animated flipInX">
 						<ul class="notika-main-menu-dropdown">
 							<li>
-								<a href="<?= base_url('user'); ?>">Data Kasir</a>
+								<a href="<?= base_url('user_kasir'); ?>">Data Kasir</a>
 							</li>
 						</ul>
 					</div>

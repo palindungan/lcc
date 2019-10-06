@@ -35,7 +35,7 @@
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 				<div class="data-table-list">
 					<div class="basic-tb-hd">
-						<a class="btn btn-primary" href="<?php echo base_url("user/add") ?>">Tambah</a>
+						<a class="btn btn-primary" href="<?php echo base_url("user_kasir/add") ?>">Tambah</a>
 					</div>
 					<div class="table-responsive">
 						<table id="data-table-basic" class="table table-striped">
@@ -63,11 +63,11 @@
 									<td>
 										<div class="table-actions">
 											<a class="btn btn-primary fa fa-pencil-square"
-												href="<?php echo base_url("user/edit/".$data->id_user) ?>"></a>
+												href="<?php echo base_url("user_kasir/edit/".$data->id_user) ?>"></a>
 											<a class="btn btn-danger fa fa-trash"
-												href="<?php echo base_url("user/hapus/".$data->id_user) ?>"></a>
+												href="<?php echo base_url("user_kasir/hapus/".$data->id_user) ?>"></a>
 											<a class="btn btn-warning fa fa-recycle"
-												href="<?php echo base_url("user/ganti_password/".$data->id_user) ?>"></a>
+												href="<?php echo base_url("user_kasir/ganti_password/".$data->id_user) ?>"></a>
 
 
 										</div>
