@@ -29,13 +29,14 @@ class User extends CI_controller
 		$this->template->load('view_1/template/manager', 'view_1/konten/manager/user/input',$data);	
 	}
 	function insert_data(){
+		$id_toko = $this->session->userdata('id_toko');
 		$kode = $this->M_user->get_no();
 		$data = array(
 		'id_user' => $kode,
 		'nama_user' => $this->input->post('nama_user'),	
 		'username' => $this->input->post('username'),				
-		'jenis_akses' => $this->input->post('jenis_akses'),
-		'id_toko' => $this->input->post('id_toko'),
+		'jenis_akses' => "Manager",
+		'id_toko' => $id_toko,
 		'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT)
 		);
 		$cek = $this->M_user->ambil_data($this->input->post('username'))->num_rows();

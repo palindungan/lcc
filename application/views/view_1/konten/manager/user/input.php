@@ -74,45 +74,13 @@
 								<div class="form-ic-cmp">
 								</div>
 								<div class="nk-int-st">
-									<label>jenis akses</label>
-									<select class="selectpicker" name="jenis_akses" required>
-										<option>pilih</option>
-										<option>manager</option>
-										<option>kasir</option>
-									</select>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-							<div class="form-group ic-cmp-int">
-								<div class="form-ic-cmp">
-								</div>
-								<div class="nk-int-st">
-									<label>toko</label>
-									<select class="selectpicker" name="id_toko" required>
-										<option>pilih</option>
-										<?php 
-                                        foreach($toko as $t){
-                                        ?>
-										<option value="<?php echo $t->id_toko ?>"><?php echo $t->nama_toko ?></option>
-										<?php  }?>
-									</select>
-								</div>
-							</div>
-						</div>
-					</div><br>
-					<div class="row">
-						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-							<div class="form-group ic-cmp-int">
-								<div class="form-ic-cmp">
-								</div>
-								<div class="nk-int-st">
 									<button type="submit" class="btn btn-primary">Simpan</button>
 									<a onclick=self.history.back() class="btn btn-danger">Kembali</a>
 								</div>
 							</div>
 						</div>
-					</div>
+					</div><br>
+					
 				</div>
 				</form>
 			</div>
