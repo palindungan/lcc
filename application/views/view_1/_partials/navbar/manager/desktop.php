@@ -45,7 +45,7 @@
 						</ul>
 					</div>
 					<div id="Home2"
-						class="tab-pane <?= $this->uri->segment(1) == 'user' ? 'active' : ''?> in notika-tab-menu-bg animated flipInX">
+						class="tab-pane <?= $this->uri->segment(1) == 'user_kasir' ? 'active' : ''?> in notika-tab-menu-bg animated flipInX">
 						<ul class="notika-main-menu-dropdown">
 							<li>
 								<a href="<?= base_url('user_kasir'); ?>">Data Kasir</a>

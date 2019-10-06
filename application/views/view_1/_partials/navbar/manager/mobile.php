@@ -12,7 +12,7 @@
 							</li>
 							<li><a data-toggle="collapse" data-target="#demoevent" href="#">User</a>
 								<ul id="demoevent" class="collapse dropdown-header-top">
-									<li><a href="<?= base_url('user'); ?>">Data Kasir</a></li>
+									<li><a href="<?= base_url('user_kasir'); ?>">Data Kasir</a></li>
 								</ul>
 							</li>
 							<li><a data-toggle="collapse" data-target="#democrou" href="#">Barang</a>
