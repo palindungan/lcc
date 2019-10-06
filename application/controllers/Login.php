@@ -11,7 +11,7 @@ class Login extends CI_Controller
         $this->load->view('view_1/login/login');
     }
     public function aksi_login(){
-        
+        $userpass = $this->input->post('password');
         $cek = $this->M_login->cek_login();
         if($cek->num_rows() > 0)
             {
@@ -24,23 +24,25 @@ class Login extends CI_Controller
                 $id_toko = $row->id_toko;
                 $nama_toko = $row->nama_toko;
                 }
+                if (password_verify($userpass, $password)) {
                 $data_session = array(
-                    'id_user' => $id_user,
-                    'username' => $username,
-                    'nama' => $nama,
-                    'akses' => $akses,
-                    'password' => $password,
-                    'id_toko' => $id_toko,
-                    'nama_toko' => $nama_toko
+                'id_user' => $id_user,
+                'username' => $username,
+                'nama' => $nama,
+                'akses' => $akses,
+                'password' => $password,
+                'id_toko' => $id_toko,
+                'nama_toko' => $nama_toko
                 );
                 $this->session->set_userdata($data_session);
                 if($row->jenis_akses == 'Manager')
                 {
-                    redirect(base_url("dashboard_manager"));
+                redirect(base_url("dashboard_manager"));
                 }
                 else if($row->jenis_akses == 'Kasir')
                 {
-                    redirect(base_url("kasir"));
+                redirect(base_url("kasir"));
+                }
                 }
             }
             else
