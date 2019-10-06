@@ -34,9 +34,15 @@ class Home extends CI_Controller
 		$untung_hari = $data['keuntungan_hari']->harga_jual_barang - $data['keuntungan_hari']->harga_beli_barang;
 		$untung_minggu = $data['keuntungan_minggu']->harga_jual_barang - $data['keuntungan_minggu']->harga_beli_barang;
 		$untung_bulan = $data['keuntungan_bulan']->harga_jual_barang - $data['keuntungan_bulan']->harga_beli_barang;
-		$data['pengeluaran_hari'] = $this->M_home->pengeluaran_hari();
-		$data['pengeluaran_minggu'] = $this->M_home->pengeluaran_minggu();
-		$data['pengeluaran_bulan'] = $this->M_home->pengeluaran_bulan();
+		$data['pengeluaran_lain_hari'] = $this->M_home->pengeluaran_lain_hari();
+		$data['pengeluaran_lain_minggu'] = $this->M_home->pengeluaran_lain_minggu();
+		$data['pengeluaran_lain_bulan'] = $this->M_home->pengeluaran_lain_bulan();
+		$data['pengeluaran_pemasokan_hari'] = $this->M_home->pengeluaran_pemasokan_hari();
+		$data['pengeluaran_pemasokan_minggu'] = $this->M_home->pengeluaran_pemasokan_minggu();
+		$data['pengeluaran_pemasokan_bulan'] = $this->M_home->pengeluaran_pemasokan_bulan();
+		$pengeluaran_hari = $data['pengeluaran_lain_hari']->total_pengeluaran + $data['pengeluaran_pemasokan_hari']->total_pemasokan;
+		$pengeluaran_minggu = $data['pengeluaran_lain_minggu']->total_pengeluaran + $data['pengeluaran_pemasokan_minggu']->total_pemasokan;
+		$pengeluaran_bulan = $data['pengeluaran_lain_bulan']->total_pengeluaran + $data['pengeluaran_pemasokan_bulan']->total_pemasokan;
         if($select=='hari')
         {
             echo '<a style="color:black" href="">
@@ -69,7 +75,7 @@ class Home extends CI_Controller
             		<div class="contact-inner">
             			<div class="contact-inner">
             				<h2 class="text-right">
-            					'.$data['pengeluaran_hari']->total_pengeluaran.'
+            					'.$pengeluaran_hari.'
             				</h2>
             				<span><strong>PENGELUARAN</strong></span>
             			</div>
@@ -108,7 +114,7 @@ class Home extends CI_Controller
             		<div class="contact-inner">
             			<div class="contact-inner">
             				<h2 class="text-right">
-            					'.$data['pengeluaran_minggu']->total_pengeluaran.'
+            					'.$pengeluaran_minggu.'
             				</h2>
             				<span><strong>PENGELUARAN</strong></span>
             			</div>
@@ -148,7 +154,7 @@ class Home extends CI_Controller
          		<div class="contact-inner">
          			<div class="contact-inner">
          				<h2 class="text-right">
-            				'.$data['pengeluaran_minggu']->total_pengeluaran.'         	
+            				'.$pengeluaran_bulan.'
          				</h2>
          				<span><strong>PENGELUARAN</strong></span>
          			</div>
