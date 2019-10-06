@@ -2,8 +2,8 @@
 -- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Waktu pembuatan: 06 Okt 2019 pada 06.09
+-- Host: localhost
+-- Waktu pembuatan: 06 Okt 2019 pada 14.22
 -- Versi server: 10.4.6-MariaDB
 -- Versi PHP: 7.3.9
 
@@ -369,8 +369,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `nama_user`, `username`, `password`, `jenis_akses`, `id_toko`) VALUES
-('U03', 'rizal', 'rizal', '$2y$10$6C4s0s9NIaw.2OwbxT/9heJWuiSeECWOVkasFYBfKnvJKdwmF3Nwa', 'Kasir', 'T1'),
-('U04', 'ari', 'ari', '$2y$10$FY/h3IeFOUWlWMdmXFgS6Ob/.U.Hg3WdlvVpJD9nGQRwMt.WnmpiO', 'Manager', 'T1');
+('U01', 'rizal', 'rizal', '$2y$10$6C4s0s9NIaw.2OwbxT/9heJWuiSeECWOVkasFYBfKnvJKdwmF3Nwa', 'Manager', 'T1'),
+('U02', 'ari', 'ari', '$2y$10$FY/h3IeFOUWlWMdmXFgS6Ob/.U.Hg3WdlvVpJD9nGQRwMt.WnmpiO', 'Kasir', 'T1');
 
 -- --------------------------------------------------------
 
