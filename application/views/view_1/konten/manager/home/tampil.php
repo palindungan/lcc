@@ -128,9 +128,12 @@
 	function drawStuff() {
 
 		var chartDiv = document.getElementById('chart_div');
+		var data = new google.visualization.DataTable();
+		data.addColumn('string', 'Bulan');
+		data.addColumn('number', 'Pemasukan');
+		data.addColumn('number', 'Pengeluaran');
 
-		var data = google.visualization.arrayToDataTable([
-			['Galaxy', 'Pemasukan', 'Pengeluaran'],
+		data.addRows([
 			['Januari', 6000000, 3000000],
 			['Februari', 8000000, 5000000],
 			['Maret', 3000000, 1000000],
@@ -144,10 +147,10 @@
 			['November', 9000000, 2000000],
 			['Desember', 9500000, 1500000]
 		]);
-
+		var tahun = (new Date).getFullYear();
 		var classicOptions = {
 			width: 1138,
-			title: 'Statistik Data Pemasukan dan Pengeluaran',
+			title: 'Statistik Data Pemasukan dan Pengeluaran Tahun ' + tahun,
 		};
 
 
