@@ -63,7 +63,7 @@
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="total" placeholder="Total">
+                                        <input type="number" class="form-control" name="total" placeholder="Total">
                                     </div>
                                 </div>
                             </div>
