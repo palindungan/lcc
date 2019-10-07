@@ -4,11 +4,9 @@ class Pemasokan extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        if(!$this->session->userdata('id_user')){
+        if (!$this->session->userdata('id_user')) {
             redirect('/');
-        }
-        else if($this->session->userdata('akses') != 'Manager')
-        {
+        } else if ($this->session->userdata('akses') != 'Manager') {
             echo '<script>
                 window.history.back();
             </script>';
@@ -22,7 +20,7 @@ class Pemasokan extends CI_Controller
     }
     public function tampil_daftar_barang()
     {
-        $data_tbl['tbl_data'] = $this->M_pemasokan->tampil_data('barang_terdaftar_barcode')->result();
+        $data_tbl['tbl_data'] = $this->M_pemasokan->tampil_data('barang_terdaftar')->result();
 
         $data = json_encode($data_tbl);
 
@@ -31,7 +29,7 @@ class Pemasokan extends CI_Controller
     public function get_barang_terdaftar()
     {
         $kode = $this->input->post('kode');
-        $data_barang['data'] = $this->M_pemasokan->get_data('barang_terdaftar_barcode', $kode)->result();
+        $data_barang['data'] = $this->M_pemasokan->get_data('barang_terdaftar', $kode)->result();
 
         $data = json_encode($data_barang);
 
@@ -62,6 +60,8 @@ class Pemasokan extends CI_Controller
             // tambah detail transaksi
             for ($i = 0; $i < count($this->input->post('kode_atau_barcode')); $i++) {
 
+                $kode = "kosong";
+                $nama = $this->input->post('nama')[$i];
                 $barcode = "kosong";
 
                 // data stok
@@ -72,7 +72,7 @@ class Pemasokan extends CI_Controller
 
                 // validasi barcode dan kode_unik 
                 $kode_atau_barcode = $this->input->post('kode_atau_barcode')[$i];
-                $validasi = substr($kode_atau_barcode, 0, 2); // CD-
+                $validasi = substr($kode_atau_barcode, 0, 3); // CD-
 
                 if ($validasi == "CD-") {
                     $barcode = $kode_atau_barcode;
@@ -81,6 +81,7 @@ class Pemasokan extends CI_Controller
                 }
 
                 if ($barcode != "kosong") {
+
                     // deteksi apakah ada barcode yang sama di database
                     $data_barcode = array(
                         'barcode' => $barcode
@@ -92,105 +93,67 @@ class Pemasokan extends CI_Controller
                         // jika barcode sudah ada maka akan memakai data yang lama
 
                         // mengambil kode dari barang terdaftar
-                        $query = $this->M_pemasokan->get_data("barang_terdaftar_barcode", $barcode);
+                        $query = $this->M_pemasokan->get_data("barang_terdaftar_barcode", $data_barcode);
                         foreach ($query->result_array() as $row) {
                             $kode = $row["kode"];
                         }
-
-                        // proses input data stok
-                        $data4 = array(
-                            'id_pemasokan' => $id_pemasokan,
-                            'kode' => $kode,
-                            'qty' => $qty,
-                            'hrg_distributor' => $hrg_distributor,
-                            'total_hrg' => $total_hrg,
-                            'kode_unik' => $kode_unik
-                        );
-
-                        $this->M_data_paket->input_data('stok_barang', $data4);
                     } else {
 
                         // jika barcode belum ada maka akan menambahkan data baru
 
                         $kode = $this->M_pemasokan->get_no_barang_terdaftar(); // generate
-                        $nama = $this->input->post('nama');
 
-                        $data3 = array(
+                        $data = array(
                             'kode' => $kode,
                             'nama' => $nama,
                             'barcode' => $barcode
                         );
 
-                        $this->M_data_paket->input_data('barang_terdaftar', $data3);
-
-                        // proses input data stok
-                        $data5 = array(
-                            'id_pemasokan' => $id_pemasokan,
-                            'kode' => $kode,
-                            'qty' => $qty,
-                            'hrg_distributor' => $hrg_distributor,
-                            'total_hrg' => $total_hrg,
-                            'kode_unik' => $kode_unik
-                        );
-
-                        $this->M_data_paket->input_data('stok_barang', $data5);
+                        $this->M_pemasokan->input_data('barang_terdaftar', $data);
                     }
                 } else {
+
                     // deteksi apakah ada nama yang sama di database (barang terdaftar)
                     $data_nama = array(
                         'nama' => $nama
                     );
-                    $cek = $this->M_pemasokan->get_data("barang_terdaftar_barcode_kosong", $data_nama)->num_rows();
+                    $cek = $this->M_pemasokan->get_data("barang_terdaftar_bukan_barcode", $data_nama)->num_rows();
 
                     if ($cek >= 1) {
 
                         // jika nama sudah ada maka akan memakai data yang lama
 
-                        // mengambil kode dari barang terdaftar
-                        $query = $this->M_pemasokan->get_data("barang_terdaftar_barcode_kosong", $data_nama);
+                        // mengambil nama dari barang terdaftar
+                        $query = $this->M_pemasokan->get_data("barang_terdaftar_bukan_barcode", $data_nama);
                         foreach ($query->result_array() as $row) {
                             $kode = $row["kode"];
                         }
-
-                        // proses input data stok
-                        $data6 = array(
-                            'id_pemasokan' => $id_pemasokan,
-                            'kode' => $kode,
-                            'qty' => $qty,
-                            'hrg_distributor' => $hrg_distributor,
-                            'total_hrg' => $total_hrg,
-                            'kode_unik' => $kode_unik
-                        );
-
-                        $this->M_data_paket->input_data('stok_barang', $data6);
                     } else {
 
                         // jika nama belum ada maka akan menambahkan data baru
-
                         $kode = $this->M_pemasokan->get_no_barang_terdaftar(); // generate
-                        $nama = $this->input->post('nama');
 
-                        $data7 = array(
+                        $data = array(
                             'kode' => $kode,
                             'nama' => $nama,
                             'barcode' => $barcode
                         );
 
-                        $this->M_data_paket->input_data('barang_terdaftar', $data7);
-
-                        // proses input data stok
-                        $data8 = array(
-                            'id_pemasokan' => $id_pemasokan,
-                            'kode' => $kode,
-                            'qty' => $qty,
-                            'hrg_distributor' => $hrg_distributor,
-                            'total_hrg' => $total_hrg,
-                            'kode_unik' => $kode_unik
-                        );
-
-                        $this->M_data_paket->input_data('stok_barang', $data8);
+                        $this->M_pemasokan->input_data('barang_terdaftar', $data);
                     }
                 }
+
+                // proses pemasukan ke dalam database stok barang
+                $data = array(
+                    'id_pemasokan' => $id_pemasokan,
+                    'kode' => $kode,
+                    'qty' => $qty,
+                    'hrg_distributor' => $hrg_distributor,
+                    'total_hrg' => $total_hrg,
+                    'kode_unik' => $kode_unik
+                );
+
+                $this->M_pemasokan->input_data('stok_barang', $data);
             }
         }
     }

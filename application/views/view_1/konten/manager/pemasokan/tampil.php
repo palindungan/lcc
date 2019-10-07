@@ -249,6 +249,11 @@
     });
 
     function myFunction(barcode, nama) {
+
+        if (barcode == "kosong") {
+            barcode = "";
+        }
+
         $('#detail_list').append(`
 
             <div id="row` + count1 + `" class="row">
