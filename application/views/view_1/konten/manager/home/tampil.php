@@ -129,23 +129,34 @@
 
 		var chartDiv = document.getElementById('chart_div');
 		var data = new google.visualization.DataTable();
+		var pengeluaran_januari = parseInt("<?php echo $keluar_januari  ?>");
+		var pengeluaran_februari = parseInt("<?php echo $keluar_februari  ?>");
+		var pengeluaran_maret = parseInt("<?php echo $keluar_maret  ?>");
+		var pengeluaran_april = parseInt("<?php echo $keluar_april  ?>");
+		var pengeluaran_mei = parseInt("<?php echo $keluar_mei  ?>");
+		var pengeluaran_juni = parseInt("<?php echo $keluar_juni  ?>");
+		var pengeluaran_juli = parseInt("<?php echo $keluar_juli  ?>");
+		var pengeluaran_agustus = parseInt("<?php echo $keluar_agustus  ?>");
+		var pengeluaran_september = parseInt("<?php echo $keluar_september  ?>");
+		var pengeluaran_oktober = parseInt("<?php echo $keluar_oktober  ?>");
+		var pengeluaran_november = parseInt("<?php echo $keluar_november  ?>");
+		var pengeluaran_desember = parseInt("<?php echo $keluar_desember  ?>");
 		data.addColumn('string', 'Bulan');
 		data.addColumn('number', 'Pemasukan');
 		data.addColumn('number', 'Pengeluaran');
-
 		data.addRows([
-			['Januari', 6000000, 3000000],
-			['Februari', 8000000, 5000000],
-			['Maret', 3000000, 1000000],
-			['April', 4000000, 2000000],
-			['Mei', 10000000, 2000000],
-			['Juni', 9000000, 3000000],
-			['Juli', 6000000, 3000000],
-			['Agustus', 8000000, 5000000],
-			['September', 7000000, 4000000],
-			['Oktober', 8000000, 1000000],
-			['November', 9000000, 2000000],
-			['Desember', 9500000, 1500000]
+			['Jan', 6000000, pengeluaran_januari],
+			['Feb', 8000000, pengeluaran_februari],
+			['Mar', 3000000, pengeluaran_maret],
+			['Apr', 4000000, pengeluaran_april],
+			['Mei', 10000000, pengeluaran_mei],
+			['Jun', 9000000, pengeluaran_juni],
+			['Jul', 6000000, pengeluaran_juli],
+			['Ags', 8000000, pengeluaran_agustus],
+			['Sept', 7000000, pengeluaran_september],
+			['Okt', 9999999, pengeluaran_oktober],
+			['Nov', 9000000, pengeluaran_november],
+			['Des', 9500000, pengeluaran_desember]
 		]);
 		var tahun = (new Date).getFullYear();
 		var classicOptions = {

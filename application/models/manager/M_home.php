@@ -89,4 +89,147 @@ class M_home extends CI_Model
         $id_toko = $this->session->userdata('id_toko');
         return $this->db->query("SELECT COALESCE(SUM(total),0) as total_pemasokan,id_toko FROM pemasokan JOIN user USING(id_user) JOIN toko USING(id_toko) WHERE MONTH(tanggal) = MONTH(CURRENT_DATE()) AND id_toko='$id_toko'")->row();
     }
+    function pengeluaran_bulan_1()
+    {
+        $id_toko = $this->session->userdata('id_toko');
+        return $this->db->query("SELECT COALESCE(SUM(total),0) as total_pengeluaran FROM pengeluaran_lain JOIN user
+        USING(id_user) JOIN toko USING(id_toko) WHERE MONTH(tanggal) = 01 AND YEAR(NOW()) AND id_toko ='$id_toko'")->row();
+    }
+    function pemasokan_bulan_1()
+    {
+        $id_toko = $this->session->userdata('id_toko');
+        return $this->db->query("SELECT COALESCE(SUM(total),0) as total_pemasokan FROM pemasokan JOIN user USING(id_user)
+        JOIN toko USING(id_toko) WHERE MONTH(tanggal) = 01 AND YEAR(NOW()) AND id_toko ='$id_toko'")->row();
+    }
+    function pengeluaran_bulan_2()
+    {
+        $id_toko = $this->session->userdata('id_toko');
+        return $this->db->query("SELECT COALESCE(SUM(total),0) as total_pengeluaran FROM pengeluaran_lain JOIN user
+        USING(id_user) JOIN toko USING(id_toko) WHERE MONTH(tanggal) = 02 AND YEAR(NOW()) AND id_toko ='$id_toko'")->row();
+    }
+    function pemasokan_bulan_2()
+    {
+        $id_toko = $this->session->userdata('id_toko');
+        return $this->db->query("SELECT COALESCE(SUM(total),0) as total_pemasokan FROM pemasokan JOIN user USING(id_user)
+        JOIN toko USING(id_toko) WHERE MONTH(tanggal) = 02 AND YEAR(NOW()) AND id_toko ='$id_toko'")->row();
+    }
+    function pengeluaran_bulan_3()
+    {
+        $id_toko = $this->session->userdata('id_toko');
+        return $this->db->query("SELECT COALESCE(SUM(total),0) as total_pengeluaran FROM pengeluaran_lain JOIN user
+        USING(id_user) JOIN toko USING(id_toko) WHERE MONTH(tanggal) = 03 AND YEAR(NOW()) AND id_toko ='$id_toko'")->row();
+    }
+    function pemasokan_bulan_3()
+    {
+        $id_toko = $this->session->userdata('id_toko');
+        return $this->db->query("SELECT COALESCE(SUM(total),0) as total_pemasokan FROM pemasokan JOIN user USING(id_user)
+        JOIN toko USING(id_toko) WHERE MONTH(tanggal) = 03 AND YEAR(NOW()) AND id_toko ='$id_toko'")->row();
+    }
+    function pengeluaran_bulan_4()
+    {
+        $id_toko = $this->session->userdata('id_toko');
+        return $this->db->query("SELECT COALESCE(SUM(total),0) as total_pengeluaran FROM pengeluaran_lain JOIN user
+        USING(id_user) JOIN toko USING(id_toko) WHERE MONTH(tanggal) = 04 AND YEAR(NOW()) AND id_toko ='$id_toko'")->row();
+    }
+    function pemasokan_bulan_4()
+    {
+        $id_toko = $this->session->userdata('id_toko');
+        return $this->db->query("SELECT COALESCE(SUM(total),0) as total_pemasokan FROM pemasokan JOIN user USING(id_user)
+        JOIN toko USING(id_toko) WHERE MONTH(tanggal) = 04 AND YEAR(NOW()) AND id_toko ='$id_toko'")->row();
+    }
+    function pengeluaran_bulan_5()
+    {
+        $id_toko = $this->session->userdata('id_toko');
+        return $this->db->query("SELECT COALESCE(SUM(total),0) as total_pengeluaran FROM pengeluaran_lain JOIN user
+        USING(id_user) JOIN toko USING(id_toko) WHERE MONTH(tanggal) = 05 AND YEAR(NOW()) AND id_toko ='$id_toko'")->row();
+    }
+    function pemasokan_bulan_5()
+    {
+        $id_toko = $this->session->userdata('id_toko');
+        return $this->db->query("SELECT COALESCE(SUM(total),0) as total_pemasokan FROM pemasokan JOIN user USING(id_user)
+        JOIN toko USING(id_toko) WHERE MONTH(tanggal) = 05 AND YEAR(NOW()) AND id_toko ='$id_toko'")->row();
+    }
+    function pengeluaran_bulan_6()
+    {
+        $id_toko = $this->session->userdata('id_toko');
+        return $this->db->query("SELECT COALESCE(SUM(total),0) as total_pengeluaran FROM pengeluaran_lain JOIN user
+        USING(id_user) JOIN toko USING(id_toko) WHERE MONTH(tanggal) = 06 AND YEAR(NOW()) AND id_toko ='$id_toko'")->row();
+    }
+    function pemasokan_bulan_6()
+    {
+        $id_toko = $this->session->userdata('id_toko');
+        return $this->db->query("SELECT COALESCE(SUM(total),0) as total_pemasokan FROM pemasokan JOIN user USING(id_user)
+        JOIN toko USING(id_toko) WHERE MONTH(tanggal) = 06 AND YEAR(NOW()) AND id_toko ='$id_toko'")->row();
+    }
+    function pengeluaran_bulan_7()
+    {
+        $id_toko = $this->session->userdata('id_toko');
+        return $this->db->query("SELECT COALESCE(SUM(total),0) as total_pengeluaran FROM pengeluaran_lain JOIN user
+        USING(id_user) JOIN toko USING(id_toko) WHERE MONTH(tanggal) = 07 AND YEAR(NOW()) AND id_toko ='$id_toko'")->row();
+    }
+    function pemasokan_bulan_7()
+    {
+        $id_toko = $this->session->userdata('id_toko');
+        return $this->db->query("SELECT COALESCE(SUM(total),0) as total_pemasokan FROM pemasokan JOIN user USING(id_user)
+        JOIN toko USING(id_toko) WHERE MONTH(tanggal) = 07 AND YEAR(NOW()) AND id_toko ='$id_toko'")->row();
+    }
+    function pengeluaran_bulan_8()
+    {
+        $id_toko = $this->session->userdata('id_toko');
+        return $this->db->query("SELECT COALESCE(SUM(total),0) as total_pengeluaran FROM pengeluaran_lain JOIN user
+        USING(id_user) JOIN toko USING(id_toko) WHERE MONTH(tanggal) = 08 AND YEAR(NOW()) AND id_toko ='$id_toko'")->row();
+    }
+    function pemasokan_bulan_8()
+    {
+        $id_toko = $this->session->userdata('id_toko');
+        return $this->db->query("SELECT COALESCE(SUM(total),0) as total_pemasokan FROM pemasokan JOIN user USING(id_user)
+        JOIN toko USING(id_toko) WHERE MONTH(tanggal) = 08 AND YEAR(NOW()) AND id_toko ='$id_toko'")->row();
+    }
+    function pengeluaran_bulan_9()
+    {
+        $id_toko = $this->session->userdata('id_toko');
+        return $this->db->query("SELECT COALESCE(SUM(total),0) as total_pengeluaran FROM pengeluaran_lain JOIN user
+        USING(id_user) JOIN toko USING(id_toko) WHERE MONTH(tanggal) = 09 AND YEAR(NOW()) AND id_toko ='$id_toko'")->row();
+    }
+    function pemasokan_bulan_9()
+    {
+        $id_toko = $this->session->userdata('id_toko');
+        return $this->db->query("SELECT COALESCE(SUM(total),0) as total_pemasokan FROM pemasokan JOIN user USING(id_user)
+        JOIN toko USING(id_toko) WHERE MONTH(tanggal) = 09 AND YEAR(NOW()) AND id_toko ='$id_toko'")->row();
+    }
+    function pengeluaran_bulan_10()
+    {
+        $id_toko = $this->session->userdata('id_toko');
+        return $this->db->query("SELECT COALESCE(SUM(total),0) as total_pengeluaran FROM pengeluaran_lain JOIN user
+        USING(id_user) JOIN toko USING(id_toko) WHERE MONTH(tanggal) = 10 AND YEAR(NOW()) AND id_toko ='$id_toko'")->row();
+    }
+    function pemasokan_bulan_10()
+    {
+        $id_toko = $this->session->userdata('id_toko');
+        return $this->db->query("SELECT COALESCE(SUM(total),0) as total_pemasokan FROM pemasokan JOIN user USING(id_user) JOIN toko USING(id_toko) WHERE MONTH(tanggal) = 10 AND YEAR(NOW()) AND id_toko ='$id_toko'")->row();
+    }
+    function pengeluaran_bulan_11()
+    {
+        $id_toko = $this->session->userdata('id_toko');
+        return $this->db->query("SELECT COALESCE(SUM(total),0) as total_pengeluaran FROM pengeluaran_lain JOIN user
+        USING(id_user) JOIN toko USING(id_toko) WHERE MONTH(tanggal) = 11 AND YEAR(NOW()) AND id_toko ='$id_toko'")->row();
+    }
+    function pemasokan_bulan_11()
+    {
+        $id_toko = $this->session->userdata('id_toko');
+        return $this->db->query("SELECT COALESCE(SUM(total),0) as total_pemasokan FROM pemasokan JOIN user USING(id_user)
+        JOIN toko USING(id_toko) WHERE MONTH(tanggal) = 11 AND YEAR(NOW()) AND id_toko ='$id_toko'")->row();
+    }
+    function pengeluaran_bulan_12()
+    {
+        $id_toko = $this->session->userdata('id_toko');
+        return $this->db->query("SELECT COALESCE(SUM(total),0) as total_pengeluaran FROM pengeluaran_lain JOIN user
+        USING(id_user) JOIN toko USING(id_toko) WHERE MONTH(tanggal) = 12 AND YEAR(NOW()) AND id_toko ='$id_toko'")->row();
+    }
+    function pemasokan_bulan_12()
+    {
+        $id_toko = $this->session->userdata('id_toko');
+        return $this->db->query("SELECT COALESCE(SUM(total),0) as total_pemasokan FROM pemasokan JOIN user USING(id_user)
+        JOIN toko USING(id_toko) WHERE MONTH(tanggal) = 12 AND YEAR(NOW()) AND id_toko ='$id_toko'")->row();
+    }
 }
