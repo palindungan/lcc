@@ -62,22 +62,22 @@
                                                 <div class="input-group">
                                                     <span class="input-group-btn">
                                                         <a target="_blank" style="float:left;" class="btn btn-primary" style="align: right "
-                                                            href="<?php echo base_url().'laporan_manager/hari_ini' ?>">Prin
-                                                            Data</a>
+                                                            href="<?php echo base_url().'laporan_manager/hari_ini' ?>"><i
+                                                            	class="glyphicon glyphicon-print"></i> Print Data</a>
                                                     </span>
                                                 </div><!-- /input-group -->
                                         </div>
                                         <div class="table-responsive">
-                                            <table width="100%" class="table table-striped">
+                                            <table id="data-table-basic" width="100%" class="table table-striped">
                                                 <thead>
                                                     <tr>
-                                                        <th width="14%" style="text-align: center;">No</th>
-                                                        <th width="14%" style="text-align: center;">Nama Customer</th>
-                                                        <th width="14%" style="text-align: center;">Tanggal</th>
-                                                        <th width="14%" style="text-align: center;">Nama Barang</th>
-                                                        <th width="14%" style="text-align: center;">Harga Jual</th>
-                                                        <th width="14%" style="text-align: center;">Jumlah Barang</th>
-                                                        <th width="14%" style="text-align: center;">Total</th>
+                                                        <th width="2%" style="text-align: center;">No</th>
+                                                        <th width="30%" style="text-align: center;">Nama Customer</th>
+                                                        <th width="20%" style="text-align: center;">Tanggal</th>
+                                                        <th width="20%" style="text-align: center;">Nama Barang</th>
+                                                        <th width="10%" style="text-align: center;">Harga Jual</th>
+                                                        <th width="10%" style="text-align: center;">Jumlah Barang</th>
+                                                        <th width="8%" style="text-align: center;">Total</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -102,7 +102,7 @@
                                                     <?php 
                                                     if($total_hari == "")
                                                     {
-                                                        echo "0" ;
+                                                        echo '<h4 style="float:right">Sub Total : 0</h4>';
                                                     }
                                                     else {
                                                         echo '<h4 style="float: right;">Sub Total :  .'.rupiah($total_hari).'</h4>"';
@@ -111,13 +111,15 @@
                                                     
                                                 </tbody>
                                                 <tfoot>
-                                                        <th width="14%" style="text-align: center;">No</th>
-                                                        <th width="14%" style="text-align: center;">Nama Customer</th>
-                                                        <th width="14%" style="text-align: center;">Tanggal</th>
-                                                        <th width="14%" style="text-align: center;">Nama Barang</th>
-                                                        <th width="14%" style="text-align: center;">Harga Jual</th>
-                                                        <th width="14%" style="text-align: center;">Jumlah Barang</th>
-                                                        <th width="14%" style="text-align: center;">Total</th>
+                                                <tr>
+                                                    <th>No</th>
+                                                    <th>Nama Customer</th>
+                                                    <th>Tanggal</th>
+                                                    <th>Nama Barang</th>
+                                                    <th>Harga Jual</th>
+                                                    <th>Jumlah Barang</th>
+                                                    <th>Total</th>
+                                                </tr> 
                                                 </tfoot>
                                             </table>
                                         </div>
@@ -132,7 +134,8 @@
                                                 <span class="input-group-btn">
                                                     <a target="_blank" style="float:left" class="btn btn-primary"
                                                         style="align: right "
-                                                        href="<?php echo base_url().'laporan_manager/minggu_ini' ?>">Prin
+                                                        href="<?php echo base_url().'laporan_manager/minggu_ini' ?>"><i
+                                                        	class="glyphicon glyphicon-print"></i> Print
                                                         Data</a>
 
                                                 </span>
@@ -154,7 +157,7 @@
                                                 <tbody>
                                                     <?php 
                                                     $no_minggu = 1;
-                                                    $total_minggu= "";
+                                                    $total_minggu= 0;
                                                     foreach($minggu as $row_minggu){
                                                     ?>
                                                     <tr>
@@ -194,7 +197,8 @@
                                                 <span class="input-group-btn">
                                                     <a target="_blank" style="float:left" class="btn btn-primary"
                                                         style="align: right "
-                                                        href="<?php echo base_url().'laporan_manager/bulan_ini' ?>">Prin
+                                                        href="<?php echo base_url().'laporan_manager/bulan_ini' ?>"><i
+                                                        	class="glyphicon glyphicon-print"></i> Print
                                                         Data</a>
                                                 </span>
                                             </div><!-- /input-group -->
@@ -215,7 +219,7 @@
                                                 <tbody>
                                                     <?php 
                                                     $no_bulan = 1;
-                                                    $total_bulan="";
+                                                    $total_bulan=0;
                                                     foreach($bulanan as $row_bulan){ 
                                                     ?>
                                                     <tr>
