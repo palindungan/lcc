@@ -20,6 +20,8 @@ class Home extends CI_Controller
         $data['kasir'] = $this->M_home->count_kasir();
         $data['barang'] = $this->M_home->count_jenis_barang();
 		$data['stok_habis'] = $this->M_home->count_stok_habis();
+
+		// PENGELUARAN BULAN DAN TAHUN INI
 		$data['pengeluaran_bulan_1'] = $this->M_home->pengeluaran_bulan_1();
 		$data['pemasokan_bulan_1'] = $this->M_home->pemasokan_bulan_1();
 		$data['keluar_januari'] = $data['pengeluaran_bulan_1']->total_pengeluaran +
@@ -78,6 +80,54 @@ class Home extends CI_Controller
 		$data['pemasokan_bulan_12'] = $this->M_home->pemasokan_bulan_12();
 		$data['keluar_desember'] = $data['pengeluaran_bulan_12']->total_pengeluaran +
 		$data['pemasokan_bulan_12']->total_pemasokan;
+
+		// KEUNTUNGAN BULAN DAN TAHUN INI
+		$data['keuntungan_bulan_1'] = $this->M_home->keuntungan_bulan_1();
+		$data['masuk_januari'] = $data['keuntungan_bulan_1']->harga_jual_barang -
+		$data['keuntungan_bulan_1']->harga_beli_barang;
+
+		$data['keuntungan_bulan_2'] = $this->M_home->keuntungan_bulan_2();
+		$data['masuk_februari'] = $data['keuntungan_bulan_2']->harga_jual_barang -
+		$data['keuntungan_bulan_2']->harga_beli_barang;
+
+		$data['keuntungan_bulan_3'] = $this->M_home->keuntungan_bulan_3();
+		$data['masuk_maret'] = $data['keuntungan_bulan_3']->harga_jual_barang -
+		$data['keuntungan_bulan_3']->harga_beli_barang;
+
+		$data['keuntungan_bulan_4'] = $this->M_home->keuntungan_bulan_4();
+		$data['masuk_april'] = $data['keuntungan_bulan_4']->harga_jual_barang -
+		$data['keuntungan_bulan_4']->harga_beli_barang;
+
+		$data['keuntungan_bulan_5'] = $this->M_home->keuntungan_bulan_5();
+		$data['masuk_mei'] = $data['keuntungan_bulan_5']->harga_jual_barang -
+		$data['keuntungan_bulan_5']->harga_beli_barang;
+
+		$data['keuntungan_bulan_6'] = $this->M_home->keuntungan_bulan_6();
+		$data['masuk_juni'] = $data['keuntungan_bulan_6']->harga_jual_barang -
+		$data['keuntungan_bulan_6']->harga_beli_barang;
+
+		$data['keuntungan_bulan_7'] = $this->M_home->keuntungan_bulan_7();
+		$data['masuk_juli'] = $data['keuntungan_bulan_7']->harga_jual_barang -
+		$data['keuntungan_bulan_7']->harga_beli_barang;
+
+		$data['keuntungan_bulan_8'] = $this->M_home->keuntungan_bulan_8();
+		$data['masuk_agustus'] = $data['keuntungan_bulan_8']->harga_jual_barang -
+		$data['keuntungan_bulan_8']->harga_beli_barang;
+
+		$data['keuntungan_bulan_9'] = $this->M_home->keuntungan_bulan_9();
+		$data['masuk_september'] = $data['keuntungan_bulan_9']->harga_jual_barang -
+		$data['keuntungan_bulan_9']->harga_beli_barang;
+	
+		$data['keuntungan_bulan_10'] = $this->M_home->keuntungan_bulan_10();
+		$data['masuk_oktober'] = $data['keuntungan_bulan_10']->harga_jual_barang - $data['keuntungan_bulan_10']->harga_beli_barang;
+
+		$data['keuntungan_bulan_11'] = $this->M_home->keuntungan_bulan_11();
+		$data['masuk_november'] = $data['keuntungan_bulan_11']->harga_jual_barang -
+		$data['keuntungan_bulan_11']->harga_beli_barang;
+
+		$data['keuntungan_bulan_12'] = $this->M_home->keuntungan_bulan_12();
+		$data['masuk_desember'] = $data['keuntungan_bulan_12']->harga_jual_barang -
+		$data['keuntungan_bulan_12']->harga_beli_barang;
 		
 		
         $this->template->load('view_1/template/manager', 'view_1/konten/manager/home/tampil',$data);

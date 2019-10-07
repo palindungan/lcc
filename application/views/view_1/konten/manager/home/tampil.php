@@ -129,6 +129,19 @@
 
 		var chartDiv = document.getElementById('chart_div');
 		var data = new google.visualization.DataTable();
+		var pemasukan_januari = parseInt("<?php echo $masuk_januari  ?>");
+		var pemasukan_februari = parseInt("<?php echo $masuk_februari  ?>");
+		var pemasukan_maret = parseInt("<?php echo $masuk_maret  ?>");
+		var pemasukan_april = parseInt("<?php echo $masuk_april  ?>");
+		var pemasukan_mei = parseInt("<?php echo $masuk_mei  ?>");
+		var pemasukan_juni = parseInt("<?php echo $masuk_juni  ?>");
+		var pemasukan_juli = parseInt("<?php echo $masuk_juli  ?>");
+		var pemasukan_agustus = parseInt("<?php echo $masuk_agustus  ?>");
+		var pemasukan_september = parseInt("<?php echo $masuk_september  ?>");
+		var pemasukan_oktober = parseInt("<?php echo $masuk_oktober  ?>");
+		var pemasukan_november = parseInt("<?php echo $masuk_november  ?>");
+		var pemasukan_desember = parseInt("<?php echo $masuk_desember  ?>");
+
 		var pengeluaran_januari = parseInt("<?php echo $keluar_januari  ?>");
 		var pengeluaran_februari = parseInt("<?php echo $keluar_februari  ?>");
 		var pengeluaran_maret = parseInt("<?php echo $keluar_maret  ?>");
@@ -141,22 +154,23 @@
 		var pengeluaran_oktober = parseInt("<?php echo $keluar_oktober  ?>");
 		var pengeluaran_november = parseInt("<?php echo $keluar_november  ?>");
 		var pengeluaran_desember = parseInt("<?php echo $keluar_desember  ?>");
+
 		data.addColumn('string', 'Bulan');
 		data.addColumn('number', 'Pemasukan');
 		data.addColumn('number', 'Pengeluaran');
 		data.addRows([
-			['Jan', 6000000, pengeluaran_januari],
-			['Feb', 8000000, pengeluaran_februari],
-			['Mar', 3000000, pengeluaran_maret],
-			['Apr', 4000000, pengeluaran_april],
-			['Mei', 10000000, pengeluaran_mei],
-			['Jun', 9000000, pengeluaran_juni],
-			['Jul', 6000000, pengeluaran_juli],
-			['Ags', 8000000, pengeluaran_agustus],
-			['Sept', 7000000, pengeluaran_september],
-			['Okt', 9999999, pengeluaran_oktober],
-			['Nov', 9000000, pengeluaran_november],
-			['Des', 9500000, pengeluaran_desember]
+			['Jan', pemasukan_januari, pengeluaran_januari],
+			['Feb', pemasukan_februari, pengeluaran_februari],
+			['Mar', pemasukan_maret, pengeluaran_maret],
+			['Apr', pemasukan_april, pengeluaran_april],
+			['Mei', pemasukan_mei, pengeluaran_mei],
+			['Jun', pemasukan_juni, pengeluaran_juni],
+			['Jul', pemasukan_juli, pengeluaran_juli],
+			['Ags', pemasukan_agustus, pengeluaran_agustus],
+			['Sept', pemasukan_september, pengeluaran_september],
+			['Okt', pemasukan_oktober, pengeluaran_oktober],
+			['Nov', pemasukan_november, pengeluaran_november],
+			['Des', pemasukan_desember, pengeluaran_desember]
 		]);
 		var tahun = (new Date).getFullYear();
 		var classicOptions = {
