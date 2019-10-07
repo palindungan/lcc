@@ -77,7 +77,7 @@
                                         			 	<th width="25%" style="text-align: center;">Nama Barang</th>
                                         			 	<th width="13%" style="text-align: center;">Harga Jual</th>
                                         			 	<th width="13%" style="text-align: center;">Qty</th>
-                                        			 	<th width="13%" style="text-align: center;">Total</th>
+                                        			 	<th width="13%" style="text-align: center;">Keuntungan</th>
                                         			 </tr>
                                         		</thead>
                                         			<tbody>
@@ -85,6 +85,9 @@
                                                     $no_hari = 1;
                                                     $total_hari=0;
                                                     foreach($hari as $row_hari){
+                                                    $keuntungan_hari = $row_hari->harga_jual *
+                                                    $row_hari->jumlah_barang -
+                                                    $row_hari->hrg_distributor * $row_hari->jumlah_barang;
                                                     ?>
                                         				<tr>
                                         					<td style="text-align: center;"><?= $no_hari++; ?></td>
@@ -95,20 +98,20 @@
                                         					<td style="text-align: right;"><?= rupiah($row_hari->harga_jual) ?>
                                         					</td>
                                         					<td style="text-align: center;"><?= $row_hari->jumlah_barang; ?></td>
-                                        					<td style="text-align: right;"><?= rupiah($row_hari->total_harga) ?>
+                                        					<td style="text-align: right;"><?= rupiah($keuntungan_hari) ?>
                                         					</td>
                                         				</tr>
                                         				<?php 
-                                                    $total_hari += $row_hari->total_harga;  
+                                                    $total_hari += $keuntungan_hari;  
                                                     }
                                                     ?>
                                         				<?php 
                                                     if($total_hari == "")
                                                     {
-                                                        echo '<h4 style="float:right">Sub Total : 0</h4>';
+                                                        echo '<h4 style="float:right">Total Keuntungan : 0</h4>';
                                                     }
                                                     else {
-                                                        echo '<h4 style="float: right;">Sub Total :   '.rupiah($total_hari).'</h4>"';
+                                                        echo '<h4 style="float: right;">Total Keuntungan :   '.rupiah($total_hari).'</h4>"';
                                                     }
                                                     ?>
 
@@ -121,7 +124,7 @@
                                         				<th style="text-align: center;">Nama Barang</th>
                                         				<th style="text-align: center;">Harga Jual</th>
                                         				<th style="text-align: center;">Qty</th>
-                                        				<th style="text-align: center;">Total</th>
+                                        				<th style="text-align: center;">Keuntungan</th>
                                         			</tr>
                                         		</tfoot>
                                         	</table>
@@ -154,7 +157,7 @@
                                         				<th width="25%" style="text-align: center;">Nama Barang</th>
                                         				<th width="13%" style="text-align: center;">Harga Jual</th>
                                         				<th width="13%" style="text-align: center;">Qty</th>
-                                        				<th width="13%" style="text-align: center;">Total</th>
+                                        				<th width="13%" style="text-align: center;">Keuntungan</th>
                                         			</tr>
                                         		</thead>
                                         		<tbody>
@@ -162,6 +165,8 @@
                                                     $no_minggu = 1;
                                                     $total_minggu=0;
                                                     foreach($minggu as $row_minggu){
+                                                    $keuntungan_minggu = $row_minggu->harga_jual * $row_minggu->jumlah_barang -
+                                                    $row_minggu->hrg_distributor * $row_minggu->jumlah_barang;
                                                     ?>
                                         			<tr>
                                         				<td style="text-align: center;"><?= $no_minggu++; ?></td>
@@ -177,20 +182,20 @@
                                         				<td style="text-align: center;"><?= $row_minggu->jumlah_barang; ?>
                                         				</td>
                                         				<td style="text-align: right;">
-                                        					<?= rupiah($row_minggu->total_harga) ?>
+                                        					<?= rupiah($keuntungan_minggu) ?>
                                         				</td>
                                         			</tr>
                                         			<?php 
-                                                    $total_minggu += $row_minggu->total_harga;  
+                                                    $total_minggu += $keuntungan_minggu;  
                                                     }
                                                     ?>
                                         			<?php 
                                                     if($total_minggu == "")
                                                     {
-                                                        echo '<h4 style="float:right">Sub Total : 0</h4>';
+                                                        echo '<h4 style="float:right">Total Keuntungan : 0</h4>';
                                                     }
                                                     else {
-                                                        echo '<h4 style="float: right;">Sub Total :  '.rupiah($total_minggu).'</h4>"';
+                                                        echo '<h4 style="float: right;">Total Keuntungan :  '.rupiah($total_minggu).'</h4>"';
                                                     }
                                                     ?>
 
@@ -203,7 +208,7 @@
                                         				<th style="text-align: center;">Nama Barang</th>
                                         				<th style="text-align: center;">Harga Jual</th>
                                         				<th style="text-align: center;">Qty</th>
-                                        				<th style="text-align: center;">Total</th>
+                                        				<th style="text-align: center;">Keuntungan</th>
                                         			</tr>
                                         		</tfoot>
                                         	</table>
@@ -235,7 +240,7 @@
                                         				<th width="25%" style="text-align: center;">Nama Barang</th>
                                         				<th width="13%" style="text-align: center;">Harga Jual</th>
                                         				<th width="13%" style="text-align: center;">Qty</th>
-                                        				<th width="13%" style="text-align: center;">Total</th>
+                                        				<th width="13%" style="text-align: center;">Keuntungan</th>
                                         			</tr>
                                         		</thead>
                                         		<tbody>
@@ -243,6 +248,9 @@
                                                     $no_bulan = 1;
                                                     $total_bulan=0;
                                                     foreach($bulanan as $row_bulan){
+                                                    $keuntungan_bulan = $row_bulan->harga_jual *
+                                                    $row_bulan->jumlah_barang -
+                                                    $row_bulan->hrg_distributor * $row_bulan->jumlah_barang;
                                                     ?>
                                         			<tr>
                                         				<td style="text-align: center;"><?= $no_bulan++; ?></td>
@@ -259,20 +267,20 @@
                                         					<?= $row_bulan->jumlah_barang; ?>
                                         				</td>
                                         				<td style="text-align: right;">
-                                        					<?= rupiah($row_bulan->total_harga) ?>
+                                        					<?= rupiah($keuntungan_bulan) ?>
                                         				</td>
                                         			</tr>
                                         			<?php 
-                                                    $total_bulan += $row_bulan->total_harga;  
+                                                    $total_bulan += $keuntungan_bulan;  
                                                     }
                                                     ?>
                                         			<?php 
                                                     if($total_bulan == "")
                                                     {
-                                                        echo '<h4 style="float:right">Sub Total : 0</h4>';
+                                                        echo '<h4 style="float:right">Total Keuntungan : 0</h4>';
                                                     }
                                                     else {
-                                                        echo '<h4 style="float: right;">Sub Total :  '.rupiah($total_bulan).'</h4>"';
+                                                        echo '<h4 style="float: right;">Total Keuntungan :  '.rupiah($total_bulan).'</h4>"';
                                                     }
                                                     ?>
 
@@ -285,7 +293,7 @@
                                         				<th style="text-align: center;">Nama Barang</th>
                                         				<th style="text-align: center;">Harga Jual</th>
                                         				<th style="text-align: center;">Qty</th>
-                                        				<th style="text-align: center;">Total</th>
+                                        				<th style="text-align: center;">Keuntungan</th>
                                         			</tr>
                                         		</tfoot>
                                         	</table>
