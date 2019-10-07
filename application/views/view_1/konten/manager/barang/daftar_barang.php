@@ -65,7 +65,7 @@
 									<td><?= $kode; ?></td>
 									<td><?= $row->nama; ?></td>
 									<td><?= $row->qty ?></td>
-									<td style="text-align:right;"><?= $row->hrg_distributor ?></td>
+									<td style="text-align:right;"><?= rupiah($row->hrg_distributor) ?></td>
 									<td><?= date('d F Y', strtotime($row->tanggal)) ?></td>
 									<td><?= date('h:i:s', strtotime($row->tanggal)) ?></td>
 								</tr>
@@ -76,7 +76,7 @@
                             }
                                 ?>
 								<span style="font-size:25px;font-weight:bold">SAHAM </span>
-								<span style="font-size:25px;font-weight:bold"><?= $grand ?></span>
+								<span style="font-size:25px;font-weight:bold"><?= rupiah($grand) ?></span>
 							</tbody>
 							<tfoot>
 								<th>No</th>
