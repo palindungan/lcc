@@ -61,7 +61,7 @@
                                         <div class="row">
                                                 <div class="input-group">
                                                     <span class="input-group-btn">
-                                                        <a target="_blank" style="float:right" class="btn btn-primary" style="align: right "
+                                                        <a target="_blank" style="float:left;" class="btn btn-primary" style="align: right "
                                                             href="<?php echo base_url().'laporan_manager/hari_ini' ?>">Prin
                                                             Data</a>
                                                     </span>
@@ -71,41 +71,53 @@
                                             <table width="100%" class="table table-striped">
                                                 <thead>
                                                     <tr>
-                                                        <th width="14%">No</th>
-                                                        <th width="14%">Nama Customer</th>
-                                                        <th width="14%">Tanggal</th>
-                                                        <th width="14">Nama Barang</th>
-                                                        <th width="14">Harga Jual</th>
-                                                        <th width="14%">Jumlah Barang</th>
-                                                        <th width="14%">Total</th>
+                                                        <th width="14%" style="text-align: center;">No</th>
+                                                        <th width="14%" style="text-align: center;">Nama Customer</th>
+                                                        <th width="14%" style="text-align: center;">Tanggal</th>
+                                                        <th width="14%" style="text-align: center;">Nama Barang</th>
+                                                        <th width="14%" style="text-align: center;">Harga Jual</th>
+                                                        <th width="14%" style="text-align: center;">Jumlah Barang</th>
+                                                        <th width="14%" style="text-align: center;">Total</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <?php 
                                                     $no_hari = 1;
+                                                    $total_hari="";
                                                     foreach($hari as $row_hari){
                                                     ?>
                                                     <tr>
-                                                        <td><?= $no_hari++; ?></td>
+                                                        <td style="text-align: center;"><?= $no_hari++; ?></td>
                                                         <td><?= $row_hari->nama_customer; ?></td>
-                                                        <td><?= $row_hari->tanggal_penjualan; ?></td>
-                                                        <td><?= $row_hari->nama_barang; ?></td>
-                                                        <td><?= $row_hari->harga_jual; ?></td>
-                                                        <td><?= $row_hari->jumlah_barang; ?></td>
-                                                        <td><?= $row_hari->total_harga; ?></td>
+                                                        <td style="text-align: center;"><?= $row_hari->tanggal_penjualan; ?></td>
+                                                        <td style="text-align: center;"><?= $row_hari->nama_barang; ?></td>
+                                                        <td style="text-align: right;"><?= rupiah($row_hari->harga_jual) ?></td>
+                                                        <td style="text-align: center;"><?= $row_hari->jumlah_barang; ?></td>
+                                                        <td style="text-align: right;"><?= rupiah($row_hari->total_harga) ?></td>
                                                     </tr>
-                                                    <?php   
+                                                    <?php 
+                                                    $total_hari += $row_hari->total_harga;  
                                                     }
                                                     ?>
+                                                    <?php 
+                                                    if($total_hari == "")
+                                                    {
+                                                        echo "0" ;
+                                                    }
+                                                    else {
+                                                        echo '<h4 style="float: right;">Sub Total :  .'.rupiah($total_hari).'</h4>"';
+                                                    }
+                                                    ?>
+                                                    
                                                 </tbody>
                                                 <tfoot>
-                                                        <th width="14%">No</th>
-                                                        <th width="14%">Nama Customer</th>
-                                                        <th width="14%">Tanggal</th>
-                                                        <th width="14">Nama Barang</th>
-                                                        <th width="14">Harga Jual</th>
-                                                        <th width="14%">Jumlah Barang</th>
-                                                        <th width="14%">Total</th>
+                                                        <th width="14%" style="text-align: center;">No</th>
+                                                        <th width="14%" style="text-align: center;">Nama Customer</th>
+                                                        <th width="14%" style="text-align: center;">Tanggal</th>
+                                                        <th width="14%" style="text-align: center;">Nama Barang</th>
+                                                        <th width="14%" style="text-align: center;">Harga Jual</th>
+                                                        <th width="14%" style="text-align: center;">Jumlah Barang</th>
+                                                        <th width="14%" style="text-align: center;">Total</th>
                                                 </tfoot>
                                             </table>
                                         </div>
@@ -118,10 +130,11 @@
                                         <div class="row">
                                             <div class="input-group">
                                                 <span class="input-group-btn">
-                                                    <a target="_blank" style="float:right" class="btn btn-primary"
+                                                    <a target="_blank" style="float:left" class="btn btn-primary"
                                                         style="align: right "
                                                         href="<?php echo base_url().'laporan_manager/minggu_ini' ?>">Prin
                                                         Data</a>
+
                                                 </span>
                                             </div><!-- /input-group -->
                                         </div>
@@ -129,41 +142,44 @@
                                             <table width="100%" class="table table-striped">
                                                 <thead>
                                                     <tr>
-                                                        <th width="14%">No</th>
-                                                        <th width="14%">Nama Customer</th>
-                                                        <th width="14%">Tanggal</th>
-                                                        <th width="14">Nama Barang</th>
-                                                        <th width="14">Harga Jual</th>
-                                                        <th width="14%">Jumlah Barang</th>
-                                                        <th width="14%">Total</th>
+                                                        <th width="14%" style="text-align: center;">No</th>
+                                                        <th width="14%" style="text-align: center;">Nama Customer</th>
+                                                        <th width="14%" style="text-align: center;">Tanggal</th>
+                                                        <th width="14%" style="text-align: center;">Nama Barang</th>
+                                                        <th width="14%" style="text-align: center;">Harga Jual</th>
+                                                        <th width="14%" style="text-align: center;">Jumlah Barang</th>
+                                                        <th width="14%" style="text-align: center;">Total</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <?php 
                                                     $no_minggu = 1;
+                                                    $total_minggu= "";
                                                     foreach($minggu as $row_minggu){
                                                     ?>
                                                     <tr>
-                                                        <td><?= $no_minggu++; ?></td>
+                                                        <td style="text-align: center;"><?= $no_minggu++; ?></td>
                                                         <td><?= $row_minggu->nama_customer; ?></td>
-                                                        <td><?= $row_minggu->tanggal_penjualan; ?></td>
-                                                        <td><?= $row_minggu->nama_barang; ?></td>
-                                                        <td><?= $row_minggu->harga_jual; ?></td>
-                                                        <td><?= $row_minggu->jumlah_barang; ?></td>
-                                                        <td><?= $row_minggu->total_harga; ?></td>
+                                                        <td style="text-align: center;"><?= $row_minggu->tanggal_penjualan; ?></td>
+                                                        <td style="text-align: center;"><?= $row_minggu->nama_barang; ?></td>
+                                                        <td style="text-align: right;"><?= rupiah($row_minggu->harga_jual); ?></td>
+                                                        <td style="text-align: center;"><?= $row_minggu->jumlah_barang; ?></td>
+                                                        <td style="text-align: right;"><?= rupiah($row_minggu->total_harga) ?></td>
                                                     </tr>
-                                                    <?php   
+                                                    <?php  
+                                                    $total_minggu += $row_minggu->total_harga; 
                                                     }
                                                     ?>
+                                                        <h4 style="float: right;">Sub Total : <?= rupiah($total_minggu) ?></h4>
                                                 </tbody>
                                                 <tfoot>
-                                                        <th width="14%">No</th>
-                                                        <th width="14%">Nama Customer</th>
-                                                        <th width="14%">Tanggal</th>
-                                                        <th width="14">Nama Barang</th>
-                                                        <th width="14">Harga Jual</th>
-                                                        <th width="14%">Jumlah Barang</th>
-                                                        <th width="14%">Total</th>
+                                                        <th width="14%" style="text-align: center;">No</th>
+                                                        <th width="14%" style="text-align: center;">Nama Customer</th>
+                                                        <th width="14%" style="text-align: center;">Tanggal</th>
+                                                        <th width="14%" style="text-align: center;">Nama Barang</th>
+                                                        <th width="14%" style="text-align: center;">Harga Jual</th>
+                                                        <th width="14%" style="text-align: center;">Jumlah Barang</th>
+                                                        <th width="14%" style="text-align: center;">Total</th>
                                                 </tfoot>
                                             </table>
                                         </div>
@@ -176,7 +192,7 @@
                                         <div class="row">
                                             <div class="input-group">
                                                 <span class="input-group-btn">
-                                                    <a target="_blank" style="float:right" class="btn btn-primary"
+                                                    <a target="_blank" style="float:left" class="btn btn-primary"
                                                         style="align: right "
                                                         href="<?php echo base_url().'laporan_manager/bulan_ini' ?>">Prin
                                                         Data</a>
@@ -187,40 +203,43 @@
                                             <table width="100%" class="table table-striped">
                                                 <thead>
                                                     <tr>
-                                                        <th width="14%">No</th>
-                                                        <th width="14%">Nama Customer</th>
-                                                        <th width="14%">Tanggal</th>
-                                                        <th width="14">Nama Barang</th>
-                                                        <th width="14">Harga Jual</th>
-                                                        <th width="14%">Jumlah Barang</th>
-                                                        <th width="14%">Total</th
+                                                          <th width="14%" style="text-align: center;">No</th>
+                                                          <th width="14%" style="text-align: center;">Nama Customer</th>
+                                                          <th width="14%" style="text-align: center;">Tanggal</th>
+                                                          <th width="14%" style="text-align: center;">Nama Barang</th>
+                                                          <th width="14%" style="text-align: center;">Harga Jual</th>
+                                                          <th width="14%" style="text-align: center;">Jumlah Barang</th>
+                                                          <th width="14%" style="text-align: center;">Total</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <?php 
                                                     $no_bulan = 1;
-                                                    foreach($bulanan as $row_bulan){
+                                                    $total_bulan="";
+                                                    foreach($bulanan as $row_bulan){ 
                                                     ?>
                                                     <tr>
-                                                       <td><?= $no_bulan++; ?></td>
-                                                        <td><?= $row_bulan->nama_customer; ?></td>
-                                                        <td><?= $row_bulan->tanggal_penjualan; ?></td>
-                                                        <td><?= $row_bulan->nama_barang; ?></td>
-                                                        <td><?= $row_bulan->harga_jual; ?></td>
-                                                        <td><?= $row_bulan->jumlah_barang; ?></td>
-                                                        <td><?= $row_bulan->total_harga; ?></td>                                                    </tr>
-                                                    <?php   
-                                                    }
-                                                    ?>
+                                                      <td style="text-align: center;"><?= $no_bulan++; ?></td>
+                                                      <td style="text-align: left;"><?= $row_bulan->nama_customer; ?></td>
+                                                      <td style="text-align: center;"><?= $row_bulan->tanggal_penjualan; ?></td>
+                                                      <td style="text-align: center;"><?= $row_bulan->nama_barang; ?></td>
+                                                      <td style="text-align: right;"><?= $row_bulan->harga_jual; ?></td>
+                                                      <td style="text-align: center;"><?= $row_bulan->jumlah_barang; ?></td>
+                                                      <td style="text-align: right;"><?= $row_bulan->total_harga; ?></td>
+                                                    </tr>
+                                                    <?php 
+                                                    $total_bulan +=$row_bulan->total_harga;
+                                                    } ?>
+                                                    <h4 style="float: right;">Sub Total : <?= rupiah($total_bulan) ?></h4>
                                                 </tbody>
                                                 <tfoot>
-                                                        <th width="14%">No</th>
-                                                        <th width="14%">Nama Customer</th>
-                                                        <th width="14%">Tanggal</th>
-                                                        <th width="14">Nama Barang</th>
-                                                        <th width="14">Harga Jual</th>
-                                                        <th width="14%">Jumlah Barang</th>
-                                                        <th width="14%">Total</th>
+                                                        <th width="14%" style="text-align: center;">No</th>
+                                                        <th width="14%" style="text-align: center;">Nama Customer</th>
+                                                        <th width="14%" style="text-align: center;">Tanggal</th>
+                                                        <th width="14%" style="text-align: center;">Nama Barang</th>
+                                                        <th width="14%" style="text-align: center;">Harga Jual</th>
+                                                        <th width="14%" style="text-align: center;">Jumlah Barang</th>
+                                                        <th width="14%" style="text-align: center;">Total</th>
                                                 </tfoot>
                                             </table>
                                         </div>
