@@ -37,18 +37,20 @@ class Laporan extends CI_Controller {
     {
       $data['hari'] = $this->M_laporan->tampil_hari()->result();
       $html = $this->load->view('view_1/konten/manager/laporan/print_per_hari',$data,true);
-      $this->dompdf->PdfGenerator($html,'coba','A4','landscape');
+      $tanggal = date('d-m-Y');
+      $this->dompdf->PdfGenerator($html,'laporan-'.$tanggal,'A4','landscape');
     }
     public function cetak_minggu()
     {
       $data['minggu'] = $this->M_laporan->tampil_minggu()->result();
       $html = $this->load->view('view_1/konten/manager/laporan/print_per_minggu',$data,true);
-      $this->dompdf->PdfGenerator($html,'coba','A4','landscape'); 
+      $this->dompdf->PdfGenerator($html,'laporan-mingguan','A4','landscape'); 
     }
     public function cetak_bulan()
     {
       $data['bulanan'] = $this->M_laporan->tampil_bulan()->result();
       $html = $this->load->view('view_1/konten/manager/laporan/print_per_bulan',$data,true);
-      $this->dompdf->PdfGenerator($html,'coba','A4','landscape'); 
+      $tanggal = date('F-Y');
+      $this->dompdf->PdfGenerator($html,'laporan'.$tanggal,'A4','landscape'); 
     }
 }
