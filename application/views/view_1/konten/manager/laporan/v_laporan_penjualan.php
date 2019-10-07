@@ -159,7 +159,7 @@
                                             </div><!-- /input-group -->
                                         </div>
                                         <div class="table-responsive">
-                                        	<table id="data-table-basic" class="table table-striped">
+                                        	<table id="dt_custom1" class="table table-striped">
                                         		<thead>
                                         			<tr>
                                         				<th width="1%" style="text-align: center;">No</th>
@@ -242,7 +242,7 @@
                                             </div><!-- /input-group -->
                                         </div>
                                         <div class="table-responsive">
-                                        	<table id="data-table-basic" class="table table-striped">
+                                        	<table id="dt_custom2" class="table table-striped">
                                         		<thead>
                                         			<tr>
                                         				<th width="1%" style="text-align: center;">No</th>

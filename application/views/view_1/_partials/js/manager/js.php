@@ -95,3 +95,26 @@
 		============================================ -->
 <script src="<?= base_url(); ?>assets/notika/js/data-table/jquery.dataTables.min.js"></script>
 <script src="<?= base_url(); ?>assets/notika/js/data-table/data-table-act.js"></script>
+<script>
+	$('#data-table-basic').DataTable({
+		ordering: false
+	});
+
+</script>
+<script>
+	$('#dt_custom1').DataTable({
+		ordering: false
+	});
+
+</script>
+<script>
+	$('#dt_custom2').DataTable({
+		ordering: false
+	});
+
+</script>
+<!-- Agar input tidak ada history -->
+<script>
+	$("form :input").attr("autocomplete", "off");
+
+</script>
