@@ -29,13 +29,24 @@
 </div>
 <div class="data-table-area">
     <div class="container">
+        <h4>Laporan Periode</h4>
         <div class="row" style="margin-bottom:27px;">
             <form action="<?php echo base_url('laporan_manager/custom') ?>" method="post" target="_blank">
             <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12" style="margin-bottom:27px;">
-            <input type="date" name="tgl_mulai" class="form-control" >
+                <div id="data_1">
+                    <div class="input-group date nk-int-st">
+                        <span class="input-group-addon"></span>
+                        <input type="text" class="form-control" name="tgl_mulai"  placeholder="Tanggal Mulai">
+                    </div>
+                </div>
             </div>
-            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
-            <input type="date" name="tgl_akhir" class="form-control" >
+            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12" style="margin-bottom:27px;">
+            	<div id="data_1">
+            		<div class="input-group date nk-int-st">
+            			<span class="input-group-addon"></span>
+            			<input type="text" class="form-control" name="tgl_akhir" placeholder="Tanggal Akhir">
+            		</div>
+            	</div>
             </div>
             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
                 <div class="input-group">

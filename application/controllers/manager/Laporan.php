@@ -25,8 +25,8 @@ class Laporan extends CI_Controller {
 	}
     public function custom()
     {
-        $tgl1 = $this->input->post('tgl_mulai');
-        $tgl2 = $this->input->post('tgl_akhir');
+        $tgl1 = date('Y-m-d', strtotime($this->input->post('tgl_mulai')));
+        $tgl2 = date('Y-m-d', strtotime($this->input->post('tgl_akhir')));
         $tgl_mulai = $tgl1." 00:00:01";
         $tgl_akhir = $tgl2." 23:59:59";
         $data['minggu'] = $this->M_laporan->tampil_data2($tgl_mulai,$tgl_akhir)->result();
