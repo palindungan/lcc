@@ -32,7 +32,7 @@ foreach($user as $data){
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="form-element-list">
                     <div class="row">
-                        <form action="<?php echo base_url("manager/user/update_password") ?>" method="post">
+                        <form action="<?php echo base_url("pimpinan/user/update_password") ?>" method="post">
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">
@@ -65,7 +65,7 @@ foreach($user as $data){
                                     </div>
                                 </div>
                             </div>
-                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">
                                     </div>
