@@ -36,8 +36,7 @@
 			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 				<form action="" method="post" id="myform">
 					<select name="pilih" id="xx" class="form-control">
-						<option>Pilih</option>
-						<option value="hari">Hari Ini</option>
+						<option value="hari" selected>Hari Ini</option>
 						<option value="minggu">Minggu Ini</option>
 						<option value="bulan">Bulan Ini</option>
 					</select>
@@ -104,8 +103,13 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script>
+	hari_ini();
 	$(document).on('change', '#xx', function (event) {
 		event.preventDefault();
+		hari_ini();
+	});
+
+	function hari_ini() {
 		var form_data = $("#myform").serialize();
 		$.ajax({
 			url: "<?php echo base_url(); ?>manager/home/tampil",
@@ -115,7 +119,7 @@
 				$("#muncul").html(data);
 			}
 		});
-	});
+	}
 
 </script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
