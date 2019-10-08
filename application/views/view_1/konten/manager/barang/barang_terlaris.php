@@ -10,7 +10,7 @@
 									<i class="notika-icon notika-windows"></i>
 								</div>
 								<div class="breadcomb-ctn">
-									<h2>BARANG TERLARIS</h2>
+									<h2>BARANG TRENDING</h2>
 									<p>Welcome to Notika <span class="bread-ntd">Admin Template</span></p>
 								</div>
 							</div>
