@@ -32,7 +32,7 @@ class Laporan extends CI_Controller
         			<div class="tab-ctn">
         				<div class="data-table-list">
         					<div class="table-responsive">
-        						<table id="data-table-basic" class="table table-striped">
+        						<table id="dt_custom1" class="table table-striped">
         							<thead>
         								<tr>
         									<th width="1%" style="text-align: center;">No</th>
@@ -99,7 +99,7 @@ class Laporan extends CI_Controller
 						<div class="tab-ctn">
 							<div class="data-table-list">
 								<div class="table-responsive">
-									<table id="dt_custom1" width="100%" class="table table-striped">
+									<table id="dt_custom2" width="100%" class="table table-striped">
 										<thead>
 											<tr>
 												<th width="1%" style="text-align: center;">No</th>
@@ -162,7 +162,7 @@ class Laporan extends CI_Controller
 						<div class="tab-ctn">
 							<div class="data-table-list">
 								<div class="table-responsive">
-									<table id="dt_custom2" width="100%" class="table table-striped">
+									<table id="dt_custom3" width="100%" class="table table-striped">
 										<thead>
 											<tr>
 												<th width="1%" style="text-align: center;">No</th>
