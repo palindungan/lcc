@@ -122,7 +122,7 @@
                                                         echo '<h4 style="float:right">Total Keuntungan : 0</h4>';
                                                     }
                                                     else {
-                                                        echo '<h4 style="float: right;">Total Keuntungan :   '.rupiah($total_hari).'</h4>"';
+                                                        echo '<h4 style="float: right;">Total Keuntungan :   '.rupiah($total_hari).'</h4>';
                                                     }
                                                     ?>
 
@@ -206,7 +206,7 @@
                                                         echo '<h4 style="float:right">Total Keuntungan : 0</h4>';
                                                     }
                                                     else {
-                                                        echo '<h4 style="float: right;">Total Keuntungan :  '.rupiah($total_minggu).'</h4>"';
+                                                        echo '<h4 style="float: right;">Total Keuntungan :  '.rupiah($total_minggu).'</h4>';
                                                     }
                                                     ?>
 
@@ -291,7 +291,7 @@
                                                         echo '<h4 style="float:right">Total Keuntungan : 0</h4>';
                                                     }
                                                     else {
-                                                        echo '<h4 style="float: right;">Total Keuntungan :  '.rupiah($total_bulan).'</h4>"';
+                                                        echo '<h4 style="float: right;">Total Keuntungan :  '.rupiah($total_bulan).'</h4>';
                                                     }
                                                     ?>
 
