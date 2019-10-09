@@ -167,6 +167,7 @@
 </div>
 
 <script src="<?= base_url(); ?>assets/notika/js/vendor/jquery-3.3.1.min.js"></script>
+<script src="<?= base_url(); ?>assets/vendor/auto_complete/jquery-ui/jquery-ui.js"></script>
 
 <script>
     var count1 = 0;
@@ -301,4 +302,12 @@
         });
     });
     // tambah ke database
+
+    // codingan untuk autocomplete start
+    $(document).ready(function() {
+        $("#title").autocomplete({
+            source: "<?php echo site_url('blog/get_autocomplete/?'); ?>"
+        });
+    });
+    // codingan untuk autocomplete end
 </script>
