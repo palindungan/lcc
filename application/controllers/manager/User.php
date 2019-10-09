@@ -35,12 +35,12 @@ class User extends CI_controller
         	$id_toko = $this->session->userdata('id_toko');
 		$kode = $this->M_user->get_no();
 		$data = array(
-		'id_user' => $kode,
-		'nama_user' => $this->input->post('nama_user'),	
-		'username' => $this->input->post('username'),				
-		'jenis_akses' => "Kasir",
-		'id_toko' => $id_toko,
-		'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT)
+			'id_user' => $kode,
+			'nama_user' => $this->input->post('nama_user'),	
+			'username' => $this->input->post('username'),				
+			'jenis_akses' => "Kasir",
+			'id_toko' => $id_toko,
+			'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT)
 		);
 		$cek = $this->M_user->ambil_data($this->input->post('username'))->num_rows();
 		if($cek > 0){
