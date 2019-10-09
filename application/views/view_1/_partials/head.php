@@ -78,3 +78,7 @@
 <!-- Data Table JS
 		============================================ -->
 <link rel="stylesheet" href="<?= base_url(); ?>assets/notika/css/jquery.dataTables.min.css">
+
+<!-- untuk autocomplete
+		============================================ -->
+<link rel="stylesheet" href="<?= base_url(); ?>assets/vendor/auto_complete/jquery-ui/jquery-ui.css">

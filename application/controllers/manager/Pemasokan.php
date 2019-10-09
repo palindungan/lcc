@@ -157,4 +157,28 @@ class Pemasokan extends CI_Controller
             }
         }
     }
+
+    function get_autocomplete_nama()
+    {
+        if (isset($_GET['term'])) {
+            $result = $this->blog_model->search_blog($_GET['term']);
+            if (count($result) > 0) {
+                foreach ($result as $row)
+                    $arr_result[] = $row->blog_title;
+                echo json_encode($arr_result);
+            }
+        }
+    }
+
+    function get_autocomplete_barcode()
+    {
+        if (isset($_GET['term'])) {
+            $result = $this->blog_model->search_blog($_GET['term']);
+            if (count($result) > 0) {
+                foreach ($result as $row)
+                    $arr_result[] = $row->blog_title;
+                echo json_encode($arr_result);
+            }
+        }
+    }
 }

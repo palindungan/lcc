@@ -166,8 +166,7 @@
     </div>
 </div>
 
-<script src="<?= base_url(); ?>assets/notika/js/vendor/jquery-3.3.1.min.js"></script>
-<script src="<?= base_url(); ?>assets/vendor/auto_complete/jquery-ui/jquery-ui.js"></script>
+<script src="<?= base_url(); ?>assets/vendor/auto_complete/jquery-3.4.1.min.js"></script>
 
 <script>
     var count1 = 0;

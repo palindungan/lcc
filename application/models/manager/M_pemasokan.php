@@ -78,4 +78,19 @@ class M_pemasokan extends CI_Model
         }
         return $kd;
     }
+
+    function search_nama($title)
+    {
+        $this->db->like('blog_title', $title, 'both');
+        $this->db->order_by('blog_title', 'ASC');
+        $this->db->limit(10);
+        return $this->db->get('blog')->result();
+    }
+    function search_barcode($title)
+    {
+        $this->db->like('blog_title', $title, 'both');
+        $this->db->order_by('blog_title', 'ASC');
+        $this->db->limit(10);
+        return $this->db->get('blog')->result();
+    }
 }

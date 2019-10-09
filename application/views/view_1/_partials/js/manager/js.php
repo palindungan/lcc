@@ -118,3 +118,5 @@
 	$("form :input").attr("autocomplete", "off");
 
 </script>
+
+<script src="<?= base_url(); ?>assets/vendor/auto_complete/jquery-ui/jquery-ui.js"></script>
