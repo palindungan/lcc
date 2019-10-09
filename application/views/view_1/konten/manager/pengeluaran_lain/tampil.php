@@ -10,7 +10,7 @@
 									<i class="notika-icon notika-windows"></i>
 								</div>
 								<div class="breadcomb-ctn">
-									<h2>DAFTAR BARANG BARCODE</h2>
+									<h2>DAFTAR PENGELUARAN LAIN</h2>
 									<p>Welcome to Notika <span class="bread-ntd">Admin Template</span></p>
 								</div>
 							</div>
