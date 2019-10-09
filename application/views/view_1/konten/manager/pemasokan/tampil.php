@@ -193,7 +193,7 @@
                     <input required="" type="number" class="form-control" id="hrg_distributor` + count1 + `" name="hrg_distributor[]" placeholder="Harga" value=""  min="0" max="9999999999">
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
-                    <button type="button" id="` + count1 + `" class="remove_baris btn btn-danger"><i class="notika-icon notika-trash"></i>` + count1 + `</button>
+                    <button type="button" id="` + count1 + `" class="remove_baris btn btn-danger"><i class="notika-icon notika-trash"></i></button>
                 </div>
             </div>
 
@@ -274,7 +274,7 @@
                     <input required="" type="number" class="form-control"  id="hrg_distributor` + count1 + `" name="hrg_distributor[]" placeholder="Harga" value="" min="0" max="9999999999">
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
-                    <button type="button" id="` + count1 + `" class="remove_baris btn btn-danger"><i class="notika-icon notika-trash"></i>` + count1 + `</button>
+                    <button type="button" id="` + count1 + `" class="remove_baris btn btn-danger"><i class="notika-icon notika-trash"></i></button>
                 </div>
             </div>
 
