@@ -163,7 +163,7 @@ class Pemasokan extends CI_Controller
         $nilai = $this->input->post('nilai');
 
         if (isset($nilai)) {
-            $result = $this->M_pemasokan->search_nama($nilai);
+            $result = $this->M_pemasokan->search_autocomplete('nama', $nilai);
             if (count($result) > 0) {
                 foreach ($result as $row)
                     $arr_result[] = $row->nama;
@@ -178,7 +178,7 @@ class Pemasokan extends CI_Controller
         $nilai = $this->input->post('nilai');
 
         if (isset($nilai)) {
-            $result = $this->M_pemasokan->search_barcode($nilai);
+            $result = $this->M_pemasokan->search_autocomplete('barcode', $nilai);
             if (count($result) > 0) {
                 foreach ($result as $row)
                     $arr_result[] = $row->barcode;

@@ -79,17 +79,10 @@ class M_pemasokan extends CI_Model
         return $kd;
     }
 
-    function search_nama($data)
+    function search_autocomplete($field, $data)
     {
-        $this->db->like('nama', $data, 'both');
-        $this->db->order_by('nama', 'ASC');
-        $this->db->limit(10);
-        return $this->db->get('barang_terdaftar')->result();
-    }
-    function search_barcode($data)
-    {
-        $this->db->like('barcode', $data, 'both');
-        $this->db->order_by('barcode', 'ASC');
+        $this->db->like($field, $data, 'both');
+        $this->db->order_by($field, 'ASC');
         $this->db->limit(10);
         return $this->db->get('barang_terdaftar')->result();
     }
