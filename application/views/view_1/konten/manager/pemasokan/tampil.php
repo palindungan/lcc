@@ -169,6 +169,12 @@
 <script src="<?= base_url(); ?>assets/vendor/auto_complete/jquery-3.4.1.min.js"></script>
 
 <script>
+    $(document).ready(function() {
+
+        auto_complete();
+
+    });
+
     var count1 = 0;
     tampil_detail();
 
@@ -180,10 +186,10 @@
             <div id="row` + count1 + `" class="row">
                 <br />
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <input type="text" class="form-control" id="kode_atau_barcode` + count1 + `" name="kode_atau_barcode[]" placeholder="Kode/Barcode" value="">
+                    <input type="text" class="form-control barcode_nya" id="kode_atau_barcode` + count1 + `" name="kode_atau_barcode[]" placeholder="Kode/Barcode" value="">
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <input type="text" class="form-control" id="nama` + count1 + `" name="nama[]" placeholder="Nama Barang" value="">
+                    <input type="text" class="form-control nama_nya" id="nama` + count1 + `" name="nama[]" placeholder="Nama Barang" value="">
                 </div>
                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12">
                     <input type="number" class="form-control" id="qty` + count1 + `" name="qty[]" placeholder="qty" value="">
@@ -199,6 +205,8 @@
         `);
 
         count1 = count1 + 1;
+
+        auto_complete();
     }
 
     // jika kita tekan tambah / click button
@@ -259,10 +267,10 @@
             <div id="row` + count1 + `" class="row">
                 <br />
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <input type="text" class="form-control" id="kode_atau_barcode` + count1 + `" name="kode_atau_barcode[]" placeholder="Kode/Barcode" value="` + barcode + `">
+                    <input type="text" class="form-control barcode_nya" id="kode_atau_barcode` + count1 + `" name="kode_atau_barcode[]" placeholder="Kode/Barcode" value="` + barcode + `">
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <input type="text" class="form-control" id="nama` + count1 + `" name="nama[]" placeholder="Nama Barang" value="` + nama + `">
+                    <input type="text" class="form-control nama_nya" id="nama` + count1 + `" name="nama[]" placeholder="Nama Barang" value="` + nama + `">
                 </div>
                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12">
                     <input type="number" class="form-control" id="qty` + count1 + `" name="qty[]" placeholder="qty" value="" min="1">
@@ -279,6 +287,8 @@
 
         count1 = count1 + 1;
         $('#myModalthree').modal('hide');
+
+        auto_complete();
     }
 
     // End pencarian
@@ -303,10 +313,51 @@
     // tambah ke database
 
     // codingan untuk autocomplete start
-    $(document).ready(function() {
-        $("#title").autocomplete({
-            source: "<?php echo site_url('blog/get_autocomplete/?'); ?>"
+
+    function auto_complete() {
+
+        $(function() {
+
+            $(".nama_nya").autocomplete({
+                source: function(request, response) {
+                    // Fetch data
+                    $.ajax({
+                        url: "<?php echo base_url() . 'manager/pemasokan/get_autocomplete_nama'; ?>",
+                        type: 'post',
+                        dataType: "json",
+                        data: {
+                            nilai: request.term
+                        },
+                        success: function(data) {
+                            response(data);
+                        }
+                    });
+                }
+            });
+
+            $(".barcode_nya").autocomplete({
+                source: function(request, response) {
+                    // Fetch data
+                    $.ajax({
+                        url: "<?php echo base_url() . 'manager/pemasokan/get_autocomplete_barcode'; ?>",
+                        type: 'post',
+                        dataType: "json",
+                        data: {
+                            nilai: request.term
+                        },
+                        success: function(data) {
+                            response(data);
+                        }
+                    });
+                }
+            });
+
         });
-    });
+
+    }
+
+
+
+
     // codingan untuk autocomplete end
 </script>

@@ -160,11 +160,13 @@ class Pemasokan extends CI_Controller
 
     function get_autocomplete_nama()
     {
-        if (isset($_GET['term'])) {
-            $result = $this->blog_model->search_blog($_GET['term']);
+        $nilai = $this->input->post('nilai');
+
+        if (isset($nilai)) {
+            $result = $this->M_pemasokan->search_nama($nilai);
             if (count($result) > 0) {
                 foreach ($result as $row)
-                    $arr_result[] = $row->blog_title;
+                    $arr_result[] = $row->nama;
                 echo json_encode($arr_result);
             }
         }
@@ -172,11 +174,14 @@ class Pemasokan extends CI_Controller
 
     function get_autocomplete_barcode()
     {
-        if (isset($_GET['term'])) {
-            $result = $this->blog_model->search_blog($_GET['term']);
+
+        $nilai = $this->input->post('nilai');
+
+        if (isset($nilai)) {
+            $result = $this->M_pemasokan->search_barcode($nilai);
             if (count($result) > 0) {
                 foreach ($result as $row)
-                    $arr_result[] = $row->blog_title;
+                    $arr_result[] = $row->barcode;
                 echo json_encode($arr_result);
             }
         }
