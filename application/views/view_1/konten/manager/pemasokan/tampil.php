@@ -42,7 +42,7 @@
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <div class="form-group">
                                         <div class="bootstrap-select fm-cmp-mg">
-                                            <select class="selectpicker" name="id_distributor" data-live-search="true">
+                                            <select required="" class="selectpicker" name="id_distributor" data-live-search="true">
                                                 <option value="">Pilih Distributor</option>
                                                 <?php foreach ($distributor as $d) {  ?>
                                                     <option value="<?php echo $d->id_distributor ?>">
@@ -57,13 +57,13 @@
                                     <div class="form-group nk-datapk-ctm form-elet-mg" id="data_1">
                                         <div class="input-group date nk-int-st">
                                             <span class="input-group-addon"></span>
-                                            <input type="text" class="form-control" name="tanggal" value="" placeholder="Tanggal">
+                                            <input required="" type="text" class="form-control" name="tanggal" value="" placeholder="Tanggal">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <div class="form-group">
-                                        <input type="number" class="form-control" name="total" placeholder="Total">
+                                        <input required="" type="number" class="form-control" name="total" placeholder="Total">
                                     </div>
                                 </div>
                             </div>
@@ -186,16 +186,16 @@
             <div id="row` + count1 + `" class="row">
                 <br />
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <input type="text" class="form-control barcode_nya" id="kode_atau_barcode` + count1 + `" name="kode_atau_barcode[]" placeholder="Kode/Barcode" value="">
+                    <input required="" type="text" class="form-control barcode_nya" id="kode_atau_barcode` + count1 + `" name="kode_atau_barcode[]" placeholder="Kode/Barcode" value="">
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <input type="text" class="form-control nama_nya" id="nama` + count1 + `" name="nama[]" placeholder="Nama Barang" value="">
+                    <input required="" type="text" class="form-control nama_nya" id="nama` + count1 + `" name="nama[]" placeholder="Nama Barang" value="">
                 </div>
                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12">
-                    <input type="number" class="form-control" id="qty` + count1 + `" name="qty[]" placeholder="qty" value="">
+                    <input required="" type="number" class="form-control" id="qty` + count1 + `" name="qty[]" placeholder="qty" value=""  min="1" max="999">
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <input type="number" class="form-control" id="hrg_distributor` + count1 + `" name="hrg_distributor[]" placeholder="Harga" value="">
+                    <input required="" type="number" class="form-control" id="hrg_distributor` + count1 + `" name="hrg_distributor[]" placeholder="Harga" value=""  min="0" max="9999999999">
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                     <button type="button" id="` + count1 + `" class="remove_baris btn btn-danger"><i class="notika-icon notika-trash"></i>` + count1 + `</button>
@@ -267,16 +267,16 @@
             <div id="row` + count1 + `" class="row">
                 <br />
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <input type="text" class="form-control barcode_nya" id="kode_atau_barcode` + count1 + `" name="kode_atau_barcode[]" placeholder="Kode/Barcode" value="` + barcode + `">
+                    <input required="" type="text" class="form-control barcode_nya" id="kode_atau_barcode` + count1 + `" name="kode_atau_barcode[]" placeholder="Kode/Barcode" value="` + barcode + `">
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <input type="text" class="form-control nama_nya" id="nama` + count1 + `" name="nama[]" placeholder="Nama Barang" value="` + nama + `">
+                    <input required="" type="text" class="form-control nama_nya" id="nama` + count1 + `" name="nama[]" placeholder="Nama Barang" value="` + nama + `">
                 </div>
                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12">
-                    <input type="number" class="form-control" id="qty` + count1 + `" name="qty[]" placeholder="qty" value="" min="1">
+                    <input required="" type="number" class="form-control" id="qty` + count1 + `" name="qty[]" placeholder="qty" value="" min="1" max="999">
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <input type="number" class="form-control"  id="hrg_distributor` + count1 + `" name="hrg_distributor[]" placeholder="Harga" value="" min="0">
+                    <input required="" type="number" class="form-control"  id="hrg_distributor` + count1 + `" name="hrg_distributor[]" placeholder="Harga" value="" min="0" max="9999999999">
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                     <button type="button" id="` + count1 + `" class="remove_baris btn btn-danger"><i class="notika-icon notika-trash"></i>` + count1 + `</button>
@@ -293,24 +293,41 @@
 
     // End pencarian
 
-    // tambah ke database
+    // valdasi form
     $(document).on('submit', '#transaksi_form', function(event) {
         event.preventDefault();
 
         // mengambil nilai di dalam form
         var form_data = $(this).serialize();
 
+        // validasi proses
         $.ajax({
-            url: "<?php echo base_url() . 'manager/pemasokan/input_transaksi_form'; ?>",
+            url: "<?php echo base_url() . 'manager/pemasokan/validation_form_transaksi'; ?>",
             method: "POST",
             data: form_data,
             success: function(data) {
-                alert("Data berhasil Ditambahkan");
-                location.reload();
+
+                var n = data.length;
+                if (n > 1) {
+                    alert(data);
+                } else {
+                    // tambah ke database
+                    $.ajax({
+                        url: "<?php echo base_url() . 'manager/pemasokan/input_transaksi_form'; ?>",
+                        method: "POST",
+                        data: form_data,
+                        success: function(data) {
+                            alert("Data berhasil Ditambahkan");
+                            location.reload();
+                        }
+                    });
+                    // tambah ke database
+                }
             }
         });
+
     });
-    // tambah ke database
+    // validasi form
 
     // codingan untuk autocomplete start
 

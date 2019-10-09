@@ -186,4 +186,64 @@ class Pemasokan extends CI_Controller
             }
         }
     }
+
+    public function validation_form_transaksi()
+    {
+        if (isset($_POST['kode_atau_barcode'])) {
+
+            // tambah detail transaksi
+            for ($i = 0; $i < count($this->input->post('kode_atau_barcode')); $i++) {
+
+                $nama = $this->input->post('nama')[$i];
+                $kode_atau_barcode = $this->input->post('kode_atau_barcode')[$i];
+
+                // deteksi apakah ada barcode yang sama di database
+                $data_barcode = array(
+                    'barcode' => $kode_atau_barcode
+                );
+                $cek = $this->M_pemasokan->get_data("barang_terdaftar", $data_barcode)->num_rows();
+
+                // cek apakah barcode ada yang sama
+                if ($cek >= 1) {
+
+                    // mengambil kode dari barang terdaftar
+                    $query = $this->M_pemasokan->get_data("barang_terdaftar", $data_barcode);
+                    foreach ($query->result_array() as $row) {
+                        $nama_db = $row["nama"];
+                    }
+
+                    if ($nama_db == $nama) {
+                        echo '';
+                    } else {
+                        echo 'Gagal! , Barang Dengan Kode ' . $kode_atau_barcode . ' Memiliki Nama Berbeda Dengan Database. ';
+                    }
+                } else {
+
+                    $data_nama = array(
+                        'nama' => $nama
+                    );
+                    $cek_2 = $this->M_pemasokan->get_data("barang_terdaftar", $data_nama)->num_rows();
+
+                    // cek jika barcode berbeda dan ada nama yang sama
+                    if ($cek_2 >= 1) {
+
+                        // mengambil kode dari barang terdaftar
+                        $query = $this->M_pemasokan->get_data("barang_terdaftar", $data_nama);
+                        foreach ($query->result_array() as $row) {
+                            $barcode_db = $row["barcode"];
+                        }
+
+                        $validasi = substr($barcode_db, 0, 3); // CD-
+                        if ($validasi == "CD-") {
+                            echo 'Gagal! , Barang ' . $nama . ' Tidak Boleh Menggunakan Barcode Tersebut. ';
+                        } else {
+                            echo '';
+                        }
+                    } else {
+                        echo '';
+                    }
+                }
+            }
+        }
+    }
 }
