@@ -75,8 +75,7 @@
                                 $grand += $sub_total;  
                             }
                                 ?>
-								<span style="font-size:25px;font-weight:bold">SAHAM </span>
-								<span style="font-size:25px;font-weight:bold"><?= rupiah($grand) ?></span>
+								<h3 style="float:left">Aset Toko : <?= rupiah($grand) ?></h3>
 							</tbody>
 							<tfoot>
 								<th>No</th>
