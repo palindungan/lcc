@@ -38,11 +38,13 @@ class Pemasokan extends CI_Controller
 
     public function input_transaksi_form()
     {
-        // data pemasokan
+        date_default_timezone_set('Asia/Jakarta');
+
+        // data pemasokan 
         $id_pemasokan = $this->M_pemasokan->get_no_pemasokan(); // generate
-        $id_user = "U01"; // session
+        $id_user = $this->session->userdata('id_user'); // session
         $id_distributor = $this->input->post('id_distributor');
-        $tanggal = $this->input->post('tanggal');
+        $tanggal = date('Y-m-d H:i:s');
         $total = $this->input->post('total');
 
         $data = array(
@@ -244,6 +246,8 @@ class Pemasokan extends CI_Controller
                     }
                 }
             }
+        } else {
+            echo 'Harus Ada Barang!! ';
         }
     }
 }

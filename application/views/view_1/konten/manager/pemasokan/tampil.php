@@ -53,14 +53,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                    <div class="form-group nk-datapk-ctm form-elet-mg" id="data_1">
-                                        <div class="input-group date nk-int-st">
-                                            <span class="input-group-addon"></span>
-                                            <input required="" type="text" class="form-control" name="tanggal" value="" placeholder="Tanggal">
-                                        </div>
-                                    </div>
-                                </div>
+
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"></div>
+
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <div class="form-group">
                                         <input required="" type="number" class="form-control" name="total" placeholder="Total">
