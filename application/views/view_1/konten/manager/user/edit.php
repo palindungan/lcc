@@ -37,25 +37,22 @@ foreach($edit as $data){
                     <div class="row">
                         <form action="<?php echo base_url("manager/user/update") ?>" method="post">
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                            <div class="form-group ic-cmp-int">
+                            <div class="form-group<?php if(form_error('nama_user')== true) { echo "has-error";} ?>">
                                 <div class="form-ic-cmp">
                                 </div>
-                                <div class="nk-int-st">
                                     <label>Nama</label>
                                     <input type="hidden" name="id_user" value="<?php echo $data->id_user ?>">
                                     <input type="text" class="form-control" value="<?php echo $data->nama_user ?>" name="nama_user">
-                                </div>
+                                    <span class="help-block"><?php echo form_error('nama_user'); ?></span>  
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                             <div class="form-group ic-cmp-int">
                                 <div class="form-ic-cmp">
                                 </div>
-                                <div class="nk-int-st">
                                     <label>Username</label>
                                     <input type="text" class="form-control" value="<?php echo $data->username ?>" name="username">
                                     <input type="hidden" name="password" value="<?php echo $data->password ?>">
-                                </div>
                             </div>
                         </div>
                     </div>

@@ -65,7 +65,7 @@
 											<a class="btn btn-primary fa fa-pencil-square"
 												href="<?php echo base_url("user_kasir/edit/".$data->id_user) ?>"></a>
 											<a class="btn btn-danger fa fa-trash"
-												href="<?php echo base_url("user_kasir/hapus/".$data->id_user) ?>"></a>
+												onclick="return confirm('anda yakin ingin menghapus data ?')"   href="<?php echo base_url("user_kasir/hapus/".$data->id_user) ?>"></a>
 											<a class="btn btn-warning fa fa-recycle"
 												href="<?php echo base_url("user_kasir/ganti_password/".$data->id_user) ?>"></a>
 

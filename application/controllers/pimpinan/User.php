@@ -22,9 +22,12 @@ class User extends CI_Controller
 		$data['toko'] = $this->M_toko->tampil();
 		$this->template->load('view_1/template/pimpinan', 'view_1/konten/pimpinan/user/input', $data);
 	}
-	function insert_data()
-	{
-		$id_toko = $this->session->userdata('id_toko');
+	function insert_data(){
+		$this->form_validation->set_rules('nama_user', 'nama user', 'required');
+        $this->form_validation->set_rules('username', 'username', 'required');
+        $this->form_validation->set_rules('password', 'password', 'required');
+		if($this->form_validation->run()==TRUE){
+			$id_toko = $this->session->userdata('id_toko');
 		$kode = $this->M_user->get_no();
 		$data = array(
 			'id_user' => $kode,
@@ -45,6 +48,9 @@ class User extends CI_Controller
 			//redirect
 			echo "<script>window.location = '" . base_url('user_kasir') . "';</script>";
 		}
+		}else{
+   			$this->template->load('view_1/template/manager', 'view_1/konten/pimpinan/user/input');
+   		}
 	}
 	function edit($id)
 	{
@@ -120,7 +126,7 @@ class User extends CI_Controller
 			$this->M_user->update($where, $data, 'user');
 			redirect("pimpinan/user");
 		} else {
-			echo "error";
+			echo "<script>alert('password tidak cocok');window.location = '". base_url("user_kasir/ganti_password/".$this->input->post('id_user'))."';</script>";
 		}
 	}
 	function hapus($id)

@@ -25,17 +25,20 @@ class User extends CI_controller
 		$this->template->load('view_1/template/manager', 'view_1/konten/manager/user/view', $data);
 	}
 	function insert (){
-		$data['toko'] = $this->M_toko->tampil();
-		$this->template->load('view_1/template/manager', 'view_1/konten/manager/user/input',$data);	
+		$this->template->load('view_1/template/manager', 'view_1/konten/manager/user/input');	
 	}
 	function insert_data(){
-		$id_toko = $this->session->userdata('id_toko');
+		$this->form_validation->set_rules('nama_user', 'nama user', 'required');
+        $this->form_validation->set_rules('username', 'username', 'required');
+        $this->form_validation->set_rules('password', 'password', 'required');
+        if($this->form_validation->run()==TRUE){
+        	$id_toko = $this->session->userdata('id_toko');
 		$kode = $this->M_user->get_no();
 		$data = array(
 		'id_user' => $kode,
 		'nama_user' => $this->input->post('nama_user'),	
 		'username' => $this->input->post('username'),				
-		'jenis_akses' => "Manager",
+		'jenis_akses' => "Kasir",
 		'id_toko' => $id_toko,
 		'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT)
 		);
@@ -50,6 +53,10 @@ class User extends CI_controller
 			//redirect
 			 echo "<script>window.location = '" . base_url('user_kasir') . "';</script>";
 		}
+        }
+   		else{
+   			$this->template->load('view_1/template/manager', 'view_1/konten/manager/user/input');
+   		}
 	}
 	function edit($id){
 		$where = array('id_user'=>$id);
@@ -65,7 +72,10 @@ class User extends CI_controller
 		$this->template->load('view_1/template/manager', 'view_1/konten/manager/user/gantipassword', $data);	
 	}
 	function update(){
-		$id_toko = $this->session->userdata('id_toko');
+		$this->form_validation->set_rules('nama_user', 'nama user', 'required');
+        $this->form_validation->set_rules('username', 'username', 'required');
+        	if($this->form_validation->run()==TRUE){
+        $id_toko = $this->session->userdata('id_toko');
 		$id_user = $this->input->post('id_user');
 		$nama_user = $this->input->post('nama_user');
 		$username = $this->input->post('username');
@@ -88,9 +98,38 @@ class User extends CI_controller
 			redirect('user_kasir');
 		}
 		else{
-			echo "username ada yg sama";
+			echo "<script>alert('username ada yang sama');window.location = '". base_url("user_kasir/edit/".$this->input->post('id_user'))."';</script>";
 		}
+	}else{
+		echo "<script>window.location = '". base_url("user_kasir/edit/".$this->input->post('id_user'))."';</script>";
 	}
+        	}
+	// 	$id_toko = $this->session->userdata('id_toko');
+	// 	$id_user = $this->input->post('id_user');
+	// 	$nama_user = $this->input->post('nama_user');
+	// 	$username = $this->input->post('username');
+	// 	$password = $this->input->post('password');
+	// 	$jenis_akses = "Kasir";
+	// 	$id_toko = $id_toko;
+	// 	$cek = $this->M_user->edit(['username' => $username,  "id_user !=" => $id_user],  "user");
+	// 	if(count($cek)==0){
+	// 		$data = array(
+	// 			'nama_user'  => $nama_user,
+	// 			'username' => $username,
+	// 			'password' => $password,
+	// 			'jenis_akses' => $jenis_akses,
+	// 			'id_toko' => $id_toko
+	// 		);
+	// 		$where = array(
+	// 			'id_user' => $id_user
+	// 		);
+	// 		$this->M_user->update($where,$data,'user');
+	// 		redirect('user_kasir');
+	// 	}
+	// 	else{
+	// 		echo "username ada yg sama";
+	// 	}
+	// }
 	function hapus($id){
 		$where =array('id_user'=>$id);
 		$this->M_user->hapus_data($where,'user');
@@ -128,7 +167,7 @@ class User extends CI_controller
 			redirect("user_kasir");
 		}
 		else{
-			echo "error";
+			echo "<script>alert('password tidak cocok');window.location = '". base_url("user_kasir/ganti_password/".$this->input->post('id_user'))."';</script>";
 		}
 	}
 }
