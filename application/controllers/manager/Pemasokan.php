@@ -40,7 +40,7 @@ class Pemasokan extends CI_Controller
     {
         // data pemasokan
         $id_pemasokan = $this->M_pemasokan->get_no_pemasokan(); // generate
-        $id_user = "U01";
+        $id_user = "U01"; // session
         $id_distributor = $this->input->post('id_distributor');
         $tanggal = $this->input->post('tanggal');
         $total = $this->input->post('total');
