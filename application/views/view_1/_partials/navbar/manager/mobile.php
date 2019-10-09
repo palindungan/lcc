@@ -27,6 +27,11 @@
 									<li><a href="<?= base_url('pemasokan'); ?>">Pemasokan</a></li>
 								</ul>
 							</li>
+							<li><a data-toggle="collapse" data-target="#pengeluaran" href="#">Pengeluaran</a>
+								<ul id="pengeluaran" class="collapse dropdown-header-top">
+									<li><a href="<?= base_url('pengeluaran_lain'); ?>">Pengeluaran Lain</a></li>
+								</ul>
+							</li>
 							<li><a data-toggle="collapse" data-target="#demodepart" href="#">Barcode</a>
 								<ul id="demodepart" class="collapse dropdown-header-top">
 									<li><a href="<?= base_url('barang_barcode'); ?>">Barang Barcode</a></li>

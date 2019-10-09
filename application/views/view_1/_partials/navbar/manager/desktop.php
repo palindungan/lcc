@@ -23,6 +23,11 @@
 							<i class="glyphicon glyphicon-circle-arrow-down"></i> Pemasokan
 						</a>
 					</li>
+					<li <?= $this->uri->segment(1) == 'pengeluaran_lain' ? 'class="active"' : ''?>>
+						<a data-toggle="tab" href="#Home7">
+							<i class="glyphicon glyphicon-open-file"></i> Pengeluaran
+						</a>
+					</li>
 					<li <?= $this->uri->segment(1) == 'barang_barcode' ? 'class="active"' : ''?>>
 						<a data-toggle="tab" href="#Home5">
 							<i class="glyphicon glyphicon-barcode"></i> Barcode
@@ -73,6 +78,15 @@
 						<ul class="notika-main-menu-dropdown">
 							<li>
 								<a href="<?= base_url('pemasokan'); ?>">Pemasokan</a>
+							</li>
+						</ul>
+					</div>
+
+					<div id="Home7"
+						class="tab-pane <?= $this->uri->segment(1) == 'pengeluaran_lain' ? 'active' : ''?> in notika-tab-menu-bg animated flipInX">
+						<ul class="notika-main-menu-dropdown">
+							<li>
+								<a href="<?= base_url('pengeluaran_lain'); ?>">Pengeluaran Lain</a>
 							</li>
 						</ul>
 					</div>
