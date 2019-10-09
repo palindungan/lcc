@@ -2,7 +2,7 @@
 /**
   * 
   */
-class Distributor extends CI_Controller
+class Pengeluaran extends CI_Controller
 {
     function __construct()
     {
@@ -10,6 +10,6 @@ class Distributor extends CI_Controller
         // $this->load->model('kasir/M_distributor');
     }
     function index(){
-        $this->template->load('view_1/template/pimpinan', 'view_1/konten/manager/distributor/tampil', $data);
+        $this->template->load('view_1/template/pimpinan', 'view_1/konten/pimpinan/pengeluaran/tampil');
     }
 } 

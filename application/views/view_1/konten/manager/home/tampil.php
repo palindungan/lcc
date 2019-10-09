@@ -95,7 +95,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-			<div id="chart_div" style="height: 500px;"></div>
+			<div id="chart_div"></div>
 		</div>
 	</div>
 </div>
@@ -177,7 +177,8 @@
 		]);
 		var tahun = (new Date).getFullYear();
 		var classicOptions = {
-			width: 1138,
+			width: '100%',
+			height: '500',
 			title: 'Statistik Data Pemasukan dan Pengeluaran Tahun ' + tahun,
 		};
 
