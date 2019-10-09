@@ -10,7 +10,7 @@
                                     <i class="notika-icon notika-windows"></i>
                                 </div>
                                 <div class="breadcomb-ctn">
-                                    <h2>Data Penjualan</h2>
+                                    <h2>LAPORAN DATA PENJUALAN</h2>
                                     <p>Welcome to Notika <span class="bread-ntd">Admin Template</span></p>
                                 </div>
                             </div>

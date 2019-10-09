@@ -4,18 +4,9 @@
  */
 class M_user extends CI_model
 {
-	
-	function get_toko()
-	{
-		$query = $this->db->get("toko");
-		return $query->result();
-	}
     function tampil(){
-        $this->db->select('*');
-        $this->db->from('user u,toko t');
-        $where = "t.id_toko = u.id_toko";
-        $this->db->where($where);
-        return $this->db->get()->result();
+		$id_toko = $this->session->userdata('id_toko');
+        return $this->db->query("SELECT * FROM user JOIN toko USING(id_toko) WHERE id_toko='$id_toko'")->result();
     }
 		function input($data){
 		return $this->db->insert('user', $data);

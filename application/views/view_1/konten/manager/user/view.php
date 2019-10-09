@@ -11,7 +11,7 @@
 									<i class="notika-icon notika-form"></i>
 								</div>
 								<div class="breadcomb-ctn">
-									<h2>Data User</h2>
+									<h2>DATA USER KASIR</h2>
 									<p>Welcome to Notika <span class="bread-ntd">Admin Template</span></p>
 								</div>
 							</div>
