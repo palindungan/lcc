@@ -32,25 +32,76 @@ class M_barang extends CI_Model
         'stok <='=> '2'
             ));
     }
-	// function best_sell_minggu()
-	// {
-	// 	$id_toko = $this->session->userdata('id_toko');
-	// 	$limit = 10;
-	// 	return $this->db->get_where('best_sell_minggu', array(
-	// 	'id_toko' => $id_toko),$limit);
-	// }
-	// function best_sell_bulan()
-	// {
-	// 	$id_toko = $this->session->userdata('id_toko');
-	// 	$limit = 10;
-	// 	return $this->db->get_where('best_sell_bulan', array(
-	// 	'id_toko' => $id_toko),$limit);
-	// }
-	// function best_sell_tahun()
-	// {
-	// 	$id_toko = $this->session->userdata('id_toko');
-	// 	$limit = 10;
-	// 	return $this->db->get_where('best_sell_tahun', array(
-	// 	'id_toko' => $id_toko),$limit);
-	// }
+	function best_semua_minggu()
+	{
+		$limit = 10;
+		return $this->db->get('best_sell_minggu',$limit);
+	}
+	function best_semua_bulan()
+	{
+		$limit = 10;
+		return $this->db->get('best_sell_bulan',$limit);
+	}
+	function best_semua_tahun()
+	{
+		$limit = 10;
+		return $this->db->get('best_sell_tahun',$limit);
+    }
+
+    function best_lcc_minggu()
+    {
+        $limit = 10;
+        return $this->db->get_where('best_sell_minggu', array(
+        'id_toko' => 'T1'),$limit);
+    }
+    function best_lcc_bulan()
+    {
+        $limit = 10;
+        return $this->db->get_where('best_sell_bulan', array(
+        'id_toko' => 'T1'),$limit);
+    }
+    function best_lcc_tahun()
+    {
+        $limit = 10;
+        return $this->db->get_where('best_sell_tahun', array(
+        'id_toko' => 'T1'),$limit);
+    }
+
+    function best_cmc_minggu()
+    {
+        $limit = 10;
+        return $this->db->get_where('best_sell_minggu', array(
+        'id_toko' => 'T2'),$limit);
+    }
+    function best_cmc_bulan()
+    {
+        $limit = 10;
+        return $this->db->get_where('best_sell_bulan', array(
+        'id_toko' => 'T2'),$limit);
+    }
+    function best_cmc_tahun()
+    {
+        $limit = 10;
+        return $this->db->get_where('best_sell_tahun', array(
+        'id_toko' => 'T2'),$limit);
+    }
+
+    function best_probolinggo_minggu()
+    {
+        $limit = 10;
+        return $this->db->get_where('best_sell_minggu', array(
+        'id_toko' => 'T3'),$limit);
+    }
+    function best_probolinggo_bulan()
+    {
+        $limit = 10;
+        return $this->db->get_where('best_sell_bulan', array(
+        'id_toko' => 'T3'),$limit);
+    }
+    function best_probolinggo_tahun()
+    {
+        $limit = 10;
+        return $this->db->get_where('best_sell_tahun', array(
+        'id_toko' => 'T3'),$limit);
+    }
 }

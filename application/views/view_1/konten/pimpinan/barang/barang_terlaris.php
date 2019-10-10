@@ -10,7 +10,7 @@
 									<i class="notika-icon notika-windows"></i>
 								</div>
 								<div class="breadcomb-ctn">
-									<h2>LAPORAN DATA PENJUALAN</h2>
+									<h2>BARANG TRENDING</h2>
 									<p>Welcome to Notika <span class="bread-ntd">Admin Template</span></p>
 								</div>
 							</div>
@@ -47,6 +47,7 @@
 			</div>
 		</div>
 	</div>
+
 </div>
 <!-- Breadcomb area End-->
 <!-- Data Table area Start-->
@@ -61,20 +62,11 @@
 	function hari_ini() {
 		var form_data = $("#myform").serialize();
 		$.ajax({
-			url: "<?php echo base_url(); ?>pimpinan/laporan/tampil",
+			url: "<?php echo base_url(); ?>pimpinan/barang/tampil_trending",
 			method: "POST",
 			data: form_data,
 			success: function (data) {
 				$("#muncul").html(data);
-				$('#dt_custom1').DataTable({
-					ordering: false
-				});
-				$('#dt_custom2').DataTable({
-					ordering: false
-				});
-				$('#dt_custom3').DataTable({
-					ordering: false
-				});
 			}
 		});
 	}
