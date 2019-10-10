@@ -8,7 +8,7 @@
 							<i class="glyphicon glyphicon-home"></i> Home
 						</a>
 					</li>
-					<li <?= $this->uri->segment(1) == 'user_kasir' ? 'class="active"' : ''?>>
+					<li <?= $this->uri->segment(1) == 'user_manager' ? 'class="active"' : ''?>>
 						<a data-toggle="tab" href="#Home2">
 							<i class="glyphicon glyphicon-user"></i> User
 						</a>
@@ -19,7 +19,7 @@
 							<i class="glyphicon glyphicon-th-large"></i> Barang
 						</a>
 					</li>
-					<li <?= $this->uri->segment(1) == 'pengeluaran_lain' ? 'class="active"' : ''?>>
+					<li <?= $this->uri->segment(1) == 'pengeluaran' ? 'class="active"' : ''?>>
 						<a data-toggle="tab" href="#Home7">
 							<i class="glyphicon glyphicon-open-file"></i> Pengeluaran
 						</a>
@@ -41,10 +41,10 @@
 						</ul>
 					</div>
 					<div id="Home2"
-						class="tab-pane <?= $this->uri->segment(1) == 'user_kasir' ? 'active' : ''?> in notika-tab-menu-bg animated flipInX">
+						class="tab-pane <?= $this->uri->segment(1) == 'user_manager' ? 'active' : ''?> in notika-tab-menu-bg animated flipInX">
 						<ul class="notika-main-menu-dropdown">
 							<li>
-								<a href="<?= base_url('user_kasir'); ?>">Data Manager</a>
+								<a href="<?= base_url('user_manager'); ?>">Data Manager</a>
 							</li>
 						</ul>
 					</div>
@@ -63,10 +63,10 @@
 					</div>
 
 					<div id="Home7"
-						class="tab-pane <?= $this->uri->segment(1) == 'pengeluaran_lain' ? 'active' : ''?> in notika-tab-menu-bg animated flipInX">
+						class="tab-pane <?= $this->uri->segment(1) == 'pengeluaran' ? 'active' : ''?> in notika-tab-menu-bg animated flipInX">
 						<ul class="notika-main-menu-dropdown">
 							<li>
-								<a href="<?= base_url('pengeluaran_lain'); ?>">Data Pengeluaran</a>
+								<a href="<?= base_url('pengeluaran'); ?>">Data Pengeluaran</a>
 							</li>
 						</ul>
 					</div>

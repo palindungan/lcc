@@ -12,23 +12,23 @@
 							</li>
 							<li><a data-toggle="collapse" data-target="#demoevent" href="#">User</a>
 								<ul id="demoevent" class="collapse dropdown-header-top">
-									<li><a href="<?= base_url('user_kasir'); ?>">Data Kasir</a></li>
+									<li><a href="<?= base_url('user_manager'); ?>">Data Kasir</a></li>
 								</ul>
 							</li>
 							<li><a data-toggle="collapse" data-target="#democrou" href="#">Barang</a>
 								<ul id="democrou" class="collapse dropdown-header-top">
-									<li><a href="<?= base_url('barang_toko'); ?>">Stok Habis</a>
-									<li><a href="<?= base_url('barang_toko'); ?>">Barang Trending</a>
+									<li><a href="<?= base_url('stok_habis'); ?>">Stok Habis</a>
+									<li><a href="<?= base_url('barang_trending'); ?>">Barang Trending</a>
 								</ul>
 							</li>
 							<li><a data-toggle="collapse" data-target="#pengeluaran" href="#">Pengeluaran</a>
 								<ul id="pengeluaran" class="collapse dropdown-header-top">
-									<li><a href="<?= base_url('pengeluaran_lain'); ?>">Data Pengeluaran</a></li>
+									<li><a href="<?= base_url('pengeluaran'); ?>">Data Pengeluaran</a></li>
 								</ul>
 							</li>
 							<li><a data-toggle="collapse" data-target="#demo" href="#">Laporan</a>
 								<ul id="demo" class="collapse dropdown-header-top">
-									<li><a href="<?= base_url('laporan_manager'); ?>">Laporan</a></li>
+									<li><a href="<?= base_url('laporan_pimpinan'); ?>">Laporan</a></li>
 								</ul>
 							</li>
 						</ul>

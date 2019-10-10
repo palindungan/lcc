@@ -90,7 +90,7 @@ $route['user_manager'] = 'pimpinan/user';
 
 $route['stok_habis'] = 'pimpinan/barang/stok_habis';
 $route['barang_trending'] = 'pimpinan/barang/barang_terlaris';
-
+$route['pengeluaran'] = 'pimpinan/pengeluaran';
 $route['laporan_pimpinan'] = 'pimpinan/laporan';
 
 /*
