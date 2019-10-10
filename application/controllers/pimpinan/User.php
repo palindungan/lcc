@@ -33,7 +33,7 @@ class User extends CI_Controller
 			'id_user' => $kode,
 			'nama_user' => $this->input->post('nama_user'),
 			'username' => $this->input->post('username'),
-			'jenis_akses' => "Pimpinan",
+			'jenis_akses' => "manager",
 			'id_toko' => $id_toko,
 			'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT)
 		);
@@ -68,7 +68,7 @@ class User extends CI_Controller
         	$nama_user = $this->input->post('nama_user');
 			$username = $this->input->post('username');
 			$password = $this->input->post('password');
-			$jenis_akses = "Pimpinan";
+			$jenis_akses = "manager";
 			$id_toko = $id_toko;
 			$cek = $this->M_user->edit(['username' => $username,  "id_user !=" => $id_user],  "user");
 		if (count($cek) == 0) {
