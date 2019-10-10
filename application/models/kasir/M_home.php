@@ -5,7 +5,7 @@ class M_home extends CI_Model
 	function barang_kasir()
 	{
 		$id_toko = $this->session->userdata('id_toko');
-		return $this->db->get_where('barang_kasir',array('id_toko' => $id_toko,'qty >' => 0))->result();
+		return $this->db->get_where('barang_kasir', array('id_toko' => $id_toko, 'qty >' => 0))->result();
 	}
 	function input_data($data, $table)
 	{
@@ -19,20 +19,19 @@ class M_home extends CI_Model
 		date_default_timezone_set("Asia/Jakarta");
 		$tanggal = Date('Ymd');
 		$kodes = "C";
-		$kode = $kodes.$tanggal;
+		$kode = $kodes . $tanggal;
 		$q = $this->db->query("SELECT RIGHT($field,$digit) AS kd_max,id_customer FROM $tabel ORDER BY $field DESC LIMIT 1");
 		$kd = "";
 		if ($q->num_rows() > 0) {
 			foreach ($q->result() as $k) {
-			$tgl_lama = substr($k->id_customer,1,8);
-			if($tgl_lama == $tanggal)
-			{
-				$tmp = ((int) $k->kd_max) + 1;
-				$kd = $kode . sprintf('%0' . $digit . 's', $tmp);
-			} else {
-				$a = "001";
-				$kd = $kode.$a;
-			}
+				$tgl_lama = substr($k->id_customer, 1, 8);
+				if ($tgl_lama == $tanggal) {
+					$tmp = ((int) $k->kd_max) + 1;
+					$kd = $kode . sprintf('%0' . $digit . 's', $tmp);
+				} else {
+					$a = "001";
+					$kd = $kode . $a;
+				}
 			}
 		}
 		return $kd;
@@ -45,31 +44,29 @@ class M_home extends CI_Model
 		date_default_timezone_set("Asia/Jakarta");
 		$tanggal = Date('Ymd');
 		$kodes = "P";
-		$kode = $kodes.$tanggal;
+		$kode = $kodes . $tanggal;
 		$q = $this->db->query("SELECT RIGHT($field,$digit) AS kd_max,id_penjualan FROM $tabel ORDER BY $field DESC LIMIT 1");
 		$kd = "";
 		if ($q->num_rows() > 0) {
 			foreach ($q->result() as $k) {
-			$tgl_lama = substr($k->id_penjualan,1,8);
-			if($tgl_lama == $tanggal)
-		{
-			$tmp = ((int) $k->kd_max) + 1;
-			$kd = $kode . sprintf('%0' . $digit . 's', $tmp);
-		} else {
-				$a = "001";
-				$kd = $kode.$a;
-			}
+				$tgl_lama = substr($k->id_penjualan, 1, 8);
+				if ($tgl_lama == $tanggal) {
+					$tmp = ((int) $k->kd_max) + 1;
+					$kd = $kode . sprintf('%0' . $digit . 's', $tmp);
+				} else {
+					$a = "001";
+					$kd = $kode . $a;
+				}
 			}
 		}
 		return $kd;
 	}
-	public function search($keyword){
+	public function search($keyword)
+	{
 		$id_toko = $this->session->userdata('id_toko');
 		$this->db->like('nama', $keyword);
 		$this->db->or_like('barcode', $keyword);
 		$this->db->or_like('kode_unik', $keyword);
-		return $this->db->get_where('barang_kasir',array('id_toko' => $id_toko,'qty >' => 0))->result(); // Tampilkan data siswa berdasarkan keyword
+		return $this->db->get_where('barang_kasir', array('id_toko' => $id_toko, 'qty >' => 0))->result(); // Tampilkan data siswa berdasarkan keyword
 	}
-
-	
 }
