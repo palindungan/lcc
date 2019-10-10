@@ -70,7 +70,7 @@
 					<div style="margin-bottom:16px;" class="col-md-12">
 						<div class="contact-inner" style="height:135px">
 							<h2 class="text-right">
-								10
+								100
 							</h2>
 							<span><strong>TOTAL PEMASUKAN</strong></span>
 						</div>

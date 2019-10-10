@@ -57,6 +57,51 @@ class Home extends CI_Controller
         $data['pemasukan_semua_bulan'] = $data['keuntungan_semua_bulan']->harga_jual_barang -
         $data['keuntungan_semua_bulan']->harga_beli_barang;
         // TUTUP KEUNTUNGAN SEMUA TOKO
+
+        // KEUNTUNGAN TOKO LCC
+        // Keuntungan TOKO LCC per hari
+        $data['keuntungan_lcc_hari'] = $this->M_home->keuntungan_lcc_hari();
+        $data['pemasukan_lcc_hari'] = $data['keuntungan_lcc_hari']->harga_jual_barang -
+        $data['keuntungan_lcc_hari']->harga_beli_barang;
+        // Keuntungan TOKO LCC per minggu
+        $data['keuntungan_lcc_minggu'] = $this->M_home->keuntungan_lcc_minggu();
+        $data['pemasukan_lcc_minggu'] = $data['keuntungan_lcc_minggu']->harga_jual_barang -
+        $data['keuntungan_lcc_minggu']->harga_beli_barang;
+        // Keuntungan TOKO LCC per bulan
+        $data['keuntungan_lcc_bulan'] = $this->M_home->keuntungan_lcc_bulan();
+        $data['pemasukan_lcc_bulan'] = $data['keuntungan_lcc_bulan']->harga_jual_barang -
+        $data['keuntungan_lcc_bulan']->harga_beli_barang;
+        // TUTUP KEUNTUNGAN TOKO LCC
+
+        // KEUNTUNGAN TOKO CMC
+        // Keuntungan TOKO CMC per hari
+        $data['keuntungan_cmc_hari'] = $this->M_home->keuntungan_cmc_hari();
+        $data['pemasukan_cmc_hari'] = $data['keuntungan_cmc_hari']->harga_jual_barang -
+        $data['keuntungan_cmc_hari']->harga_beli_barang;
+        // Keuntungan TOKO CMC per minggu
+        $data['keuntungan_cmc_minggu'] = $this->M_home->keuntungan_cmc_minggu();
+        $data['pemasukan_cmc_minggu'] = $data['keuntungan_cmc_minggu']->harga_jual_barang -
+        $data['keuntungan_cmc_minggu']->harga_beli_barang;
+        // Keuntungan TOKO CMC per bulan
+        $data['keuntungan_cmc_bulan'] = $this->M_home->keuntungan_cmc_bulan();
+        $data['pemasukan_cmc_bulan'] = $data['keuntungan_cmc_bulan']->harga_jual_barang -
+        $data['keuntungan_cmc_bulan']->harga_beli_barang;
+        // TUTUP KEUNTUNGAN TOKO CMC
+
+        // KEUNTUNGAN TOKO PROBOLINGGO
+        // Keuntungan TOKO PROBOLINGGO per hari
+        $data['keuntungan_probolinggo_hari'] = $this->M_home->keuntungan_probolinggo_hari();
+        $data['pemasukan_probolinggo_hari'] = $data['keuntungan_probolinggo_hari']->harga_jual_barang -
+        $data['keuntungan_probolinggo_hari']->harga_beli_barang;
+        // Keuntungan TOKO PROBOLINGGO per minggu
+        $data['keuntungan_probolinggo_minggu'] = $this->M_home->keuntungan_probolinggo_minggu();
+        $data['pemasukan_probolinggo_minggu'] = $data['keuntungan_probolinggo_minggu']->harga_jual_barang -
+        $data['keuntungan_probolinggo_minggu']->harga_beli_barang;
+        // Keuntungan TOKO PROBOLINGGO per bulan
+        $data['keuntungan_probolinggo_bulan'] = $this->M_home->keuntungan_probolinggo_bulan();
+        $data['pemasukan_probolinggo_bulan'] = $data['keuntungan_probolinggo_bulan']->harga_jual_barang -
+        $data['keuntungan_probolinggo_bulan']->harga_beli_barang;
+        // TUTUP KEUNTUNGAN TOKO PROBOLINGGO
         $this->template->load('view_1/template/pimpinan', 'view_1/konten/pimpinan/home/tampil',$data);
     }
 } 
