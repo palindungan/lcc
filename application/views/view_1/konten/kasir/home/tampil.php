@@ -103,6 +103,8 @@
 <script src="<?= base_url() ?>assets/vendor/auto_complete/jquery-3.4.1.min.js"></script>
 <script>
 	$(document).ready(function() {
+
+		// untuk button menambah cart
 		$('.add_cart').click(function() {
 			var product_id = $(this).data("productid");
 			var product_name = $(this).data("productname");
@@ -125,8 +127,10 @@
 			});
 		});
 
+		// mengeload detail kerangjang / cart
 		$('#cart_details').load("<?php echo base_url(); ?>kasir/home/load");
 
+		// untuk menghapus detail keranjang / cart
 		$(document).on('click', '.remove_inventory', function() {
 			var row_id = $(this).attr("id");
 			$.ajax({
@@ -146,6 +150,9 @@
 </script>
 <script>
 	$(document).ready(function() {
+
+		// pencarian start
+
 		$("#keyword").keypress(function() { // Ketika tombol simpan di klik
 			// Ubah text tombol search menjadi SEARCHING...
 			// Dan tambahkan atribut disable pada tombol nya agar tidak bisa diklik lagi
@@ -164,14 +171,19 @@
 							e.overrideMimeType("application/json;charset=UTF-8");
 						}
 					},
-					success: function(response) { // Ketika proses pengiriman berhasil
+					success: function(response) {
+
+						// Ketika proses pengiriman berhasil
 						// Ubah kembali text button search menjadi SEARCH
 						// Dan hapus atribut disabled untuk meng-enable kembali button search nya
 						$("#keyword").html("SEARCH").removeAttr("disabled");
 						$("#keyword").val('');
 						$("#keyword").focus();
-						// Ganti isi dari div view dengan view yang diambil dari controller siswa function search
+
+						// Ganti isi dari div view dengan view yang diambil dari controller
 						$("#view").html(response.hasil);
+
+						// untuk button menambah cart
 						$('.add_cart').click(function() {
 							var product_id = $(this).data("productid");
 							var product_name = $(this).data("productname");
@@ -194,8 +206,10 @@
 							});
 						});
 
+						// mengeload detail kerangjang / cart
 						$('#cart_details').load("<?php echo base_url(); ?>kasir/home/load");
 
+						// untuk menghapus detail keranjang / cart
 						$(document).on('click', '.remove_inventory', function() {
 							var row_id = $(this).attr("id");
 							$.ajax({

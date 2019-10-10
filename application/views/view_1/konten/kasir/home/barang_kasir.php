@@ -18,9 +18,9 @@
 						<p style="font-size:14px"><?= $row->nama ?></p>
 						<p style="font-size:14px"><?= date('d F Y', strtotime($row->tanggal)) ?></p>
 						<p class="text-center">
-							<button type="button" class="btn btn-custom add_cart" data-productname="<?= $row->nama ?>" data-quantity="<?= $quantity ?>" data-price="<?= $price ?>" data-productid="<?= $row->id_stok_b ?>">Add
-								to
-								Cart</button>
+							<button type="button" class="btn btn-custom add_cart" data-productname="<?= $row->nama ?>" data-quantity="<?= $quantity ?>" data-price="<?= $price ?>" data-productid="<?= $row->id_stok_b ?>">
+								Add to Cart
+							</button>
 						</p>
 					</div>
 				</div>

@@ -27,6 +27,8 @@ class Home extends CI_Controller
             "price" => $_POST["product_price"]
         );
         $this->cart->insert($data); //return rowid
+
+        // memanggil function
         echo $this->view();
     }
     function delete_cart()
@@ -117,13 +119,16 @@ class Home extends CI_Controller
                 <input type="hidden" name="cart[' . $item['id'] . '][name]" value="' . $item['name'] . '" />
                 <input type="hidden" id="jumlah_barang" name="cart[' . $item['id'] . '][qty]" value="' . $item['qty'] . '"/>
                     <tr>
-                            <td>' . $item['name'] . '</td>
-                            <td class="text-right"><input type="text" id="harga_jual" name="harga_jual"
-                                    class="form-control text-right harga_jual">
-                            </td>
-                            <td class="text-center">' . $item['qty'] . '</td>
-                            <td><button type="button" name="remove" class="btn btn-danger btn-xs remove_inventory" id="' . $item['rowid'] . '"><i
-                                        class="btn btn-xs btn-danger glyphicon glyphicon-remove"></i></button></td>
+                        <td>' . $item['name'] . '</td>
+                        <td class="text-right">
+                            <input type="number" min="0" data-indexnya="' . $item['rowid'] . '" id="harga_jual" name="harga_jual" class="form-control text-right harga_jual">
+                        </td>
+                        <td class="text-center">' . $item['qty'] . '</td>
+                        <td>
+                            <button type="button" name="remove" class="btn btn-danger btn-xs remove_inventory" id="' . $item['rowid'] . '">
+                                <i class="btn btn-xs btn-danger glyphicon glyphicon-remove"></i>
+                            </button>
+                        </td>
                     </tr>
                 </tbody>';
         }
