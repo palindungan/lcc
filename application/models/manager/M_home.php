@@ -43,19 +43,25 @@ class M_home extends CI_Model
     function keuntungan_hari()
     {
         $id_toko = $this->session->userdata('id_toko');
-        return $this->db->query("SELECT SUM(hrg_distributor* detail_penjualan.qty) AS harga_beli_barang,SUM(harga_jual*detail_penjualan.qty) AS harga_jual_barang,id_toko,tanggal FROM detail_penjualan JOIN stok_barang USING(id_stok_b) JOIN penjualan USING(id_penjualan) JOIN user USING(id_user) JOIN toko USING(id_toko) WHERE DATE(tanggal) = DATE(now()) AND id_toko='$id_toko'")->row();
+        return $this->db->query("SELECT COALESCE(SUM(hrg_distributor* detail_penjualan.qty),0) AS
+        harga_beli_barang,COALESCE(SUM(harga_jual*detail_penjualan.qty),0) AS harga_jual_barang,id_toko,tanggal FROM
+        detail_penjualan JOIN stok_barang USING(id_stok_b) JOIN penjualan USING(id_penjualan) JOIN user USING(id_user)
+        JOIN toko USING(id_toko) WHERE DATE(tanggal) = DATE(now()) AND id_toko='$id_toko'")->row();
     }
     function keuntungan_minggu()
     {
         $id_toko = $this->session->userdata('id_toko');
-        return $this->db->query("SELECT SUM(hrg_distributor* detail_penjualan.qty) AS
-        harga_beli_barang,SUM(harga_jual*detail_penjualan.qty) AS harga_jual_barang,id_toko,tanggal FROM detail_penjualan JOIN stok_barang USING(id_stok_b) JOIN penjualan USING(id_penjualan) JOIN user USING(id_user) JOIN toko USING(id_toko) WHERE tanggal BETWEEN SUBDATE(now(), INTERVAL 7 DAY) AND NOW() AND id_toko='$id_toko'")->row();
+        return $this->db->query("SELECT COALESCE(SUM(hrg_distributor* detail_penjualan.qty),0) AS
+        harga_beli_barang,COALESCE(SUM(harga_jual*detail_penjualan.qty),0) AS harga_jual_barang,id_toko,tanggal FROM
+        detail_penjualan JOIN stok_barang USING(id_stok_b) JOIN penjualan USING(id_penjualan) JOIN user USING(id_user)
+        JOIN toko USING(id_toko) WHERE tanggal BETWEEN SUBDATE(now(), INTERVAL 7 DAY) AND NOW() AND
+        id_toko='$id_toko'")->row();
     }
     function keuntungan_bulan()
     {
         $id_toko = $this->session->userdata('id_toko');
-        return $this->db->query("SELECT SUM(hrg_distributor* detail_penjualan.qty) AS
-        harga_beli_barang,SUM(harga_jual*detail_penjualan.qty) AS harga_jual_barang,id_toko,tanggal FROM
+        return $this->db->query("SELECT COALESCE(SUM(hrg_distributor* detail_penjualan.qty),0) AS
+        harga_beli_barang,COALESCE(SUM(harga_jual*detail_penjualan.qty),0) AS harga_jual_barang,id_toko,tanggal FROM
         detail_penjualan JOIN stok_barang USING(id_stok_b) JOIN penjualan USING(id_penjualan) JOIN user USING(id_user) JOIN toko USING(id_toko) WHERE MONTH(tanggal) = MONTH(CURRENT_DATE()) AND id_toko='$id_toko'")->row();
     }
     function pengeluaran_lain_hari()
@@ -235,73 +241,97 @@ class M_home extends CI_Model
     function keuntungan_bulan_1()
     {
         $id_toko = $this->session->userdata('id_toko');
-        return $this->db->query("SELECT SUM(hrg_distributor* detail_penjualan.qty) AS
-        harga_beli_barang,SUM(harga_jual*detail_penjualan.qty) AS harga_jual_barang FROM detail_penjualan JOIN stok_barang USING(id_stok_b) JOIN penjualan USING(id_penjualan) JOIN user USING(id_user) JOIN toko USING(id_toko) WHERE MONTH(tanggal) = 01 AND YEAR(NOW()) AND id_toko ='$id_toko'")->row();
+        return $this->db->query("SELECT COALESCE(SUM(hrg_distributor* detail_penjualan.qty),0) AS
+        harga_beli_barang,COALESCE(SUM(harga_jual*detail_penjualan.qty),0) AS harga_jual_barang FROM detail_penjualan JOIN
+        stok_barang USING(id_stok_b) JOIN penjualan USING(id_penjualan) JOIN user USING(id_user) JOIN toko
+        USING(id_toko) WHERE MONTH(tanggal) = 01 AND YEAR(NOW()) AND id_toko ='$id_toko'")->row();
     }
     function keuntungan_bulan_2()
     {
         $id_toko = $this->session->userdata('id_toko');
-        return $this->db->query("SELECT SUM(hrg_distributor* detail_penjualan.qty) AS
-        harga_beli_barang,SUM(harga_jual*detail_penjualan.qty) AS harga_jual_barang FROM detail_penjualan JOIN stok_barang USING(id_stok_b) JOIN penjualan USING(id_penjualan) JOIN user USING(id_user) JOIN toko USING(id_toko) WHERE MONTH(tanggal) = 02 AND YEAR(NOW()) AND id_toko ='$id_toko'")->row();
+        return $this->db->query("SELECT COALESCE(SUM(hrg_distributor* detail_penjualan.qty),0) AS
+        harga_beli_barang,COALESCE(SUM(harga_jual*detail_penjualan.qty),0) AS harga_jual_barang FROM detail_penjualan JOIN
+        stok_barang USING(id_stok_b) JOIN penjualan USING(id_penjualan) JOIN user USING(id_user) JOIN toko
+        USING(id_toko) WHERE MONTH(tanggal) = 02 AND YEAR(NOW()) AND id_toko ='$id_toko'")->row();
     }
     function keuntungan_bulan_3()
     {
         $id_toko = $this->session->userdata('id_toko');
-        return $this->db->query("SELECT SUM(hrg_distributor* detail_penjualan.qty) AS
-        harga_beli_barang,SUM(harga_jual*detail_penjualan.qty) AS harga_jual_barang FROM detail_penjualan JOIN stok_barang USING(id_stok_b) JOIN penjualan USING(id_penjualan) JOIN user USING(id_user) JOIN toko USING(id_toko) WHERE MONTH(tanggal) = 03 AND YEAR(NOW()) AND id_toko ='$id_toko'")->row();
+        return $this->db->query("SELECT COALESCE(SUM(hrg_distributor* detail_penjualan.qty),0) AS
+        harga_beli_barang,COALESCE(SUM(harga_jual*detail_penjualan.qty),0) AS harga_jual_barang FROM detail_penjualan JOIN
+        stok_barang USING(id_stok_b) JOIN penjualan USING(id_penjualan) JOIN user USING(id_user) JOIN toko
+        USING(id_toko) WHERE MONTH(tanggal) = 03 AND YEAR(NOW()) AND id_toko ='$id_toko'")->row();
     }
     function keuntungan_bulan_4()
     {
         $id_toko = $this->session->userdata('id_toko');
-        return $this->db->query("SELECT SUM(hrg_distributor* detail_penjualan.qty) AS
-        harga_beli_barang,SUM(harga_jual*detail_penjualan.qty) AS harga_jual_barang FROM detail_penjualan JOIN stok_barang USING(id_stok_b) JOIN penjualan USING(id_penjualan) JOIN user USING(id_user) JOIN toko USING(id_toko) WHERE MONTH(tanggal) = 04 AND YEAR(NOW()) AND id_toko ='$id_toko'")->row();
+        return $this->db->query("SELECT COALESCE(SUM(hrg_distributor* detail_penjualan.qty),0) AS
+        harga_beli_barang,COALESCE(SUM(harga_jual*detail_penjualan.qty),0) AS harga_jual_barang FROM detail_penjualan JOIN
+        stok_barang USING(id_stok_b) JOIN penjualan USING(id_penjualan) JOIN user USING(id_user) JOIN toko
+        USING(id_toko) WHERE MONTH(tanggal) = 04 AND YEAR(NOW()) AND id_toko ='$id_toko'")->row();
     }
     function keuntungan_bulan_5()
     {
         $id_toko = $this->session->userdata('id_toko');
-        return $this->db->query("SELECT SUM(hrg_distributor* detail_penjualan.qty) AS
-        harga_beli_barang,SUM(harga_jual*detail_penjualan.qty) AS harga_jual_barang FROM detail_penjualan JOIN stok_barang USING(id_stok_b) JOIN penjualan USING(id_penjualan) JOIN user USING(id_user) JOIN toko USING(id_toko) WHERE MONTH(tanggal) = 05 AND YEAR(NOW()) AND id_toko ='$id_toko'")->row();
+        return $this->db->query("SELECT COALESCE(SUM(hrg_distributor* detail_penjualan.qty),0) AS
+        harga_beli_barang,COALESCE(SUM(harga_jual*detail_penjualan.qty),0) AS harga_jual_barang FROM detail_penjualan JOIN
+        stok_barang USING(id_stok_b) JOIN penjualan USING(id_penjualan) JOIN user USING(id_user) JOIN toko
+        USING(id_toko) WHERE MONTH(tanggal) = 05 AND YEAR(NOW()) AND id_toko ='$id_toko'")->row();
     }
     function keuntungan_bulan_6()
     {
         $id_toko = $this->session->userdata('id_toko');
-        return $this->db->query("SELECT SUM(hrg_distributor* detail_penjualan.qty) AS
-        harga_beli_barang,SUM(harga_jual*detail_penjualan.qty) AS harga_jual_barang FROM detail_penjualan JOIN stok_barang USING(id_stok_b) JOIN penjualan USING(id_penjualan) JOIN user USING(id_user) JOIN toko USING(id_toko) WHERE MONTH(tanggal) = 06 AND YEAR(NOW()) AND id_toko ='$id_toko'")->row();
+        return $this->db->query("SELECT COALESCE(SUM(hrg_distributor* detail_penjualan.qty),0) AS
+        harga_beli_barang,COALESCE(SUM(harga_jual*detail_penjualan.qty),0) AS harga_jual_barang FROM detail_penjualan JOIN
+        stok_barang USING(id_stok_b) JOIN penjualan USING(id_penjualan) JOIN user USING(id_user) JOIN toko
+        USING(id_toko) WHERE MONTH(tanggal) = 06 AND YEAR(NOW()) AND id_toko ='$id_toko'")->row();
     }
     function keuntungan_bulan_7()
     {
         $id_toko = $this->session->userdata('id_toko');
-        return $this->db->query("SELECT SUM(hrg_distributor* detail_penjualan.qty) AS
-        harga_beli_barang,SUM(harga_jual*detail_penjualan.qty) AS harga_jual_barang FROM detail_penjualan JOIN stok_barang USING(id_stok_b) JOIN penjualan USING(id_penjualan) JOIN user USING(id_user) JOIN toko USING(id_toko) WHERE MONTH(tanggal) = 07 AND YEAR(NOW()) AND id_toko ='$id_toko'")->row();
+        return $this->db->query("SELECT COALESCE(SUM(hrg_distributor* detail_penjualan.qty),0) AS
+        harga_beli_barang,COALESCE(SUM(harga_jual*detail_penjualan.qty),0) AS harga_jual_barang FROM detail_penjualan JOIN
+        stok_barang USING(id_stok_b) JOIN penjualan USING(id_penjualan) JOIN user USING(id_user) JOIN toko
+        USING(id_toko) WHERE MONTH(tanggal) = 07 AND YEAR(NOW()) AND id_toko ='$id_toko'")->row();
     }
     function keuntungan_bulan_8()
     {
         $id_toko = $this->session->userdata('id_toko');
-        return $this->db->query("SELECT SUM(hrg_distributor* detail_penjualan.qty) AS
-        harga_beli_barang,SUM(harga_jual*detail_penjualan.qty) AS harga_jual_barang FROM detail_penjualan JOIN stok_barang USING(id_stok_b) JOIN penjualan USING(id_penjualan) JOIN user USING(id_user) JOIN toko USING(id_toko) WHERE MONTH(tanggal) = 08 AND YEAR(NOW()) AND id_toko ='$id_toko'")->row();
+        return $this->db->query("SELECT COALESCE(SUM(hrg_distributor* detail_penjualan.qty),0) AS
+        harga_beli_barang,COALESCE(SUM(harga_jual*detail_penjualan.qty),0) AS harga_jual_barang FROM detail_penjualan JOIN
+        stok_barang USING(id_stok_b) JOIN penjualan USING(id_penjualan) JOIN user USING(id_user) JOIN toko
+        USING(id_toko) WHERE MONTH(tanggal) = 08 AND YEAR(NOW()) AND id_toko ='$id_toko'")->row();
     }
     function keuntungan_bulan_9()
     {
         $id_toko = $this->session->userdata('id_toko');
-        return $this->db->query("SELECT SUM(hrg_distributor* detail_penjualan.qty) AS
-        harga_beli_barang,SUM(harga_jual*detail_penjualan.qty) AS harga_jual_barang FROM detail_penjualan JOIN stok_barang USING(id_stok_b) JOIN penjualan USING(id_penjualan) JOIN user USING(id_user) JOIN toko USING(id_toko) WHERE MONTH(tanggal) = 09 AND YEAR(NOW()) AND id_toko ='$id_toko'")->row();
+        return $this->db->query("SELECT COALESCE(SUM(hrg_distributor* detail_penjualan.qty),0) AS
+        harga_beli_barang,COALESCE(SUM(harga_jual*detail_penjualan.qty),0) AS harga_jual_barang FROM detail_penjualan JOIN
+        stok_barang USING(id_stok_b) JOIN penjualan USING(id_penjualan) JOIN user USING(id_user) JOIN toko
+        USING(id_toko) WHERE MONTH(tanggal) = 09 AND YEAR(NOW()) AND id_toko ='$id_toko'")->row();
     }
     function keuntungan_bulan_10()
     {
         $id_toko = $this->session->userdata('id_toko');
-        return $this->db->query("SELECT SUM(hrg_distributor* detail_penjualan.qty) AS
-        harga_beli_barang,SUM(harga_jual*detail_penjualan.qty) AS harga_jual_barang FROM detail_penjualan JOIN stok_barang USING(id_stok_b) JOIN penjualan USING(id_penjualan) JOIN user USING(id_user) JOIN toko USING(id_toko) WHERE MONTH(tanggal) = 10 AND YEAR(NOW()) AND id_toko ='$id_toko'")->row();
+        return $this->db->query("SELECT COALESCE(SUM(hrg_distributor* detail_penjualan.qty),0) AS
+        harga_beli_barang,COALESCE(SUM(harga_jual*detail_penjualan.qty),0) AS harga_jual_barang FROM detail_penjualan JOIN
+        stok_barang USING(id_stok_b) JOIN penjualan USING(id_penjualan) JOIN user USING(id_user) JOIN toko
+        USING(id_toko) WHERE MONTH(tanggal) = 10 AND YEAR(NOW()) AND id_toko ='$id_toko'")->row();
     }
     function keuntungan_bulan_11()
     {
         $id_toko = $this->session->userdata('id_toko');
-        return $this->db->query("SELECT SUM(hrg_distributor* detail_penjualan.qty) AS
-        harga_beli_barang,SUM(harga_jual*detail_penjualan.qty) AS harga_jual_barang FROM detail_penjualan JOIN stok_barang USING(id_stok_b) JOIN penjualan USING(id_penjualan) JOIN user USING(id_user) JOIN toko USING(id_toko) WHERE MONTH(tanggal) = 11 AND YEAR(NOW()) AND id_toko ='$id_toko'")->row();
+        return $this->db->query("SELECT COALESCE(SUM(hrg_distributor* detail_penjualan.qty),0) AS
+        harga_beli_barang,COALESCE(SUM(harga_jual*detail_penjualan.qty),0) AS harga_jual_barang FROM detail_penjualan JOIN
+        stok_barang USING(id_stok_b) JOIN penjualan USING(id_penjualan) JOIN user USING(id_user) JOIN toko
+        USING(id_toko) WHERE MONTH(tanggal) = 11 AND YEAR(NOW()) AND id_toko ='$id_toko'")->row();
     }
     function keuntungan_bulan_12()
     {
         $id_toko = $this->session->userdata('id_toko');
-        return $this->db->query("SELECT SUM(hrg_distributor* detail_penjualan.qty) AS
-        harga_beli_barang,SUM(harga_jual*detail_penjualan.qty) AS harga_jual_barang FROM detail_penjualan JOIN stok_barang USING(id_stok_b) JOIN penjualan USING(id_penjualan) JOIN user USING(id_user) JOIN toko USING(id_toko) WHERE MONTH(tanggal) = 12 AND YEAR(NOW()) AND id_toko ='$id_toko'")->row();
+        return $this->db->query("SELECT COALESCE(SUM(hrg_distributor* detail_penjualan.qty),0) AS
+        harga_beli_barang,COALESCE(SUM(harga_jual*detail_penjualan.qty),0) AS harga_jual_barang FROM detail_penjualan JOIN
+        stok_barang USING(id_stok_b) JOIN penjualan USING(id_penjualan) JOIN user USING(id_user) JOIN toko
+        USING(id_toko) WHERE MONTH(tanggal) = 12 AND YEAR(NOW()) AND id_toko ='$id_toko'")->row();
     }
 }

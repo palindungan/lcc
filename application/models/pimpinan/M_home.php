@@ -26,18 +26,18 @@ class M_home extends CI_Model
 
     function keuntungan_semua_hari()
     {
-        return $this->db->query("SELECT SUM(hrg_distributor* detail_penjualan.qty) AS
-        harga_beli_barang,SUM(harga_jual*detail_penjualan.qty) AS harga_jual_barang,tanggal FROM detail_penjualan JOIN stok_barang USING(id_stok_b) JOIN penjualan USING(id_penjualan) WHERE DATE(tanggal) = DATE(now())")->row();
+        return $this->db->query("SELECT COALESCE(SUM(hrg_distributor* detail_penjualan.qty),0) AS
+        harga_beli_barang,COALESCE(SUM(harga_jual*detail_penjualan.qty),0) AS harga_jual_barang,tanggal FROM detail_penjualan JOIN stok_barang USING(id_stok_b) JOIN penjualan USING(id_penjualan) WHERE DATE(tanggal) = DATE(now())")->row();
     }
     function keuntungan_semua_minggu()
     {
-        return $this->db->query("SELECT SUM(hrg_distributor* detail_penjualan.qty) AS
-        harga_beli_barang,SUM(harga_jual*detail_penjualan.qty) AS harga_jual_barang,tanggal FROM detail_penjualan JOIN stok_barang USING(id_stok_b) JOIN penjualan USING(id_penjualan)  WHERE tanggal BETWEEN SUBDATE(now(), INTERVAL 7 DAY) AND NOW() ")->row();
+        return $this->db->query("SELECT COALESCE(SUM(hrg_distributor* detail_penjualan.qty),0) AS
+        harga_beli_barang,COALESCE(SUM(harga_jual*detail_penjualan.qty),0) AS harga_jual_barang,tanggal FROM detail_penjualan JOIN stok_barang USING(id_stok_b) JOIN penjualan USING(id_penjualan)  WHERE tanggal BETWEEN SUBDATE(now(), INTERVAL 7 DAY) AND NOW() ")->row();
     }
     function keuntungan_semua_bulan()
     {
-        return $this->db->query("SELECT SUM(hrg_distributor* detail_penjualan.qty) AS
-        harga_beli_barang,SUM(harga_jual*detail_penjualan.qty) AS harga_jual_barang,tanggal FROM
+        return $this->db->query("SELECT COALESCE(SUM(hrg_distributor* detail_penjualan.qty),0) AS
+        harga_beli_barang,COALESCE(SUM(harga_jual*detail_penjualan.qty),0) AS harga_jual_barang,tanggal FROM
         detail_penjualan JOIN stok_barang USING(id_stok_b) JOIN penjualan USING(id_penjualan) WHERE MONTH(tanggal) = MONTH(CURRENT_DATE())")->row();
     }
 

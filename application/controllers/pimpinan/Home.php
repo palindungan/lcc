@@ -43,9 +43,20 @@ class Home extends CI_Controller
         }
         $data['aset_probolinggo'] = $aset_probolinggo;
 
+        // KEUNTUNGAN SEMUA TOKO
+        // Keuntungan semua toko per hari
+        $data['keuntungan_semua_hari'] = $this->M_home->keuntungan_semua_hari();
+        $data['pemasukan_semua_hari'] = $data['keuntungan_semua_hari']->harga_jual_barang -
+        $data['keuntungan_semua_hari']->harga_beli_barang;
+        // Keuntungan semua toko per minggu
         $data['keuntungan_semua_minggu'] = $this->M_home->keuntungan_semua_minggu();
         $data['pemasukan_semua_minggu'] = $data['keuntungan_semua_minggu']->harga_jual_barang -
         $data['keuntungan_semua_minggu']->harga_beli_barang;
+        // Keuntungan semua toko per bulan
+        $data['keuntungan_semua_bulan'] = $this->M_home->keuntungan_semua_bulan();
+        $data['pemasukan_semua_bulan'] = $data['keuntungan_semua_bulan']->harga_jual_barang -
+        $data['keuntungan_semua_bulan']->harga_beli_barang;
+        // TUTUP KEUNTUNGAN SEMUA TOKO
         $this->template->load('view_1/template/pimpinan', 'view_1/konten/pimpinan/home/tampil',$data);
     }
 } 
