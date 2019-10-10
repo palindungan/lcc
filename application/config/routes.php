@@ -55,6 +55,7 @@ $route['translate_uri_dashes'] = true;
 
 $route['kasir'] = 'kasir/home';
 
+// MANAGER
 $route['dashboard_manager'] = 'manager/home';
 $route['barang_barcode'] = 'manager/barcode';
 $route['barang_barcode/(:any)'] = 'manager/barcode/print_barcode/$1';
@@ -80,6 +81,18 @@ $route['pemasokan'] = 'manager/pemasokan';
 $route['pengeluaran_lain'] = 'manager/pengeluaran_lain';
 $route['pengeluaran_lain/add'] = 'manager/pengeluaran_lain/add';
 $route['pengeluaran_lain/delete/(:any)'] = 'manager/pengeluaran_lain/delete/$1';
+// TUTUP MANAGER
+
+// PIMPINAN
+$route['dashboard_pimpinan'] = 'pimpinan/home';
+
+$route['user_manager'] = 'pimpinan/user';
+
+$route['stok_habis'] = 'pimpinan/barang/stok_habis';
+$route['barang_trending'] = 'pimpinan/barang/barang_terlaris';
+
+$route['laporan_pimpinan'] = 'pimpinan/laporan';
+
 /*
 | -------------------------------------------------------------------------
 | Sample REST API Routes
