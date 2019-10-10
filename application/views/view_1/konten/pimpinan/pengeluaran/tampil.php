@@ -79,6 +79,12 @@
 			data: form_data,
 			success: function (data) {
 				$("#muncul").html(data);
+				$('#dt_custom1').DataTable({
+					ordering: false
+				});
+				$('#dt_custom2').DataTable({
+					ordering: false
+				});
 			}
 		});
 	}

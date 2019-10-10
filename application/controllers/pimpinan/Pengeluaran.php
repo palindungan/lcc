@@ -18,6 +18,7 @@ class Pengeluaran extends CI_Controller
         $select_toko = $this->input->post('toko');
         $select_tanggal = $this->input->post('tanggal');
         $pengeluaran_lcc_minggu = $this->M_pengeluaran->pengeluaran_lcc_minggu();
+        $pemasokan_lcc_minggu = $this->M_pengeluaran->pemasokan_lcc_minggu();
         if($select_toko=="semua" && $select_tanggal=="hari")
         {
             echo '<div class="widget-tabs-int">
@@ -131,16 +132,35 @@ class Pengeluaran extends CI_Controller
                                                 <th width="15%" style="text-align: center;">Detail</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody>';
+                                        $no_pasok_lcc_minggu = 1;
+                                        $grand_pemasokan_lcc_minggu = 0;
+                                        foreach($pemasokan_lcc_minggu as $pasok_lcc_minggu)
+                                        {
+                                            $grand_pemasokan_lcc_minggu += $pasok_lcc_minggu->total;
+                                            echo '
                                             <tr>
-                                                <td style="text-align:center">1</td>
-                                                <td>asd</td>
-                                                <td>asd</td>
+                                                <td style="text-align:center">'.$no_pasok_lcc_minggu++.'</td>
+                                                <td>'.$pasok_lcc_minggu->nama_user.'</td>
+                                                <td>'.$pasok_lcc_minggu->nama.'</td>
+                                                <td style="text-align:center">'.date('d F Y',
+                                                	strtotime($pasok_lcc_minggu->tanggal)).'</td>
+                                                <td style="text-align:center">'.date('H:i:s',
+                                                	strtotime($pasok_lcc_minggu->tanggal)).'</td>
+                                                <td style="text-align:right">'.rupiah($pasok_lcc_minggu->total).'</td>
                                                 <td style="text-align:center">asd</td>
-                                                <td style="text-align:center">asd</td>
-                                                <td style="text-align:right">asd</td>
-                                                <td style="text-align:center">asd</td>
-                                            </tr>
+                                            </tr>';
+                                        }
+                                        if($grand_pemasokan_lcc_minggu == 0)
+                                        {
+                                        echo '<h4 style="float:right">Total Pengeluaran : 0</h4>';
+                                        }
+                                        else {
+                                        echo '<h4 style="float: right;">Total Pengeluaran :
+                                        	'.rupiah($grand_pemasokan_lcc_minggu).'
+                                        </h4>';
+                                        }
+                                        echo '
                                         </tbody>
                                         <tfoot>
                                             <tr>
@@ -177,8 +197,10 @@ class Pengeluaran extends CI_Controller
                                         </thead>
                                         <tbody>';
                                         $no_keluar_lcc_minggu = 1;
+                                        $grand_pengeluaran_lcc_minggu = 0;
                                         foreach($pengeluaran_lcc_minggu as $keluar_lcc_minggu)
                                         {
+                                            $grand_pengeluaran_lcc_minggu += $keluar_lcc_minggu->total;
                                             echo '
                                             <tr>
                                                 <td style="text-align: center;">'.$no_keluar_lcc_minggu++.'</td>
@@ -191,6 +213,14 @@ class Pengeluaran extends CI_Controller
                                                 <td style="text-align: right;">'.rupiah($keluar_lcc_minggu->total).'</td>
                                             </tr>
                                             ';
+                                        }
+                                        if($grand_pengeluaran_lcc_minggu == 0)
+                                        {
+                                        echo '<h4 style="float:right">Total Pengeluaran : 0</h4>';
+                                        }
+                                        else {
+                                        echo '<h4 style="float: right;">Total Pengeluaran : '.rupiah($grand_pengeluaran_lcc_minggu).'
+                                        </h4>';
                                         }
                                         echo '
                                         </tbody>
