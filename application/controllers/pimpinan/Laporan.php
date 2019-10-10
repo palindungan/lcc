@@ -34,30 +34,30 @@ class Laporan extends CI_Controller
 		$probolinggo_bulan_ini = $this->M_laporan->probolinggo_tampil_bulan()->result();
         if($select=='semua')
         {
-        echo '<div class="widget-tabs-int">
-        	<ul class="nav nav-tabs">
-        		<li class="active"><a data-toggle="tab" href="#home">Hari Ini</a></li>
-        		<li><a data-toggle="tab" href="#menu1">Minggu Ini</a></li>
-        		<li><a data-toggle="tab" href="#menu2">Bulan Ini</a></li>
-        	</ul>
-        	<div class="tab-content tab-custom-st">
-        		<div id="home" class="tab-pane fade in active">
-        			<div class="tab-ctn">
-        				<div class="data-table-list">
-        					<div class="table-responsive">
-        						<table id="dt_custom1" class="table table-striped">
-        							<thead>
-        								<tr>
-        									<th width="1%" style="text-align: center;">No</th>
-        									<th width="15%" style="text-align: center;">Nama Customer</th>
-        									<th width="20%" style="text-align: center;">Tanggal & Waktu</th>
-        									<th width="25%" style="text-align: center;">Nama Barang</th>
-        									<th width="13%" style="text-align: center;">Harga Jual</th>
-        									<th width="13%" style="text-align: center;">Qty</th>
-        									<th width="13%" style="text-align: center;">Keuntungan</th>
-        								</tr>
-        							</thead>
-        							<tbody>'; 
+		echo '<div class="widget-tabs-int">
+			<ul class="nav nav-tabs">
+				<li class="active"><a data-toggle="tab" href="#home">Hari Ini</a></li>
+				<li><a data-toggle="tab" href="#menu1">Minggu Ini</a></li>
+				<li><a data-toggle="tab" href="#menu2">Bulan Ini</a></li>
+			</ul>
+			<div class="tab-content tab-custom-st">
+				<div id="home" class="tab-pane fade in active">
+					<div class="tab-ctn">
+						<div class="data-table-list">
+							<div class="table-responsive">
+								<table id="dt_custom1" class="table table-striped">
+									<thead>
+										<tr>
+											<th width="1%" style="text-align: center;">No</th>
+											<th width="15%" style="text-align: center;">Nama Customer</th>
+											<th width="20%" style="text-align: center;">Tanggal & Waktu</th>
+											<th width="25%" style="text-align: center;">Nama Barang</th>
+											<th width="13%" style="text-align: center;">Harga Jual</th>
+											<th width="13%" style="text-align: center;">Qty</th>
+											<th width="13%" style="text-align: center;">Keuntungan</th>
+										</tr>
+									</thead>
+									<tbody>'; 
 									$no_semua_hari = 1;
 									$total_semua_hari=0;
 									foreach($semua_hari_ini as $semua_hari){
