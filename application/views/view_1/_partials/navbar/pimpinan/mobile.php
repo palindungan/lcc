@@ -15,9 +15,10 @@
 									<li><a href="<?= base_url('user_kasir'); ?>">Data Kasir</a></li>
 								</ul>
 							</li>
-							<li><a data-toggle="collapse" data-target="#democrou" href="#">Distributor</a>
+							<li><a data-toggle="collapse" data-target="#democrou" href="#">Barang</a>
 								<ul id="democrou" class="collapse dropdown-header-top">
-									<li><a href="<?= base_url('barang_toko'); ?>">Data Distributor</a>
+									<li><a href="<?= base_url('barang_toko'); ?>">Stok Habis</a>
+									<li><a href="<?= base_url('barang_toko'); ?>">Barang Trending</a>
 								</ul>
 							</li>
 							<li><a data-toggle="collapse" data-target="#pengeluaran" href="#">Pengeluaran</a>

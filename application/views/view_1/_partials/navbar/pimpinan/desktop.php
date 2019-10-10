@@ -15,7 +15,7 @@
 					</li>
 					<li <?= $this->uri->segment(1) == 'barang_toko' ? 'class="active"' : ''?>>
 						<a data-toggle="tab" href="#Home3">
-							<i class="glyphicon glyphicon-th-large"></i> Distributor
+							<i class="glyphicon glyphicon-th-large"></i> Barang
 						</a>
 					</li>
 					<li <?= $this->uri->segment(1) == 'pengeluaran_lain' ? 'class="active"' : ''?>>
@@ -52,7 +52,10 @@
 						class="tab-pane <?= $this->uri->segment(1) == 'barang_toko' ? 'active' : ''?> in notika-tab-menu-bg animated flipInX">
 						<ul class="notika-main-menu-dropdown">
 							<li>
-								<a href="<?= base_url('barang_toko'); ?>">Data Distributor</a>
+								<a href="<?= base_url('barang_toko'); ?>">Stok Habis</a>
+							</li>
+							<li>
+								<a href="<?= base_url('barang_toko'); ?>">Barang Trending</a>
 							</li>
 						</ul>
 					</div>
