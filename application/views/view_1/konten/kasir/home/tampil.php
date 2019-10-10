@@ -73,7 +73,7 @@
 										<div class="form-group">
 											<label for="inputEmail3" class="col-sm-2 control-label">Bayar</label>
 											<div class="col-sm-10">
-												<input type="text" name="bayar" class="form-control text-right total_harga" id="total_harga" placeholder="Masukan Jumlah Bayar">
+												<input type="text" name="bayar" class="form-control text-right bayar" id="bayar" placeholder="Masukan Jumlah Bayar" onkeyup="update_kembalian()">
 
 											</div>
 										</div>
@@ -147,6 +147,37 @@
 			});
 		});
 	});
+
+	function update_total() {
+		// mengambil nilai di dalam form
+		var form_data = $('#transaksi_form').serialize()
+
+		$.ajax({
+			url: "<?php echo base_url() . 'kasir/home/ambil_total'; ?>",
+			method: "POST",
+			data: form_data,
+			success: function(data) {
+				$('#total_harga').val(data);
+				update_kembalian();
+			}
+		});
+	}
+
+	function update_kembalian() {
+		var total_harga = document.getElementById("total_harga");
+		var bayar = document.getElementById("bayar");
+		var kembalian = document.getElementById("kembalian");
+
+		// parsing dan perhitungan
+		var v_total_harga = parseInt(total_harga.value);
+		var v_bayar = parseInt(bayar.value);
+
+		if (v_bayar >= v_total_harga) {
+			kembalian.value = v_bayar - v_total_harga;
+		} else {
+			kembalian.value = null;
+		}
+	}
 </script>
 <script>
 	$(document).ready(function() {

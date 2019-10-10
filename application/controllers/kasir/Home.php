@@ -113,7 +113,7 @@ class Home extends CI_Controller
                 ';
         $count = 0;
         foreach ($this->cart->contents() as $item) {
-            $count++;
+
             $output .= '
                 <input type="hidden" name="cart[' . $item['id'] . '][id]" value="' . $item['id'] . '" />
                 <input type="hidden" name="cart[' . $item['id'] . '][name]" value="' . $item['name'] . '" />
@@ -121,8 +121,9 @@ class Home extends CI_Controller
                     <tr>
                         <td>' . $item['name'] . '</td>
                         <td class="text-right">
-                            <input type="number" min="0" data-indexnya="' . $item['rowid'] . '" id="harga_jual" name="harga_jual" class="form-control text-right harga_jual">
+                            <input type="number" min="0" data-indexnya="' . $item['rowid'] . '" id="harga_jual' . $count . '" name="harga_jual[]" class="form-control text-right harga_jual" onkeyup="update_total()">
                         </td>
+                        <input type="hidden" id="qty' . $count . '" name="qty[]" value="' . $item['qty'] . '" />
                         <td class="text-center">' . $item['qty'] . '</td>
                         <td>
                             <button type="button" name="remove" class="btn btn-danger btn-xs remove_inventory" id="' . $item['rowid'] . '">
@@ -131,6 +132,8 @@ class Home extends CI_Controller
                         </td>
                     </tr>
                 </tbody>';
+
+            $count++;
         }
         $output .= '
                 </table>
@@ -154,5 +157,28 @@ class Home extends CI_Controller
         );
 
         echo json_encode($callback); // konversi varibael $callback menjadi JSON
+    }
+
+    public function ambil_total()
+    {
+        if (isset($_POST['qty']) && isset($_POST['harga_jual'])) {
+
+            $sub_total = 0;
+            $total = 0;
+
+            for ($i = 0; $i < count($this->input->post('qty')); $i++) {
+
+                $qty = (int) $this->input->post('qty')[$i];
+                $harga_jual = (int) $this->input->post('harga_jual')[$i];
+
+                $perhitungan = $qty * $harga_jual;
+
+                $sub_total = $sub_total + $perhitungan;
+            }
+
+            $total = $sub_total;
+
+            echo $total;
+        }
     }
 }
