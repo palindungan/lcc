@@ -47,7 +47,7 @@ foreach($edit as $data){
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                            <div class="form-group <?php if(form_error('nama_user')== true) { echo "has-error";} ?>">
+                            <div class="form-group <?php if(form_error('username')== true) { echo "has-error";} ?>">
                                 <div class="form-ic-cmp">
                                 </div>
                                     <label>Username</label>
