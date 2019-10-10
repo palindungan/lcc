@@ -87,6 +87,10 @@ $route['pengeluaran_lain/delete/(:any)'] = 'manager/pengeluaran_lain/delete/$1';
 $route['dashboard_pimpinan'] = 'pimpinan/home';
 
 $route['user_manager'] = 'pimpinan/user';
+$route['user_manager/add'] = 'pimpinan/user/insert';
+$route['user_manager/edit/(:any)'] = 'pimpinan/user/edit/$1';
+$route['user_manager/hapus/(:any)'] = 'pimpinan/user/hapus/$1';
+$route['user_manager/ganti_password/(:any)'] = 'pimpinan/user/ganti_password/$1';
 
 $route['stok_habis'] = 'pimpinan/barang/stok_habis';
 $route['barang_trending'] = 'pimpinan/barang/barang_terlaris';

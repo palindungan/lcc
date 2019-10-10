@@ -40,58 +40,59 @@
 			</div>
 		</a>
 
-		<a style="color:black" href="">
-			<div style="margin-bottom: 30px;" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-				<div class="row">
-					<div style="margin-bottom:20px;" class="col-md-6">
-						<form action="" method="post" id="myform">
-							<select name="pilih" id="xx" class="form-control">
-								<option value="semua" selected>Semua Toko</option>
-								<?php 
+		<div style="margin-bottom: 30px;" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+			<div class="row">
+				<div style="margin-bottom:20px;" class="col-md-6">
+					<form action="" method="post" id="myform">
+						<select name="toko" id="toko" class="form-control">
+							<option value="semua" selected>Semua Toko</option>
+							<?php 
 								foreach($data_toko as $row)
 								{
 								?>
-								<option value="<?= $row->id_toko ?>"><?= $row->nama_toko ?></option>
-								<?php } ?>
-							</select>
-						</form>
-					</div>
-					<div style="margin-bottom:20px;" class="col-md-6">
-						<form action="" method="post" id="myform">
-							<select name="pilih" id="xx" class="form-control">
-								<option value="T1">Hari Ini</option>
-								<option value="T2">Minggu Ini</option>
-								<option value="T3">Bulan Ini</option>
-							</select>
-						</form>
-					</div>
+							<option value="<?= $row->id_toko ?>"><?= $row->nama_toko ?></option>
+							<?php } ?>
+						</select>
 				</div>
-				<div class="row">
-					<div style="margin-bottom:16px;" class="col-md-12">
-						<div class="contact-inner" style="height:135px">
-							<h2 class="text-right">
-								100
-							</h2>
-							<span><strong>semua dan hari</strong></span>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<div class="contact-inner" style="height:135px">
-							<h2 class="text-right">
-								10
-							</h2>
-							<span><strong>TOTAL PENGELUARAN</strong></span>
-						</div>
-					</div>
+				<div style="margin-bottom:20px;" class="col-md-6">
+					<select name="tanggal" id="tanggal" class="form-control">
+						<option value="hari">Hari Ini</option>
+						<option value="minggu">Minggu Ini</option>
+						<option value="bulan">Bulan Ini</option>
+					</select>
+					</form>
+
 				</div>
 			</div>
-		</a>
+			<div id="muncul"></div>
+		</div>
 	</div>
 </div>
 <script src="<?= base_url() ?>assets/vendor/auto_complete/jquery-3.4.1.min.js"></script>
+<script>
+	hari_ini();
+	$(document).on('change', '#toko', function (event) {
+		event.preventDefault();
+		hari_ini();
+	});
+	$(document).on('change', '#tanggal', function (event) {
+		event.preventDefault();
+		hari_ini();
+	});
 
+	function hari_ini() {
+		var form_data = $("#myform").serialize();
+		$.ajax({
+			url: "<?php echo base_url(); ?>pimpinan/home/tampil",
+			method: "POST",
+			data: form_data,
+			success: function (data) {
+				$("#muncul").html(data);
+			}
+		});
+	}
+
+</script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
 	google.charts.load('current', {

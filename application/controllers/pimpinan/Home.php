@@ -106,6 +106,168 @@ class Home extends CI_Controller
     }
     function tampil()
     {
-        
+        $select_toko = $this->input->post('toko');
+        $select_tanggal = $this->input->post('tanggal');
+        if($select_toko == "semua" && $select_tanggal == "hari")
+        {
+            echo '<div class="row">
+                <div style="margin-bottom:16px;" class="col-md-12">
+                    <div class="contact-inner" style="height:135px">
+                        <h2 class="text-right">
+                            100
+                        </h2>
+                        <span><strong>semua dan hari</strong></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="contact-inner" style="height:135px">
+                        <h2 class="text-right">
+                            10
+                        </h2>
+                        <span><strong>TOTAL PENGELUARAN</strong></span>
+                    </div>
+                </div>
+            </div>';
+        }
+        else if($select_toko == "semua" && $select_tanggal == "minggu")
+        {
+            echo '<div class="row">
+                <div style="margin-bottom:16px;" class="col-md-12">
+                    <div class="contact-inner" style="height:135px">
+                        <h2 class="text-right">
+                            100
+                        </h2>
+                        <span><strong>semua dan minggu</strong></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="contact-inner" style="height:135px">
+                        <h2 class="text-right">
+                            10
+                        </h2>
+                        <span><strong>TOTAL PENGELUARAN</strong></span>
+                    </div>
+                </div>
+            </div>';
+        }
+        else if($select_toko == "semua" && $select_tanggal == "bulan")
+        {
+            echo '<div class="row">
+                <div style="margin-bottom:16px;" class="col-md-12">
+                    <div class="contact-inner" style="height:135px">
+                        <h2 class="text-right">
+                            100
+                        </h2>
+                        <span><strong>semua dan bulan</strong></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="contact-inner" style="height:135px">
+                        <h2 class="text-right">
+                            10
+                        </h2>
+                        <span><strong>TOTAL PENGELUARAN</strong></span>
+                    </div>
+                </div>
+            </div>';
+        }
+        else if($select_toko == "T1" && $select_tanggal=="hari")
+        {
+            echo '<div class="row">
+                <div style="margin-bottom:16px;" class="col-md-12">
+                    <div class="contact-inner" style="height:135px">
+                        <h2 class="text-right">
+                            100
+                        </h2>
+                        <span><strong>LCC dan hari</strong></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="contact-inner" style="height:135px">
+                        <h2 class="text-right">
+                            10
+                        </h2>
+                        <span><strong>TOTAL PENGELUARAN</strong></span>
+                    </div>
+                </div>
+            </div>';
+        }
+        else if($select_toko == "T1" && $select_tanggal=="minggu")
+        {
+            echo '<div class="row">
+                <div style="margin-bottom:16px;" class="col-md-12">
+                    <div class="contact-inner" style="height:135px">
+                        <h2 class="text-right">
+                            100
+                        </h2>
+                        <span><strong>LCC dan Minggu</strong></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="contact-inner" style="height:135px">
+                        <h2 class="text-right">
+                            10
+                        </h2>
+                        <span><strong>TOTAL PENGELUARAN</strong></span>
+                    </div>
+                </div>
+            </div>';
+        }
+        else if($select_toko == "T1" && $select_tanggal=="bulan")
+        {
+            echo '<div class="row">
+                <div style="margin-bottom:16px;" class="col-md-12">
+                    <div class="contact-inner" style="height:135px">
+                        <h2 class="text-right">
+                            100
+                        </h2>
+                        <span><strong>LCC dan Bulan</strong></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="contact-inner" style="height:135px">
+                        <h2 class="text-right">
+                            10
+                        </h2>
+                        <span><strong>TOTAL PENGELUARAN</strong></span>
+                    </div>
+                </div>
+            </div>';
+        }
+        else if($select_toko == "T2" && $select_tanggal=="hari")
+        {
+            echo '<div class="row">
+                <div style="margin-bottom:16px;" class="col-md-12">
+                    <div class="contact-inner" style="height:135px">
+                        <h2 class="text-right">
+                            100
+                        </h2>
+                        <span><strong>CMC dan hari</strong></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="contact-inner" style="height:135px">
+                        <h2 class="text-right">
+                            10
+                        </h2>
+                        <span><strong>TOTAL PENGELUARAN</strong></span>
+                    </div>
+                </div>
+            </div>';
+        }
     }
 } 
