@@ -106,14 +106,6 @@ class Home extends CI_Controller
     }
     function tampil()
     {
-		$select = $this->input->post('pilih');
-        if($select=='semua')
-        {
-            echo 'lol';
-        }
-        else if($select=='T1')
-        {
-            echo 'kampret';
-        }
+        
     }
 } 

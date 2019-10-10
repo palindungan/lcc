@@ -47,52 +47,51 @@
 						<form action="" method="post" id="myform">
 							<select name="pilih" id="xx" class="form-control">
 								<option value="semua" selected>Semua Toko</option>
-								<option value="T1">LCC</option>
-								<!-- <?php 
+								<?php 
 								foreach($data_toko as $row)
 								{
 								?>
 								<option value="<?= $row->id_toko ?>"><?= $row->nama_toko ?></option>
-								<?php } ?> -->
+								<?php } ?>
 							</select>
 						</form>
 					</div>
 					<div style="margin-bottom:20px;" class="col-md-6">
-						<!-- <form action="" method="post" id="myform">
+						<form action="" method="post" id="myform">
 							<select name="pilih" id="xx" class="form-control">
 								<option value="T1">Hari Ini</option>
 								<option value="T2">Minggu Ini</option>
 								<option value="T3">Bulan Ini</option>
 							</select>
-						</form> -->
+						</form>
 					</div>
 				</div>
-				<div id="muncul"></div>
+				<div class="row">
+					<div style="margin-bottom:16px;" class="col-md-12">
+						<div class="contact-inner" style="height:135px">
+							<h2 class="text-right">
+								100
+							</h2>
+							<span><strong>semua dan hari</strong></span>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="contact-inner" style="height:135px">
+							<h2 class="text-right">
+								10
+							</h2>
+							<span><strong>TOTAL PENGELUARAN</strong></span>
+						</div>
+					</div>
+				</div>
 			</div>
 		</a>
 	</div>
 </div>
 <script src="<?= base_url() ?>assets/vendor/auto_complete/jquery-3.4.1.min.js"></script>
-<script>
-	hari_ini();
-	$(document).on('change', '#xx', function (event) {
-		event.preventDefault();
-		hari_ini();
-	});
 
-	function hari_ini() {
-		var form_data = $("#myform").serialize();
-		$.ajax({
-			url: "<?php echo base_url(); ?>pimpinan/home/tampil",
-			method: "POST",
-			data: form_data,
-			success: function (data) {
-				$("#muncul").html(data);
-			}
-		});
-	}
-
-</script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
 	google.charts.load('current', {
