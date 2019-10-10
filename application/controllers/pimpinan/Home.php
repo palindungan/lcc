@@ -269,5 +269,74 @@ class Home extends CI_Controller
                 </div>
             </div>';
         }
+        else if($select_toko == "T2" && $select_tanggal=="minggu")
+        {
+            echo '<div class="row">
+                <div style="margin-bottom:16px;" class="col-md-12">
+                    <div class="contact-inner" style="height:135px">
+                        <h2 class="text-right">
+                            100
+                        </h2>
+                        <span><strong>CMC dan Minggu</strong></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="contact-inner" style="height:135px">
+                        <h2 class="text-right">
+                            10
+                        </h2>
+                        <span><strong>TOTAL PENGELUARAN</strong></span>
+                    </div>
+                </div>
+            </div>';
+        }
+        else if($select_toko == "T2" && $select_tanggal=="bulan")
+        {
+            echo '<div class="row">
+                <div style="margin-bottom:16px;" class="col-md-12">
+                    <div class="contact-inner" style="height:135px">
+                        <h2 class="text-right">
+                            100
+                        </h2>
+                        <span><strong>CMC dan Bulan</strong></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="contact-inner" style="height:135px">
+                        <h2 class="text-right">
+                            10
+                        </h2>
+                        <span><strong>TOTAL PENGELUARAN</strong></span>
+                    </div>
+                </div>
+            </div>';
+        }
+        else if($select_toko == "T3" && $select_tanggal=="hari")
+        {
+            echo '<div class="row">
+                <div style="margin-bottom:16px;" class="col-md-12">
+                    <div class="contact-inner" style="height:135px">
+                        <h2 class="text-right">
+                            100
+                        </h2>
+                        <span><strong>Probolinggo dan Hari</strong></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="contact-inner" style="height:135px">
+                        <h2 class="text-right">
+                            10
+                        </h2>
+                        <span><strong>TOTAL PENGELUARAN</strong></span>
+                    </div>
+                </div>
+            </div>';
+        }
     }
 } 
