@@ -30,8 +30,6 @@
 </div>
 
 <!-- Breadcomb area End-->
-
-
 <div class="container">
 	<div class="row">
 		<a style="color:black" href="">
@@ -97,16 +95,20 @@
 	google.charts.setOnLoadCallback(drawChart);
 
 	function drawChart() {
-
+		var aset_lcc = parseInt("<?php echo $aset_lcc  ?>");
+		var aset_cmc = parseInt("<?php echo $aset_cmc  ?>");
+		var aset_probolinggo = parseInt("<?php echo $aset_probolinggo  ?>");
+		var total = aset_lcc + aset_cmc + aset_probolinggo;
 		var data = google.visualization.arrayToDataTable([
 			['Task', 'Hours per Day'],
-			['LCC Komputer', 550000000],
-			['CMC Komputer', 250000000],
-			['Paradox Komputer', 400000000],
+			['LCC Komputer', aset_lcc],
+			['CMC Komputer', aset_cmc],
+			['Paradox Komputer', aset_probolinggo],
 		]);
 
 		var options = {
-			title: 'Data Aset Toko'
+			title: 'Total Aset Semua Toko : ' + total
+
 		};
 
 		var chart = new google.visualization.PieChart(document.getElementById('piechart'));
