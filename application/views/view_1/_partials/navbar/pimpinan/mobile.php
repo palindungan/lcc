@@ -21,6 +21,11 @@
 									<li><a href="<?= base_url('barang_trending'); ?>">Barang Trending</a>
 								</ul>
 							</li>
+							<li><a data-toggle="collapse" data-target="#distributor" href="#">Distributor</a>
+								<ul id="distributor" class="collapse dropdown-header-top">
+									<li><a href="<?= base_url('stok_habis'); ?>">Data Distributor</a>
+								</ul>
+							</li>
 							<li><a data-toggle="collapse" data-target="#pengeluaran" href="#">Pengeluaran</a>
 								<ul id="pengeluaran" class="collapse dropdown-header-top">
 									<li><a href="<?= base_url('pengeluaran'); ?>">Data Pengeluaran</a></li>

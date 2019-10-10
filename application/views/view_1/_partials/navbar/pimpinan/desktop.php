@@ -19,6 +19,11 @@
 							<i class="glyphicon glyphicon-th-large"></i> Barang
 						</a>
 					</li>
+					<li <?= $this->uri->segment(1) == 'distributor' ? 'class="active"' : ''?>>
+						<a data-toggle="tab" href="#distributor">
+							<i class="glyphicon glyphicon-plane"></i> Distributor
+						</a>
+					</li>
 					<li <?= $this->uri->segment(1) == 'pengeluaran' ? 'class="active"' : ''?>>
 						<a data-toggle="tab" href="#Home7">
 							<i class="glyphicon glyphicon-open-file"></i> Pengeluaran
@@ -58,6 +63,15 @@
 							</li>
 							<li>
 								<a href="<?= base_url('barang_trending'); ?>">Barang Trending</a>
+							</li>
+						</ul>
+					</div>
+
+					<div id="distributor"
+						class="tab-pane <?= $this->uri->segment(1) == 'distributor' ? 'active' : ''?> in notika-tab-menu-bg animated flipInX">
+						<ul class="notika-main-menu-dropdown">
+							<li>
+								<a href="<?= base_url('distributor'); ?>">Data Distributor</a>
 							</li>
 						</ul>
 					</div>
