@@ -11,8 +11,8 @@
                                     <i class="notika-icon notika-form"></i>
                                 </div>
                                 <div class="breadcomb-ctn">
-                                    <h2>Data Distributor</h2>
-                                    <p>masukkan data anda</p>
+                                    <h2>Tambah Data Distributor</h2>
+                                    <p>Masukkan data anda</p>
                                 </div>
                             </div>
                         </div>

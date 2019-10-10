@@ -36,7 +36,7 @@ foreach($distributor as $data){
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="form-element-list">
                     <div class="row">
-                        <form action="<?php echo base_url("manager/distributor/update") ?>" method="post">
+                        <form action="<?php echo base_url("pimpinan/distributor/update") ?>" method="post">
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                             <div class="form-group ic-cmp-int">
                                 <div class="form-ic-cmp">

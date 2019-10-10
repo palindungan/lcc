@@ -36,7 +36,7 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="data-table-list">
                     <div class="basic-tb-hd">
-                        <a class="btn btn-primary" href="<?php echo base_url("manager/distributor/insert") ?>">Tambah</a>
+                        <a class="btn btn-primary" href="<?php echo base_url("pimpinan/distributor/insert") ?>">Tambah</a>
                     </div>
                     <div class="table-responsive">
                         <table id="data-table-basic" class="table table-striped">
@@ -52,7 +52,7 @@
                             <tbody>
                                 <?php 
                             $no = 1;
-                            foreach ($data as $a) {
+                            foreach ($distributor as $a) {
                             ?>
                             <tr>
                              <td><?php echo $no++; ?></td>
@@ -61,8 +61,8 @@
                              <td><?php echo $a->no_hp; ?></td>
                              <td>
                                 <div class="table-actions">
-                                 <a href="<?php echo base_url("manager/distributor/edit/".$a->id_distributor) ?>" type='button' class='btn btn-primary fa fa-pencil-square' ></a>
-                                 <a href="<?php echo base_url("manager/distributor/hapus/".$a->id_distributor) ?>" type='button' class='btn btn-danger fa fa-trash'></a>
+                                 <a href="<?php echo base_url("pimpinan/distributor/edit/".$a->id_distributor) ?>" type='button' class='btn btn-primary fa fa-pencil-square' ></a>
+                                 <a href="<?php echo base_url("pimpinan/distributor/hapus/".$a->id_distributor) ?>" type='button' class='btn btn-danger fa fa-trash'></a>
                                  </div>
                              </td>
                              </tr>
