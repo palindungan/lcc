@@ -16,7 +16,8 @@ class Barang extends CI_Controller
 
     function stok_habis()
     {
-        $this->template->load('view_1/template/manager', 'view_1/konten/pimpinan/barang/stok_habis');
+        $data['data_toko'] = $this->M_barang->tampil_toko();
+        $this->template->load('view_1/template/manager', 'view_1/konten/pimpinan/barang/stok_habis',$data);
     }
 
     function tampil_stok()
@@ -128,7 +129,8 @@ class Barang extends CI_Controller
 
     function barang_terlaris()
     {
-        $this->template->load('view_1/template/manager', 'view_1/konten/pimpinan/barang/barang_terlaris');
+        $data['data_toko'] = $this->M_barang->tampil_toko();
+        $this->template->load('view_1/template/manager', 'view_1/konten/pimpinan/barang/barang_terlaris',$data);
     }
     function tampil_trending()
     {   

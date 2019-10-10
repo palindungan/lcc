@@ -2,6 +2,10 @@
  
 class M_barang extends CI_Model
 {
+    function tampil_toko()
+    {
+        return $this->db->get("toko")->result();
+    }
 	function data_barang()
 	{
         // Nanti didapat dari session

@@ -35,9 +35,14 @@
 			<div style="margin-bottom:27px;" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 				<form action="" method="post" id="myform">
 					<select name="pilih" id="xx" class="form-control">
-						<option value="T1" selected>LCC Komputer</option>
-						<option value="T2">CMC Komputer</option>
-						<option value="T3">Toko Probolinggo</option>
+						<?php 
+						foreach($data_toko as $row)
+						{
+						?>
+						<option value="<?= $row->id_toko ?>"
+							<?php if($row->id_toko=="T1") echo 'selected="selected"'; ?>>
+							<?= $row->nama_toko ?></option>
+						<?php } ?>
 					</select>
 				</form>
 			</div>
