@@ -60,7 +60,7 @@
 									</div>
 										<label>password</label>
 										<input type="text" class="form-control" placeholder="Masukan password"
-											name="password" value="<?= set_value('nama_user') ?>">
+											name="password" value="<?= set_value('password') ?>">
 											<span class="help-block"><?php echo form_error('password'); ?></span>
 								</div>
 							</div>
@@ -72,7 +72,9 @@
 								</div>
 								<div class="nk-int-st">
 									<button type="submit" class="btn btn-primary">Simpan</button>
-									<a onclick=self.history.back() class="btn btn-danger">Kembali</a>
+									<a class="btn btn-danger" href="<?php if(isset($_SERVER['HTTP_REFERER'])){ echo $_SERVER['HTTP_REFERER']; } ?>">Back</a>
+
+									<!-- <a onclick=self.history.back() class="btn btn-danger">Kembali</a> -->
 								</div>
 							</div>
 						</div>

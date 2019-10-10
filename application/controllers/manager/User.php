@@ -33,8 +33,8 @@ class User extends CI_controller
         $this->form_validation->set_rules('password', 'password', 'required');
         if($this->form_validation->run()==TRUE){
         	$id_toko = $this->session->userdata('id_toko');
-		$kode = $this->M_user->get_no();
-		$data = array(
+			$kode = $this->M_user->get_no();
+			$data = array(
 			'id_user' => $kode,
 			'nama_user' => $this->input->post('nama_user'),	
 			'username' => $this->input->post('username'),				
@@ -74,9 +74,9 @@ class User extends CI_controller
 	function update(){
 		$this->form_validation->set_rules('nama_user', 'nama user', 'required');
         $this->form_validation->set_rules('username', 'username', 'required');
+		$id_user = $this->input->post('id_user');
         	if($this->form_validation->run()==TRUE){
         $id_toko = $this->session->userdata('id_toko');
-		$id_user = $this->input->post('id_user');
 		$nama_user = $this->input->post('nama_user');
 		$username = $this->input->post('username');
 		$password = $this->input->post('password');
@@ -100,8 +100,11 @@ class User extends CI_controller
 		else{
 			echo "<script>alert('username ada yang sama');window.location = '". base_url("user_kasir/edit/".$this->input->post('id_user'))."';</script>";
 		}
-	}else{
-		echo "<script>window.location = '". base_url("user_kasir/edit/".$this->input->post('id_user'))."';</script>";
+	}
+	else{
+		$this->edit($id_user);
+		//redirect('user_kasir/edit/'.$this->input->post('id_user'));
+		
 	}
         	}
 	// 	$id_toko = $this->session->userdata('id_toko');
