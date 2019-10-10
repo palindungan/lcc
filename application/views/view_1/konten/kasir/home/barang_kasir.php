@@ -1,7 +1,7 @@
 <div class="row">
 	<?php 
-    if( ! empty($siswa)){
-						foreach($siswa as $row)
+    if( ! empty($daftar_barang)){
+						foreach($daftar_barang as $row)
 						{
 							$kode = "";
 							if($row->kode_unik == "kosong")

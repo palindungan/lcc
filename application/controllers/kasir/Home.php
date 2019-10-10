@@ -17,7 +17,7 @@ class Home extends CI_Controller
     }
     public function index()
     {
-        $data['siswa'] = $this->M_home->barang_kasir();
+        $data['daftar_barang'] = $this->M_home->barang_kasir();
         $this->template->load('view_1/template/kasir', 'view_1/konten/kasir/home/tampil',$data);
     }
     public function add_cart()
@@ -55,7 +55,7 @@ class Home extends CI_Controller
         }
         else if($this->form_validation->run() == FALSE)
         {
-            $data['siswa'] = $this->M_home->barang_kasir();
+            $data['daftar_barang'] = $this->M_home->barang_kasir();
             $this->template->load('view_1/template/kasir', 'view_1/konten/kasir/home/tampil',$data);
         }
         else
@@ -149,10 +149,10 @@ class Home extends CI_Controller
     {
     // Ambil data NIS yang dikirim via ajax post
         $keyword = $this->input->post('keyword');
-        $siswa = $this->M_home->search($keyword);
+        $daftar_barang = $this->M_home->search($keyword);
 
         // Kita load file view.php sambil mengirim data siswa hasil query function search di SiswaModel
-        $hasil = $this->load->view('view_1/konten/kasir/home/barang_kasir',array('siswa'=>$siswa),true);
+        $hasil = $this->load->view('view_1/konten/kasir/home/barang_kasir',array('daftar_barang'=>$daftar_barang),true);
         // Buat sebuah array
         $callback = array(
         'hasil' => $hasil, // Set array hasil dengan isi dari view.php yang diload tadi

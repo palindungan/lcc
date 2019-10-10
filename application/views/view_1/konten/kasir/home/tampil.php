@@ -13,7 +13,7 @@
 					</div>
 					<div id="view">
 						<?php
-						$this->load->view('view_1/konten/kasir/home/barang_kasir',array('siswa'=>$siswa));
+						$this->load->view('view_1/konten/kasir/home/barang_kasir',array('daftar_barang'=>$daftar_barang));
 						?>
 					</div>
 				</div>
