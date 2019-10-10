@@ -104,4 +104,16 @@ class Home extends CI_Controller
         // TUTUP KEUNTUNGAN TOKO PROBOLINGGO
         $this->template->load('view_1/template/pimpinan', 'view_1/konten/pimpinan/home/tampil',$data);
     }
+    function tampil()
+    {
+		$select = $this->input->post('pilih');
+        if($select=='semua')
+        {
+            echo 'lol';
+        }
+        else if($select=='T1')
+        {
+            echo 'kampret';
+        }
+    }
 } 
