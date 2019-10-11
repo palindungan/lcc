@@ -76,15 +76,18 @@ class Home extends CI_Controller
             $this->M_home->input_data($data_customer, 'customer');
             $this->M_home->input_data($data_penjualan, 'penjualan');
             if ($cart = $this->cart->contents()) {
+                $i = 0;
                 foreach ($cart as $item) {
                     $data_detail = array(
                         'id_penjualan' => $id_penjualan,
                         'id_stok_b' => $item['id'],
-                        'harga_jual' => $this->input->post('harga_jual'),
+                        'harga_jual' => $this->input->post('harga_jual')[$i],
                         'qty' => $item['qty'],
-                        'total_hrg' => $this->input->post('harga_jual') * $item['qty']
+                        'total_hrg' => (int) $this->input->post('harga_jual')[$i] * (int) $item['qty']
                     );
                     $this->M_home->input_data($data_detail, 'detail_penjualan');
+
+                    $i++;
                 }
             }
             $this->cart->destroy();
