@@ -78,6 +78,7 @@ $route['barang_toko/trending'] = 'manager/barang/barang_terlaris';
 
 $route['pemasokan'] = 'manager/pemasokan';
 $route['pemasokan/daftar_pemasokan'] = 'manager/pemasokan/daftar_pemasokan';
+$route['pemasokan/detail_pemasokan'] = 'manager/pemasokan/detail_pemasokan';
 
 $route['pengeluaran_lain'] = 'manager/pengeluaran_lain';
 $route['pengeluaran_lain/add'] = 'manager/pengeluaran_lain/add';

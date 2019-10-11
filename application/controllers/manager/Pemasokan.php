@@ -36,15 +36,17 @@ class Pemasokan extends CI_Controller
     public function detail_pemasokan()
     {
 
-        $id_pemasokan = $this->session->userdata('id_pemasokan'); // session
+        $id_pemasokan = $this->input->get('id_pemasokan');
 
         $data_id = array(
             'id_pemasokan' => $id_pemasokan
         );
 
-        $data['pemasokan_list_detail'] = $this->M_pemasokan->get_data('pemasokan_list', $data_id)->result();
+        $data['pemasokan_list_detail'] = $this->M_pemasokan->get_data('pemasokan_list_detail', $data_id)->result();
 
-        $this->template->load('view_1/template/manager', 'view_1/konten/manager/pemasokan/daftar_pemasokan', $data);
+        $data['pemasokan_list'] = $this->M_pemasokan->get_data('pemasokan_list', $data_id)->result();
+
+        $this->template->load('view_1/template/manager', 'view_1/konten/manager/pemasokan/detail_pemasokan', $data);
     }
     public function tampil_daftar_barang()
     {

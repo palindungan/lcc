@@ -11,7 +11,7 @@
                                     <i class="notika-icon notika-form"></i>
                                 </div>
                                 <div class="breadcomb-ctn">
-                                    <h2>DAFTAR PEMASOKAN</h2>
+                                    <h2>DETAIL PEMASOKAN</h2>
                                     <p>Welcome to Notika <span class="bread-ntd">Admin Template</span></p>
                                 </div>
                             </div>
@@ -29,56 +29,81 @@
 </div>
 <!-- Breadcomb area End-->
 
+<?php
+foreach ($pemasokan_list as $row) {
+    $nama_distributor = $row->nama;
+    $nama_manager = $row->nama_user;
+    $a = $row->tanggal;
+    $tanggal = date('d/m/Y H:i:s', strtotime($a));
+    $id_pemasokan =  $row->id_pemasokan;
+    $total = $row->total;
+} ?>
+
 <!-- Form Element area Start-->
 <div class="data-table-area">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="data-table-list">
-                    <div class="basic-tb-hd">
 
+                    <div style="margin-bottom: 20px;">
+                        <a onclick="window.history.back();" class="btn btn-primary btn-lg">Kembali</a>
                     </div>
-                    <div class="table-responsive">
-                        <table id="data-table-basic" class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Kode</th>
-                                    <th>Distributor</th>
-                                    <th>Tanggal</th>
-                                    <th>Total</th>
-                                    <th>Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                foreach ($pemasokan_list as $row) {
-                                    ?>
-                                    <tr>
-                                        <td><?= $row->id_pemasokan; ?></td>
-                                        <td><?= $row->nama; ?></td>
-                                        <td><?= $row->tanggal; ?></td>
-                                        <td><?= $row->nama_user; ?></td>
-                                        <td>
-                                            <div class="table-actions">
-                                                <a class="btn btn-primary fa fa-search" href="<?php echo base_url("user_kasir/edit/" . $row->id_pemasokan) ?>"></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                <?php
-                                }
+                    <table class="table table-borderless" width="100">
+                        <tr>
+                            <th width="11%">Distributor</th>
+                            <th width="1%">:</th>
+                            <th><?= $nama_distributor; ?></th>
+                            <th width="11%">Manager</th>
+                            <th width="1%">:</th>
+                            <th><?= $nama_manager; ?></th>
+                        </tr>
+                        <tr>
+                            <th>Tanggal</th>
+                            <th>:</th>
+                            <th><?= $tanggal; ?></th>
+                            <th>Kode</th>
+                            <th>:</th>
+                            <th><?= $id_pemasokan; ?></th>
+                        </tr>
+                    </table>
+                    <table class="table table-sm table-borderless" width="100%">
+                        <thead>
+                            <tr>
+                                <th width="7%" scope="col">NO</th>
+                                <th width="35%" scope="col">NAMA BARANG</th>
+                                <th width="10%" scope="col">QTY</th>
+                                <th width="24%" scope="col">HARGA BARANG</th>
+                                <th width="24%" style="text-align:center" scope="col">TOTAL HARGA</th>
+                                <th width="7%">BARCODE</th>
+                                <th width="7%">KODE UNIK</th>
+                            </tr>
+
+                        </thead>
+                        <tbody>
+                            <?php
+                            foreach ($pemasokan_list_detail as $row) {
                                 ?>
-                            </tbody>
-                            <tfoot>
                                 <tr>
-                                    <th>Kode</th>
-                                    <th>Distributor</th>
-                                    <th>Tanggal</th>
-                                    <th>Total</th>
-                                    <th>Aksi</th>
+                                    <td width="7%" scope="row"><?= $row->id_pemasokan; ?></td>
+                                    <td width="35%"><?= $row->nama; ?></td>
+                                    <td width="10%"><?= ($row->total_hrg / $row->hrg_distributor); ?></td>
+                                    <td width="24%" style="text-align:right"><?= $row->hrg_distributor ?></td>
+                                    <td width="24%" style="text-align:right"><?= $row->total_hrg ?></td>
+                                    <td><?= $row->barcode; ?></td>
+                                    <td><?= $row->kode_unik; ?></td>
                                 </tr>
-                            </tfoot>
-                        </table>
-                    </div>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-borderless">
+                        <tr>
+                            <th width="7%"></th>
+                            <th width="59%"></th>
+                            <th style="text-align:right" width="22%">Total</th>
+                            <th style="text-align:right"><?= $total; ?></th>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>

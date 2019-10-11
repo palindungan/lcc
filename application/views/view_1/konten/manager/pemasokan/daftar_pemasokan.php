@@ -60,7 +60,7 @@
                                         <td><?= $row->nama_user; ?></td>
                                         <td>
                                             <div class="table-actions">
-                                                <a class="btn btn-primary fa fa-search" href="<?php echo base_url("pemasokan/detail_pemasokan/" . $row->id_pemasokan) ?>"></a>
+                                                <a class="btn btn-primary fa fa-search" href="<?php echo base_url("pemasokan/detail_pemasokan?id_pemasokan=" . $row->id_pemasokan) ?>"></a>
                                             </div>
                                         </td>
                                     </tr>
