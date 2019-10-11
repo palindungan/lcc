@@ -96,6 +96,8 @@ $route['user_manager/ganti_password/(:any)'] = 'pimpinan/user/ganti_password/$1'
 
 $route['stok_habis'] = 'pimpinan/barang/stok_habis';
 $route['barang_trending'] = 'pimpinan/barang/barang_terlaris';
+$route['stok_toko'] = 'pimpinan/barang/stok_toko';
+
 $route['pengeluaran'] = 'pimpinan/pengeluaran';
 $route['laporan_pimpinan'] = 'pimpinan/laporan';
 

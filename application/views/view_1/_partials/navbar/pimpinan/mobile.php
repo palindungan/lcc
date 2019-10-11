@@ -19,6 +19,7 @@
 								<ul id="democrou" class="collapse dropdown-header-top">
 									<li><a href="<?= base_url('stok_habis'); ?>">Stok Habis</a>
 									<li><a href="<?= base_url('barang_trending'); ?>">Barang Trending</a>
+									<li><a href="<?= base_url('stok_toko'); ?>">Stok Toko</a>
 								</ul>
 							</li>
 							<li><a data-toggle="collapse" data-target="#distributor" href="#">Distributor</a>

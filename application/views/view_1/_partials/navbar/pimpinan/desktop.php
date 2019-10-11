@@ -3,33 +3,32 @@
 		<div class="row">
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 				<ul class="nav nav-tabs notika-menu-wrap menu-it-icon-pro">
-					<li <?= $this->uri->segment(1) == 'dashboard_pimpinan' ? 'class="active"' : ''?>>
+					<li <?= $this->uri->segment(1) == 'dashboard_pimpinan' ? 'class="active"' : '' ?>>
 						<a data-toggle="tab" href="#Home">
 							<i class="glyphicon glyphicon-home"></i> Home
 						</a>
 					</li>
-					<li <?= $this->uri->segment(1) == 'user_manager' ? 'class="active"' : ''?>>
+					<li <?= $this->uri->segment(1) == 'user_manager' ? 'class="active"' : '' ?>>
 						<a data-toggle="tab" href="#Home2">
 							<i class="glyphicon glyphicon-user"></i> User
 						</a>
 					</li>
-					<li
-						<?= $this->uri->segment(1) == 'stok_habis' || $this->uri->segment(1) == 'barang_trending' ? 'class="active"' : ''?>>
+					<li <?= $this->uri->segment(1) == 'stok_habis' || $this->uri->segment(1) == 'barang_trending' ? 'class="active"' : '' ?>>
 						<a data-toggle="tab" href="#Home3">
 							<i class="glyphicon glyphicon-th-large"></i> Barang
 						</a>
 					</li>
-					<li <?= $this->uri->segment(1) == 'distributor' ? 'class="active"' : ''?>>
+					<li <?= $this->uri->segment(1) == 'distributor' ? 'class="active"' : '' ?>>
 						<a data-toggle="tab" href="#Home8">
 							<i class="glyphicon glyphicon-plane"></i> Distributor
 						</a>
 					</li>
-					<li <?= $this->uri->segment(1) == 'pengeluaran' ? 'class="active"' : ''?>>
+					<li <?= $this->uri->segment(1) == 'pengeluaran' ? 'class="active"' : '' ?>>
 						<a data-toggle="tab" href="#Home7">
 							<i class="glyphicon glyphicon-open-file"></i> Pengeluaran
 						</a>
 					</li>
-					<li <?= $this->uri->segment(1) == 'laporan_pimpinan' ? 'class="active"' : ''?>>
+					<li <?= $this->uri->segment(1) == 'laporan_pimpinan' ? 'class="active"' : '' ?>>
 						<a data-toggle="tab" href="#Home6">
 							<i class="glyphicon glyphicon-stats"></i> Laporan
 						</a>
@@ -37,7 +36,7 @@
 
 				</ul>
 				<div class="tab-content custom-menu-content">
-					<div id="Home" class="tab-pane <?= $this->uri->segment(1) == 'dashboard_pimpinan' ? 'active' : ''?> 
+					<div id="Home" class="tab-pane <?= $this->uri->segment(1) == 'dashboard_pimpinan' ? 'active' : '' ?> 
                         in notika-tab-menu-bg animated flipInX">
 						<ul class="notika-main-menu-dropdown">
 							<li>
@@ -45,8 +44,7 @@
 							</li>
 						</ul>
 					</div>
-					<div id="Home2"
-						class="tab-pane <?= $this->uri->segment(1) == 'user_manager' ? 'active' : ''?> in notika-tab-menu-bg animated flipInX">
+					<div id="Home2" class="tab-pane <?= $this->uri->segment(1) == 'user_manager' ? 'active' : '' ?> in notika-tab-menu-bg animated flipInX">
 						<ul class="notika-main-menu-dropdown">
 							<li>
 								<a href="<?= base_url('user_manager'); ?>">Data Manager</a>
@@ -55,7 +53,7 @@
 					</div>
 
 					<div id="Home3" class="tab-pane
-						<?= $this->uri->segment(1) == 'stok_habis' || $this->uri->segment(1) == 'barang_trending'  ? 'active' : ''?> in
+						<?= $this->uri->segment(1) == 'stok_habis' || $this->uri->segment(1) == 'barang_trending'  ? 'active' : '' ?> in
 						notika-tab-menu-bg animated flipInX">
 						<ul class="notika-main-menu-dropdown">
 							<li>
@@ -64,11 +62,13 @@
 							<li>
 								<a href="<?= base_url('barang_trending'); ?>">Barang Trending</a>
 							</li>
+							<li>
+								<a href="<?= base_url('stok_toko'); ?>">Stok Toko</a>
+							</li>
 						</ul>
 					</div>
 
-					<div id="Home8"
-						class="tab-pane <?= $this->uri->segment(1) == 'distributor' ? 'active' : ''?> in notika-tab-menu-bg animated flipInX">
+					<div id="Home8" class="tab-pane <?= $this->uri->segment(1) == 'distributor' ? 'active' : '' ?> in notika-tab-menu-bg animated flipInX">
 						<ul class="notika-main-menu-dropdown">
 							<li>
 								<a href="<?= base_url('distributor'); ?>">Data Distributor</a>
@@ -76,8 +76,7 @@
 						</ul>
 					</div>
 
-					<div id="Home7"
-						class="tab-pane <?= $this->uri->segment(1) == 'pengeluaran' ? 'active' : ''?> in notika-tab-menu-bg animated flipInX">
+					<div id="Home7" class="tab-pane <?= $this->uri->segment(1) == 'pengeluaran' ? 'active' : '' ?> in notika-tab-menu-bg animated flipInX">
 						<ul class="notika-main-menu-dropdown">
 							<li>
 								<a href="<?= base_url('pengeluaran'); ?>">Data Pengeluaran</a>
@@ -85,8 +84,7 @@
 						</ul>
 					</div>
 
-					<div id="Home6"
-						class="tab-pane <?= $this->uri->segment(1) == 'laporan_pimpinan' ? 'active' : ''?> in notika-tab-menu-bg animated flipInX">
+					<div id="Home6" class="tab-pane <?= $this->uri->segment(1) == 'laporan_pimpinan' ? 'active' : '' ?> in notika-tab-menu-bg animated flipInX">
 						<ul class="notika-main-menu-dropdown">
 							<li>
 								<a href="<?= base_url('laporan_pimpinan'); ?>">Laporan</a>
