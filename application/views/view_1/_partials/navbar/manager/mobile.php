@@ -25,6 +25,7 @@
 							<li><a data-toggle="collapse" data-target="#demolibra" href="#">Pemasokan</a>
 								<ul id="demolibra" class="collapse dropdown-header-top">
 									<li><a href="<?= base_url('pemasokan'); ?>">Pemasokan</a></li>
+									<li><a href="<?= base_url('pemasokan/daftar_pemasokan'); ?>">Daftar Pemasokan</a></li>
 								</ul>
 							</li>
 							<li><a data-toggle="collapse" data-target="#pengeluaran" href="#">Pengeluaran</a>
