@@ -13,6 +13,37 @@ class Login extends CI_Controller
     public function aksi_login(){
         $userpass = $this->input->post('password');
         $cek = $this->M_login->cek_login();
+        $cek_pimpinan = $this->M_login->cek_pimpinan();
+        if($cek_pimpinan->num_rows() > 0)
+        {
+            foreach($cek_pimpinan->result() as $row_pimpinan){
+            $id_user_pimpinan = $row_pimpinan->id_user_p;
+            $username_pimpinan = $row_pimpinan->username;
+            $nama_pimpinan = $row_pimpinan->nama;
+            $akses_pimpinan = $row_pimpinan->jenis_akses;
+            $password_pimpinan = $row_pimpinan->password;
+        }
+            if (password_verify($userpass, $password_pimpinan)) {
+            $data_session = array(
+            'id_user' => $id_user_pimpinan,
+            'username' => $username_pimpinan,
+            'nama' => $nama_pimpinan,
+            'akses' => $akses_pimpinan,
+            'password' => $password_pimpinan,
+            'nama_toko' => 'Inventory Management'
+            );
+        $this->session->set_userdata($data_session);
+        if($row_pimpinan->jenis_akses == 'Pimpinan')
+        {
+        redirect(base_url("dashboard_pimpinan"));
+        }
+        
+        }
+        }
+        else
+        {
+        echo "login gagal";
+        }
         if($cek->num_rows() > 0)
             {
                 foreach($cek->result() as $row){
@@ -35,11 +66,7 @@ class Login extends CI_Controller
                 'nama_toko' => $nama_toko
                 );
                 $this->session->set_userdata($data_session);
-                if($row->jenis_akses == 'Pimpinan')
-                {
-                redirect(base_url("dashboard_pimpinan"));
-                }
-                else if($row->jenis_akses == 'Manager')
+                if($row->jenis_akses == 'Manager')
                 {
                 redirect(base_url("dashboard_manager"));
                 }
