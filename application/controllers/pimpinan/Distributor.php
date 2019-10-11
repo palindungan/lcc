@@ -28,7 +28,11 @@
  		$this->template->load('view_1/template/pimpinan', 'view_1/konten/pimpinan/distributor/input');
  	}
  	function insert_data(){
- 		$kode = $this->M_distributor->get_no();
+ 		$this->form_validation->set_rules('nama', 'nama', 'required');
+ 		$this->form_validation->set_rules('alamat', 'alamat', 'required');
+ 		$this->form_validation->set_rules('no_hp', 'no hp', 'required');
+ 		if($this->form_validation->run()==TRUE){
+ 			$kode = $this->M_distributor->get_no();
  		$data = array(
  			'id_distributor' => $kode,
  			'nama' => $this->input->post('nama'),
@@ -37,9 +41,12 @@
  		);
  		$input = $this->M_distributor->input($data);
  		if($input){
- 			redirect("distributor");
+ 			redirect("pimpinan/distributor");
  		}else{
  			echo "gagal";
+ 		}
+ 	}else{
+ 		$this->template->load('view_1/template/pimpinan', 'view_1/konten/pimpinan/distributor/input');	
  		}
  	}
  		function edit($id){

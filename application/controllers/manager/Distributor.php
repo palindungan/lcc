@@ -26,7 +26,11 @@
  		$this->template->load('view_1/template/manager', 'view_1/konten/manager/distributor/input');
  	}
  	function insert_data(){
- 		$kode = $this->M_distributor->get_no();
+ 		$this->form_validation->set_rules('nama', 'nama', 'required');
+ 		$this->form_validation->set_rules('alamat', 'alamat', 'required');
+ 		$this->form_validation->set_rules('no_hp', 'no hp', 'required');
+ 		if($this->form_validation->run()==TRUE){
+ 			$kode = $this->M_distributor->get_no();
  		$data = array(
  			'id_distributor' => $kode,
  			'nama' => $this->input->post('nama'),
@@ -39,6 +43,9 @@
  		}else{
  			echo "gagal";
  		}
+ 	}else{
+ 		$this->template->load('view_1/template/manager', 'view_1/konten/manager/distributor/input');	
+ 		}
  	}
  	function edit($id){
  			$where = array('id_distributor'=>$id);
@@ -46,20 +53,27 @@
  			$this->template->load('view_1/template/manager', 'view_1/konten/manager/distributor/edit',$data);
  		}
  	function update(){
-		$id_distributor = $this->input->post('id_distributor');
-		$nama = $this->input->post('nama');
-		$alamat = $this->input->post('alamat');
-		$no_hp = $this->input->post('no_hp');
-		$data = array(
-			'nama'  => $nama,
-			'alamat' => $alamat,
-			'no_hp' => $no_hp
+ 		$this->form_validation->set_rules('nama', 'nama', 'required');
+ 		$this->form_validation->set_rules('alamat', 'alamat', 'required');
+ 		$this->form_validation->set_rules('no_hp', 'no hp', 'required');
+		if($this->form_validation->run()==TRUE){
+			$nama = $this->input->post('nama');
+			$alamat = $this->input->post('alamat');
+			$no_hp = $this->input->post('no_hp');
+			$data = array(
+				'nama'  => $nama,
+				'alamat' => $alamat,
+				'no_hp' => $no_hp
 			);
 		$where = array(
 			'id_distributor' => $id_distributor
 		);
 		$this->M_distributor->update($where,$data,'distributor');
 		redirect('manager/distributor');
+		}
+		else{
+			echo "<script>window.location = '". base_url("manager/distributor/edit/".$this->input->post('id_distributor'))."';</script>";
+		}
 		}
  	function hapus($id){
 		$where =array('id_distributor'=>$id);

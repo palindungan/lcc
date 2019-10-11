@@ -69,10 +69,7 @@ foreach($edit as $data){
                                          <option value="<?php echo $toko->id_toko ?>" <?php echo $toko->id_toko==$data->id_toko ?  "selected" : "" ?>><?php echo $toko->nama_toko ?></option>
                                         <?php } ?>
                                     </select>
-                                    <!-- <input type="text" class="form-control" value="<?php echo $data->username ?>" name="username">
-                                    <span class="help-block"><?php echo form_error('username'); ?></span>  
-                                    <input type="hidden" name="password" value="<?php echo $data->password ?>"> -->
-                            </div>
+                                    </div>
                         </div>
                     </div>
                     <div class="row">
