@@ -10,7 +10,7 @@ class M_home extends CI_Model
     function count_jenis_barang()
     {
 		$id_toko = $this->session->userdata('id_toko');
-        return $this->db->query("SELECT sum(tabel.jumlah_barang) AS jenis_barang
+        return $this->db->query("SELECT COALESCE(sum(tabel.jumlah_barang),0) AS jenis_barang
         FROM (
         SELECT COUNT(DISTINCT kode) AS jumlah_barang FROM stok_barang JOIN barang_terdaftar USING(kode) JOIN pemasokan
         USING(id_pemasokan) JOIN user USING(id_user) JOIN toko USING (id_toko) WHERE id_toko ='$id_toko' GROUP BY kode
