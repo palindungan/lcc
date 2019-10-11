@@ -56,6 +56,24 @@ foreach($edit as $data){
                                     <input type="hidden" name="password" value="<?php echo $data->password ?>">
                             </div>
                         </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <div class="form-group">
+                                <div class="form-ic-cmp">
+                                </div>
+                                    <label>Toko</label>
+                                    <select>
+                                        <option>pilih</option>
+                                        <?php 
+                                        foreach($toko as $data){
+                                         ?>
+                                         <option value="<?php echo $data ?>id_toko"><?php echo $data->nama_toko ?></option>
+                                        <?php } ?>
+                                    </select>
+                                    <!-- <input type="text" class="form-control" value="<?php echo $data->username ?>" name="username">
+                                    <span class="help-block"><?php echo form_error('username'); ?></span>  
+                                    <input type="hidden" name="password" value="<?php echo $data->password ?>"> -->
+                            </div>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">

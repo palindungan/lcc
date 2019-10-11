@@ -10,7 +10,6 @@ class User extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('pimpinan/M_user');
-		$this->load->model('kasir/M_toko');
 	}
 	function index()
 	{
@@ -28,7 +27,6 @@ class User extends CI_Controller
         $this->form_validation->set_rules('password', 'password', 'required');
         $this->form_validation->set_rules('id_toko', 'toko', 'required');
 		if($this->form_validation->run()==TRUE){
-			$id_toko = $this->session->userdata('id_toko');
 		$kode = $this->M_user->get_no();
 		$data = array(
 			'id_user' => $kode,
@@ -50,7 +48,7 @@ class User extends CI_Controller
 			echo "<script>window.location = '" . base_url('user_manager') . "';</script>";
 		}
 		}else{
-   			$this->template->load('view_1/template/manager', 'view_1/konten/pimpinan/user/input');
+   			$this->template->load('view_1/template/pimpinan', 'view_1/konten/pimpinan/user/input');
    		}
 	}
 	function edit($id)
