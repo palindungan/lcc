@@ -8,7 +8,8 @@
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 							<div class="breadcomb-wp">
 								<div class="breadcomb-icon">
-									<i class="notika-icon notika-form"></i>
+									<i class="noti
+									ka-icon notika-form"></i>
 								</div>
 								<div class="breadcomb-ctn">
 									<h2>Data User</h2>
@@ -59,7 +60,7 @@
 									<div class="form-ic-cmp">
 									</div>
 										<label>password</label>
-										<input type="text" class="form-control" placeholder="Masukan password"
+										<input type="password" class="form-control" placeholder="Masukan password"
 											name="password" value="<?= set_value('password') ?>">
 											<span class="help-block"><?php echo form_error('password'); ?></span>
 								</div>

@@ -11,7 +11,8 @@ class M_user extends CI_Model
 		return $query->result();
 	}
 	function tampil(){
-        return $this->db->query("SELECT * FROM user JOIN toko USING(id_toko) WHERE jenis_akses='Manager'")->result();
+		$id_toko = $this->session->userdata('id_toko');
+        return $this->db->query("SELECT * FROM user JOIN toko USING(id_toko) WHERE jenis_akses='Manager' AND id_toko='$id_toko'")->result();
 	}
 	function get_no()
     {
