@@ -7,7 +7,15 @@ class Barang extends CI_Controller
     function __construct()
     {
         parent::__construct();
-        // $this->load->model('kasir/M_distributor');
+        if(!$this->session->userdata('id_user')){
+        redirect('/');
+        }
+        else if($this->session->userdata('akses') != 'Pimpinan')
+        {
+        echo '<script>
+        	window.history.back();
+        </script>';
+        }
         $this->load->model('pimpinan/M_barang');
     }
     function index(){
@@ -30,15 +38,15 @@ class Barang extends CI_Controller
         {
             echo '
             <div class="table-responsive">
-            	<table width="100%" id="dt_custom1" class="table table-striped">
-            		<thead>
-            			<tr>
-            				<th width="5%">No</th>
-            				<th width="17%">Nama Barang</th>
-            				<th width="25%">Stok Tersisa</th>
-            			</tr>
-            		</thead>
-            		<tbody>'; 
+                <table width="100%" id="dt_custom1" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th width="5%">No</th>
+                            <th width="17%">Nama Barang</th>
+                            <th width="25%">Stok Tersisa</th>
+                        </tr>
+                    </thead>
+                    <tbody>'; 
                                 $no_lcc = 1;
                                 foreach($record_lcc as $row_lcc){
                     echo '  

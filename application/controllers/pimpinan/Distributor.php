@@ -7,7 +7,16 @@
  	
  	function __construct()
  	{
- 		parent:: __construct();
+		 parent:: __construct();
+		 if(!$this->session->userdata('id_user')){
+		 redirect('/');
+		 }
+		 else if($this->session->userdata('akses') != 'Pimpinan')
+		 {
+		 echo '<script>
+		 	window.history.back();
+		 </script>';
+		 }
  		$this->load->model('kasir/M_distributor');
  		$this->load->library('form_validation');
  	}

@@ -35,7 +35,11 @@ class Login extends CI_Controller
                 'nama_toko' => $nama_toko
                 );
                 $this->session->set_userdata($data_session);
-                if($row->jenis_akses == 'Manager')
+                if($row->jenis_akses == 'Pimpinan')
+                {
+                redirect(base_url("dashboard_pimpinan"));
+                }
+                else if($row->jenis_akses == 'Manager')
                 {
                 redirect(base_url("dashboard_manager"));
                 }
