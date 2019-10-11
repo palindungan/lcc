@@ -24,7 +24,7 @@ class M_pengeluaran_lain extends CI_Model
         $tabel = "pengeluaran_lain";
         $digit = "2";
 
-        $q = $this->db->query("SELECT MAX(RIGHT($field,$digit)) AS kd_max FROM $tabel");
+        $q = $this->db->query("SELECT MAX(RIGHT($field,$digit)) AS kd_max FROM $tabel LIMIT 1");
         $kd = "";
         if ($q->num_rows() > 0) {
             foreach ($q->result() as $k) {
