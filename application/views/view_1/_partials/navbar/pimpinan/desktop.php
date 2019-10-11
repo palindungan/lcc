@@ -20,7 +20,7 @@
 						</a>
 					</li>
 					<li <?= $this->uri->segment(1) == 'distributor' ? 'class="active"' : ''?>>
-						<a data-toggle="tab" href="#distributor">
+						<a data-toggle="tab" href="#Home8">
 							<i class="glyphicon glyphicon-plane"></i> Distributor
 						</a>
 					</li>
@@ -67,7 +67,7 @@
 						</ul>
 					</div>
 
-					<div id="distributor"
+					<div id="Home8"
 						class="tab-pane <?= $this->uri->segment(1) == 'distributor' ? 'active' : ''?> in notika-tab-menu-bg animated flipInX">
 						<ul class="notika-main-menu-dropdown">
 							<li>

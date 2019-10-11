@@ -97,6 +97,10 @@ $route['barang_trending'] = 'pimpinan/barang/barang_terlaris';
 $route['pengeluaran'] = 'pimpinan/pengeluaran';
 $route['laporan_pimpinan'] = 'pimpinan/laporan';
 
+$route['distributor'] = 'pimpinan/distributor';
+$route['distributor/add'] = 'pimpinan/distributor/insert';
+$route['distributor/edit/(:any)'] = 'pimpinan/distributor/edit/$1';
+$route['distributor/hapus/(:any)'] = 'pimpinan/distributor/hapus/$1';
 /*
 | -------------------------------------------------------------------------
 | Sample REST API Routes

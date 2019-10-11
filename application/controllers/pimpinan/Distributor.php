@@ -37,7 +37,7 @@
  		);
  		$input = $this->M_distributor->input($data);
  		if($input){
- 			redirect("pimpinan/distributor");
+ 			redirect("distributor");
  		}else{
  			echo "gagal";
  		}
@@ -61,12 +61,12 @@
 			'id_distributor' => $id_distributor
 		);
 		$this->M_distributor->update($where,$data,'distributor');
-		redirect('pimpinan/distributor');
+		redirect('distributor');
 	}
 
 		function hapus($id){
 		$where =array('id_distributor'=>$id);
 		$this->M_distributor->hapus_data($where,'distributor');
-		redirect('pimpinan/distributor');
+		redirect('distributor');
 	}
  }
