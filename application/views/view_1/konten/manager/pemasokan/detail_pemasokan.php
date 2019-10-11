@@ -71,12 +71,12 @@ foreach ($pemasokan_list as $row) {
                         <thead>
                             <tr>
                                 <th width="7%" scope="col">NO</th>
-                                <th width="35%" scope="col">NAMA BARANG</th>
-                                <th width="10%" scope="col">QTY</th>
-                                <th width="24%" scope="col">HARGA BARANG</th>
-                                <th width="24%" style="text-align:center" scope="col">TOTAL HARGA</th>
-                                <th width="7%">BARCODE</th>
-                                <th width="7%">KODE UNIK</th>
+                                <th width="25%" scope="col">NAMA BARANG</th>
+                                <th width="8%" scope="col">QTY</th>
+                                <th width="15%" scope="col">HARGA BARANG</th>
+                                <th width="15%" style="text-align:center" scope="col">TOTAL HARGA</th>
+                                <th width="15%">BARCODE</th>
+                                <th width="15%">KODE UNIK</th>
                             </tr>
 
                         </thead>
@@ -86,12 +86,12 @@ foreach ($pemasokan_list as $row) {
                                 ?>
                                 <tr>
                                     <td width="7%" scope="row"><?= $row->id_pemasokan; ?></td>
-                                    <td width="35%"><?= $row->nama; ?></td>
-                                    <td width="10%"><?= ($row->total_hrg / $row->hrg_distributor); ?></td>
-                                    <td width="24%" style="text-align:right"><?= $row->hrg_distributor ?></td>
-                                    <td width="24%" style="text-align:right"><?= $row->total_hrg ?></td>
-                                    <td><?= $row->barcode; ?></td>
-                                    <td><?= $row->kode_unik; ?></td>
+                                    <td width="25%"><?= $row->nama; ?></td>
+                                    <td width="8%"><?= ($row->total_hrg / $row->hrg_distributor); ?></td>
+                                    <td width="15%" style="text-align:right"><?= $row->hrg_distributor ?></td>
+                                    <td width="15%" style="text-align:right"><?= $row->total_hrg ?></td>
+                                    <td width="15%"><?= $row->barcode; ?></td>
+                                    <td width="15%"><?= $row->kode_unik; ?></td>
                                 </tr>
                             <?php } ?>
                         </tbody>
