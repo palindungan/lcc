@@ -143,6 +143,7 @@
 					$('#cart_details').html(data);
 					$("#keyword").val('');
 					$("#keyword").focus();
+					update_total();
 				}
 			});
 		});
@@ -253,6 +254,7 @@
 									$('#cart_details').html(data);
 									$("#keyword").val('');
 									$("#keyword").focus();
+									update_total();
 								}
 							});
 						});
