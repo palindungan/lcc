@@ -38,39 +38,43 @@ foreach($distributor as $data){
                     <div class="row">
                         <form action="<?php echo base_url("pimpinan/distributor/update") ?>" method="post">
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                            <div class="form-group ic-cmp-int">
+                            <div class="form-group <?php if(form_error('nama')== true) { echo "has-error";} ?>">
                                 <div class="form-ic-cmp">
                                 </div>
                                 <div class="nk-int-st">
                                     <label>Nama</label>
                                     <input type="hidden" name="id_distributor" value="<?php echo $data->id_distributor ?>">
                                     <input type="text" class="form-control" value="<?php echo $data->nama ?>" name="nama">
+                                    <span class="help-block"><?php echo form_error('nama'); ?></span>  
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                            <div class="form-group ic-cmp-int">
+                            <div class="form-group <?php if(form_error('alamat')== true) { echo "has-error";} ?>">
                                 <div class="form-ic-cmp">
                                 </div>
                                 <div class="nk-int-st">
                                     <label>Alamat</label>
                                     <input type="text" class="form-control" value="<?php echo $data->alamat ?>" name="alamat">
+                                     <span class="help-block"><?php echo form_error('alamat'); ?></span> 
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                            <div class="form-group ic-cmp-int">
+                            <div class="form-group  <?php if(form_error('no_hp')== true) { echo "has-error";} ?>">
                                 <div class="form-ic-cmp">
                                 </div>
                                 <div class="nk-int-st">
                                     <label>No Hp</label>
                                     <input type="text" class="form-control" value="<?php echo $data->no_hp ?>" name="no_hp">
+                                    <span class="help-block"><?php echo form_error('no_hp'); ?></span>  
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <input type="submit" value="Simpan">
-                    <input type="reset" value=Kembali onclick=self.history.back()>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <a onclick=self.history.back() class="btn btn-danger">Kembali</a>
+                                
                 </div>
                 </form>
             </div>
