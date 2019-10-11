@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Waktu pembuatan: 09 Okt 2019 pada 11.13
+-- Waktu pembuatan: 11 Okt 2019 pada 08.59
 -- Versi server: 10.4.6-MariaDB
 -- Versi PHP: 7.3.9
 
@@ -61,14 +61,6 @@ CREATE TABLE `barang_terdaftar` (
   `nama` varchar(50) NOT NULL,
   `barcode` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `barang_terdaftar`
---
-
-INSERT INTO `barang_terdaftar` (`kode`, `nama`, `barcode`) VALUES
-('B00001', 'Asus X453 MA', 'kosong'),
-('B00002', 'Flashdisk Toshiba 32gb', '99876544367');
 
 -- --------------------------------------------------------
 
@@ -176,18 +168,6 @@ CREATE TABLE `customer` (
   `no_hp` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `customer`
---
-
-INSERT INTO `customer` (`id_customer`, `nama`, `no_hp`) VALUES
-('C20190930001', 'Ari', '0812963989'),
-('C20191001001', 'Ali Nadzim', '089685746747'),
-('C20191001002', 'Arixx', '0821112213123'),
-('C20191001003', 'afri', '089123771235'),
-('C20191003001', 'kaax', '089798686'),
-('C20191009001', 'adrian', '089796');
-
 -- --------------------------------------------------------
 
 --
@@ -202,24 +182,6 @@ CREATE TABLE `detail_penjualan` (
   `qty` int(3) NOT NULL,
   `total_hrg` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `detail_penjualan`
---
-
-INSERT INTO `detail_penjualan` (`id_detail_pj`, `id_penjualan`, `id_stok_b`, `harga_jual`, `qty`, `total_hrg`) VALUES
-(1, 'P20190930002', '1', 1000000, 3, 3000000),
-(2, 'P20191001001', '1', 1000000, 2, 2000000),
-(3, 'P20191001002', '1', 1000000, 2, 2000000),
-(4, 'P20191001003', '1', 1000000, 1, 1000000),
-(5, 'P20191002001', '1', 1000000, 1, 1000000),
-(6, 'P20191002001', '3', 2000000, 1, 2000000),
-(7, 'P20191003001', '3', 2000000, 2, 4000000),
-(8, 'P20191003001', '2', 2000000, 1, 2000000),
-(9, 'P20191005001', '3', 2000000, 2, 4000000),
-(10, 'P20191005001', '2', 2000000, 1, 2000000),
-(11, 'P20191009001', '2', 1500000, 1, 1500000),
-(12, 'P20191009001', '3', 1500000, 1, 1500000);
 
 --
 -- Trigger `detail_penjualan`
@@ -258,14 +220,6 @@ CREATE TABLE `pemasokan` (
   `total` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `pemasokan`
---
-
-INSERT INTO `pemasokan` (`id_pemasokan`, `id_user`, `id_distributor`, `tanggal`, `total`) VALUES
-('M2019093001', 'U01', 'D01', '2019-09-05 07:17:28', 3500000),
-('M2019100101', 'U01', 'D01', '2019-10-01 03:23:11', 3500000);
-
 -- --------------------------------------------------------
 
 --
@@ -279,17 +233,6 @@ CREATE TABLE `pengeluaran_lain` (
   `total` int(10) NOT NULL,
   `deskripsi` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `pengeluaran_lain`
---
-
-INSERT INTO `pengeluaran_lain` (`id_pengeluaran_l`, `id_user`, `tanggal`, `total`, `deskripsi`) VALUES
-('L2019100501', 'U01', '2019-10-05 15:39:27', 100000, 'Pembelian makan karyawan'),
-('L2019100502', 'U01', '2019-10-05 05:33:00', 300000, 'Pembayaran listrik'),
-('L2019100503', 'U01', '2019-10-05 05:33:00', 200000, 'Pembayaran Wifi'),
-('L2019100901', 'U01', '2019-10-09 01:20:22', 250000, 'Pembayaran air PDAM'),
-('L2019100902', 'U01', '2019-10-09 01:40:48', 150000, 'Pembelian alat sholat');
 
 -- --------------------------------------------------------
 
@@ -307,19 +250,26 @@ CREATE TABLE `penjualan` (
   `kembalian` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data untuk tabel `penjualan`
+-- Struktur dari tabel `pimpinan`
 --
 
-INSERT INTO `penjualan` (`id_penjualan`, `id_user`, `id_customer`, `tanggal`, `total`, `bayar`, `kembalian`) VALUES
-('P20190930002', 'U01', 'C20190930001', '2019-09-30 15:10:46', 3000000, 4000000, 1000000),
-('P20191001001', 'U01', 'C20191001001', '2019-10-01 15:11:33', 2000000, 2000000, 0),
-('P20191001002', 'U01', 'C20191001002', '2019-10-01 15:12:25', 2000000, 2000000, 0),
-('P20191001003', 'U01', 'C20191001003', '2019-10-01 15:12:52', 1000000, 1000000, 0),
-('P20191002001', 'U01', 'C20191001003', '2019-10-02 15:15:04', 3000000, 3000000, 0),
-('P20191003001', 'U01', 'C20191003001', '2019-10-03 15:15:31', 6000000, 6000000, 0),
-('P20191005001', 'U01', 'C20191003001', '2019-10-05 15:15:31', 6000000, 6000000, 0),
-('P20191009001', 'U01', 'C20191009001', '2019-10-08 21:12:17', 3000000, 3000000, 0);
+CREATE TABLE `pimpinan` (
+  `id_user_p` int(1) NOT NULL,
+  `nama` varchar(50) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` char(60) NOT NULL,
+  `jenis_akses` char(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `pimpinan`
+--
+
+INSERT INTO `pimpinan` (`id_user_p`, `nama`, `username`, `password`, `jenis_akses`) VALUES
+(1, 'pimpinan', 'pimpinan', '$2y$10$6C4s0s9NIaw.2OwbxT/9heJWuiSeECWOVkasFYBfKnvJKdwmF3Nwa', 'Pimpinan');
 
 -- --------------------------------------------------------
 
@@ -336,15 +286,6 @@ CREATE TABLE `stok_barang` (
   `total_hrg` int(10) NOT NULL,
   `kode_unik` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `stok_barang`
---
-
-INSERT INTO `stok_barang` (`id_stok_b`, `id_pemasokan`, `kode`, `qty`, `hrg_distributor`, `total_hrg`, `kode_unik`) VALUES
-(1, 'M2019093001', 'B00001', 1, 500000, 500000, 'LXRH10C0101'),
-(2, 'M2019100101', 'B00001', 1, 1000000, 1000000, 'ZXCBY98B0101'),
-(3, 'M2019100101', 'B00002', 1, 1000000, 1000000, 'kosong');
 
 -- --------------------------------------------------------
 
@@ -363,7 +304,9 @@ CREATE TABLE `toko` (
 --
 
 INSERT INTO `toko` (`id_toko`, `nama_toko`, `alamat`) VALUES
-('T1', 'LCC Komputer', 'Jln Alun alun selatan');
+('T1', 'LCC Komputer', 'Jln Alun alun selatan'),
+('T2', 'CMC Komputer', 'Jln PB Sudirman '),
+('T3', 'Toko Probolinggo', 'Jln raya Probolinggo');
 
 -- --------------------------------------------------------
 
@@ -387,7 +330,13 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id_user`, `nama_user`, `username`, `password`, `jenis_akses`, `id_toko`) VALUES
 ('U01', 'rizal', 'rizal', '$2y$10$6C4s0s9NIaw.2OwbxT/9heJWuiSeECWOVkasFYBfKnvJKdwmF3Nwa', 'Manager', 'T1'),
 ('U02', 'ari', 'ari', '$2y$10$Al.0835m/wPVdDRsoe4FX.4YqSRPnM1MqtlIRrxnSiJCDKaPzqquG', 'Manager', 'T1'),
-('U03', 'ali', 'ali', '$2y$10$.jbQ4C5IOENSgud9wLmysuPH3FJozcAUSn9AykCCK1ybT7YjaKHiq', 'Kasir', 'T1');
+('U03', 'ali', 'ali', '$2y$10$.jbQ4C5IOENSgud9wLmysuPH3FJozcAUSn9AykCCK1ybT7YjaKHiq', 'Kasir', 'T1'),
+('U04', 'lcc', 'lcc', '$2y$10$I/jPGZBxFBBZLSi.cHy8vu6EyWiF6eMQTzm3Fr8/1TShu4BOfO7pW', 'Manager', 'T1'),
+('U05', 'cmc', 'cmc', '$2y$10$TP/pbjztFeKtQ7TbK3HPkOxDT7NTXzdHuKGkYRo37UeOKx6e4fe5.', 'Manager', 'T2'),
+('U06', 'probolinggo', 'probolinggo', '$2y$10$2rB0B0X.lVTbImG.lp2LFOv4JZnAehgKfM6jlDTSkDxv.w/2PVEFa', 'Manager', 'T3'),
+('U07', 'kasir_lcc', 'kasir_lcc', '$2y$10$C.IbD1aPGJmM6Fr2StwLmej5PkrKOIl74nmmWBGEsyibiY8DEMzcq', 'Kasir', 'T1'),
+('U08', 'kasir_cmc', 'kasir_cmc', '$2y$10$kU3oINfhVVIi/NPIRiQC3.bhLbO7di.GQDuq5J92dowEoKOJYbvjq', 'Kasir', 'T2'),
+('U09', 'kasir_probolinggo', 'kasir_probolinggo', '$2y$10$qJpFja9mbKbMavlDx/t0BO74EU8ioS9hG/iVJTavPMfp2AnieUUi6', 'Kasir', 'T3');
 
 -- --------------------------------------------------------
 
@@ -517,6 +466,12 @@ ALTER TABLE `penjualan`
   ADD PRIMARY KEY (`id_penjualan`);
 
 --
+-- Indeks untuk tabel `pimpinan`
+--
+ALTER TABLE `pimpinan`
+  ADD PRIMARY KEY (`id_user_p`);
+
+--
 -- Indeks untuk tabel `stok_barang`
 --
 ALTER TABLE `stok_barang`
@@ -542,13 +497,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `detail_penjualan`
 --
 ALTER TABLE `detail_penjualan`
-  MODIFY `id_detail_pj` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_detail_pj` int(7) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `pimpinan`
+--
+ALTER TABLE `pimpinan`
+  MODIFY `id_user_p` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `stok_barang`
 --
 ALTER TABLE `stok_barang`
-  MODIFY `id_stok_b` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_stok_b` int(7) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
