@@ -61,12 +61,12 @@ foreach($edit as $data){
                                 <div class="form-ic-cmp">
                                 </div>
                                     <label>Toko</label>
-                                    <select class="form-control">
+                                    <select class="form-control" name="id_toko">
                                         <option>pilih</option>
                                         <?php 
-                                        foreach($toko as $data){
+                                        foreach($toko as $toko){
                                          ?>
-                                         <option value="<?php echo $data->id_toko ?>" <?php echo $data->id_toko==$data->id_toko ?  "selected" : "" ?>><?php echo $data->nama_toko ?></option>
+                                         <option value="<?php echo $toko->id_toko ?>" <?php echo $toko->id_toko==$data->id_toko ?  "selected" : "" ?>><?php echo $toko->nama_toko ?></option>
                                         <?php } ?>
                                     </select>
                                     <!-- <input type="text" class="form-control" value="<?php echo $data->username ?>" name="username">

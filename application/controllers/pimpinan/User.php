@@ -64,12 +64,11 @@ class User extends CI_Controller
         $this->form_validation->set_rules('username', 'username', 'required');
         $id_user = $this->input->post('id_user');
         if($this->form_validation->run()==TRUE){
-        	$id_toko = $this->session->userdata('id_toko');
         	$nama_user = $this->input->post('nama_user');
 			$username = $this->input->post('username');
 			$password = $this->input->post('password');
 			$jenis_akses = "manager";
-			$id_toko = $id_toko;
+			$id_toko = $this->input->post('id_toko');
 			$cek = $this->M_user->edit(['username' => $username,  "id_user !=" => $id_user],  "user");
 		if (count($cek) == 0) {
 			$data = array(
