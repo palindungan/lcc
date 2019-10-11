@@ -53,30 +53,24 @@ class M_pemasokan extends CI_Model
         return $kd;
     }
 
-    function get_no_pemasokan()
+    function get_no()
     {
         $field = "id_pemasokan";
         $tabel = "pemasokan";
         $digit = "2";
-        date_default_timezone_set("Asia/Jakarta");
-        $tanggal = Date('Ymd');
-        $kodes = "M";
-        $kode = $kodes . $tanggal;
-        $q = $this->db->query("SELECT RIGHT($field,$digit) AS kd_max,id_pemasokan FROM $tabel ORDER BY $field DESC LIMIT 1");
+
+        $q = $this->db->query("SELECT MAX(RIGHT($field,$digit)) AS kd_max FROM $tabel");
         $kd = "";
         if ($q->num_rows() > 0) {
             foreach ($q->result() as $k) {
-                $tgl_lama = substr($k->id_pemasokan, 1, 8);
-                if ($tgl_lama == $tanggal) {
-                    $tmp = ((int) $k->kd_max) + 1;
-                    $kd = $kode . sprintf('%0' . $digit . 's', $tmp);
-                } else {
-                    $a = "01";
-                    $kd = $kode . $a;
-                }
+                $tmp = ((int) $k->kd_max) + 1;
+                $kd = sprintf("%04s", $tmp);
             }
+        } else {
+            $kd = "01";
         }
-        return $kd;
+        date_default_timezone_set('Asia/Jakarta');
+        return 'M' . date('dmy') . $kd;
     }
 
     function search_autocomplete($field, $data)

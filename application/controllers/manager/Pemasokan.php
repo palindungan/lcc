@@ -41,7 +41,7 @@ class Pemasokan extends CI_Controller
         date_default_timezone_set('Asia/Jakarta');
 
         // data pemasokan 
-        $id_pemasokan = $this->M_pemasokan->get_no_pemasokan(); // generate
+        $id_pemasokan = $this->M_pemasokan->get_no(); // generate
         $id_user = $this->session->userdata('id_user'); // session
         $id_distributor = $this->input->post('id_distributor');
         $tanggal = date('Y-m-d H:i:s');
