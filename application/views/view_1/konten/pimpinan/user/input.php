@@ -59,9 +59,27 @@
 									<div class="form-ic-cmp">
 									</div>
 										<label>password</label>
-										<input type="text" class="form-control" placeholder="Masukan password"
+										<input type="password" class="form-control" placeholder="Masukan password"
 											name="password" value="<?= set_value('nama_user') ?>">
 											<span class="help-block"><?php echo form_error('password'); ?></span>
+								</div>
+							</div>
+							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+								<div class="form-group <?php if(form_error('toko')== true) { echo "has-error";} ?>">
+									<div class="form-ic-cmp">
+									</div>
+										<label>toko</label>
+										<select name="id_toko" class="form-control">
+											<option>pilih</option>
+											<?php 
+											foreach($toko as $data){
+												?>
+											<option value="<?php echo $data->id_toko ?>"><?php echo $data->nama_toko ?></option>
+											<?php } ?>
+										</select>
+										<!-- <input type="text" class="form-control" placeholder=""
+											name="id_toko" value="<?= set_value('id_toko') ?>">
+											<span class="help-block"><?php echo form_error('id_toko'); ?></span> -->
 								</div>
 							</div>
 					</div>

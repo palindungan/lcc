@@ -35,38 +35,35 @@
                     <div class="row">
                         <form action="<?php echo base_url("manager/Distributor/insert_data") ?>" method="post">
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                            <div class="form-group ic-cmp-int">
+                            <div class="form-group  <?php if(form_error('nama')== true) { echo "has-error";} ?>">
                                 <div class="form-ic-cmp">
                                 </div>
-                                <div class="nk-int-st">
                                     <label>Nama</label>
-                                    <input type="text" class="form-control" placeholder="Masukan Nama" name="nama" required>
-                                </div>
+                                    <input type="text" class="form-control" placeholder="Masukan Nama" name="nama" value="<?= set_value('nama') ?>">
+                                    <span class="help-block"><?php echo form_error('nama'); ?></span>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                            <div class="form-group ic-cmp-int">
+                            <div class="form-group <?php if(form_error('alamat')== true) { echo "has-error";} ?>">
                                 <div class="form-ic-cmp">
                                 </div>
-                                <div class="nk-int-st">
                                     <label>Alamat</label>
-                                    <input type="text" class="form-control" placeholder="Masukan Alamat" name="alamat" required>
-                                </div>
+                                    <input type="text" class="form-control" placeholder="Masukan Alamat" name="alamat" value="<?= set_value('alamat') ?>">
+                                    <span class="help-block"><?php echo form_error('alamat'); ?></span>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                            <div class="form-group ic-cmp-int">
+                            <div class="form-group <?php if(form_error('no_hp')== true) { echo "has-error";} ?>">
                                 <div class="form-ic-cmp">
                                 </div>
-                                <div class="nk-int-st">
                                     <label>No Hp</label>
-                                    <input type="text" class="form-control" placeholder="Masukan No Hp" name="no_hp" required>
-                                </div>
+                                    <input type="text" class="form-control" placeholder="Masukan No Hp" name="no_hp" value="<?= set_value('no_hp') ?>">
+                                    <span class="help-block"><?php echo form_error('no_hp'); ?></span>
                             </div>
                         </div>
                     </div>
-                    <input type="submit" value="Simpan">
-                    <input type="reset" value=Kembali onclick=self.history.back()>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <a class="btn btn-danger" href="<?php if(isset($_SERVER['HTTP_REFERER'])){ echo $_SERVER['HTTP_REFERER']; } ?>">Back</a>
                 </div>
                 </form>
             </div>

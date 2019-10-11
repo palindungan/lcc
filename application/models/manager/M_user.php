@@ -6,7 +6,7 @@ class M_user extends CI_model
 {
     function tampil(){
 		$id_toko = $this->session->userdata('id_toko');
-        return $this->db->query("SELECT * FROM user JOIN toko USING(id_toko) WHERE id_toko='$id_toko'")->result();
+        return $this->db->query("SELECT * FROM user JOIN toko USING(id_toko) WHERE jenis_akses='Kasir' AND id_toko='$id_toko'")->result();
     }
 		function input($data){
 		return $this->db->insert('user', $data);

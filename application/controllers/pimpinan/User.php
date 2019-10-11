@@ -26,6 +26,7 @@ class User extends CI_Controller
 		$this->form_validation->set_rules('nama_user', 'nama user', 'required');
         $this->form_validation->set_rules('username', 'username', 'required');
         $this->form_validation->set_rules('password', 'password', 'required');
+        $this->form_validation->set_rules('id_toko', 'toko', 'required');
 		if($this->form_validation->run()==TRUE){
 			$id_toko = $this->session->userdata('id_toko');
 		$kode = $this->M_user->get_no();
@@ -34,7 +35,7 @@ class User extends CI_Controller
 			'nama_user' => $this->input->post('nama_user'),
 			'username' => $this->input->post('username'),
 			'jenis_akses' => "manager",
-			'id_toko' => $id_toko,
+			'id_toko' => $this->input->post('id_toko'),
 			'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT)
 		);
 		$cek = $this->M_user->ambil_data($this->input->post('username'))->num_rows();
