@@ -57,7 +57,7 @@
                                     {
                                         $kode = $row->barcode;
                                     } else {
-                                        $kode = $row->kode_unik;
+                                        $kode = $row->kode;
                                     }
                                 ?>
 								<tr>
