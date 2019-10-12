@@ -27,7 +27,7 @@ class Home extends CI_Controller
         $aset_lcc = 0;
         foreach($barang_lcc as $row_lcc)
         {
-            $total_lcc = $row_lcc->hrg_distributor * $row_lcc->qty;
+            $total_lcc = $row_lcc->hrg_distributor * $row_lcc->stok;
             $aset_lcc += $total_lcc;
         }
         $data['aset_lcc'] = $aset_lcc;
@@ -37,7 +37,7 @@ class Home extends CI_Controller
         $aset_cmc = 0;
         foreach($barang_cmc as $row_cmc)
         {
-        $total_cmc = $row_cmc->hrg_distributor * $row_cmc->qty;
+        $total_cmc = $row_cmc->hrg_distributor * $row_cmc->stok;
         $aset_cmc += $total_cmc;
         }
         $data['aset_cmc'] = $aset_cmc;
@@ -47,7 +47,7 @@ class Home extends CI_Controller
         $aset_probolinggo = 0;
         foreach($barang_probolinggo as $row_probolinggo)
         {
-        $total_probolinggo = $row_probolinggo->hrg_distributor * $row_probolinggo->qty;
+        $total_probolinggo = $row_probolinggo->hrg_distributor * $row_probolinggo->stok;
         $aset_probolinggo += $total_probolinggo;
         }
         $data['aset_probolinggo'] = $aset_probolinggo;

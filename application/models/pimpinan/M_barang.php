@@ -123,21 +123,21 @@ class M_barang extends CI_Model
     {
         return $this->db->get_where('barang_toko', array(
             'id_toko' => 'T1',
-            'qty >' => '0'
+            'stok >' => '0'
         ));
     }
     function stok_ada_cmc()
     {
         return $this->db->get_where('barang_toko', array(
             'id_toko' => 'T2',
-            'qty >' => '0'
+            'stok >' => '0'
         ));
     }
     function stok_ada_probolinggo()
     {
         return $this->db->get_where('barang_toko', array(
             'id_toko' => 'T3',
-            'qty >' => '0'
+            'stok >' => '0'
         ));
     }
 }

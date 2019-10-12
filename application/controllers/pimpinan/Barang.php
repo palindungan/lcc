@@ -663,7 +663,7 @@ class Barang extends CI_Controller
                     <tr>
                         <td>' . $no_lcc++ . '</td>
                         <td>' . $row_lcc->nama . '</td>
-                        <td>' . $row_lcc->qty . '</td>
+                        <td>' . $row_lcc->stok . '</td>
                     </tr>
                     ';
             }
@@ -694,7 +694,7 @@ class Barang extends CI_Controller
                         <tr>
                             <td>' . $no_cmc++ . '</td>
                             <td>' . $row_cmc->nama . '</td>
-                            <td>' . $row_cmc->qty . '</td>
+                            <td>' . $row_cmc->stok . '</td>
                         </tr>
                         ';
             }
@@ -725,7 +725,7 @@ class Barang extends CI_Controller
                         <tr>
                             <td>' . $no_probolinggo++ . '</td>
                             <td>' . $row_probolinggo->nama . '</td>
-                            <td>' . $row_probolinggo->qty . '</td>
+                            <td>' . $row_probolinggo->stok . '</td>
                         </tr>
                         ';
             }
