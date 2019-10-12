@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Waktu pembuatan: 12 Okt 2019 pada 05.40
+-- Waktu pembuatan: 12 Okt 2019 pada 07.03
 -- Versi server: 10.4.6-MariaDB
 -- Versi PHP: 7.3.9
 
@@ -161,7 +161,6 @@ CREATE TABLE `barang_toko` (
 ,`barcode` varchar(30)
 ,`id_toko` char(2)
 ,`hrg_distributor` int(10)
-,`tanggal` timestamp
 );
 
 -- --------------------------------------------------------
@@ -212,6 +211,13 @@ CREATE TABLE `customer` (
   `no_hp` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data untuk tabel `customer`
+--
+
+INSERT INTO `customer` (`id_customer`, `nama`, `no_hp`) VALUES
+('C1210190001', 'Adi', '08967585823');
+
 -- --------------------------------------------------------
 
 --
@@ -226,6 +232,13 @@ CREATE TABLE `detail_penjualan` (
   `qty` int(3) NOT NULL,
   `total_hrg` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `detail_penjualan`
+--
+
+INSERT INTO `detail_penjualan` (`id_detail_pj`, `id_penjualan`, `id_stok_b`, `harga_jual`, `qty`, `total_hrg`) VALUES
+(1, 'P1210190001', '4', 150000, 1, 150000);
 
 --
 -- Trigger `detail_penjualan`
@@ -348,6 +361,13 @@ CREATE TABLE `penjualan` (
   `kembalian` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data untuk tabel `penjualan`
+--
+
+INSERT INTO `penjualan` (`id_penjualan`, `id_user`, `id_customer`, `tanggal`, `total`, `bayar`, `kembalian`) VALUES
+('P1210190001', 'U01', 'C1210190001', '2019-10-12 04:43:19', 150000, 200000, 50000);
+
 -- --------------------------------------------------------
 
 --
@@ -393,7 +413,7 @@ INSERT INTO `stok_barang` (`id_stok_b`, `id_pemasokan`, `kode`, `qty`, `hrg_dist
 (1, 'M0310190001', 'B00001', 1, 5000000, 5000000, 'LKM11000KA'),
 (2, 'M0310190001', 'B00002', 1, 4000000, 4000000, 'ZXC100912M'),
 (3, 'M0310190001', 'B00001', 1, 5000000, 5000000, 'MKL100MA1'),
-(4, 'M0310190001', 'B00003', 5, 100000, 500000, 'kosong'),
+(4, 'M0310190001', 'B00003', 4, 100000, 500000, 'kosong'),
 (5, 'M0310190001', 'B00004', 5, 200000, 1000000, 'kosong'),
 (6, 'M0310190001', 'B00005', 1, 3000000, 3000000, '582135128236'),
 (7, 'M0310190001', 'B00006', 1, 3000000, 3000000, '353682391692'),
@@ -533,7 +553,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `barang_toko`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `barang_toko`  AS  select `stok_barang`.`kode` AS `kode`,`stok_barang`.`id_stok_b` AS `id_stok_b`,sum(`stok_barang`.`qty`) AS `stok`,`stok_barang`.`kode_unik` AS `kode_unik`,`barang_terdaftar`.`nama` AS `nama`,`barang_terdaftar`.`barcode` AS `barcode`,`user`.`id_toko` AS `id_toko`,`stok_barang`.`hrg_distributor` AS `hrg_distributor`,`pemasokan`.`tanggal` AS `tanggal` from ((((`stok_barang` join `barang_terdaftar` on(`stok_barang`.`kode` = `barang_terdaftar`.`kode`)) join `pemasokan` on(`stok_barang`.`id_pemasokan` = `pemasokan`.`id_pemasokan`)) join `user` on(`pemasokan`.`id_user` = `user`.`id_user`)) join `toko` on(`user`.`id_toko` = `toko`.`id_toko`)) group by `barang_terdaftar`.`nama`,`user`.`id_toko` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `barang_toko`  AS  select `stok_barang`.`kode` AS `kode`,`stok_barang`.`id_stok_b` AS `id_stok_b`,sum(`stok_barang`.`qty`) AS `stok`,`stok_barang`.`kode_unik` AS `kode_unik`,`barang_terdaftar`.`nama` AS `nama`,`barang_terdaftar`.`barcode` AS `barcode`,`user`.`id_toko` AS `id_toko`,`stok_barang`.`hrg_distributor` AS `hrg_distributor` from ((((`stok_barang` join `barang_terdaftar` on(`stok_barang`.`kode` = `barang_terdaftar`.`kode`)) join `pemasokan` on(`stok_barang`.`id_pemasokan` = `pemasokan`.`id_pemasokan`)) join `user` on(`pemasokan`.`id_user` = `user`.`id_user`)) join `toko` on(`user`.`id_toko` = `toko`.`id_toko`)) group by `barang_terdaftar`.`nama`,`user`.`id_toko` ;
 
 -- --------------------------------------------------------
 
@@ -658,7 +678,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `detail_penjualan`
 --
 ALTER TABLE `detail_penjualan`
-  MODIFY `id_detail_pj` int(7) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_detail_pj` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `pimpinan`
