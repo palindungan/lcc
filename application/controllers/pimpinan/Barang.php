@@ -90,8 +90,8 @@ class Barang extends CI_Controller
             echo '
                     </tbody>
                     <tfoot>
-                    <th>Nama Barang</th>
-                    <th>No</th>
+                        <th>No</th>
+                        <th>Nama Barang</th>
                         <th>Stok Tersisa</th>
                     </tfoot>
                 </table>
@@ -663,7 +663,7 @@ class Barang extends CI_Controller
                     <tr>
                         <td>' . $no_lcc++ . '</td>
                         <td>' . $row_lcc->nama . '</td>
-                        <td>' . $row_lcc->stok . '</td>
+                        <td>' . $row_lcc->qty . '</td>
                     </tr>
                     ';
             }
@@ -694,15 +694,15 @@ class Barang extends CI_Controller
                         <tr>
                             <td>' . $no_cmc++ . '</td>
                             <td>' . $row_cmc->nama . '</td>
-                            <td>' . $row_cmc->stok . '</td>
+                            <td>' . $row_cmc->qty . '</td>
                         </tr>
                         ';
             }
             echo '
                     </tbody>
                     <tfoot>
-                    <th>Nama Barang</th>
-                    <th>No</th>
+                        <th>No</th>
+                        <th>Nama Barang</th>
                         <th>Stok Tersisa</th>
                     </tfoot>
                 </table>
@@ -725,7 +725,7 @@ class Barang extends CI_Controller
                         <tr>
                             <td>' . $no_probolinggo++ . '</td>
                             <td>' . $row_probolinggo->nama . '</td>
-                            <td>' . $row_probolinggo->stok . '</td>
+                            <td>' . $row_probolinggo->qty . '</td>
                         </tr>
                         ';
             }
