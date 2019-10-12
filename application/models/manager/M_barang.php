@@ -6,10 +6,8 @@ class M_barang extends CI_Model
 	{
         // Nanti didapat dari session
 		$id_toko = $this->session->userdata('id_toko');
-		return $this->db->get_where('barang_toko', array(
-			'id_toko' => $id_toko,
-			'stok >' => '0' 
-		));
+		return $this->db->query("SELECT kode,id_stok_b,qty,kode_unik,nama,barcode,id_toko,hrg_distributor,tanggal FROM stok_barang JOIN barang_terdaftar USING(kode) JOIN pemasokan
+		USING(id_pemasokan) JOIN user USING(id_user) JOIN toko USING (id_toko) WHERE id_toko='$id_toko' AND qty > 0");
 	}
 	function stok_habis()
 	{

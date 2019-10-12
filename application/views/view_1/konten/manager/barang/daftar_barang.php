@@ -57,21 +57,21 @@
                                     {
                                         $kode = $row->barcode;
                                     } else {
-                                        $kode = $row->kode;
+                                        $kode = $row->kode_unik;
                                     }
                                 ?>
 								<tr>
 									<td><?= $no++; ?></td>
 									<td><?= $kode; ?></td>
 									<td><?= $row->nama; ?></td>
-									<td><?= $row->stok ?></td>
+									<td><?= $row->qty ?></td>
 									<td style="text-align:right;"><?= rupiah($row->hrg_distributor) ?></td>
 									<td><?= date('d F Y', strtotime($row->tanggal)) ?></td>
 									<td><?= date('h:i:s', strtotime($row->tanggal)) ?></td>
 								</tr>
 
 								<?php 
-                                $sub_total = $row->hrg_distributor * $row->stok;  
+                                $sub_total = $row->hrg_distributor * $row->qty;  
                                 $grand += $sub_total;  
                             }
                                 ?>
