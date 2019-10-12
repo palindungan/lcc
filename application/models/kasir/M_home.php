@@ -52,9 +52,14 @@ class M_home extends CI_Model
 	public function search($keyword)
 	{
 		$id_toko = $this->session->userdata('id_toko');
-		$this->db->like('nama', $keyword);
-		$this->db->or_like('barcode', $keyword);
-		$this->db->or_like('kode_unik', $keyword);
-		return $this->db->get_where('barang_kasir', array('id_toko' => $id_toko, 'qty >' => 0))->result(); // Tampilkan data siswa berdasarkan keyword
+		$this->db->select('*');
+		$this->db->from('barang_kasir bk');
+
+		$where = "(bk.nama like '%" . $keyword . "%' OR bk.kode_unik like '%" . $keyword . "%' OR bk.barcode like '%" .
+		$keyword . "%') && bk.id_toko = '" . $id_toko . "'";
+		$this->db->where($where);
+		$this->db->order_by('bk.nama', 'ASC');
+
+		return $this->db->get()->result();
 	}
 }
