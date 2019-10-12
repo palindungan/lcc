@@ -64,14 +64,14 @@
 									<td><?= $no++; ?></td>
 									<td><?= $kode; ?></td>
 									<td><?= $row->nama; ?></td>
-									<td><?= $row->qty ?></td>
+									<td><?= $row->stok ?></td>
 									<td style="text-align:right;"><?= rupiah($row->hrg_distributor) ?></td>
 									<td><?= date('d F Y', strtotime($row->tanggal)) ?></td>
 									<td><?= date('h:i:s', strtotime($row->tanggal)) ?></td>
 								</tr>
 
 								<?php 
-                                $sub_total = $row->hrg_distributor * $row->qty;  
+                                $sub_total = $row->hrg_distributor * $row->stok;  
                                 $grand += $sub_total;  
                             }
                                 ?>

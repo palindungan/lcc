@@ -8,7 +8,7 @@ class M_barang extends CI_Model
 		$id_toko = $this->session->userdata('id_toko');
 		return $this->db->get_where('barang_toko', array(
 			'id_toko' => $id_toko,
-			'qty >' => '0' 
+			'stok >' => '0' 
 		));
 	}
 	function stok_habis()
