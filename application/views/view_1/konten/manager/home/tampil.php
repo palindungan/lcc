@@ -37,7 +37,6 @@
 				<form action="" method="post" id="myform">
 					<select name="pilih" id="xx" class="form-control">
 						<option value="hari" selected>Hari Ini</option>
-						<option value="minggu">Minggu Ini</option>
 						<option value="bulan">Bulan Ini</option>
 					</select>
 				</form>
