@@ -65,10 +65,6 @@ class Home extends CI_Controller
         $data['keuntungan_semua_hari'] = $this->M_home->keuntungan_semua_hari();
         $pemasukan_semua_hari = $data['keuntungan_semua_hari']->harga_jual_barang -
         $data['keuntungan_semua_hari']->harga_beli_barang;
-        // Keuntungan semua toko per minggu
-        $data['keuntungan_semua_minggu'] = $this->M_home->keuntungan_semua_minggu();
-        $pemasukan_semua_minggu = $data['keuntungan_semua_minggu']->harga_jual_barang -
-        $data['keuntungan_semua_minggu']->harga_beli_barang;
         // Keuntungan semua toko per bulan
         $data['keuntungan_semua_bulan'] = $this->M_home->keuntungan_semua_bulan();
         $pemasukan_semua_bulan = $data['keuntungan_semua_bulan']->harga_jual_barang -
@@ -80,10 +76,6 @@ class Home extends CI_Controller
         $data['keuntungan_lcc_hari'] = $this->M_home->keuntungan_lcc_hari();
         $pemasukan_lcc_hari = $data['keuntungan_lcc_hari']->harga_jual_barang -
         $data['keuntungan_lcc_hari']->harga_beli_barang;
-        // Keuntungan TOKO LCC per minggu
-        $data['keuntungan_lcc_minggu'] = $this->M_home->keuntungan_lcc_minggu();
-        $pemasukan_lcc_minggu = $data['keuntungan_lcc_minggu']->harga_jual_barang -
-        $data['keuntungan_lcc_minggu']->harga_beli_barang;
         // Keuntungan TOKO LCC per bulan
         $data['keuntungan_lcc_bulan'] = $this->M_home->keuntungan_lcc_bulan();
         $pemasukan_lcc_bulan = $data['keuntungan_lcc_bulan']->harga_jual_barang -
@@ -95,10 +87,6 @@ class Home extends CI_Controller
         $data['keuntungan_cmc_hari'] = $this->M_home->keuntungan_cmc_hari();
         $pemasukan_cmc_hari = $data['keuntungan_cmc_hari']->harga_jual_barang -
         $data['keuntungan_cmc_hari']->harga_beli_barang;
-        // Keuntungan TOKO CMC per minggu
-        $data['keuntungan_cmc_minggu'] = $this->M_home->keuntungan_cmc_minggu();
-        $pemasukan_cmc_minggu = $data['keuntungan_cmc_minggu']->harga_jual_barang -
-        $data['keuntungan_cmc_minggu']->harga_beli_barang;
         // Keuntungan TOKO CMC per bulan
         $data['keuntungan_cmc_bulan'] = $this->M_home->keuntungan_cmc_bulan();
         $pemasukan_cmc_bulan = $data['keuntungan_cmc_bulan']->harga_jual_barang -
@@ -110,10 +98,6 @@ class Home extends CI_Controller
         $data['keuntungan_probolinggo_hari'] = $this->M_home->keuntungan_probolinggo_hari();
         $pemasukan_probolinggo_hari = $data['keuntungan_probolinggo_hari']->harga_jual_barang -
         $data['keuntungan_probolinggo_hari']->harga_beli_barang;
-        // Keuntungan TOKO PROBOLINGGO per minggu
-        $data['keuntungan_probolinggo_minggu'] = $this->M_home->keuntungan_probolinggo_minggu();
-        $pemasukan_probolinggo_minggu = $data['keuntungan_probolinggo_minggu']->harga_jual_barang -
-        $data['keuntungan_probolinggo_minggu']->harga_beli_barang;
         // Keuntungan TOKO PROBOLINGGO per bulan
         $data['keuntungan_probolinggo_bulan'] = $this->M_home->keuntungan_probolinggo_bulan();
         $pemasukan_probolinggo_bulan = $data['keuntungan_probolinggo_bulan']->harga_jual_barang -
@@ -123,72 +107,37 @@ class Home extends CI_Controller
         // PENGELUARAN SEMUA TOKO
         // PER HARI
         $data['pengeluaran_semua_hari'] = $this->M_home->pengeluaran_semua_hari();
-        $data['pemasokan_semua_hari'] = $this->M_home->pemasokan_semua_hari();
-        $pengeluaran_semua_hari = $data['pengeluaran_semua_hari']->total_pengeluaran +
-        $data['pemasokan_semua_hari']->total_pemasokan;
-        // PER MINGGU
-        $data['pengeluaran_semua_minggu'] = $this->M_home->pengeluaran_semua_minggu();
-        $data['pemasokan_semua_minggu'] = $this->M_home->pemasokan_semua_minggu();
-        $pengeluaran_semua_minggu = $data['pengeluaran_semua_minggu']->total_pengeluaran +
-        $data['pemasokan_semua_minggu']->total_pemasokan;
+        $pengeluaran_semua_hari = $data['pengeluaran_semua_hari']->total_pengeluaran;
         // PER BULAN
         $data['pengeluaran_semua_bulan'] = $this->M_home->pengeluaran_semua_bulan();
-        $data['pemasokan_semua_bulan'] = $this->M_home->pemasokan_semua_bulan();
-        $pengeluaran_semua_bulan = $data['pengeluaran_semua_bulan']->total_pengeluaran +
-        $data['pemasokan_semua_bulan']->total_pemasokan;
+        $pengeluaran_semua_bulan = $data['pengeluaran_semua_bulan']->total_pengeluaran;
         // TUTUP PENGELUARAN SEMUA TOKO
 
         // PENGELUARAN TOKO LCC
         // PER HARI
         $data['pengeluaran_lcc_hari'] = $this->M_home->pengeluaran_lcc_hari();
-        $data['pemasokan_lcc_hari'] = $this->M_home->pemasokan_lcc_hari();
-        $pengeluaran_lcc_hari = $data['pengeluaran_lcc_hari']->total_pengeluaran + $data['pemasokan_lcc_hari']->total_pemasokan; 
-        // PER MINGGU 
-        $data['pengeluaran_lcc_minggu'] = $this->M_home->pengeluaran_lcc_minggu();
-        $data['pemasokan_lcc_minggu'] = $this->M_home->pemasokan_lcc_minggu();
-        $pengeluaran_lcc_minggu = $data['pengeluaran_lcc_minggu']->total_pengeluaran +
-        $data['pemasokan_lcc_minggu']->total_pemasokan;
+        $pengeluaran_lcc_hari = $data['pengeluaran_lcc_hari']->total_pengeluaran;
         // PER BULAN
         $data['pengeluaran_lcc_bulan'] = $this->M_home->pengeluaran_lcc_bulan();
-        $data['pemasokan_lcc_bulan'] = $this->M_home->pemasokan_lcc_bulan();
-        $pengeluaran_lcc_bulan = $data['pengeluaran_lcc_bulan']->total_pengeluaran +
-        $data['pemasokan_lcc_bulan']->total_pemasokan;
+        $pengeluaran_lcc_bulan = $data['pengeluaran_lcc_bulan']->total_pengeluaran;
         // TUTUP PENGELUARAN LCC
 
         // PENGELUARAN TOKO CMC
         // PER HARI
         $data['pengeluaran_cmc_hari'] = $this->M_home->pengeluaran_cmc_hari();
-        $data['pemasokan_cmc_hari'] = $this->M_home->pemasokan_cmc_hari();
-        $pengeluaran_cmc_hari = $data['pengeluaran_cmc_hari']->total_pengeluaran +
-        $data['pemasokan_cmc_hari']->total_pemasokan;
-        // PER MINGGU
-        $data['pengeluaran_cmc_minggu'] = $this->M_home->pengeluaran_cmc_minggu();
-        $data['pemasokan_cmc_minggu'] = $this->M_home->pemasokan_cmc_minggu();
-        $pengeluaran_cmc_minggu = $data['pengeluaran_cmc_minggu']->total_pengeluaran +
-        $data['pemasokan_cmc_minggu']->total_pemasokan;
+        $pengeluaran_cmc_hari = $data['pengeluaran_cmc_hari']->total_pengeluaran;
         // PER BULAN
         $data['pengeluaran_cmc_bulan'] = $this->M_home->pengeluaran_cmc_bulan();
-        $data['pemasokan_cmc_bulan'] = $this->M_home->pemasokan_cmc_bulan();
-        $pengeluaran_cmc_bulan = $data['pengeluaran_cmc_bulan']->total_pengeluaran +
-        $data['pemasokan_cmc_bulan']->total_pemasokan;
+        $pengeluaran_cmc_bulan = $data['pengeluaran_cmc_bulan']->total_pengeluaran;
         // TUTUP PENGELUARAN CMC
 
         // PENGELUARAN TOKO PROBOLINGGO
         // PER HARI
         $data['pengeluaran_probolinggo_hari'] = $this->M_home->pengeluaran_probolinggo_hari();
-        $data['pemasokan_probolinggo_hari'] = $this->M_home->pemasokan_probolinggo_hari();
-        $pengeluaran_probolinggo_hari = $data['pengeluaran_probolinggo_hari']->total_pengeluaran +
-        $data['pemasokan_probolinggo_hari']->total_pemasokan;
-        // PER MINGGU
-        $data['pengeluaran_probolinggo_minggu'] = $this->M_home->pengeluaran_probolinggo_minggu();
-        $data['pemasokan_probolinggo_minggu'] = $this->M_home->pemasokan_probolinggo_minggu();
-        $pengeluaran_probolinggo_minggu = $data['pengeluaran_probolinggo_minggu']->total_pengeluaran +
-        $data['pemasokan_probolinggo_minggu']->total_pemasokan;
+        $pengeluaran_probolinggo_hari = $data['pengeluaran_probolinggo_hari']->total_pengeluaran;
         // PER BULAN
         $data['pengeluaran_probolinggo_bulan'] = $this->M_home->pengeluaran_probolinggo_bulan();
-        $data['pemasokan_probolinggo_bulan'] = $this->M_home->pemasokan_probolinggo_bulan();
-        $pengeluaran_probolinggo_bulan = $data['pengeluaran_probolinggo_bulan']->total_pengeluaran +
-        $data['pemasokan_probolinggo_bulan']->total_pemasokan;
+        $pengeluaran_probolinggo_bulan = $data['pengeluaran_probolinggo_bulan']->total_pengeluaran;
         // TUTUP PENGELUARAN PROBOLINGGO
 
         if($select_toko == "semua" && $select_tanggal == "hari")
@@ -208,29 +157,6 @@ class Home extends CI_Controller
                     <div class="contact-inner" style="height:135px">
                         <h2 class="text-right">
                             '.rupiah($pengeluaran_semua_hari).'                            
-                        </h2>
-                        <span><strong>TOTAL PENGELUARAN</strong></span>
-                    </div>
-                </div>
-            </div>';
-        }
-        else if($select_toko == "semua" && $select_tanggal == "minggu")
-        {
-            echo '<div class="row">
-                <div style="margin-bottom:16px;" class="col-md-12">
-                    <div class="contact-inner" style="height:135px">
-                        <h2 class="text-right">
-                            '.rupiah($pemasukan_semua_minggu).'
-                        </h2>
-                        <span><strong>TOTAL PEMASUKAN</strong></span>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="contact-inner" style="height:135px">
-                        <h2 class="text-right">
-                            '.rupiah($pengeluaran_semua_minggu).'                            
                         </h2>
                         <span><strong>TOTAL PENGELUARAN</strong></span>
                     </div>
@@ -283,29 +209,6 @@ class Home extends CI_Controller
                 </div>
             </div>';
         }
-        else if($select_toko == "T1" && $select_tanggal=="minggu")
-        {
-            echo '<div class="row">
-                <div style="margin-bottom:16px;" class="col-md-12">
-                    <div class="contact-inner" style="height:135px">
-                        <h2 class="text-right">
-                            '.rupiah($pemasukan_lcc_minggu).'
-                        </h2>
-                        <span><strong>TOTAL PEMASUKAN</strong></span>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="contact-inner" style="height:135px">
-                        <h2 class="text-right">
-                            '.rupiah($pengeluaran_lcc_minggu).'
-                        </h2>
-                        <span><strong>TOTAL PENGELUARAN</strong></span>
-                    </div>
-                </div>
-            </div>';
-        }
         else if($select_toko == "T1" && $select_tanggal=="bulan")
         {
             echo '<div class="row">
@@ -352,29 +255,6 @@ class Home extends CI_Controller
                 </div>
             </div>';
         }
-        else if($select_toko == "T2" && $select_tanggal=="minggu")
-        {
-            echo '<div class="row">
-                <div style="margin-bottom:16px;" class="col-md-12">
-                    <div class="contact-inner" style="height:135px">
-                        <h2 class="text-right">
-                            '.rupiah($pemasukan_cmc_minggu).'
-                        </h2>
-                        <span><strong>TOTAL PEMASUKAN</strong></span>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="contact-inner" style="height:135px">
-                        <h2 class="text-right">
-                            '.rupiah($pengeluaran_cmc_minggu).'                            
-                        </h2>
-                        <span><strong>TOTAL PENGELUARAN</strong></span>
-                    </div>
-                </div>
-            </div>';
-        }
         else if($select_toko == "T2" && $select_tanggal=="bulan")
         {
             echo '<div class="row">
@@ -415,29 +295,6 @@ class Home extends CI_Controller
                     <div class="contact-inner" style="height:135px">
                         <h2 class="text-right">
                             '.rupiah($pengeluaran_probolinggo_hari).'                            
-                        </h2>
-                        <span><strong>TOTAL PENGELUARAN</strong></span>
-                    </div>
-                </div>
-            </div>';
-        }
-        else if($select_toko == "T3" && $select_tanggal=="minggu")
-        {
-            echo '<div class="row">
-                <div style="margin-bottom:16px;" class="col-md-12">
-                    <div class="contact-inner" style="height:135px">
-                        <h2 class="text-right">
-                            '.rupiah($pemasukan_probolinggo_minggu).'
-                        </h2>
-                        <span><strong>TOTAL PEMASUKAN</strong></span>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="contact-inner" style="height:135px">
-                        <h2 class="text-right">
-                            '.rupiah($pengeluaran_probolinggo_minggu).'                            
                         </h2>
                         <span><strong>TOTAL PENGELUARAN</strong></span>
                     </div>
