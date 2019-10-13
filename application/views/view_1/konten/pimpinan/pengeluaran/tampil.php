@@ -45,7 +45,6 @@
 			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 				<select name="tanggal" id="tanggal" class="form-control">
 					<option value="hari">Hari Ini</option>
-					<option value="minggu">Minggu Ini</option>
 					<option value="bulan">Bulan Ini</option>
 				</select>
 				</form>
