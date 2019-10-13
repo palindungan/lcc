@@ -54,11 +54,6 @@ class M_home extends CI_Model
         $id_toko = $this->session->userdata('id_toko');
         return $this->db->query("SELECT COALESCE(SUM(total),0) as total_pengeluaran,id_toko FROM pengeluaran_lain JOIN user USING(id_user) JOIN toko USING(id_toko) WHERE DATE(tanggal) = DATE(now()) AND id_toko='$id_toko'")->row();
     }
-    function pengeluaran_lain_minggu()
-    {
-        $id_toko = $this->session->userdata('id_toko');
-        return $this->db->query("SELECT COALESCE(SUM(total),0) as total_pengeluaran,id_toko FROM pengeluaran_lain JOIN user USING(id_user) JOIN toko USING(id_toko) WHERE tanggal BETWEEN SUBDATE(now(), INTERVAL 7 DAY) AND NOW() AND id_toko='$id_toko'")->row();
-    }
     function pengeluaran_lain_bulan()
     {
         $id_toko = $this->session->userdata('id_toko');
