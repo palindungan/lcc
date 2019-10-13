@@ -18,7 +18,6 @@ class User extends CI_controller
 			</script>';
 		}
 		$this->load->model('manager/M_user');
-		$this->load->model('kasir/M_toko');
 	}
 	function index(){
 		$data['user'] = $this->M_user->tampil();
