@@ -19,7 +19,6 @@ class Laporan extends CI_Controller {
 	public function index()
 	{
         $data['hari'] = $this->M_laporan->tampil_hari()->result();
-        $data['minggu'] = $this->M_laporan->tampil_minggu()->result();
         $data['bulanan'] = $this->M_laporan->tampil_bulan()->result();
         $this->template->load('view_1/template/manager', 'view_1/konten/manager/laporan/v_laporan_penjualan',$data);
 	}
@@ -29,7 +28,9 @@ class Laporan extends CI_Controller {
         $tgl2 = date('Y-m-d', strtotime($this->input->post('tgl_akhir')));
         $tgl_mulai = $tgl1." 00:00:01";
         $tgl_akhir = $tgl2." 23:59:59";
-        $data['minggu'] = $this->M_laporan->tampil_data2($tgl_mulai,$tgl_akhir)->result();
+        $data['custom'] = $this->M_laporan->tampil_data2($tgl_mulai,$tgl_akhir)->result();
+        $data['tgl_mulai'] = $this->input->post('tgl_mulai');
+        $data['tgl_akhir'] = $this->input->post('tgl_akhir');
         $html = $this->load->view('view_1/konten/manager/laporan/print_laporan',$data,true);
         $this->dompdf->PdfGenerator($html,'coba','A4','landscape');
     }
@@ -37,14 +38,8 @@ class Laporan extends CI_Controller {
     {
       $data['hari'] = $this->M_laporan->tampil_hari()->result();
       $html = $this->load->view('view_1/konten/manager/laporan/print_per_hari',$data,true);
-      $tanggal = date('d-m-Y');
+      $tanggal = date('d/m/Y');
       $this->dompdf->PdfGenerator($html,'laporan-'.$tanggal,'A4','landscape');
-    }
-    public function cetak_minggu()
-    {
-      $data['minggu'] = $this->M_laporan->tampil_minggu()->result();
-      $html = $this->load->view('view_1/konten/manager/laporan/print_per_minggu',$data,true);
-      $this->dompdf->PdfGenerator($html,'laporan-mingguan','A4','landscape'); 
     }
     public function cetak_bulan()
     {

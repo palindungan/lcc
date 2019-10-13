@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Laporan</title>
+	<title>Laporan-<?= date('F-Y') ?></title>
 	<link rel="stylesheet" href="<?= base_url(); ?>assets/notika/css/bootstrap.min.css">
 </head>
 
@@ -16,17 +16,19 @@
 			<caption>Data Laporan Bulan <?= Date('F Y') ?></caption>
 			<table width="100%" class="table" border="1">
 				<tr>
-					<th width="5%" style="text-align: center;background:black;color:white;">No</th>
-					<th width="18%" style="text-align: center;background:black;color:white;">Nama Customer</th>
-					<th width="18%" style="text-align: center;background:black;color:white;">Tanggal</th>
+					<th width="3%" style="text-align: center;background:black;color:white;">No</th>
+					<th width="16%" style="text-align: center;background:black;color:white;">Nama Customer</th>
+					<th width="16%" style="text-align: center;background:black;color:white;">Tanggal & Waktu</th>
 					<th width="18%" style="text-align: center;background:black;color:white;">Nama Barang</th>
-					<th width="18%" style="text-align: center;background:black;color:white;">Harga Jual</th>
+					<th width="14%" style="text-align: center;background:black;color:white;">Harga Jual</th>
+					<th width="14%" style="text-align: center;background:black;color:white;">Harga Jual</th>
 					<th width="5%" style="text-align: center;background:black;color:white;">Qty</th>
-					<th width="18%" style="text-align: center;background:black;color:white;">Keuntungan</th>
+					<th width="14%" style="text-align: center;background:black;color:white;">Keuntungan</th>
 				</tr>
 				<?php 
 				$no_bulan = 1;
 				$total_bulan=0;
+				$harga_jual_bulan=0;
 				foreach($bulanan as $row_bulan){ 
 					$keuntungan_bulan = $row_bulan->harga_jual * $row_bulan->jumlah_barang -
 					$row_bulan->hrg_distributor * $row_bulan->jumlah_barang;
@@ -37,21 +39,38 @@
 					<td style="text-align: center;">
 						<?= date('d/m/Y H:i:s', strtotime($row_bulan->tanggal_penjualan)); ?></td>
 					<td style="text-align: center;"><?= $row_bulan->nama_barang; ?></td>
+					<td style="text-align: right;"><?= rupiah($row_bulan->hrg_distributor) ?></td>
 					<td style="text-align: right;"><?= rupiah($row_bulan->harga_jual) ?></td>
 					<td style="text-align: center;"><?= $row_bulan->jumlah_barang; ?></td>
 					<td style="text-align: right;"><?= rupiah($keuntungan_bulan) ?></td>
 				</tr>
 				<?php 
-				$total_bulan +=$keuntungan_bulan;
+				$total_bulan += $keuntungan_bulan;
+				$harga_jual_bulan += $row_bulan->harga_jual;
 				} 
 				?>
 				<?php 
 				if($total_bulan == "")
 				{
-				echo "0" ;
-				}
-				else {
-				echo '<h4 style="float: right;">Sub Total : '.rupiah($total_bulan).'</h4>"';
+					echo '
+				<tr>
+					<td style="text-align:center;" colspan=5>
+						<h5><b>TOTAL</b></h5>
+					</td>
+					<td style="text-align:right;"><h5>0</h5></td>
+					<td></td>
+					<td style="text-align:right;"><h5>0</h5></td>
+				</tr>';
+				} else {
+					echo '
+					<tr>
+						<td style="text-align:center;" colspan=5>
+							<h5>TOTAL</h5>
+						</td>
+						<td style="text-align:right;"><h5>'.rupiah($harga_jual_bulan).'</h5></td>
+						<td></td>
+						<td style="text-align:right;"><h5>'.rupiah($total_bulan).'</h5></td>
+					</tr>';
 				}
 				?>
 			</table>
