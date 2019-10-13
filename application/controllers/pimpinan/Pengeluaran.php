@@ -41,8 +41,7 @@ class Pengeluaran extends CI_Controller
         $pengeluaran_probolinggo_bulan = $this->M_pengeluaran->pengeluaran_probolinggo_bulan();
         if($select_toko=="semua" && $select_tanggal=="hari")
         {
-        echo '<div class="tab-ctn">
-            <div class="data-table-list">
+        echo '<div class="data-table-list">
                 <div class="table-responsive">
                     <table id="dt_custom2" width="100%" class="table table-striped">
                         <thead>
@@ -95,13 +94,11 @@ class Pengeluaran extends CI_Controller
                         </tfoot>
                     </table>
                 </div>
-            </div>
-        </div>';
+            </div>';
         }
         else if($select_toko=="semua" && $select_tanggal=="bulan")
         {
-        echo '<div class="tab-ctn">
-            <div class="data-table-list">
+        echo '<div class="data-table-list">
                 <div class="table-responsive">
                     <table id="dt_custom2" width="100%" class="table table-striped">
                         <thead>
@@ -154,13 +151,11 @@ class Pengeluaran extends CI_Controller
                         </tfoot>
                     </table>
                 </div>
-            </div>
-        </div>';
+            </div>';
         }
         else if($select_toko=="T1" && $select_tanggal=="hari")
         {
-        echo '<div class="tab-ctn">
-            <div class="data-table-list">
+        echo '<div class="data-table-list">
                 <div class="table-responsive">
                     <table id="dt_custom2" width="100%" class="table table-striped">
                         <thead>
@@ -213,13 +208,11 @@ class Pengeluaran extends CI_Controller
                         </tfoot>
                     </table>
                 </div>
-            </div>
-        </div>';
+            </div>';
         }
         else if($select_toko=="T1" && $select_tanggal=="bulan")
         {
-        echo '<div class="tab-ctn">
-            <div class="data-table-list">
+        echo '<div class="data-table-list">
                 <div class="table-responsive">
                     <table id="dt_custom2" width="100%" class="table table-striped">
                         <thead>
@@ -272,13 +265,11 @@ class Pengeluaran extends CI_Controller
                         </tfoot>
                     </table>
                 </div>
-            </div>
-        </div>';
+            </div>';
         }
         else if($select_toko=="T2" && $select_tanggal=="hari")
         {
-        echo '<div class="tab-ctn">
-            <div class="data-table-list">
+        echo '<div class="data-table-list">
                 <div class="table-responsive">
                     <table id="dt_custom2" width="100%" class="table table-striped">
                         <thead>
@@ -331,13 +322,11 @@ class Pengeluaran extends CI_Controller
                         </tfoot>
                     </table>
                 </div>
-            </div>
-        </div>';
+            </div>';
         }
         else if($select_toko=="T2" && $select_tanggal=="bulan")
         {
-        echo '<div class="tab-ctn">
-            <div class="data-table-list">
+        echo '<div class="data-table-list">
                 <div class="table-responsive">
                     <table id="dt_custom2" width="100%" class="table table-striped">
                         <thead>
@@ -390,13 +379,11 @@ class Pengeluaran extends CI_Controller
                         </tfoot>
                     </table>
                 </div>
-            </div>
-        </div>';
+            </div>';
         }
         else if($select_toko=="T3" && $select_tanggal=="hari")
         {
-        echo '<div class="tab-ctn">
-            <div class="data-table-list">
+        echo '<div class="data-table-list">
                 <div class="table-responsive">
                     <table id="dt_custom2" width="100%" class="table table-striped">
                         <thead>
@@ -449,13 +436,11 @@ class Pengeluaran extends CI_Controller
                         </tfoot>
                     </table>
                 </div>
-            </div>
-        </div>';
+            </div>';
         }
         else if($select_toko=="T3" && $select_tanggal=="bulan")
         {
-        echo '<div class="tab-ctn">
-            <div class="data-table-list">
+        echo '<div class="data-table-list">
                 <div class="table-responsive">
                     <table id="dt_custom2" width="100%" class="table table-striped">
                         <thead>
@@ -509,8 +494,7 @@ class Pengeluaran extends CI_Controller
                         </tfoot>
                     </table>
                 </div>
-            </div>
-        </div>';
+            </div>';
         }
     }
 } 
