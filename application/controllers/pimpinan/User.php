@@ -10,7 +10,6 @@ class User extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('pimpinan/M_user');
-		$this->load->model('kasir/M_toko');
 	}
 	function index()
 	{
@@ -19,7 +18,7 @@ class User extends CI_Controller
 	}
 	function insert()
 	{
-		$data['toko'] = $this->M_toko->tampil();
+		$data['toko'] = $this->M_user->get_toko();
 		$this->template->load('view_1/template/pimpinan', 'view_1/konten/pimpinan/user/input', $data);
 	}
 	function insert_data(){
@@ -56,7 +55,7 @@ class User extends CI_Controller
 	{
 		$where = array('id_user' => $id);
 		$data['edit'] = $this->M_user->edit($where, 'user');
-		$data['toko'] = $this->M_toko->tampil();
+		$data['toko'] = $this->M_user->get_toko();
 		$this->template->load('view_1/template/pimpinan', 'view_1/konten/pimpinan/user/edit', $data);
 	}
 	function update(){
