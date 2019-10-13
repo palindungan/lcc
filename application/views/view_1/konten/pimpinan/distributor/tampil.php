@@ -71,15 +71,6 @@
 								</tr>
 								<?php } ?>
 							</tbody>
-							<tfoot>
-								<tr>
-									<th>No</th>
-									<th>Nama</th>
-									<th>Alamat</th>
-									<th>No Hp</th>
-									<th>Aksi</th>
-								</tr>
-							</tfoot>
 						</table>
 					</div>
 				</div>
