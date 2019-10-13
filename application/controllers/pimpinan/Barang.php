@@ -58,11 +58,6 @@ class Barang extends CI_Controller
             }
             echo '
                     </tbody>
-                    <tfoot>
-                        <th>No</th>
-                        <th>Nama Barang</th>
-                        <th>Stok Tersisa</th>
-                    </tfoot>
                 </table>
             </div>';
         } else if ($select == "T2") {
@@ -89,11 +84,6 @@ class Barang extends CI_Controller
             }
             echo '
                     </tbody>
-                    <tfoot>
-                        <th>No</th>
-                        <th>Nama Barang</th>
-                        <th>Stok Tersisa</th>
-                    </tfoot>
                 </table>
             </div>';
         } else if ($select == "T3") {
@@ -120,11 +110,6 @@ class Barang extends CI_Controller
             }
             echo '
                     </tbody>
-                    <tfoot>
-                        <th>No</th>
-                        <th>Nama Barang</th>
-                        <th>Stok Tersisa</th>
-                    </tfoot>
                 </table>
             </div>';
         }
@@ -156,26 +141,26 @@ class Barang extends CI_Controller
         $select = $this->input->post('pilih');
         if ($select == "semua") {
             echo '<div class="widget-tabs-int">
-            	<div class="widget-tabs-list">
-            		<ul class="nav nav-tabs">
-            			<li class="active"><a data-toggle="tab" href="#home">Minggu Ini</a></li>
-            			<li><a data-toggle="tab" href="#menu1">Bulan Ini</a></li>
-            			<li><a data-toggle="tab" href="#menu2">Tahun Ini</a></li>
-            		</ul>
-            		<div class="tab-content tab-custom-st">
-            			<div id="home" class="tab-pane fade in active">
-            				<div class="tab-ctn">
-            					<div class="data-table-list">
-            						<div class="table-responsive">
-            							<table width="100%" class="table table-striped">
-            								<thead>
-            									<tr>
-            						                <th width="5%">No</th>
-            										<th width="17%">Nama Barang</th>
-            										<th width="25%">Jumlah Terjual</th>
-            									</tr>
-            								</thead>
-            								<tbody>';
+                <div class="widget-tabs-list">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#home">Minggu Ini</a></li>
+                        <li><a data-toggle="tab" href="#menu1">Bulan Ini</a></li>
+                        <li><a data-toggle="tab" href="#menu2">Tahun Ini</a></li>
+                    </ul>
+                    <div class="tab-content tab-custom-st">
+                        <div id="home" class="tab-pane fade in active">
+                            <div class="tab-ctn">
+                                <div class="data-table-list">
+                                    <div class="table-responsive">
+                                        <table width="100%" class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th width="5%">No</th>
+                                                    <th width="17%">Nama Barang</th>
+                                                    <th width="25%">Jumlah Terjual</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>';
             $no_semua_minggu = 1;
             foreach ($best_semua_minggu as $semua_minggu) {
                 echo '                                              
@@ -188,11 +173,6 @@ class Barang extends CI_Controller
             }
             echo '
                                             </tbody>
-                                            <tfoot>
-                                                <th>No</th>
-                                                <th>Nama Barang</th>
-                                                <th>Jumlah Terjual</th>
-                                            </tfoot>
                                         </table>
                                     </div>
                                 </div>
@@ -224,11 +204,6 @@ class Barang extends CI_Controller
             }
             echo '
                                             </tbody>
-                                            <tfoot>
-                                                <th>No</th>
-                                                <th>Nama Barang</th>
-                                                <th>Jumlah Terjual</th>
-                                            </tfoot>
                                         </table>
                                     </div>
                                 </div>
@@ -260,11 +235,6 @@ class Barang extends CI_Controller
             }
             echo '
                                             </tbody>
-                                            <tfoot>
-                                                <th>No</th>
-                                                <th>Nama Barang</th>
-                                                <th>Jumlah Terjual</th>
-                                            </tfoot>
                                         </table>
                                     </div>
                                 </div>
@@ -307,11 +277,6 @@ class Barang extends CI_Controller
             }
             echo '
                                             </tbody>
-                                            <tfoot>
-                                                <th>No</th>
-                                                <th>Nama Barang</th>
-                                                <th>Jumlah Terjual</th>
-                                            </tfoot>
                                         </table>
                                     </div>
                                 </div>
@@ -343,11 +308,6 @@ class Barang extends CI_Controller
             }
             echo '
                                             </tbody>
-                                            <tfoot>
-                                                <th>No</th>
-                                                <th>Nama Barang</th>
-                                                <th>Jumlah Terjual</th>
-                                            </tfoot>
                                         </table>
                                     </div>
                                 </div>
@@ -379,11 +339,6 @@ class Barang extends CI_Controller
             }
             echo '
                                             </tbody>
-                                            <tfoot>
-                                                <th>No</th>
-                                                <th>Nama Barang</th>
-                                                <th>Jumlah Terjual</th>
-                                            </tfoot>
                                         </table>
                                     </div>
                                 </div>
@@ -426,11 +381,6 @@ class Barang extends CI_Controller
             }
             echo '
                                             </tbody>
-                                            <tfoot>
-                                                <th>No</th>
-                                                <th>Nama Barang</th>
-                                                <th>Jumlah Terjual</th>
-                                            </tfoot>
                                         </table>
                                     </div>
                                 </div>
@@ -462,11 +412,6 @@ class Barang extends CI_Controller
             }
             echo '
                                             </tbody>
-                                            <tfoot>
-                                                <th>No</th>
-                                                <th>Nama Barang</th>
-                                                <th>Jumlah Terjual</th>
-                                            </tfoot>
                                         </table>
                                     </div>
                                 </div>
@@ -498,11 +443,6 @@ class Barang extends CI_Controller
             }
             echo '
                                             </tbody>
-                                            <tfoot>
-                                                <th>No</th>
-                                                <th>Nama Barang</th>
-                                                <th>Jumlah Terjual</th>
-                                            </tfoot>
                                         </table>
                                     </div>
                                 </div>
@@ -545,11 +485,6 @@ class Barang extends CI_Controller
             }
             echo '
                                             </tbody>
-                                            <tfoot>
-                                                <th>No</th>
-                                                <th>Nama Barang</th>
-                                                <th>Jumlah Terjual</th>
-                                            </tfoot>
                                         </table>
                                     </div>
                                 </div>
@@ -581,11 +516,6 @@ class Barang extends CI_Controller
             }
             echo '
                                             </tbody>
-                                            <tfoot>
-                                                <th>No</th>
-                                                <th>Nama Barang</th>
-                                                <th>Jumlah Terjual</th>
-                                            </tfoot>
                                         </table>
                                     </div>
                                 </div>
@@ -617,11 +547,6 @@ class Barang extends CI_Controller
             }
             echo '
                                             </tbody>
-                                            <tfoot>
-                                                <th>No</th>
-                                                <th>Nama Barang</th>
-                                                <th>Jumlah Terjual</th>
-                                            </tfoot>
                                         </table>
                                     </div>
                                 </div>
@@ -669,11 +594,6 @@ class Barang extends CI_Controller
             }
             echo '
                     </tbody>
-                    <tfoot>
-                        <th>No</th>
-                        <th>Nama Barang</th>
-                        <th>Stok Tersisa</th>
-                    </tfoot>
                 </table>
             </div>';
         } else if ($select == "T2") {
@@ -700,11 +620,6 @@ class Barang extends CI_Controller
             }
             echo '
                     </tbody>
-                    <tfoot>
-                        <th>No</th>
-                        <th>Nama Barang</th>
-                        <th>Stok Tersisa</th>
-                    </tfoot>
                 </table>
             </div>';
         } else if ($select == "T3") {
@@ -731,11 +646,6 @@ class Barang extends CI_Controller
             }
             echo '
                     </tbody>
-                    <tfoot>
-                        <th>No</th>
-                        <th>Nama Barang</th>
-                        <th>Stok Tersisa</th>
-                    </tfoot>
                 </table>
             </div>';
         }

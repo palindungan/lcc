@@ -71,14 +71,6 @@
                                 }
                                 ?>
 							</tbody>
-							<tfoot>
-								<th style="text-align:center;" width="5%">No</th>
-								<th width="30%">Deskripsi Pengeluaran</th>
-								<th style="text-align:center;" width="15%">Tanggal</th>
-								<th style="text-align:center;" width="15%">Waktu</th>
-								<th style="text-align:center;" width="20%">Jumlah Pengeluaran</th>
-								<th style="text-align:center;" width="15%">Aksi</th>
-							</tfoot>
 						</table>
 					</div>
 				</div>

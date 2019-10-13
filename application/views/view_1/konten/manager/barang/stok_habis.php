@@ -57,11 +57,6 @@
                                 }
                                 ?>
 							</tbody>
-							<tfoot>
-								<th>No</th>
-								<th>Nama Barang</th>
-								<th>Stok Tersisa</th>
-							</tfoot>
 						</table>
 					</div>
 				</div>

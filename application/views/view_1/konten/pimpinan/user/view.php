@@ -65,7 +65,8 @@
 											<a class="btn btn-primary fa fa-pencil-square"
 												href="<?php echo base_url("pimpinan/user/edit/".$data->id_user) ?>"></a>
 											<a class="btn btn-danger fa fa-trash"
-												onclick="return confirm('anda yakin ingin menghapus data ?')" href="<?php echo base_url("pimpinan/user/hapus/".$data->id_user) ?>"></a>
+												onclick="return confirm('anda yakin ingin menghapus data ?')"
+												href="<?php echo base_url("pimpinan/user/hapus/".$data->id_user) ?>"></a>
 											<a class="btn btn-warning fa fa-recycle"
 												href="<?php echo base_url("pimpinan/user/ganti_password/".$data->id_user) ?>"></a>
 
@@ -75,16 +76,6 @@
 								</tr>
 								<?php  }?>
 							</tbody>
-							<tfoot>
-								<tr>
-									<th>No</th>
-									<th>Nama User</th>
-									<th>username</th>
-									<th>Jenis Akses</th>
-									<th>toko</th>
-									<th>aksi</th>
-								</tr>
-							</tfoot>
 						</table>
 					</div>
 				</div>

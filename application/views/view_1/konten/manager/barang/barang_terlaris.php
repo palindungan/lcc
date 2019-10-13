@@ -65,11 +65,6 @@
                                                     }
                                                     ?>
 												</tbody>
-												<tfoot>
-													<th>No</th>
-													<th>Nama Barang</th>
-													<th>Jumlah Terjual</th>
-												</tfoot>
 											</table>
 										</div>
 									</div>
@@ -101,11 +96,6 @@
                                                     }
                                                     ?>
 												</tbody>
-												<tfoot>
-													<th>No</th>
-													<th>Nama Barang</th>
-													<th>Jumlah Terjual</th>
-												</tfoot>
 											</table>
 										</div>
 									</div>
@@ -137,11 +127,6 @@
                                                     }
                                                     ?>
 												</tbody>
-												<tfoot>
-													<th>No</th>
-													<th>Nama Barang</th>
-													<th>Jumlah Terjual</th>
-												</tfoot>
 											</table>
 										</div>
 									</div>

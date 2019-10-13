@@ -63,12 +63,6 @@
                                 }
                                 ?>
 							</tbody>
-							<tfoot>
-								<th>No</th>
-								<th>Nama Barang</th>
-								<th>Barcode</th>
-								<th>Aksi</th>
-							</tfoot>
 						</table>
 					</div>
 				</div>

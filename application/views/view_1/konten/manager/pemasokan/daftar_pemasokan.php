@@ -45,22 +45,22 @@
 								<tr>
 									<th>Kode</th>
 									<th>Distributor</th>
-									<th>Tanggal</th>
-									<th>Waktu</th>
-									<th>Total</th>
+									<th style="text-align:center">Tanggal</th>
+									<th style="text-align:center">Waktu</th>
+									<th style="text-align:center">Total</th>
 									<th>Aksi</th>
 								</tr>
 							</thead>
 							<tbody>
 								<?php
                                 foreach ($pemasokan_list as $row) {
-                                    ?>
+                                ?>
 								<tr>
 									<td><?= $row->id_pemasokan; ?></td>
 									<td><?= $row->nama; ?></td>
-									<td><?= date('d F Y', strtotime($row->tanggal)) ?></td>
-									<td><?= date('h:i:s', strtotime($row->tanggal)) ?></td>
-									<td><?= rupiah($row->total) ?></td>
+									<td style="text-align:center"><?= date('d F Y', strtotime($row->tanggal)) ?></td>
+									<td style="text-align:center"><?= date('h:i:s', strtotime($row->tanggal)) ?></td>
+									<td style="text-align:right"><?= rupiah($row->total) ?></td>
 									<td>
 										<div class="table-actions">
 											<a class="btn btn-primary fa fa-search"
@@ -72,15 +72,6 @@
                                 }
                                 ?>
 							</tbody>
-							<tfoot>
-								<tr>
-									<th>Kode</th>
-									<th>Distributor</th>
-									<th>Tanggal</th>
-									<th>Total</th>
-									<th>Aksi</th>
-								</tr>
-							</tfoot>
 						</table>
 					</div>
 				</div>
@@ -88,7 +79,3 @@
 		</div>
 	</div>
 </div>
-
-<!-- Form Element area End-->
-
-<script src="<?= base_url(); ?>assets/vendor/auto_complete/jquery-3.4.1.min.js"></script>
