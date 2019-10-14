@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Waktu pembuatan: 12 Okt 2019 pada 07.03
+-- Waktu pembuatan: 14 Okt 2019 pada 16.23
 -- Versi server: 10.4.6-MariaDB
 -- Versi PHP: 7.3.9
 
@@ -78,7 +78,8 @@ INSERT INTO `barang_terdaftar` (`kode`, `nama`, `barcode`) VALUES
 ('B00008', 'Asus Core i3', 'kosong'),
 ('B00009', 'OPPO f9', 'kosong'),
 ('B00010', 'Printer Epson Scan', 'kosong'),
-('B00011', 'Flasdis Toshiba Ram 16', 'kosong');
+('B00011', 'Flasdis Toshiba Ram 16', 'kosong'),
+('B00012', 'ROG Strix 512', 'kosong');
 
 -- --------------------------------------------------------
 
@@ -216,7 +217,9 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`id_customer`, `nama`, `no_hp`) VALUES
-('C1210190001', 'Adi', '08967585823');
+('C1210190001', 'Adi', '08967585823'),
+('C1210190002', 'Ali ', '0872142712'),
+('C1410190003', 'safri', '0896876875');
 
 -- --------------------------------------------------------
 
@@ -238,7 +241,9 @@ CREATE TABLE `detail_penjualan` (
 --
 
 INSERT INTO `detail_penjualan` (`id_detail_pj`, `id_penjualan`, `id_stok_b`, `harga_jual`, `qty`, `total_hrg`) VALUES
-(1, 'P1210190001', '4', 150000, 1, 150000);
+(1, 'P1210190001', '4', 150000, 1, 150000),
+(2, 'P1210190002', '24', 100000, 1, 100000),
+(3, 'P1410190003', '24', 100000, 1, 100000);
 
 --
 -- Trigger `detail_penjualan`
@@ -296,7 +301,8 @@ INSERT INTO `pemasokan` (`id_pemasokan`, `id_user`, `id_distributor`, `tanggal`,
 ('M0310190003', 'U06', 'D01', '2019-10-03 02:18:45', 9500000),
 ('M1210190004', 'U04', 'D01', '2019-10-12 02:38:06', 6000000),
 ('M1210190005', 'U05', 'D02', '2019-10-12 02:49:09', 13980000),
-('M1210190006', 'U06', 'D02', '2019-10-12 02:54:54', 7500000);
+('M1210190006', 'U06', 'D02', '2019-10-12 02:54:54', 7500000),
+('M1210190007', 'U04', 'D01', '2019-10-12 06:29:45', 23050000);
 
 -- --------------------------------------------------------
 
@@ -345,6 +351,14 @@ CREATE TABLE `pengeluaran_lain` (
   `deskripsi` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data untuk tabel `pengeluaran_lain`
+--
+
+INSERT INTO `pengeluaran_lain` (`id_pengeluaran_l`, `id_user`, `tanggal`, `total`, `deskripsi`) VALUES
+('L1210190001', 'U04', '2019-10-11 18:51:42', 200000, 'Pembayaran WIFI'),
+('L1410190002', 'U04', '2019-10-14 13:50:35', 100000, 'Pembayaran Listrik');
+
 -- --------------------------------------------------------
 
 --
@@ -366,7 +380,9 @@ CREATE TABLE `penjualan` (
 --
 
 INSERT INTO `penjualan` (`id_penjualan`, `id_user`, `id_customer`, `tanggal`, `total`, `bayar`, `kembalian`) VALUES
-('P1210190001', 'U01', 'C1210190001', '2019-10-12 04:43:19', 150000, 200000, 50000);
+('P1210190001', 'U01', 'C1210190001', '2019-10-12 04:43:19', 150000, 200000, 50000),
+('P1210190002', 'U01', 'C1210190002', '2019-10-11 18:35:54', 100000, 100000, 0),
+('P1410190003', 'U01', 'C1410190003', '2019-10-14 14:01:08', 100000, 200000, 100000);
 
 -- --------------------------------------------------------
 
@@ -430,7 +446,10 @@ INSERT INTO `stok_barang` (`id_stok_b`, `id_pemasokan`, `kode`, `qty`, `hrg_dist
 (18, 'M1210190005', 'B00010', 1, 900000, 900000, 'NM2157'),
 (19, 'M1210190005', 'B00011', 1, 80000, 80000, 'MI378267'),
 (20, 'M1210190006', 'B00007', 1, 3500000, 3500000, 'PLX981286L'),
-(21, 'M1210190006', 'B00001', 1, 4000000, 4000000, 'XPA12931P');
+(21, 'M1210190006', 'B00001', 1, 4000000, 4000000, 'XPA12931P'),
+(22, 'M1210190007', 'B00001', 1, 3000000, 3000000, 'ZXBA1000MN'),
+(23, 'M1210190007', 'B00012', 1, 20000000, 20000000, 'ZXF9821826'),
+(24, 'M1210190007', 'B00003', 1, 50000, 150000, 'kosong');
 
 -- --------------------------------------------------------
 
@@ -481,7 +500,8 @@ INSERT INTO `user` (`id_user`, `nama_user`, `username`, `password`, `jenis_akses
 ('U06', 'probolinggo', 'probolinggo', '$2y$10$2rB0B0X.lVTbImG.lp2LFOv4JZnAehgKfM6jlDTSkDxv.w/2PVEFa', 'Manager', 'T3'),
 ('U07', 'kasir_lcc', 'kasir_lcc', '$2y$10$C.IbD1aPGJmM6Fr2StwLmej5PkrKOIl74nmmWBGEsyibiY8DEMzcq', 'Kasir', 'T1'),
 ('U08', 'kasir_cmc', 'kasir_cmc', '$2y$10$kU3oINfhVVIi/NPIRiQC3.bhLbO7di.GQDuq5J92dowEoKOJYbvjq', 'Kasir', 'T2'),
-('U09', 'kasir_probolinggo', 'kasir_probolinggo', '$2y$10$qJpFja9mbKbMavlDx/t0BO74EU8ioS9hG/iVJTavPMfp2AnieUUi6', 'Kasir', 'T3');
+('U09', 'kasir_probolinggo', 'kasir_probolinggo', '$2y$10$qJpFja9mbKbMavlDx/t0BO74EU8ioS9hG/iVJTavPMfp2AnieUUi6', 'Kasir', 'T3'),
+('U10', 'ali_lcc', 'ali_lcc', '$2y$10$UNbOL2uvkowM6w2VrofIcOdD5hYu4FQc4bNG.GuHSuJFzJgujJX0S', 'Kasir', 'T1');
 
 -- --------------------------------------------------------
 
@@ -678,7 +698,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `detail_penjualan`
 --
 ALTER TABLE `detail_penjualan`
-  MODIFY `id_detail_pj` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_detail_pj` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `pimpinan`
@@ -690,7 +710,7 @@ ALTER TABLE `pimpinan`
 -- AUTO_INCREMENT untuk tabel `stok_barang`
 --
 ALTER TABLE `stok_barang`
-  MODIFY `id_stok_b` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_stok_b` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
