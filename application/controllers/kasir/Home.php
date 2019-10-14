@@ -56,7 +56,7 @@ class Home extends CI_Controller
             $this->template->load('view_1/template/kasir', 'view_1/konten/kasir/home/tampil', $data);
         } else {
             date_default_timezone_set("Asia/Jakarta");
-            $tanggal = Date('Y-m-d h:i:s');
+            $tanggal = Date('Y-m-d H:i:s');
             $id_customer = $this->M_home->id_customer();
             $id_penjualan = $this->M_home->id_penjualan();
             $data_customer = array(

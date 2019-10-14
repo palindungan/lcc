@@ -30,7 +30,7 @@ class Pengeluaran_lain extends CI_Controller
             $this->template->load('view_1/template/manager', 'view_1/konten/manager/pengeluaran_lain/tambah');
         } else {
             date_default_timezone_set("Asia/Jakarta");
-            $tanggal = Date('Y-m-d h:i:s');
+            $tanggal = Date('Y-m-d H:i:s');
             $id_pengeluaran_l = $this->M_pengeluaran_lain->get_no();
             $id_user = $this->session->userdata('id_user');
             $jumlah_pengeluaran = $this->input->post('jumlah_pengeluaran');
