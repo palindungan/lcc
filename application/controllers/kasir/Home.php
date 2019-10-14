@@ -91,7 +91,10 @@ class Home extends CI_Controller
                 }
             }
             $this->cart->destroy();
-            redirect('kasir');
+            echo "<script>
+            	alert('Sukses Melakukan Transaksi');
+            	window.location = '". base_url("kasir")."';
+            </script>";
         }
     }
     function load()

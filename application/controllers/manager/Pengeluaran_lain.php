@@ -15,7 +15,8 @@ class Pengeluaran_lain extends CI_Controller
     }
     public function index()
     {
-        $data['record'] = $this->M_pengeluaran_lain->tampil_data();
+        $data['hari'] = $this->M_pengeluaran_lain->tampil_data_hari();
+        $data['bulan'] = $this->M_pengeluaran_lain->tampil_data_bulan();
         $this->template->load('view_1/template/manager', 'view_1/konten/manager/pengeluaran_lain/tampil', $data);
     }
     public function add()

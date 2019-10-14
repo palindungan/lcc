@@ -2,10 +2,15 @@
 
 class M_pengeluaran_lain extends CI_Model
 {
-    function tampil_data()
+    function tampil_data_hari()
     {
         $id_toko = $this->session->userdata('id_toko');
-        return $this->db->query("SELECT * FROM pengeluaran_lain JOIN user USING(id_user) JOIN toko USING(id_toko) WHERE id_toko='$id_toko' ORDER BY tanggal DESC")->result();
+        return $this->db->query("SELECT * FROM pengeluaran_lain JOIN user USING(id_user) JOIN toko USING(id_toko) WHERE DATE(tanggal) = DATE(now()) AND id_toko='$id_toko' ORDER BY tanggal DESC")->result();
+    }
+    function tampil_data_bulan()
+    {
+        $id_toko = $this->session->userdata('id_toko');
+        return $this->db->query("SELECT * FROM pengeluaran_lain JOIN user USING(id_user) JOIN toko USING(id_toko) WHERE MONTH(tanggal) = MONTH(CURRENT_DATE()) AND id_toko='$id_toko' ORDER BY tanggal DESC")->result();
     }
     function input_data($data, $table)
     {

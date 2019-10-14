@@ -38,7 +38,10 @@ class Login extends CI_Controller
                 }
             }
         } else {
-            echo "login gagal";
+            echo "<script>
+            	alert('Username Atau Password Anda Salah');
+            	window.location = '". base_url("/")."';
+            </script>";
         }
         if ($cek->num_rows() > 0) {
             foreach ($cek->result() as $row) {
