@@ -93,7 +93,7 @@ class Home extends CI_Controller
             $this->cart->destroy();
             echo "<script>
             	alert('Sukses Melakukan Transaksi');
-            	window.location = '". base_url("kasir")."';
+            	window.location = '" . base_url("kasir") . "';
             </script>";
         }
     }
@@ -127,7 +127,7 @@ class Home extends CI_Controller
                     <tr>
                         <td>' . $item['name'] . '</td>
                         <td class="text-right">
-                            <input type="number" min="0" data-indexnya="' . $item['rowid'] . '" id="harga_jual' . $count . '" name="harga_jual[]" class="form-control text-right harga_jual" onkeyup="update_total()">
+                            <input type="text" data-indexnya="' . $item['rowid'] . '" id="harga_jual' . $count . '" name="harga_jual[]" class="form-control text-right harga_jual rupiah_2" onkeyup="update_total()">
                         </td>
                         <input type="hidden" id="qty' . $count . '" name="qty[]" value="' . $item['qty'] . '" />
                         <td class="text-center">' . $item['qty'] . '</td>
