@@ -10,13 +10,10 @@
 								<div class="breadcomb-icon">
 									<i class="notika-icon notika-form"></i>
 								</div>
-								<div class="breadcomb-ctn">
-									<h2>Tambah Pengeluaran Lain</h2>
-									<p>Welcome to Notika <span class="bread-ntd">Admin Template</span></p>
+								<div style="margin-top:15px" class="breadcomb-ctn">
+									<h2>TAMBAH PENGELUARAN</h2>
 								</div>
 							</div>
-						</div>
-						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
 						</div>
 					</div>
 				</div>

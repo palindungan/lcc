@@ -7,18 +7,11 @@
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 							<div class="breadcomb-wp">
 								<div class="breadcomb-icon">
-									<i class="notika-icon notika-windows"></i>
+									<i class="notika-icon notika-form"></i>
 								</div>
-								<div class="breadcomb-ctn">
+								<div style="margin-top:15px" class="breadcomb-ctn">
 									<h2>DAFTAR BARANG BARCODE</h2>
-									<p>Welcome to Notika <span class="bread-ntd">Admin Template</span></p>
 								</div>
-							</div>
-						</div>
-						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-3">
-							<div class="breadcomb-report">
-								<button data-toggle="tooltip" data-placement="left" title="Download Report"
-									class="btn"><i class="notika-icon notika-sent"></i></button>
 							</div>
 						</div>
 					</div>

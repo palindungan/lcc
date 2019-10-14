@@ -127,7 +127,7 @@ class Home extends CI_Controller
 		// $data['pemasokan_bulan_oktober'] = $this->M_home->pemasokan_bulan_oktober();
         if($select=='hari')
         {
-		echo '<a style="color:black" href="">
+		echo '<a style="color:black" href="'.base_url('laporan_manager').'">
 			<div style="margin-bottom: 30px;" class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
 				<div class="contact-inner">
 					<div class="contact-inner">
@@ -139,7 +139,7 @@ class Home extends CI_Controller
 				</div>
 			</div>
 		</a>
-		<a style="color:black" href="">
+		<a style="color:black" href="'.base_url('laporan_manager').'">
 			<div style="margin-bottom: 30px;" class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
 				<div class="contact-inner">
 					<div class="contact-inner">
@@ -152,7 +152,7 @@ class Home extends CI_Controller
 			</div>
 		</a>
 
-		<a style="color:black" href="">
+		<a style="color:black" href="'.base_url('pengeluaran_lain').'">
 			<div style="margin-bottom: 30px;" class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
 				<div class="contact-inner">
 					<div class="contact-inner">
@@ -167,7 +167,7 @@ class Home extends CI_Controller
         } 
 		else if ($select=='bulan')
 		{
-		echo '<a style="color:black" href="">
+		echo '<a style="color:black" href="'.base_url('laporan_manager').'">
 		<div style="margin-bottom: 30px;" class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
 			<div class="contact-inner">
 				<div class="contact-inner">
@@ -179,7 +179,7 @@ class Home extends CI_Controller
 			</div>
 		</div>
 		</a>
-		<a style="color:black" href="">
+		<a style="color:black" href="'.base_url('laporan_manager').'">
 		<div style="margin-bottom: 30px;" class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
 			<div class="contact-inner">
 				<div class="contact-inner">
@@ -192,7 +192,7 @@ class Home extends CI_Controller
 		</div>
 		</a>
 
-		<a style="color:black" href="">
+		<a style="color:black" href="'.base_url('pengeluaran_lain').'">
 		<div style="margin-bottom: 30px;" class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
 			<div class="contact-inner">
 				<div class="contact-inner">
