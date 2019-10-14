@@ -75,7 +75,8 @@ class Pemasokan extends CI_Controller
         $id_user = $this->session->userdata('id_user'); // session
         $id_distributor = $this->input->post('id_distributor');
         $tanggal = date('Y-m-d H:i:s');
-        $total = $this->input->post('total');
+        $total_tmp = $this->input->post('total');
+        $total = preg_replace("/[^0-9]/", "", $total_tmp);
 
         $data = array(
             'id_pemasokan' => $id_pemasokan,
