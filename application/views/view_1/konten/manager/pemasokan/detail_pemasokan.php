@@ -25,12 +25,12 @@
 
 <?php
 foreach ($pemasokan_list as $row) {
-    $nama_distributor = $row->nama;
-    $nama_manager = $row->nama_user;
-    $a = $row->tanggal;
-    $tanggal = date('d/m/Y H:i:s', strtotime($a));
-    $id_pemasokan =  $row->id_pemasokan;
-    $total = $row->total;
+	$nama_distributor = $row->nama;
+	$nama_manager = $row->nama_user;
+	$a = $row->tanggal;
+	$tanggal = date('d/m/Y H:i:s', strtotime($a));
+	$id_pemasokan =  $row->id_pemasokan;
+	$total = $row->total;
 } ?>
 
 <!-- Form Element area Start-->
@@ -76,18 +76,20 @@ foreach ($pemasokan_list as $row) {
 						</thead>
 						<tbody>
 							<?php
-                            foreach ($pemasokan_list_detail as $row) {
-                                ?>
-							<tr>
-								<td width="7%" scope="row"><?= $row->id_pemasokan; ?></td>
-								<td width="25%"><?= $row->nama; ?></td>
-								<td width="8%"><?= ($row->total_hrg / $row->hrg_distributor); ?></td>
-								<td width="15%" style="text-align:right"><?= rupiah($row->hrg_distributor) ?></td>
-								<td width="15%" style="text-align:right"><?= rupiah($row->total_hrg) ?></td>
-								<td width="15%"><?= $row->barcode; ?></td>
-								<td width="15%"><?= $row->kode_unik; ?></td>
-							</tr>
-							<?php } ?>
+							$no = 1;
+							foreach ($pemasokan_list_detail as $row) {
+								?>
+								<tr>
+									<td width="7%" scope="row"><?= $no; ?></td>
+									<td width="25%"><?= $row->nama; ?></td>
+									<td width="8%"><?= ($row->total_hrg / $row->hrg_distributor); ?></td>
+									<td width="15%" style="text-align:right"><?= rupiah($row->hrg_distributor) ?></td>
+									<td width="15%" style="text-align:right"><?= rupiah($row->total_hrg) ?></td>
+									<td width="15%"><?= $row->barcode; ?></td>
+									<td width="15%"><?= $row->kode_unik; ?></td>
+								</tr>
+							<?php $no = $no + 1;
+							} ?>
 						</tbody>
 					</table>
 					<table class="table table-sm table-borderless">

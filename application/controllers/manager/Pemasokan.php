@@ -99,7 +99,8 @@ class Pemasokan extends CI_Controller
 
                 // data stok
                 $qty = $this->input->post('qty')[$i];
-                $hrg_distributor = $this->input->post('hrg_distributor')[$i];
+                $hrg_distributor_temp = $this->input->post('hrg_distributor')[$i];
+                $hrg_distributor = preg_replace("/[^0-9]/", "", $hrg_distributor_temp);
                 $total_hrg = $qty * $hrg_distributor;
                 $kode_unik = "kosong";
 

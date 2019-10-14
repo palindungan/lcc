@@ -184,7 +184,7 @@
                     <input required="" type="number" class="form-control" id="qty` + count1 + `" name="qty[]" placeholder="qty" value=""  min="1" max="999">
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <input required="" type="number" class="form-control" id="hrg_distributor` + count1 + `" name="hrg_distributor[]" placeholder="Harga" value=""  min="0" max="9999999999">
+                    <input required="" type="text" class="form-control rupiah_2" id="hrg_distributor` + count1 + `" name="hrg_distributor[]" placeholder="Harga" value="">
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                     <button type="button" id="` + count1 + `" class="remove_baris btn btn-danger"><i class="notika-icon notika-trash"></i></button>
@@ -265,7 +265,7 @@
                     <input required="" type="number" class="form-control" id="qty` + count1 + `" name="qty[]" placeholder="qty" value="" min="1" max="999">
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <input required="" type="number" class="form-control"  id="hrg_distributor` + count1 + `" name="hrg_distributor[]" placeholder="Harga" value="" min="0" max="9999999999">
+                    <input required="" type="text" class="form-control rupiah_2"  id="hrg_distributor` + count1 + `" name="hrg_distributor[]" placeholder="Harga" value="">
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                     <button type="button" id="` + count1 + `" class="remove_baris btn btn-danger"><i class="notika-icon notika-trash"></i></button>
@@ -372,6 +372,16 @@
         // gunakan fungsi formatRupiah() untuk mengubah angka yang di ketik menjadi format angka
         rupiah.value = formatRupiah(this.value);
     });
+
+    $(document).on('keyup', '.rupiah_2', function() {
+        var row_id = $(this).attr("id");
+        var rupiah_2 = document.getElementById(row_id);
+
+        // tambahkan 'Rp.' pada saat form di ketik
+        // gunakan fungsi formatRupiah() untuk mengubah angka yang di ketik menjadi format angka
+        rupiah_2.value = formatRupiah(this.value);
+    });
+
     /* Fungsi formatRupiah */
     function formatRupiah(angka, prefix) {
         var number_string = angka.replace(/[^,\d]/g, '').toString(),
