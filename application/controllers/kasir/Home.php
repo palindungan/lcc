@@ -175,7 +175,8 @@ class Home extends CI_Controller
             for ($i = 0; $i < count($this->input->post('qty')); $i++) {
 
                 $qty = (int) $this->input->post('qty')[$i];
-                $harga_jual = (int) $this->input->post('harga_jual')[$i];
+                $harga_jual_temp = $this->input->post('harga_jual')[$i];
+                $harga_jual = (int) preg_replace("/[^0-9]/", "", $harga_jual_temp);
 
                 $perhitungan = $qty * $harga_jual;
 

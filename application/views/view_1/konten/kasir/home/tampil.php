@@ -67,7 +67,7 @@
 										<div class="form-group">
 											<label for="inputEmail3" class="col-sm-2 control-label">Total</label>
 											<div class="col-sm-10">
-												<input type="text" name="total" readonly class="form-control text-right total_harga rupiah_2" id="total_harga" placeholder="Jumlah Total">
+												<input type="text" name="total" readonly class="form-control text-right total_harga" id="total_harga" placeholder="Jumlah Total">
 											</div>
 										</div>
 										<div class="form-group">
@@ -80,7 +80,7 @@
 										<div class="form-group">
 											<label for="inputEmail3" class="col-sm-2 control-label">Kembali</label>
 											<div class="col-sm-10">
-												<input type="text" name="kembalian" readonly class="form-control text-right rupiah_2" id="kembalian" placeholder="Jumlah Kembalian">
+												<input type="text" name="kembalian" readonly class="form-control text-right" id="kembalian" placeholder="Jumlah Kembalian">
 											</div>
 										</div>
 										<div class="form-group">
@@ -157,8 +157,8 @@
 			method: "POST",
 			data: form_data,
 			success: function(data) {
-				$('#total_harga').val(data);
-				update_kembalian();
+				$('#total_harga').val(formatRupiah(data));
+				// update_kembalian();
 			}
 		});
 	}
