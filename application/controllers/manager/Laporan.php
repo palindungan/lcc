@@ -1,5 +1,8 @@
 <?php
+require('./assets/vendor/autoload.php');
 
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 class Laporan extends CI_Controller {
   public function __construct()
   {
@@ -47,5 +50,34 @@ class Laporan extends CI_Controller {
       $html = $this->load->view('view_1/konten/manager/laporan/print_per_bulan',$data,true);
       $tanggal = date('F-Y');
       $this->dompdf->PdfGenerator($html,'laporan'.$tanggal,'A4','landscape'); 
+    }
+    public function excel_hari()
+    {
+        $spreadsheet = new Spreadsheet;
+
+        $spreadsheet->setActiveSheetIndex(0)
+        ->setCellValue('A1', 'No')
+        ->setCellValue('B1', 'Nama')
+        ->setCellValue('C1', 'Jenis Kelamin')
+        ->setCellValue('D1', 'Tanggal Lahir')
+        ->setCellValue('E1', 'Umur');
+
+        $kolom = 2;
+        $nomor = 1;
+
+        $spreadsheet->setActiveSheetIndex(0)
+        ->setCellValue('A' . $kolom, $nomor)
+        ->setCellValue('B' . $kolom, 'asd')
+        ->setCellValue('C' . $kolom, 'asd')
+        ->setCellValue('D' . $kolom, 'asd')
+        ->setCellValue('E' . $kolom, 'asd');
+
+        $writer = new Xlsx($spreadsheet);
+
+        header('Content-Type: application/vnd.ms-excel');
+        header('Content-Disposition: attachment;filename="Latihan.xlsx"');
+        header('Cache-Control: max-age=0');
+
+        $writer->save('php://output');
     }
 }

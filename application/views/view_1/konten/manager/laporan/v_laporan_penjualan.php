@@ -64,8 +64,13 @@
                                         <div class="row">
                                                 <div class="input-group">
                                                     <span class="input-group-btn">
-                                                        <a target="_blank" style="float:left;" class="btn btn-primary" style="align: right "
+                                                        <a target="_blank" style="float:left;" class="btn btn-primary"
                                                             href="<?php echo base_url().'laporan_manager/hari_ini' ?>"><i class="glyphicon glyphicon-print"></i> Print Data</a>
+                                                            <a target="_blank" style="float:left;"
+                                                            	class="btn btn-success"
+                                                            	href="<?php echo base_url().'laporan_manager/excel_hari' ?>"><i
+                                                            		class="glyphicon glyphicon-print"></i> Print
+                                                            	Data</a>
                                                     </span>
                                                 </div><!-- /input-group -->
                                         </div>
