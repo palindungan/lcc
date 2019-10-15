@@ -64,13 +64,12 @@
                                         <div class="row">
                                                 <div class="input-group">
                                                     <span class="input-group-btn">
-                                                        <a target="_blank" class="btn btn-primary"
+                                                        <a style="margin-right:20px" target="_blank" class="btn btn-primary"
                                                             href="<?php echo base_url().'laporan_manager/hari_ini' ?>"><i
-                                                            	class="glyphicon glyphicon-search"></i> Preview</a>
+                                                                class="glyphicon glyphicon-search"></i> Preview</a>
                                                             <a class="btn btn-success"
-                                                            	href="<?php echo base_url().'laporan_manager/excel_hari' ?>"><i
-                                                            		class="glyphicon glyphicon-print"></i> Print
-                                                            	Data</a>
+                                                                href="<?php echo base_url().'laporan_manager/excel_hari' ?>"><i
+                                                                    class="glyphicon glyphicon-print"></i> Print Data</a>
                                                     </span>
                                                 </div><!-- /input-group -->
                                         </div>

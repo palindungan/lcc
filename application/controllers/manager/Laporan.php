@@ -55,28 +55,49 @@ class Laporan extends CI_Controller {
     {
         $spreadsheet = new Spreadsheet;
         // Mengatur Lebar Kolom
-        $spreadsheet->getActiveSheet()->getColumnDimension('D')->setWidth(30);
+        $spreadsheet->getActiveSheet()->getColumnDimension('A')->setWidth(5);
+        $spreadsheet->getActiveSheet()->getColumnDimension('B')->setWidth(35);
+        $spreadsheet->getActiveSheet()->getColumnDimension('C')->setWidth(20);
+        $spreadsheet->getActiveSheet()->getColumnDimension('D')->setWidth(15);
+        $spreadsheet->getActiveSheet()->getColumnDimension('E')->setWidth(15);
+        $spreadsheet->getActiveSheet()->getColumnDimension('F')->setWidth(5);
+        $spreadsheet->getActiveSheet()->getColumnDimension('G')->setWidth(15);
+        $spreadsheet->getActiveSheet()->getColumnDimension('H')->setWidth(20);
+        $spreadsheet->getActiveSheet()->getColumnDimension('I')->setWidth(20);
+        $spreadsheet->getActiveSheet()->getColumnDimension('J')->setWidth(15);
         // Mengatur Tinggi Kolom
-        $spreadsheet->getActiveSheet()->getRowDimension('1')->setRowHeight(40);
+        $spreadsheet->getActiveSheet()->getRowDimension('1')->setRowHeight(35);
         // Atur Warna background color dan text
-        $spreadsheet->getActiveSheet()->getStyle('B1')
+        $spreadsheet->getActiveSheet()->getStyle('A1:G1')
         ->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_WHITE);
-        $spreadsheet->getActiveSheet()->getStyle('B1')->getFill()
+        $spreadsheet->getActiveSheet()->getStyle('A1:G1')->getFill()
         ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
         ->getStartColor()->setARGB('006400');
-        $spreadsheet->getActiveSheet()->getStyle('C1')
+        $spreadsheet->getActiveSheet()->getStyle('H1:J1')
         ->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_WHITE);
-        $spreadsheet->getActiveSheet()->getStyle('C1')->getFill()
+        $spreadsheet->getActiveSheet()->getStyle('H1:J1')->getFill()
         ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
         ->getStartColor()->setARGB('8B0000');
         // Tutup
+        $spreadsheet->getActiveSheet()->getStyle('A1:J1')->getAlignment()->setHorizontal('center');
+
+
+        // Border
+        $spreadsheet->getActiveSheet()->getStyle('A1:J1')->getBorders()->getallBorders()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THICK)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);;
         
+        
+
         $spreadsheet->setActiveSheetIndex(0)
         ->setCellValue('A1', 'No')
-        ->setCellValue('B1', 'Nama')
-        ->setCellValue('C1', 'Jenis Kelamin')
-        ->setCellValue('D1', 'Tanggal Lahir')
-        ->setCellValue('E1', 'Umur');
+        ->setCellValue('B1', 'Nama Barang')
+        ->setCellValue('C1', 'Tanggal & Waktu')
+        ->setCellValue('D1', 'Harga Beli')
+        ->setCellValue('E1', 'Harga Jual')
+        ->setCellValue('F1', 'Qty')
+        ->setCellValue('G1', 'Keuntungan')
+        ->setCellValue('H1', 'Deskripsi Pengeluaran')
+        ->setCellValue('I1', 'Tanggal & Waktu')
+        ->setCellValue('J1', 'Jumlah');
 
         $kolom = 2;
         $nomor = 1;
@@ -86,7 +107,12 @@ class Laporan extends CI_Controller {
         ->setCellValue('B' . $kolom, 'asd')
         ->setCellValue('C' . $kolom, 'asd')
         ->setCellValue('D' . $kolom, 'asd')
-        ->setCellValue('E' . $kolom, 'asd');
+        ->setCellValue('E' . $kolom, 'asd')
+        ->setCellValue('F' . $kolom, 'asd')
+        ->setCellValue('G' . $kolom, 'asd')
+        ->setCellValue('H' . $kolom, 'Pembayaran Wifi')
+        ->setCellValue('I' . $kolom, '10/12/2019 23:05:20')
+        ->setCellValue('J' . $kolom, '9.000.000');
 
         
 
