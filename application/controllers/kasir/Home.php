@@ -64,26 +64,40 @@ class Home extends CI_Controller
                 'nama' => $this->input->post('nama_customer'),
                 'no_hp' => $this->input->post('no_hp_customer')
             );
+
+            $total_temp = $this->input->post('total');
+            $total = preg_replace("/[^0-9]/", "", $total_temp);
+
+            $bayar_temp = $this->input->post('bayar');
+            $bayar = preg_replace("/[^0-9]/", "", $bayar_temp);
+
+            $kembalian_temp = $this->input->post('kembalian');
+            $kembalian = preg_replace("/[^0-9]/", "", $kembalian_temp);
+
             $data_penjualan = array(
                 'id_penjualan' => $id_penjualan,
                 'id_user' => 'U01',
                 'id_customer' => $id_customer,
                 'tanggal' => $tanggal,
-                'total' => $this->input->post('total'),
-                'bayar' => $this->input->post('bayar'),
-                'kembalian' => $this->input->post('kembalian')
+                'total' => $total,
+                'bayar' => $bayar,
+                'kembalian' =>  $kembalian
             );
             $this->M_home->input_data($data_customer, 'customer');
             $this->M_home->input_data($data_penjualan, 'penjualan');
             if ($cart = $this->cart->contents()) {
                 $i = 0;
                 foreach ($cart as $item) {
+
+                    $harga_jual_temp = $this->input->post('harga_jual')[$i];
+                    $harga_jual = preg_replace("/[^0-9]/", "", $harga_jual_temp);
+
                     $data_detail = array(
                         'id_penjualan' => $id_penjualan,
                         'id_stok_b' => $item['id'],
-                        'harga_jual' => $this->input->post('harga_jual')[$i],
+                        'harga_jual' => $harga_jual,
                         'qty' => $item['qty'],
-                        'total_hrg' => (int) $this->input->post('harga_jual')[$i] * (int) $item['qty']
+                        'total_hrg' => (int) $harga_jual * (int) $item['qty']
                     );
                     $this->M_home->input_data($data_detail, 'detail_penjualan');
 
