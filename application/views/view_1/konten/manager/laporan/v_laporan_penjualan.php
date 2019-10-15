@@ -103,7 +103,7 @@
                                                             <td><?= date('d/m/Y H:i:s', strtotime($row_hari->tanggal_penjualan)); ?>
                                                             </td>
                                                             <td style="text-align: center;"><?= $row_hari->nama_barang; ?></td>
-                                                            <td style="text-align: right;"><?= rupiah($row_hari->harga_jual) ?>
+                                                            <td style="text-align: right;"><?= rupiah($row_hari->hrg_distributor) ?>
                                                             </td>
                                                             <td style="text-align: right;">
                                                                 <?= rupiah($row_hari->harga_jual) ?>

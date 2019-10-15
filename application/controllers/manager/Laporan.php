@@ -53,6 +53,11 @@ class Laporan extends CI_Controller {
     }
     public function excel_hari()
     {
+        $nama_toko = $this->session->userdata('nama_toko');
+        date_default_timezone_set("Asia/Jakarta");
+        $data = $this->M_laporan->tampil_hari()->result();  
+        $tanggal = date('d F Y');
+        $tanggal_title = date('d-m-Y');
         $spreadsheet = new Spreadsheet;
         // Mengatur Lebar Kolom
         $spreadsheet->getActiveSheet()->getColumnDimension('A')->setWidth(5);
@@ -65,62 +70,79 @@ class Laporan extends CI_Controller {
         $spreadsheet->getActiveSheet()->getColumnDimension('H')->setWidth(20);
         $spreadsheet->getActiveSheet()->getColumnDimension('I')->setWidth(20);
         $spreadsheet->getActiveSheet()->getColumnDimension('J')->setWidth(15);
+        // $spreadsheet->getActiveSheet()->getColumnDimension('A1')->setWidth(200);
         // Mengatur Tinggi Kolom
         $spreadsheet->getActiveSheet()->getRowDimension('1')->setRowHeight(35);
+        $spreadsheet->getActiveSheet()->getRowDimension('2')->setRowHeight(25);
         // Atur Warna background color dan text
-        $spreadsheet->getActiveSheet()->getStyle('A1:G1')
+        $spreadsheet->getActiveSheet()->getStyle('A2:G2')
         ->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_WHITE);
-        $spreadsheet->getActiveSheet()->getStyle('A1:G1')->getFill()
+        $spreadsheet->getActiveSheet()->getStyle('A2:G2')->getFill()
         ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
         ->getStartColor()->setARGB('006400');
-        $spreadsheet->getActiveSheet()->getStyle('H1:J1')
+        $spreadsheet->getActiveSheet()->getStyle('H2:J2')
         ->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_WHITE);
-        $spreadsheet->getActiveSheet()->getStyle('H1:J1')->getFill()
+        $spreadsheet->getActiveSheet()->getStyle('H2:J2')->getFill()
         ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
         ->getStartColor()->setARGB('8B0000');
         // Tutup
-        $spreadsheet->getActiveSheet()->getStyle('A1:J1')->getAlignment()->setHorizontal('center');
 
+        // Atur alignment JUDUL
+        $spreadsheet->getActiveSheet()->getStyle('A2:J2')->getFont()->setBold(true);
+        $spreadsheet->getActiveSheet()->getStyle('A2:J2')->getAlignment()->setHorizontal('center');
+        $spreadsheet->getActiveSheet()->getStyle('A2:J2')
+        ->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_TOP);
 
         // Border
-        $spreadsheet->getActiveSheet()->getStyle('A1:J1')->getBorders()->getallBorders()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THICK)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);;
+        $spreadsheet->getActiveSheet()->getStyle('A2:J2')->getBorders()->getallBorders()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THICK)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);;
         
-        
+        // Atur JUDUL
+        $spreadsheet->getActiveSheet()->getStyle('A1:J1')->getFont()->setBold(true);
+        $spreadsheet->getActiveSheet()->getStyle("A1:J1")->getFont()->setSize(20);
+        $spreadsheet->getActiveSheet()->getStyle('A1:J1')
+        ->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_TOP);
+        $spreadsheet->setActiveSheetIndex(0)->setCellValue('A1', 'Laporan Toko '.$nama_toko." Tanggal ".$tanggal);
 
         $spreadsheet->setActiveSheetIndex(0)
-        ->setCellValue('A1', 'No')
-        ->setCellValue('B1', 'Nama Barang')
-        ->setCellValue('C1', 'Tanggal & Waktu')
-        ->setCellValue('D1', 'Harga Beli')
-        ->setCellValue('E1', 'Harga Jual')
-        ->setCellValue('F1', 'Qty')
-        ->setCellValue('G1', 'Keuntungan')
-        ->setCellValue('H1', 'Deskripsi Pengeluaran')
-        ->setCellValue('I1', 'Tanggal & Waktu')
-        ->setCellValue('J1', 'Jumlah');
+        ->setCellValue('A2', 'No')
+        ->setCellValue('B2', 'Nama Customer & Nama Barang')
+        ->setCellValue('C2', 'Tanggal & Waktu')
+        ->setCellValue('D2', 'Harga Beli')
+        ->setCellValue('E2', 'Harga Jual')
+        ->setCellValue('F2', 'Qty')
+        ->setCellValue('G2', 'Keuntungan')
+        ->setCellValue('H2', 'Deskripsi')
+        ->setCellValue('I2', 'Tanggal & Waktu')
+        ->setCellValue('J2', 'Jumlah');
 
-        $kolom = 2;
+        $kolom = 3;
         $nomor = 1;
-
+        foreach($data as $row) {
+        $spreadsheet->getActiveSheet()->getStyle('E3')->getAlignment()->setHorizontal('right');
+          $keuntungan = $row->harga_jual *
+          $row->jumlah_barang -
+          $row->hrg_distributor * $row->jumlah_barang;
         $spreadsheet->setActiveSheetIndex(0)
         ->setCellValue('A' . $kolom, $nomor)
-        ->setCellValue('B' . $kolom, 'asd')
-        ->setCellValue('C' . $kolom, 'asd')
-        ->setCellValue('D' . $kolom, 'asd')
-        ->setCellValue('E' . $kolom, 'asd')
-        ->setCellValue('F' . $kolom, 'asd')
-        ->setCellValue('G' . $kolom, 'asd')
+        ->setCellValue('B' . $kolom, '('.$row->nama_customer.") ".$row->nama_barang)
+        ->setCellValue('C' . $kolom, date('d/m/Y H:i:s', strtotime($row->tanggal_penjualan)))
+        ->setCellValue('D' . $kolom, rupiah(50000))
+        ->setCellValue('E' . $kolom, rupiah($row->harga_jual))
+        ->setCellValue('F' . $kolom, $row->jumlah_barang)
+        ->setCellValue('G' . $kolom, rupiah($keuntungan))
         ->setCellValue('H' . $kolom, 'Pembayaran Wifi')
         ->setCellValue('I' . $kolom, '10/12/2019 23:05:20')
         ->setCellValue('J' . $kolom, '9.000.000');
-
+          $kolom++;
+          $nomor++;
+        }
         
 
 
         $writer = new Xlsx($spreadsheet);
 
         header('Content-Type: application/vnd.ms-excel');
-        header('Content-Disposition: attachment;filename="Latihan.xlsx"');
+        header('Content-Disposition: attachment;filename="'.$nama_toko." ".$tanggal_title.'.xlsx"');
         header('Cache-Control: max-age=0');
 
         $writer->save('php://output');
