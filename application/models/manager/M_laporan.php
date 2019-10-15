@@ -2,6 +2,11 @@
  
 class M_laporan extends CI_Model
 {
+	function pengeluaran_hari()
+	{
+		$id_toko = $this->session->userdata('id_toko');
+		return $this->db->query("SELECT * FROM pengeluaran_lain JOIN user USING(id_user) JOIN toko USING(id_toko) WHERE DATE(tanggal) = DATE(now()) AND id_toko='$id_toko' ORDER BY id_pengeluaran_l DESC");
+	}
 	function tampil_data2($tgl_mulai,$tgl_akhir)
 	{
 		$id_toko = $this->session->userdata('id_toko');

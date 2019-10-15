@@ -55,7 +55,8 @@ class Laporan extends CI_Controller {
     {
         $nama_toko = $this->session->userdata('nama_toko');
         date_default_timezone_set("Asia/Jakarta");
-        $data = $this->M_laporan->tampil_hari()->result();  
+        $data = $this->M_laporan->tampil_hari()->result();
+        $data2 = $this->M_laporan->pengeluaran_hari()->result();  
         $tanggal = date('d F Y');
         $tanggal_title = date('d-m-Y');
         $spreadsheet = new Spreadsheet;
@@ -63,13 +64,13 @@ class Laporan extends CI_Controller {
         $spreadsheet->getActiveSheet()->getColumnDimension('A')->setWidth(5);
         $spreadsheet->getActiveSheet()->getColumnDimension('B')->setWidth(35);
         $spreadsheet->getActiveSheet()->getColumnDimension('C')->setWidth(20);
-        $spreadsheet->getActiveSheet()->getColumnDimension('D')->setWidth(15);
-        $spreadsheet->getActiveSheet()->getColumnDimension('E')->setWidth(15);
+        $spreadsheet->getActiveSheet()->getColumnDimension('D')->setWidth(14);
+        $spreadsheet->getActiveSheet()->getColumnDimension('E')->setWidth(14);
         $spreadsheet->getActiveSheet()->getColumnDimension('F')->setWidth(5);
-        $spreadsheet->getActiveSheet()->getColumnDimension('G')->setWidth(15);
-        $spreadsheet->getActiveSheet()->getColumnDimension('H')->setWidth(20);
+        $spreadsheet->getActiveSheet()->getColumnDimension('G')->setWidth(14);
+        $spreadsheet->getActiveSheet()->getColumnDimension('H')->setWidth(23);
         $spreadsheet->getActiveSheet()->getColumnDimension('I')->setWidth(20);
-        $spreadsheet->getActiveSheet()->getColumnDimension('J')->setWidth(15);
+        $spreadsheet->getActiveSheet()->getColumnDimension('J')->setWidth(14);
         // $spreadsheet->getActiveSheet()->getColumnDimension('A1')->setWidth(200);
         // Mengatur Tinggi Kolom
         $spreadsheet->getActiveSheet()->getRowDimension('1')->setRowHeight(35);
@@ -118,7 +119,15 @@ class Laporan extends CI_Controller {
         $kolom = 3;
         $nomor = 1;
         foreach($data as $row) {
-        $spreadsheet->getActiveSheet()->getStyle('E3')->getAlignment()->setHorizontal('right');
+        $spreadsheet->getActiveSheet()->getStyle('A')->getAlignment()->setHorizontal('center');
+        $spreadsheet->getActiveSheet()->getStyle('C')->getAlignment()->setHorizontal('center');
+        $spreadsheet->getActiveSheet()->getStyle('D')->getAlignment()->setHorizontal('right');
+        $spreadsheet->getActiveSheet()->getStyle('E')->getAlignment()->setHorizontal('right');
+        $spreadsheet->getActiveSheet()->getStyle('F')->getAlignment()->setHorizontal('center');
+        $spreadsheet->getActiveSheet()->getStyle('G')->getAlignment()->setHorizontal('right');
+        $spreadsheet->getActiveSheet()->getStyle('I')->getAlignment()->setHorizontal('center');
+        $spreadsheet->getActiveSheet()->getStyle('J')->getAlignment()->setHorizontal('right');
+
           $keuntungan = $row->harga_jual *
           $row->jumlah_barang -
           $row->hrg_distributor * $row->jumlah_barang;
@@ -126,17 +135,22 @@ class Laporan extends CI_Controller {
         ->setCellValue('A' . $kolom, $nomor)
         ->setCellValue('B' . $kolom, '('.$row->nama_customer.") ".$row->nama_barang)
         ->setCellValue('C' . $kolom, date('d/m/Y H:i:s', strtotime($row->tanggal_penjualan)))
-        ->setCellValue('D' . $kolom, rupiah(50000))
-        ->setCellValue('E' . $kolom, rupiah($row->harga_jual))
+        ->setCellValue('D' . $kolom, number_format($row->hrg_distributor,0,".",","))
+        ->setCellValue('E' . $kolom, number_format($row->harga_jual,0,".",","))
         ->setCellValue('F' . $kolom, $row->jumlah_barang)
-        ->setCellValue('G' . $kolom, rupiah($keuntungan))
-        ->setCellValue('H' . $kolom, 'Pembayaran Wifi')
-        ->setCellValue('I' . $kolom, '10/12/2019 23:05:20')
-        ->setCellValue('J' . $kolom, '9.000.000');
+        ->setCellValue('G' . $kolom, number_format($keuntungan,0,".",","));
           $kolom++;
           $nomor++;
         }
-        
+        $kolom2 = 3;
+    
+        foreach($data2 as $row2)
+        {
+          $spreadsheet->setActiveSheetIndex(0)
+          ->setCellValue('H' . $kolom2, $row2->deskripsi)
+          ->setCellValue('I' . $kolom2, date('d/m/Y H:i:s', strtotime($row2->tanggal)))
+          ->setCellValue('J' . $kolom2, number_format($row2->total,0,".",","));
+        }
 
 
         $writer = new Xlsx($spreadsheet);
