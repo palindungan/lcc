@@ -66,6 +66,7 @@ $route['laporan_manager/hari_ini'] = 'manager/laporan/cetak_hari';
 $route['laporan_manager/minggu_ini'] = 'manager/laporan/cetak_minggu';
 $route['laporan_manager/bulan_ini'] = 'manager/laporan/cetak_bulan';
 $route['laporan_manager/excel_hari'] = 'manager/laporan/excel_hari';
+$route['laporan_manager/excel_bulan'] = 'manager/laporan/excel_bulan';
 
 $route['user_kasir'] = 'manager/user';
 $route['user_kasir/add'] = 'manager/user/insert';

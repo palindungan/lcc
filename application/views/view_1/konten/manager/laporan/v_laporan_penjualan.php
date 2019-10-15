@@ -144,10 +144,12 @@
                                         <div class="row">
                                             <div class="input-group">
                                                 <span class="input-group-btn">
-                                                    <a target="_blank" style="float:left" class="btn btn-primary"
-                                                        style="align: right "
-                                                        href="<?php echo base_url().'laporan_manager/bulan_ini' ?>"><i class="glyphicon glyphicon-print"></i> Print
-                                                        Data</a>
+                                                    <a style="margin-right:20px" target="_blank" class="btn btn-primary"
+                                                        href="<?php echo base_url().'laporan_manager/bulan_ini' ?>"><i
+                                                            class="glyphicon glyphicon-search"></i> Preview</a>
+                                                    <a class="btn btn-success"
+                                                        href="<?php echo base_url().'laporan_manager/excel_bulan' ?>"><i
+                                                            class="glyphicon glyphicon-print"></i> Print Data</a>
                                                 </span>
                                             </div><!-- /input-group -->
                                         </div>
