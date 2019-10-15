@@ -54,7 +54,23 @@ class Laporan extends CI_Controller {
     public function excel_hari()
     {
         $spreadsheet = new Spreadsheet;
-
+        // Mengatur Lebar Kolom
+        $spreadsheet->getActiveSheet()->getColumnDimension('D')->setWidth(30);
+        // Mengatur Tinggi Kolom
+        $spreadsheet->getActiveSheet()->getRowDimension('1')->setRowHeight(40);
+        // Atur Warna background color dan text
+        $spreadsheet->getActiveSheet()->getStyle('B1')
+        ->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_WHITE);
+        $spreadsheet->getActiveSheet()->getStyle('B1')->getFill()
+        ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
+        ->getStartColor()->setARGB('006400');
+        $spreadsheet->getActiveSheet()->getStyle('C1')
+        ->getFont()->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_WHITE);
+        $spreadsheet->getActiveSheet()->getStyle('C1')->getFill()
+        ->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)
+        ->getStartColor()->setARGB('8B0000');
+        // Tutup
+        
         $spreadsheet->setActiveSheetIndex(0)
         ->setCellValue('A1', 'No')
         ->setCellValue('B1', 'Nama')
@@ -71,6 +87,9 @@ class Laporan extends CI_Controller {
         ->setCellValue('C' . $kolom, 'asd')
         ->setCellValue('D' . $kolom, 'asd')
         ->setCellValue('E' . $kolom, 'asd');
+
+        
+
 
         $writer = new Xlsx($spreadsheet);
 
