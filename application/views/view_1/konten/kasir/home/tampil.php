@@ -158,7 +158,7 @@
 			data: form_data,
 			success: function(data) {
 				$('#total_harga').val(formatRupiah(data));
-				// update_kembalian();
+				update_kembalian();
 			}
 		});
 	}
@@ -168,14 +168,26 @@
 		var bayar = document.getElementById("bayar");
 		var kembalian = document.getElementById("kembalian");
 
-		// parsing dan perhitungan
-		var v_total_harga = parseInt(total_harga.value);
-		var v_bayar = parseInt(bayar.value);
+		// parsing dan perhitungan formatRupiah(temp_kembalian)
+		var value_total_harga = total_harga.value;
+		var value_bayar = bayar.value;
 
-		if (v_bayar >= v_total_harga) {
-			kembalian.value = v_bayar - v_total_harga;
-		} else {
-			kembalian.value = null;
+		if (value_total_harga != "" && value_bayar != "") {
+			var temp_total_harga = value_total_harga.match(/\d/g);
+			var temp_bayar = value_bayar.match(/\d/g);
+
+			temp_total_harga = temp_total_harga.join("");
+			temp_bayar = temp_bayar.join("");
+
+			var v_total_harga = parseInt(temp_total_harga);
+			var v_bayar = parseInt(temp_bayar);
+
+			if (v_bayar >= v_total_harga) {
+				var temp_kembalian = v_bayar - v_total_harga;
+				$('#kembalian').val(formatRupiah(temp_kembalian));
+			} else {
+				kembalian.value = "";
+			}
 		}
 	}
 </script>
@@ -279,7 +291,7 @@
 
 	/* Fungsi formatRupiah */
 	function formatRupiah(angka, prefix) {
-		var number_string = angka.replace(/[^,\d]/g, '').toString(),
+		var number_string = angka.toString().replace(/[^,\d]/g, ''),
 			split = number_string.split(','),
 			sisa = split[0].length % 3,
 			rupiah = split[0].substr(0, sisa),
