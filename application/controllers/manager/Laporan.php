@@ -38,6 +38,13 @@ class Laporan extends CI_Controller
   public function cetak_hari()
   {
     $data['hari'] = $this->M_laporan->tampil_hari()->result();
+    $pengeluaran_hari = $this->M_laporan->pengeluaran_hari()->result();
+    $total_pengeluaran_hari=0;
+    foreach($pengeluaran_hari as $row)
+    {
+        $total_pengeluaran_hari += $row->total;
+    }
+    $data['pengeluaran_hari'] = $total_pengeluaran_hari;
     $html = $this->load->view('view_1/konten/manager/laporan/print_per_hari', $data, true);
     $tanggal = date('d/m/Y');
     $this->dompdf->PdfGenerator($html, 'laporan-' . $tanggal, 'A4', 'landscape');
@@ -45,6 +52,13 @@ class Laporan extends CI_Controller
   public function cetak_bulan()
   {
     $data['bulanan'] = $this->M_laporan->tampil_bulan()->result();
+    $pengeluaran_bulan = $this->M_laporan->pengeluaran_bulan()->result();
+    $total_pengeluaran_bulan=0;
+    foreach($pengeluaran_bulan as $row)
+    {
+    $total_pengeluaran_bulan += $row->total;
+    }
+    $data['pengeluaran_bulan'] = $total_pengeluaran_bulan;
     $html = $this->load->view('view_1/konten/manager/laporan/print_per_bulan', $data, true);
     $tanggal = date('F-Y');
     $this->dompdf->PdfGenerator($html, 'laporan' . $tanggal, 'A4', 'landscape');
@@ -125,7 +139,6 @@ class Laporan extends CI_Controller
 
     $kolom = 3;
     $nomor = 1;
-    $total_harga_beli = 0;
     $total_harga_jual = 0;
     $total_keuntungan = 0;
     foreach ($data as $row) {
@@ -133,7 +146,6 @@ class Laporan extends CI_Controller
         $row->jumlah_barang -
         $row->hrg_distributor * $row->jumlah_barang;
 
-      $total_harga_beli += $row->hrg_distributor;
       $total_harga_jual += $row->harga_jual;
       $total_keuntungan += $keuntungan;
 
@@ -175,7 +187,6 @@ class Laporan extends CI_Controller
 
     // TOTAL
     $spreadsheet->setActiveSheetIndex(0)
-      ->setCellValue('D' . $kolom, number_format($total_harga_beli, 0, ".", ","))
       ->setCellValue('E' . $kolom, number_format($total_harga_jual, 0, ".", ","))
       ->setCellValue('G' . $kolom, number_format($total_keuntungan, 0, ".", ","))
       ->setCellValue('J' . $kolom, number_format($total_pengeluaran, 0, ".", ","));
@@ -291,7 +302,6 @@ class Laporan extends CI_Controller
 
     $kolom = 3;
     $nomor = 1;
-    $total_harga_beli = 0;
     $total_harga_jual = 0;
     $total_keuntungan = 0;
     foreach ($data as $row) {
@@ -299,7 +309,6 @@ class Laporan extends CI_Controller
         $row->jumlah_barang -
         $row->hrg_distributor * $row->jumlah_barang;
 
-      $total_harga_beli += $row->hrg_distributor;
       $total_harga_jual += $row->harga_jual;
       $total_keuntungan += $keuntungan;
 
@@ -342,7 +351,6 @@ class Laporan extends CI_Controller
 
     // TOTAL
     $spreadsheet->setActiveSheetIndex(0)
-      ->setCellValue('D' . $kolom, number_format($total_harga_beli, 0, ".", ","))
       ->setCellValue('E' . $kolom, number_format($total_harga_jual, 0, ".", ","))
       ->setCellValue('G' . $kolom, number_format($total_keuntungan, 0, ".", ","))
       ->setCellValue('J' . $kolom, number_format($total_pengeluaran, 0, ".", ","));

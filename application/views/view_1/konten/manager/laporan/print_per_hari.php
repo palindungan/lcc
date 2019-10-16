@@ -5,6 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<?php date_default_timezone_set("Asia/Jakarta"); ?>
 	<title>Laporan-<?= date('d/m/Y') ?></title>
 	<link rel="stylesheet" href="<?= base_url(); ?>assets/notika/css/bootstrap.min.css">
 </head>
@@ -13,6 +14,7 @@
 
 	<div class=" container-fluid">
 		<div class="row">
+
 			<caption>Laporan Toko <?= $this->session->userdata('nama_toko') ?> Tanggal <?= Date('d F Y') ?></caption>
 			<table width="100%" class="table" border="1">
 				<tr>
@@ -73,6 +75,32 @@
 					</tr>';
 				}
 				?>
+			</table>
+			<table>
+				<tr>
+					<td>
+						<h5>Total Keuntungan : </h5>
+					</td>
+					<td style="text-align:right">
+						<h5><?= rupiah($total_hari) ?></h5>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h5>Total Pengeluaran : </h5>
+					</td>
+					<td style="text-align:right">
+						<h5><?= rupiah($pengeluaran_hari) ?></h5>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h5>Keuntungan Bersih : </h5>
+					</td>
+					<td style="text-align:right">
+						<h5><?= rupiah($total_hari - $pengeluaran_hari) ?></h5>
+					</td>
+				</tr>
 			</table>
 		</div>
 	</div>
