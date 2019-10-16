@@ -102,7 +102,14 @@ class Laporan extends CI_Controller
     $spreadsheet->getActiveSheet()->getStyle("A1:J1")->getFont()->setSize(20);
     $spreadsheet->getActiveSheet()->getStyle('A1:J1')
       ->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_TOP);
+      $spreadsheet->getActiveSheet()->mergeCells("A1:J1");
     $spreadsheet->setActiveSheetIndex(0)->setCellValue('A1', 'Laporan Toko ' . $nama_toko . " Tanggal " . $tanggal);
+    $spreadsheet->getActiveSheet()->getStyle('A1:J1')->getFont()->setBold(true);
+    $spreadsheet->getActiveSheet()->getStyle('A1:J1')->getAlignment()->setHorizontal('center');
+    $spreadsheet->getActiveSheet()->getStyle('A1:J1')
+    ->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+    $spreadsheet->getActiveSheet()->getStyle('A1:J1')
+    ->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER);
 
     $spreadsheet->setActiveSheetIndex(0)
       ->setCellValue('A2', 'No')
@@ -236,7 +243,16 @@ class Laporan extends CI_Controller
     $spreadsheet->getActiveSheet()->getStyle("A1:J1")->getFont()->setSize(20);
     $spreadsheet->getActiveSheet()->getStyle('A1:J1')
       ->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_TOP);
+
+    $spreadsheet->getActiveSheet()->mergeCells("A1:J1");
+
     $spreadsheet->setActiveSheetIndex(0)->setCellValue('A1', 'Laporan Toko ' . $nama_toko . " Bulan " . $tanggal);
+    $spreadsheet->getActiveSheet()->getStyle('A1:J1')->getFont()->setBold(true);
+    $spreadsheet->getActiveSheet()->getStyle('A1:J1')->getAlignment()->setHorizontal('center');
+    $spreadsheet->getActiveSheet()->getStyle('A1:J1')
+    ->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+    $spreadsheet->getActiveSheet()->getStyle('A1:J1')
+    ->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER);
 
     $spreadsheet->setActiveSheetIndex(0)
       ->setCellValue('A2', 'No')
