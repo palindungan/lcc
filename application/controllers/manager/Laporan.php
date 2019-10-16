@@ -179,6 +179,29 @@ class Laporan extends CI_Controller
       ->setCellValue('E' . $kolom, number_format($total_harga_jual, 0, ".", ","))
       ->setCellValue('G' . $kolom, number_format($total_keuntungan, 0, ".", ","))
       ->setCellValue('J' . $kolom, number_format($total_pengeluaran, 0, ".", ","));
+      $spreadsheet->getActiveSheet()->getStyle('D'.$kolom.':J'.$kolom)->getFont()->setBold(true);
+    
+
+    
+    $spreadsheet->getActiveSheet()->getStyle('A'.$kolom.':J'.$kolom)->getBorders()->getTop()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THICK)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);;
+
+
+    $spreadsheet->getActiveSheet()->getStyle('B')->getAlignment()->setHorizontal('center');
+    $spreadsheet->getActiveSheet()->getStyle('C')->getAlignment()->setHorizontal('right');
+    
+    $spreadsheet->setActiveSheetIndex(0)
+    ->setCellValue('B' . ((int)$kolom + 3), 'Total Keuntungan')
+    ->setCellValue('C' . ((int)$kolom + 3), number_format($total_keuntungan, 0, ".", ","));
+    $spreadsheet->setActiveSheetIndex(0)
+    ->setCellValue('B' . ((int)$kolom + 4), 'Total Pengeluaran')
+    ->setCellValue('C' . ((int)$kolom + 4), number_format($total_pengeluaran, 0, ".", ","));
+    $spreadsheet->setActiveSheetIndex(0)
+    ->setCellValue('B' . ((int)$kolom + 5), 'Keuntungan Bersih')
+    ->setCellValue('C' . ((int)$kolom + 5), number_format($total_keuntungan-$total_pengeluaran, 0, ".", ","));
+
+    $spreadsheet->getActiveSheet()->getStyle('B'.((int)$kolom + 3).':C'.((int)$kolom + 3))->getFont()->setBold(true);
+    $spreadsheet->getActiveSheet()->getStyle('B'.((int)$kolom + 4).':C'.((int)$kolom + 4))->getFont()->setBold(true);
+    $spreadsheet->getActiveSheet()->getStyle('B'.((int)$kolom + 5).':C'.((int)$kolom + 5))->getFont()->setBold(true);
 
 
 
@@ -323,7 +346,28 @@ class Laporan extends CI_Controller
       ->setCellValue('E' . $kolom, number_format($total_harga_jual, 0, ".", ","))
       ->setCellValue('G' . $kolom, number_format($total_keuntungan, 0, ".", ","))
       ->setCellValue('J' . $kolom, number_format($total_pengeluaran, 0, ".", ","));
+      $spreadsheet->getActiveSheet()->getStyle('D'.$kolom.':J'.$kolom)->getFont()->setBold(true);
 
+
+      $spreadsheet->getActiveSheet()->getStyle('A'.$kolom.':J'.$kolom)->getBorders()->getTop()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THICK)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);;
+
+
+      $spreadsheet->getActiveSheet()->getStyle('B')->getAlignment()->setHorizontal('center');
+      $spreadsheet->getActiveSheet()->getStyle('C')->getAlignment()->setHorizontal('right');
+
+      $spreadsheet->setActiveSheetIndex(0)
+      ->setCellValue('B' . ((int)$kolom + 3), 'Total Keuntungan')
+      ->setCellValue('C' . ((int)$kolom + 3), number_format($total_keuntungan, 0, ".", ","));
+      $spreadsheet->setActiveSheetIndex(0)
+      ->setCellValue('B' . ((int)$kolom + 4), 'Total Pengeluaran')
+      ->setCellValue('C' . ((int)$kolom + 4), number_format($total_pengeluaran, 0, ".", ","));
+      $spreadsheet->setActiveSheetIndex(0)
+      ->setCellValue('B' . ((int)$kolom + 5), 'Keuntungan Bersih')
+      ->setCellValue('C' . ((int)$kolom + 5), number_format($total_keuntungan-$total_pengeluaran, 0, ".", ","));
+
+      $spreadsheet->getActiveSheet()->getStyle('B'.((int)$kolom + 3).':C'.((int)$kolom + 3))->getFont()->setBold(true);
+      $spreadsheet->getActiveSheet()->getStyle('B'.((int)$kolom + 4).':C'.((int)$kolom + 4))->getFont()->setBold(true);
+      $spreadsheet->getActiveSheet()->getStyle('B'.((int)$kolom + 5).':C'.((int)$kolom + 5))->getFont()->setBold(true);
 
 
     $writer = new Xlsx($spreadsheet);

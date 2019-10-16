@@ -13,14 +13,14 @@
 
 	<div class=" container-fluid">
 		<div class="row">
-			<caption>Data Laporan Tanggal <?= Date('d F Y') ?></caption>
+			<caption>Laporan Toko <?= $this->session->userdata('nama_toko') ?> Tanggal <?= Date('d F Y') ?></caption>
 			<table width="100%" class="table" border="1">
 				<tr>
 					<th width="3%" style="text-align: center;background:black;color:white;">No</th>
 					<th width="16%" style="text-align: center;background:black;color:white;">Nama Customer</th>
 					<th width="16%" style="text-align: center;background:black;color:white;">Tanggal & Waktu</th>
 					<th width="18%" style="text-align: center;background:black;color:white;">Nama Barang</th>
-					<th width="14%" style="text-align: center;background:black;color:white;">Harga Jual</th>
+					<th width="14%" style="text-align: center;background:black;color:white;">Harga Beli</th>
 					<th width="14%" style="text-align: center;background:black;color:white;">Harga Jual</th>
 					<th width="5%" style="text-align: center;background:black;color:white;">Qty</th>
 					<th width="14%" style="text-align: center;background:black;color:white;">Keuntungan</th>
