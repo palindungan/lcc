@@ -8,13 +8,11 @@ class Pengeluaran extends CI_Controller
     {
         parent::__construct();
         if(!$this->session->userdata('id_user')){
-        redirect('/');
+            redirect('/');
         }
         else if($this->session->userdata('akses') != 'Pimpinan')
         {
-        echo '<script>
-        	window.history.back();
-        </script>';
+            redirect('login/logout');
         }
         $this->load->model('pimpinan/M_pengeluaran');
     }

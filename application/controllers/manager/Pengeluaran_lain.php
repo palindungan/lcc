@@ -7,9 +7,7 @@ class Pengeluaran_lain extends CI_Controller
         if (!$this->session->userdata('id_user')) {
             redirect('/');
         } else if ($this->session->userdata('akses') != 'Manager') {
-            echo '<script>
-                window.history.back();
-            </script>';
+            redirect('login/logout');
         }
         $this->load->model('manager/M_pengeluaran_lain');
     }

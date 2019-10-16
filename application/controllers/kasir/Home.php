@@ -7,9 +7,7 @@ class Home extends CI_Controller
         if (!$this->session->userdata('id_user')) {
             redirect('/');
         } else if ($this->session->userdata('akses') != 'Kasir') {
-            echo '<script>
-            		window.history.back();
-            </script>';
+            redirect('login/logout');
         }
         $this->load->model('kasir/M_home');
     }

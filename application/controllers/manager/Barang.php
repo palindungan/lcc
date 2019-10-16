@@ -9,9 +9,7 @@ class Barang extends CI_Controller
         }
         else if($this->session->userdata('akses') != 'Manager')
         {
-            echo '<script>
-                window.history.back();
-            </script>';
+            redirect('login/logout');
         }
         $this->load->model('manager/M_barang');
     }
