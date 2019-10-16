@@ -64,5 +64,11 @@ class M_home extends CI_Model
 		$this->db->order_by('bk.nama', 'ASC');
 
 		return $this->db->get()->result();
-	}
+    }
+    
+    function barang_qty_db($id_stok_b)
+    {
+    $id_toko = $this->session->userdata('id_toko');
+    return $this->db->get_where('barang_kasir', array('id_toko' => $id_toko, 'qty >' => 0,'id_stok_b'=>$id_stok_b))->row();
+    }
 }

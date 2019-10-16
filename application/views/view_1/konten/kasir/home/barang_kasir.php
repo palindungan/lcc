@@ -16,7 +16,7 @@
 			<div class="caption">
 				<p class="text-center"><b><?= $kode ?></b></p>
 				<p style="font-size:14px;text-align:center"><?= $row->nama ?></p>
-				<p style="font-size:14px;text-align:center"><?= date('d F Y', strtotime($row->tanggal)) ?></p>
+				<p style="font-size:14px;text-align:center">Stok : <?= $row->qty ?></p>
 				<p style="font-size:14px;font-weight:bold;text-align:center"><?= rupiah($row->hrg_distributor) ?></p>
 				<p class="text-center">
 					<button type="button" class="btn btn-custom add_cart" data-productname="<?= $row->nama ?>"

@@ -18,16 +18,43 @@ class Home extends CI_Controller
     }
     public function add_cart()
     {
-        $data = array(
+        // ambil qty data base sesuai $_POST["product_id"]
+        $id_stok_b = $_POST["product_id"];
+        $data['qty'] = $this->M_home->barang_qty_db($id_stok_b);
+        $qty_db = $data['qty']->qty;
+
+        $qty_kasir_sebelumnya = 0;
+
+        foreach ($this->cart->contents() as $item) {
+
+            if ($id_stok_b == $item['id']) {
+                 $qty_kasir_sebelumnya = $item['qty'];
+            }
+            
+        }
+
+        $nama = $_POST["product_name"];
+
+        if ($qty_kasir_sebelumnya<$qty_db) {
+            $data = array(
             "id" => $_POST["product_id"],
             "name" => $_POST["product_name"],
             "qty" => $_POST["quantity"],
             "price" => $_POST["product_price"]
-        );
-        $this->cart->insert($data); //return rowid
+            );
+            $this->cart->insert($data); //return rowid
 
-        // memanggil function
-        echo $this->view();
+            // memanggil function
+            echo $this->view();
+        } else {
+            echo "<script>
+            	alert('Stok ".$nama." kurang');
+            </script>";
+           echo $this->view();
+        }
+        
+
+        
     }
     function delete_cart()
     {
