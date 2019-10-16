@@ -167,14 +167,28 @@ class Home extends CI_Controller
     {
         // Ambil data NIS yang dikirim via ajax post
         $keyword = $this->input->post('keyword');
-        $daftar_barang = $this->M_home->search($keyword);
 
-        // Kita load file view.php sambil mengirim data siswa hasil query function search di SiswaModel
-        $hasil = $this->load->view('view_1/konten/kasir/home/barang_kasir', array('daftar_barang' => $daftar_barang), true);
-        // Buat sebuah array
-        $callback = array(
-            'hasil' => $hasil, // Set array hasil dengan isi dari view.php yang diload tadi
-        );
+        $callback = array();
+
+        if ($keyword == "") {
+            $daftar_barang = $this->M_home->barang_kasir();
+
+            // Kita load file view.php sambil mengirim data siswa hasil query function search di SiswaModel
+            $hasil = $this->load->view('view_1/konten/kasir/home/barang_kasir', array('daftar_barang' => $daftar_barang), true);
+            // Buat sebuah array
+            $callback = array(
+                'hasil' => $hasil, // Set array hasil dengan isi dari view.php yang diload tadi
+            );
+        } else {
+            $daftar_barang = $this->M_home->search($keyword);
+
+            // Kita load file view.php sambil mengirim data siswa hasil query function search di SiswaModel
+            $hasil = $this->load->view('view_1/konten/kasir/home/barang_kasir', array('daftar_barang' => $daftar_barang), true);
+            // Buat sebuah array
+            $callback = array(
+                'hasil' => $hasil, // Set array hasil dengan isi dari view.php yang diload tadi
+            );
+        }
 
         echo json_encode($callback); // konversi varibael $callback menjadi JSON
     }
