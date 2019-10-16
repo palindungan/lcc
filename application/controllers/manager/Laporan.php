@@ -90,7 +90,9 @@ class Laporan extends CI_Controller
     $spreadsheet->getActiveSheet()->getStyle('A2:J2')->getFont()->setBold(true);
     $spreadsheet->getActiveSheet()->getStyle('A2:J2')->getAlignment()->setHorizontal('center');
     $spreadsheet->getActiveSheet()->getStyle('A2:J2')
-      ->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_TOP);
+    ->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+    $spreadsheet->getActiveSheet()->getStyle('A2:J2')
+    ->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER);
 
     // Border
     $spreadsheet->getActiveSheet()->getStyle('A2:J2')->getBorders()->getallBorders()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THICK)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);;
@@ -149,13 +151,11 @@ class Laporan extends CI_Controller
       $nomor++;
     }
 
-
-
-
     $kolom2 = 3;
     $total_pengeluaran = 0;
     foreach ($data2 as $row2)
-      $total_pengeluaran += $row2->total; {
+    {
+      $total_pengeluaran += $row2->total;
       $spreadsheet->getActiveSheet()->getStyle('I')->getAlignment()->setHorizontal('center');
       $spreadsheet->getActiveSheet()->getStyle('J')->getAlignment()->setHorizontal('right');
 
@@ -224,7 +224,9 @@ class Laporan extends CI_Controller
     $spreadsheet->getActiveSheet()->getStyle('A2:J2')->getFont()->setBold(true);
     $spreadsheet->getActiveSheet()->getStyle('A2:J2')->getAlignment()->setHorizontal('center');
     $spreadsheet->getActiveSheet()->getStyle('A2:J2')
-      ->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_TOP);
+      ->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+    $spreadsheet->getActiveSheet()->getStyle('A2:J2')
+      ->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER);
 
     // Border
     $spreadsheet->getActiveSheet()->getStyle('A2:J2')->getBorders()->getallBorders()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THICK)->getColor()->setARGB(\PhpOffice\PhpSpreadsheet\Style\Color::COLOR_BLACK);;
@@ -290,7 +292,8 @@ class Laporan extends CI_Controller
     $kolom2 = 3;
     $total_pengeluaran = 0;
     foreach ($data2 as $row2)
-      $total_pengeluaran += $row2->total; {
+    {
+      $total_pengeluaran += $row2->total; 
       $spreadsheet->setActiveSheetIndex(0)
         ->setCellValue('H' . $kolom2, $row2->deskripsi)
         ->setCellValue('I' . $kolom2, date('d/m/Y H:i:s', strtotime($row2->tanggal)))
