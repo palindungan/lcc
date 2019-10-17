@@ -15,13 +15,13 @@ class Barcode extends CI_Controller
     }
     public function index()
     {
-        $data['record'] = $this->M_barcode->data_barang()->result();
+        $data['record'] = $this->M_barcode->barang_toko_barcode()->result();
         $this->template->load('view_1/template/manager', 'view_1/konten/manager/barcode/tampil',$data);
     }
     public function print_barcode($id)
     {
-        $where = array('barcode' => $id);
-        $data['row'] = $this->M_barcode->edit_data($where,'barang_toko')->row();
+        $where = array('kode_unik' => $id);
+        $data['row'] = $this->M_barcode->edit_data($where,'barang_toko_barcode')->row();
         $html = $this->load->view('view_1/konten/manager/barcode/print',$data,true);
         $this->dompdf->PdfGenerator($html,'Barcode-'.$data['row']->nama,'A4','landscape');
     }

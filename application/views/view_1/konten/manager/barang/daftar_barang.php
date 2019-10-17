@@ -46,17 +46,10 @@
                                 $no = 1;
                                 $grand = 0;
                                 foreach($record as $row){
-                                    $kode = "";
-                                    if($row->kode_unik == "kosong")
-                                    {
-                                        $kode = $row->barcode;
-                                    } else {
-                                        $kode = $row->kode_unik;
-                                    }
                                 ?>
 								<tr>
 									<td><?= $no++; ?></td>
-									<td><?= $kode; ?></td>
+									<td><?= $row->kode_unik; ?></td>
 									<td><?= $row->nama_barang; ?></td>
 									<td><?= $row->nama_distributor; ?></td>
 									<td style="text-align:center"><?= $row->qty ?></td>

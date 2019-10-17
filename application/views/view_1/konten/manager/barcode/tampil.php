@@ -45,10 +45,10 @@
 								<tr>
 									<td><?= $no++; ?></td>
 									<td><?= $row->nama; ?></td>
-									<td><?= $row->barcode; ?></td>
+									<td><?= $row->kode_unik; ?></td>
 									<td>
 										<a class="btn btn-custom" target="_blank"
-											href="<?= base_url(); ?>barang_barcode/<?= $row->barcode ?>">Print
+											href="<?= base_url(); ?>barang_barcode/<?= $row->kode_unik ?>">Print
 											Barcode</a>
 									</td>
 								</tr>

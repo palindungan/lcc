@@ -52,18 +52,9 @@ class M_home extends CI_Model
 	public function search($keyword)
 	{
         $id_toko = $this->session->userdata('id_toko');
-        // $this->db->like('kode_unik',$keyword);
-        // $this->db->or_like('barcode',$keyword);
-		// return $this->db->get_where('barang_kasir', array('id_toko' => $id_toko, 'qty >' => 0))->result();
-		$this->db->select('*');
-		$this->db->from('barang_kasir bk');
-
-		$where = "(bk.qty > 0 AND bk.nama like '%" . $keyword . "%' OR bk.kode_unik like '%" . $keyword . "%' OR bk.barcode like '%" .
-		$keyword . "%') && bk.id_toko = '" . $id_toko . "'";
-		$this->db->where($where);
-		$this->db->order_by('bk.nama', 'ASC');
-
-		return $this->db->get()->result();
+        $this->db->like('kode_unik',$keyword);
+        $this->db->or_like('nama',$keyword);
+		return $this->db->get_where('barang_kasir', array('id_toko' => $id_toko, 'qty >' => 0))->result();
     }
     
     function barang_qty_db($id_stok_b)

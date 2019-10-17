@@ -2,19 +2,13 @@
 	<?php
 	if (!empty($daftar_barang)) {
 		foreach ($daftar_barang as $row) {
-			$kode = "";
-			if ($row->kode_unik == "kosong") {
-				$kode = $row->barcode;
-			} else {
-				$kode = $row->kode_unik;
-			}
 			$price = 2000;
 			$quantity = 1;
 			?>
 	<div style="margin-bottom:5px;" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
 		<div class="thumbnail">
 			<div class="caption">
-				<p class="text-center"><b><?= $kode ?></b></p>
+				<p class="text-center"><b><?= $row->kode_unik ?></b></p>
 				<p style="font-size:14px;text-align:center"><?= $row->nama ?></p>
 				<p style="font-size:14px;text-align:center">Stok : <?= $row->qty ?></p>
 				<p style="font-size:14px;font-weight:bold;text-align:center"><?= rupiah($row->hrg_distributor) ?></p>

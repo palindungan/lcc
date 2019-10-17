@@ -15,46 +15,69 @@
 	?>
 	<div class=" container-fluid">
 		<div class="row">
-			<table width="100%">
+			<table width="100%" border="1">
 
 				<?php
-				for($i=1;$i<9;$i++)
+				for($i=1;$i<8;$i++)
 				{
 				?>
 				<tr>
-					<th width=" 25%" height="50px" width="50px" style="text-align:center;vertical-align: bottom;">
+					<th width="20%" height="50px"
+						style="text-align:center;vertical-align: bottom;border-bottom: none !important;">
 						<?php $generator = new \Picqer\Barcode\BarcodeGeneratorPNG();
-						echo '<img src="data:image/png;base64,' . base64_encode($generator->getBarcode($row->barcode,$generator::TYPE_CODE_128)) . '"><br>'; 
+						echo '<img style="width:120px;height:40px"
+							src="data:image/png;base64,' . base64_encode($generator->getBarcode($row->kode_unik,$generator::TYPE_CODE_128)) . '"><br>';
 						?>
 					</th>
-					<th width="25%" height="50px" width="50px" style="text-align:center;vertical-align: bottom;">
+					<th width="20%" height="50px"
+						style="text-align:center;vertical-align: bottom;border-bottom: none !important;">
 						<?php $generator = new \Picqer\Barcode\BarcodeGeneratorPNG();
-						echo '<img src="data:image/png;base64,' . base64_encode($generator->getBarcode($row->barcode,$generator::TYPE_CODE_128)) . '"><br>'; 
+						echo '<img style="width:120px;height:40px"
+							src="data:image/png;base64,' . base64_encode($generator->getBarcode($row->kode_unik,$generator::TYPE_CODE_128)) . '"><br>';
 						?>
 					</th>
-					<th width="25%" height="50px" width="50px" style="text-align:center;vertical-align: bottom;">
+					<th width="20%" height="50px"
+						style="text-align:center;vertical-align: bottom;border-bottom: none !important;">
 						<?php $generator = new \Picqer\Barcode\BarcodeGeneratorPNG();
-						echo '<img src="data:image/png;base64,' . base64_encode($generator->getBarcode($row->barcode,$generator::TYPE_CODE_128)) . '"><br>'; 
+						echo '<img style="width:120px;height:40px"
+							src="data:image/png;base64,' . base64_encode($generator->getBarcode($row->kode_unik,$generator::TYPE_CODE_128)) . '"><br>';
 						?>
 					</th>
-					<th width="25%" height="50px" width="50px" style="text-align:center;vertical-align: bottom;">
+					<th width="20%" height="50px"
+						style="text-align:center;vertical-align: bottom;border-bottom: none !important;">
 						<?php $generator = new \Picqer\Barcode\BarcodeGeneratorPNG();
-						echo '<img src="data:image/png;base64,' . base64_encode($generator->getBarcode($row->barcode,$generator::TYPE_CODE_128)) . '"><br>'; 
+						echo '<img style="width:120px;height:40px"
+							src="data:image/png;base64,' . base64_encode($generator->getBarcode($row->kode_unik,$generator::TYPE_CODE_128)) . '"><br>';
+						?>
+					</th>
+					<th width="20%" height="50px"
+						style="text-align:center;vertical-align: bottom;border-bottom: none !important;">
+						<?php $generator = new \Picqer\Barcode\BarcodeGeneratorPNG();
+						echo '<img style="width:120px;height:40px"
+							src="data:image/png;base64,' . base64_encode($generator->getBarcode($row->kode_unik,$generator::TYPE_CODE_128)) . '"><br>';
 						?>
 					</th>
 				</tr>
 				<tr>
-					<th width="25%" height="30px" width="50px" style="text-align:center;vertical-align: top;">
-						<?= $row->barcode ?>
+					<th width="20%" height="30px"
+						style="font-size:12px;text-align:center;vertical-align: top;border-top: none !important;">
+						<?= $row->kode_unik ?>
 					</th>
-					<th width="25%" height="30px" width="50px" style="text-align:center;vertical-align: top;">
-						<?= $row->barcode ?>
+					<th width="20%" height="30px"
+						style="font-size:12px;text-align:center;vertical-align: top;border-top: none !important;">
+						<?= $row->kode_unik ?>
 					</th>
-					<th width="25%" height="30px" width="50px" style="text-align:center;vertical-align: top;">
-						<?= $row->barcode ?>
+					<th width="20%" height="30px"
+						style="font-size:12px;text-align:center;vertical-align: top;border-top: none !important;">
+						<?= $row->kode_unik ?>
 					</th>
-					<th width="25%" height="30px" width="50px" style="text-align:center;vertical-align: top;">
-						<?= $row->barcode ?>
+					<th width="20%" height="30px"
+						style="font-size:12px;text-align:center;vertical-align: top;border-top: none !important;">
+						<?= $row->kode_unik ?>
+					</th>
+					<th width="20%" height="30px"
+						style="font-size:12px;text-align:center;vertical-align: top;border-top: none !important;">
+						<?= $row->kode_unik ?>
 					</th>
 				</tr>
 				<?php
