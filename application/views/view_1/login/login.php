@@ -27,9 +27,6 @@
 		<!-- Login -->
 		<div class="nk-block toggled" id="l-login">
 			<h2 style="color:white">SISTEM INFORMASI INVENTORY</h2>
-			<div class="logo-area">
-				<a href="#"><img src="<?= base_url(); ?>assets/notika/img/logo/logo.png" alt="" /></a>
-			</div>
 			<br>
 			<div class="nk-form">
 				<form method="POST" action="<?= base_url(); ?>login/aksi_login">
