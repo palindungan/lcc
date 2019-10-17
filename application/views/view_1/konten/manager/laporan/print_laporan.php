@@ -13,7 +13,9 @@
 
 	<div class=" container-fluid">
 		<div class="row">
-			<caption>Data Laporan Tanggal <?= date('d F Y', strtotime($tgl_mulai)); ?> Sampai
+			<?php date_default_timezone_set("Asia/Jakarta"); ?>
+			<caption>Laporan Toko <?= $this->session->userdata('nama_toko') ?> Tanggal
+				<?= date('d F Y', strtotime($tgl_mulai)); ?> Sampai
 				<?= date('d F Y', strtotime($tgl_akhir)); ?></caption>
 			<table width="100%" class="table" border="1">
 				<tr>
@@ -21,7 +23,7 @@
 					<th width="16%" style="text-align: center;background:black;color:white;">Nama Customer</th>
 					<th width="16%" style="text-align: center;background:black;color:white;">Tanggal & Waktu</th>
 					<th width="18%" style="text-align: center;background:black;color:white;">Nama Barang</th>
-					<th width="14%" style="text-align: center;background:black;color:white;">Harga Jual</th>
+					<th width="14%" style="text-align: center;background:black;color:white;">Harga Beli</th>
 					<th width="14%" style="text-align: center;background:black;color:white;">Harga Jual</th>
 					<th width="5%" style="text-align: center;background:black;color:white;">Qty</th>
 					<th width="14%" style="text-align: center;background:black;color:white;">Keuntungan</th>
@@ -74,6 +76,32 @@
 					</tr>';
 				}
 				?>
+			</table>
+			<table>
+				<tr>
+					<td>
+						<h5>Total Keuntungan : </h5>
+					</td>
+					<td style="text-align:right">
+						<h5><?= rupiah($total_custom) ?></h5>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h5>Total Pengeluaran : </h5>
+					</td>
+					<td style="text-align:right">
+						<h5><?= rupiah($pengeluaran_custom) ?></h5>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<h5>Keuntungan Bersih : </h5>
+					</td>
+					<td style="text-align:right">
+						<h5><?= rupiah($total_custom - $pengeluaran_custom) ?></h5>
+					</td>
+				</tr>
 			</table>
 		</div>
 	</div>

@@ -32,6 +32,14 @@ class Laporan extends CI_Controller
     $data['custom'] = $this->M_laporan->tampil_data2($tgl_mulai, $tgl_akhir)->result();
     $data['tgl_mulai'] = $this->input->post('tgl_mulai');
     $data['tgl_akhir'] = $this->input->post('tgl_akhir');
+    $data['custom'] = $this->M_laporan->tampil_data2($tgl_mulai, $tgl_akhir)->result();
+    $pengeluaran_custom = $this->M_laporan->pengeluaran_custom($tgl_mulai, $tgl_akhir)->result();
+    $total_pengeluaran_custom=0;
+    foreach($pengeluaran_custom as $row)
+    {
+    $total_pengeluaran_custom += $row->total;
+    }
+    $data['pengeluaran_custom'] = $total_pengeluaran_custom;
     $html = $this->load->view('view_1/konten/manager/laporan/print_laporan', $data, true);
     $this->dompdf->PdfGenerator($html, 'coba', 'A4', 'landscape');
   }
