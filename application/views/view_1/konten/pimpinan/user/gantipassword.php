@@ -48,7 +48,7 @@ foreach ($user as $data) {
 										</div>
 										<div class="nk-int-st">
 											<label>password baru</label>
-											<input type="password" name="password_baru" placeholder="masukkan password baru" class="form-control">
+											<input type="password" name="password_baru" placeholder="masukkan password baru" class="form-control" required>
 										</div>
 									</div>
 								</div>
@@ -68,7 +68,7 @@ foreach ($user as $data) {
 										</div>
 										<div class="nk-int-st">
 											<button type="submit" class="btn btn-primary">simpan</button>
-											<a onclick=self.history.back() class="btn btn-danger">Kembali</a>
+											<a href="<?php echo base_url('user_manager'); ?>" class="btn btn-danger">Kembali</a>
 										</div>
 									</div>
 								</div>
