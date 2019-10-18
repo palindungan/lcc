@@ -224,9 +224,11 @@
 
         // If the checkbox is checked, display the output text
         if (checkBox.checked == true) {
-            $('#kode_atau_barcode' + row_name).val('KODE GENERATE').prop('disabled', true);;
+            $('#kode_atau_barcode' + row_name).val('KODE GENERATE');
+            document.getElementById('kode_atau_barcode' + row_name).setAttribute("readonly", true);
         } else {
-            $('#kode_atau_barcode' + row_name).val('').prop('disabled', false);;
+            $('#kode_atau_barcode' + row_name).val('');
+            document.getElementById('kode_atau_barcode' + row_name).removeAttribute("readonly");
         }
     });
 
