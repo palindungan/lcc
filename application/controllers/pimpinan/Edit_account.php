@@ -39,4 +39,22 @@ class Edit_account extends CI_Controller
         $this->M_edit_account->update($where,$data,'pimpinan');
         redirect('edit_account');
     }
+    function ubah_password()
+    {
+        $row = $this->M_edit_account->ambil_biodata();
+        $id = $row->id_user_p;
+        $password_lama = $row->password;
+        $confirm_lama = $this->input->post('confirm_lama');
+        $password_baru = $this->input->post('password_baru');
+        $confirm_password = $this->input->post('confirm_password');
+
+        if(password_verify($password_lama, $confirm_lama)&&$password_baru==$confirm_password){
+        $where = array('id_user_p' => $id);
+        $data = array(
+        'password' => password_hash($password_baru, PASSWORD_DEFAULT)
+        );
+            $this->M_user->update($where,$data,'pimpinan');
+            redirect("edit_account");
+        }
+    }
 }

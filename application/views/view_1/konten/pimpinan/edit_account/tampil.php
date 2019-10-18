@@ -65,59 +65,64 @@
 														data-dismiss="modal">&times;</button>
 												</div>
 												<div class="modal-body">
+													<form
+														action="<?php echo base_url("pimpinan/edit_account/ubah_password") ?>"
+														method="POST"></form>
 													<div class="form-group">
 														<div class="form-ic-cmp">
 														</div>
 														<label>Password Lama</label>
 														<input type="text" class="form-control"
-															placeholder="Masukan Nama" name="nama" value="">
+															placeholder="Masukan Nama" name="confirm_lama">
 													</div>
 													<div class="form-group">
 														<div class="form-ic-cmp">
 														</div>
 														<label>Password Baru</label>
 														<input type="text" class="form-control"
-															placeholder="Masukan Nama" name="nama" value="">
+															placeholder="Masukan Nama" name="password_baru">
 													</div>
 													<div class="form-group">
 														<div class="form-ic-cmp">
 														</div>
 														<label>Konfirmasi Password</label>
 														<input type="text" class="form-control"
-															placeholder="Masukan Nama" name="nama" value="">
+															placeholder="Masukan Nama" name="confirm_password">
 													</div>
 
 												</div>
 												<div class="modal-footer">
-													<button type="button" class="btn btn-default"
+													<button type="submit" class="btn btn-default"
 														data-dismiss="modal">Save changes</button>
 													<button type="button" class="btn btn-default"
 														data-dismiss="modal">Close</button>
 												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
+						</form>
 
 					</div>
-					<div class="row">
-						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-							<div class="form-group ic-cmp-int">
-								<div class="form-ic-cmp">
-								</div>
-								<div class="nk-int-st">
-									<button type="submit" class="btn btn-primary">Simpan</button>
-									<a onclick=self.history.back() class="btn btn-danger">Kembali</a>
-								</div>
-							</div>
-						</div>
-					</div><br>
-
 				</div>
-				</form>
 			</div>
 		</div>
 	</div>
+
+</div>
+<div class="row">
+	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+		<div class="form-group ic-cmp-int">
+			<div class="form-ic-cmp">
+			</div>
+			<div class="nk-int-st">
+				<button type="submit" class="btn btn-primary">Simpan</button>
+				<a onclick=self.history.back() class="btn btn-danger">Kembali</a>
+			</div>
+		</div>
+	</div>
+</div><br>
+
+</div>
+</form>
+</div>
+</div>
+</div>
 </div>
 <!-- Form Element area End-->
