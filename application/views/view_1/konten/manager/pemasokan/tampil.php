@@ -130,7 +130,7 @@
                             <table id="data-table-basic" class="table table-striped table_1">
                                 <thead>
                                     <tr>
-                                        <th>Barcode</th>
+                                        <th>No</th>
                                         <th>Nama</th>
                                         <th>Opsi</th>
                                     </tr>
@@ -140,7 +140,7 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th>Barcode</th>
+                                        <th>No</th>
                                         <th>Nama</th>
                                         <th>Opsi</th>
                                     </tr>
@@ -228,8 +228,12 @@
                 let data = obj['tbl_data'];
 
                 if (data != '') {
+
+                    var no = 1;
+
                     $.each(data, function(i, item) {
-                        table.row.add([data[i].barcode, data[i].nama, `<a onclick="myFunction('` + data[i].barcode + `','` + data[i].nama + `')" id="` + data[i].kode + `" class="btn btn-danger">Pilih</a>`]);
+                        table.row.add([no, data[i].nama, `<a onclick="myFunction('` + data[i].nama + `')" id="` + data[i].kode + `" class="btn btn-danger">Pilih</a>`]);
+                        no = no + 1;
                     });
                 } else {
                     $('.table_1').html('<h3>No data are available</h3>');
@@ -245,18 +249,14 @@
         search_proses();
     });
 
-    function myFunction(barcode, nama) {
-
-        if (barcode == "kosong") {
-            barcode = "";
-        }
+    function myFunction(nama) {
 
         $('#detail_list').append(`
 
             <div id="row` + count1 + `" class="row">
                 <br />
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <input required="" type="text" class="form-control barcode_nya" id="kode_atau_barcode` + count1 + `" name="kode_atau_barcode[]" placeholder="Kode/Barcode" value="` + barcode + `">
+                    <input required="" type="text" class="form-control barcode_nya" id="kode_atau_barcode` + count1 + `" name="kode_atau_barcode[]" placeholder="Kode/Barcode" value="">
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                     <input required="" type="text" class="form-control nama_nya" id="nama` + count1 + `" name="nama[]" placeholder="Nama Barang" value="` + nama + `">
