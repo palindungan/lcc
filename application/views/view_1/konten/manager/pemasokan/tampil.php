@@ -176,10 +176,10 @@
                 <br />
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                     <div class="form-group ic-cmp-int">
-                            <div class="form-ic-cmp">
-                                <label><input type="checkbox" class="cekbox"></label>
-                            </div>
-                            <input required="" type="text" class="form-control barcode_nya" id="kode_atau_barcode` + count1 + `" name="kode_atau_barcode[]" placeholder="Kode/Barcode" value="">
+                        <div class="form-ic-cmp">
+                            <label><input type="checkbox" class="cekbox" name="` + count1 + `" id="cb` + count1 + `"></label>
+                        </div>
+                        <input required="" type="text" class="form-control barcode_nya" id="kode_atau_barcode` + count1 + `" name="kode_atau_barcode[]" placeholder="Kode/Barcode" value="">
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
@@ -214,6 +214,20 @@
     $(document).on('click', '.remove_baris', function() {
         var row_no = $(this).attr("id");
         $('#row' + row_no).remove();
+    });
+
+    // jika kita tekan cekbox
+    $(document).on('click', '.cekbox', function() {
+        var row_id = $(this).attr("id");
+        var row_name = $(this).attr("name");
+        var checkBox = document.getElementById(row_id);
+
+        // If the checkbox is checked, display the output text
+        if (checkBox.checked == true) {
+            $('#kode_atau_barcode' + row_name).val('KODE GENERATE').prop('disabled', true);;
+        } else {
+            $('#kode_atau_barcode' + row_name).val('').prop('disabled', false);;
+        }
     });
 
 
@@ -263,7 +277,7 @@
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                     <div class="form-group ic-cmp-int">
                         <div class="form-ic-cmp">
-                            <label><input type="checkbox" class="cekbox"></label>
+                            <label><input type="checkbox" class="cekbox" name="` + count1 + `" id="cb` + count1 + `"></label>
                         </div>
                         <input required="" type="text" class="form-control barcode_nya" id="kode_atau_barcode` + count1 + `" name="kode_atau_barcode[]" placeholder="Kode/Barcode" value="">
                     </div>
