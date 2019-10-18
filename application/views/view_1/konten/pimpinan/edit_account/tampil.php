@@ -82,7 +82,7 @@
 															<button type="button" class="close"
 																data-dismiss="modal">&times;</button>
 														</div>
-														<form
+														<form method="POST"
 															action="<?php echo base_url("pimpinan/edit_account/ubah_password") ?>">
 															<div class="modal-body">
 																<div class="form-group">
@@ -90,7 +90,7 @@
 																	</div>
 																	<div class="nk-int-st">
 																		<label>Password Lama</label>
-																		<input type="text" class="form-control"
+																		<input type="password" class="form-control"
 																			name="confirm_lama">
 																	</div>
 																</div>
@@ -99,7 +99,7 @@
 																	</div>
 																	<div class="nk-int-st">
 																		<label>Password Baru</label>
-																		<input type="text" class="form-control"
+																		<input type="password" class="form-control"
 																			name="password_baru">
 																	</div>
 																</div>
@@ -108,16 +108,18 @@
 																	</div>
 																	<div class="nk-int-st">
 																		<label>Konfirmasi Password Baru</label>
-																		<input type="text" class="form-control"
+																		<input type="password" class="form-control"
 																			name="confirm_password">
 																	</div>
 																</div>
-															</div>
-															<div class="modal-footer">
-																<button type="button" class="btn btn-primary"
-																	data-dismiss="modal">Save changes</button>
-																<button type="button" class="btn btn-danger"
-																	data-dismiss="modal">Close</button>
+																<div class="form-group">
+																	<div class="form-ic-cmp">
+																	</div>
+																	<div class="nk-int-st">
+																		<button type="submit"
+																			class="btn btn-primmary">Simpan</button>
+																	</div>
+																</div>
 															</div>
 														</form>
 													</div>
