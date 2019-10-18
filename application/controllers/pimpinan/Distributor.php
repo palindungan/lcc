@@ -57,6 +57,7 @@ class Distributor extends CI_Controller
 	}
 	function update()
 	{
+		$id_distributor = $this->input->post('id_distributor');
 		$this->form_validation->set_rules('nama', 'nama', 'required');
 		$this->form_validation->set_rules('alamat', 'alamat', 'required');
 		$this->form_validation->set_rules('no_hp', 'no hp', 'required');
@@ -75,7 +76,7 @@ class Distributor extends CI_Controller
 			$this->M_distributor->update($where, $data, 'distributor');
 			redirect('pimpinan/distributor');
 		} else {
-			echo "<script>window.location = '" . base_url("pimpinan/distributor/edit/" . $this->input->post('id_distributor')) . "';</script>";
+			$this->edit($id_distributor);
 		}
 	}
 	function hapus($id)

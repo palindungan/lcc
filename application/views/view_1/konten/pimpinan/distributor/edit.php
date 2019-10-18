@@ -76,7 +76,7 @@ foreach ($distributor as $data) {
 								</div>
 						</div>
 						<button type="submit" class="btn btn-primary">Simpan</button>
-						<a onclick=self.history.back() class="btn btn-danger">Kembali</a>
+						<a href="<?php echo base_url('distributor'); ?>" class="btn btn-danger">Kembali</a>
 
 					</div>
 					</form>

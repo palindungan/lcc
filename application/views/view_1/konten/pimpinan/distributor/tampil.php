@@ -56,7 +56,7 @@
 										<td>
 											<div class="table-actions">
 												<a href="<?php echo base_url("distributor/edit/" . $a->id_distributor) ?>" type='button' class='btn btn-primary fa fa-pencil-square'></a>
-												<a href="<?php echo base_url("distributor/hapus/" . $a->id_distributor) ?>" type='button' class='btn btn-danger fa fa-trash'></a>
+												<a href="<?php echo base_url("distributor/hapus/" . $a->id_distributor) ?>" type='button' class='btn btn-danger fa fa-trash' onclick="return confirm('anda yakin ingin menghapus data ?')"></a>
 											</div>
 										</td>
 									</tr>
