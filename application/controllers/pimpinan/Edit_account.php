@@ -51,13 +51,30 @@ class Edit_account extends CI_Controller
         $password_baru = $this->input->post('password_baru');
         $confirm_password = $this->input->post('confirm_password');
 
-        if(password_verify($password_lama, $confirm_lama)&&$password_baru==$confirm_password){
-        $where = array('id_user_p' => $id);
-        $data = array(
-        'password' => password_hash($password_baru, PASSWORD_DEFAULT)
-        );
-            $this->M_user->update($where,$data,'pimpinan');
-            redirect("edit_account");
+        if(password_verify($confirm_lama,$password_lama)){
+            if($password_baru == $confirm_password)
+            {
+                $where = array('id_user_p' => $id);
+                $data = array(
+                'password' => password_hash($password_baru, PASSWORD_DEFAULT)
+                );
+                $this->M_edit_account->update($where,$data,'pimpinan');
+                echo "<script>
+                	alert('Sukses Ubah Password');
+                	window.location = '" . base_url("edit_account") . "';
+                </script>";
+            } else {
+                echo "<script>
+                	alert('Password baru dan confirmasi tidak cocok');
+                	window.location = '" . base_url("edit_account") . "';
+                </script>";
+            }
+        
+        } else {
+            echo "<script>
+            	alert('Password lama tidak cocok');
+            	window.location = '" . base_url("edit_account") . "';
+            </script>";
         }
     }
 }
