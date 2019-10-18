@@ -37,6 +37,11 @@
 									<li><a href="<?= base_url('laporan_pimpinan'); ?>">Laporan</a></li>
 								</ul>
 							</li>
+							<li><a data-toggle="collapse" data-target="#account" href="#">Edit Account</a>
+								<ul id="account" class="collapse dropdown-header-top">
+									<li><a href="<?= base_url('edit_account'); ?>">Edit Account</a></li>
+								</ul>
+							</li>
 						</ul>
 					</nav>
 				</div>

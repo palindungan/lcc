@@ -107,6 +107,8 @@ $route['distributor'] = 'pimpinan/distributor';
 $route['distributor/add'] = 'pimpinan/distributor/insert';
 $route['distributor/edit/(:any)'] = 'pimpinan/distributor/edit/$1';
 $route['distributor/hapus/(:any)'] = 'pimpinan/distributor/hapus/$1';
+
+$route['edit_account'] = 'pimpinan/edit_account';
 /*
 | -------------------------------------------------------------------------
 | Sample REST API Routes

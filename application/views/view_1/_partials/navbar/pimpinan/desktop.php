@@ -34,6 +34,11 @@
 							<i class="glyphicon glyphicon-stats"></i> Laporan
 						</a>
 					</li>
+					<li <?= $this->uri->segment(1) == 'edit_account' ? 'class="active"' : '' ?>>
+						<a data-toggle="tab" href="#Home9">
+							<i class="glyphicon glyphicon-wrench"></i> Edit Account
+						</a>
+					</li>
 
 				</ul>
 				<div class="tab-content custom-menu-content">
@@ -94,6 +99,15 @@
 						<ul class="notika-main-menu-dropdown">
 							<li>
 								<a href="<?= base_url('laporan_pimpinan'); ?>">Laporan</a>
+							</li>
+						</ul>
+					</div>
+
+					<div id="Home9"
+						class="tab-pane <?= $this->uri->segment(1) == 'edit_account' ? 'active' : '' ?> in notika-tab-menu-bg animated flipInX">
+						<ul class="notika-main-menu-dropdown">
+							<li>
+								<a href="<?= base_url('edit_account'); ?>">Edit Account</a>
 							</li>
 						</ul>
 					</div>

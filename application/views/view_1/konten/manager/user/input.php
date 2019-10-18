@@ -70,8 +70,7 @@
 								</div>
 								<div class="nk-int-st">
 									<button type="submit" class="btn btn-primary">Simpan</button>
-									<a class="btn btn-danger"
-										href="<?php if(isset($_SERVER['HTTP_REFERER'])){ echo $_SERVER['HTTP_REFERER']; } ?>">Back</a>
+									<a onclick=self.history.back() class="btn btn-danger">Kembali</a>
 
 									<!-- <a onclick=self.history.back() class="btn btn-danger">Kembali</a> -->
 								</div>
