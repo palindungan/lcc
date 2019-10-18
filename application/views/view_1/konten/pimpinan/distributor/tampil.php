@@ -44,24 +44,22 @@
 								</tr>
 							</thead>
 							<tbody>
-								<?php 
-                            $no = 1;
-                            foreach ($distributor as $a) {
-                            ?>
-								<tr>
-									<td><?php echo $no++; ?></td>
-									<td><?php echo $a->nama; ?></td>
-									<td><?php echo $a->alamat; ?></td>
-									<td><?php echo $a->no_hp; ?></td>
-									<td>
-										<div class="table-actions">
-											<a href="<?php echo base_url("distributor/edit/".$a->id_distributor) ?>"
-												type='button' class='btn btn-primary fa fa-pencil-square'></a>
-											<a href="<?php echo base_url("distributor/hapus/".$a->id_distributor) ?>"
-												type='button' class='btn btn-danger fa fa-trash'></a>
-										</div>
-									</td>
-								</tr>
+								<?php
+								$no = 1;
+								foreach ($distributor as $a) {
+									?>
+									<tr>
+										<td><?php echo $no++; ?></td>
+										<td><?php echo $a->nama; ?></td>
+										<td><?php echo $a->alamat; ?></td>
+										<td><?php echo $a->no_hp; ?></td>
+										<td>
+											<div class="table-actions">
+												<a href="<?php echo base_url("distributor/edit/" . $a->id_distributor) ?>" type='button' class='btn btn-primary fa fa-pencil-square'></a>
+												<a href="<?php echo base_url("distributor/hapus/" . $a->id_distributor) ?>" type='button' class='btn btn-danger fa fa-trash'></a>
+											</div>
+										</td>
+									</tr>
 								<?php } ?>
 							</tbody>
 						</table>

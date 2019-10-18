@@ -1,16 +1,17 @@
-<?php 
+<?php
+
 /**
-  * 
-  */
- class M_distributor extends CI_Model
- {
- 	
- 	public function tampil()
- 	{
- 		$query = $this->db->get("distributor");
- 		return $query->result();
- 	}
- 	function get_no()
+ * 
+ */
+class M_distributor extends CI_Model
+{
+
+    public function tampil()
+    {
+        $query = $this->db->get("distributor");
+        return $query->result();
+    }
+    function get_no()
     {
         $field = "id_distributor";
         $tabel = "distributor";
@@ -28,18 +29,22 @@
         }
         return $kd;
     }
-    function input($data){
-    	return $this->db->insert('distributor',$data);
+    function input($data)
+    {
+        return $this->db->insert('distributor', $data);
     }
-    function edit($where,$table){
-    	return $this->db->get_where($table,$where)->result();
+    function edit($where, $table)
+    {
+        return $this->db->get_where($table, $where)->result();
     }
-    function update($where,$data,$table){
+    function update($where, $data, $table)
+    {
         $this->db->where($where);
-        $this->db->update($table,$data);
+        $this->db->update($table, $data);
     }
-    function hapus_data($where,$table){
+    function hapus_data($where, $table)
+    {
         $this->db->where($where);
         $this->db->delete($table);
     }
- } 
+}

@@ -32,32 +32,35 @@
 					<div class="row">
 						<form action="<?php echo base_url("pimpinan/distributor/insert_data") ?>" method="post">
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-								<div class="form-group  <?php if(form_error('nama')== true) { echo "has-error";} ?>">
+								<div class="form-group  <?php if (form_error('nama') == true) {
+															echo "has-error";
+														} ?>">
 									<div class="form-ic-cmp">
 									</div>
 									<label>Nama</label>
-									<input type="text" class="form-control" placeholder="Masukan Nama" name="nama"
-										value="<?= set_value('nama') ?>">
+									<input type="text" class="form-control" placeholder="Masukan Nama" name="nama" value="<?= set_value('nama') ?>">
 									<span class="help-block"><?php echo form_error('nama'); ?></span>
 								</div>
 							</div>
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-								<div class="form-group <?php if(form_error('alamat')== true) { echo "has-error";} ?>">
+								<div class="form-group <?php if (form_error('alamat') == true) {
+															echo "has-error";
+														} ?>">
 									<div class="form-ic-cmp">
 									</div>
 									<label>Alamat</label>
-									<input type="text" class="form-control" placeholder="Masukan Alamat" name="alamat"
-										value="<?= set_value('alamat') ?>">
+									<input type="text" class="form-control" placeholder="Masukan Alamat" name="alamat" value="<?= set_value('alamat') ?>">
 									<span class="help-block"><?php echo form_error('alamat'); ?></span>
 								</div>
 							</div>
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-								<div class="form-group <?php if(form_error('no_hp')== true) { echo "has-error";} ?>">
+								<div class="form-group <?php if (form_error('no_hp') == true) {
+															echo "has-error";
+														} ?>">
 									<div class="form-ic-cmp">
 									</div>
 									<label>No Hp</label>
-									<input type="text" class="form-control" placeholder="Masukan No Hp" name="no_hp"
-										value="<?= set_value('no_hp') ?>">
+									<input type="text" class="form-control" placeholder="Masukan No Hp" name="no_hp" value="<?= set_value('no_hp') ?>">
 									<span class="help-block"><?php echo form_error('no_hp'); ?></span>
 								</div>
 							</div>
