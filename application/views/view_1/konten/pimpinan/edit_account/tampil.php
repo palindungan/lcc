@@ -43,7 +43,7 @@
 									<div class="form-ic-cmp">
 									</div>
 									<label>Username</label>
-									<input type="text" class="form-control" placeholder="Masukan Nama" name="nama"
+									<input type="text" class="form-control" placeholder="Masukan Nama" name="username"
 										value="<?= $username ?>">
 								</div>
 							</div>
