@@ -26,7 +26,7 @@ class Pemasokan extends CI_Controller
             'id_toko' => $id_toko
         );
 
-        $data['pemasokan_list'] = $this->M_pemasokan->get_data('pemasokan_list', $data_id)->result();
+        $data['pemasokan_list'] = $this->M_pemasokan->get_pemasokan('pemasokan_list', $data_id)->result();
 
         $this->template->load('view_1/template/manager', 'view_1/konten/manager/pemasokan/daftar_pemasokan', $data);
     }

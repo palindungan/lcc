@@ -69,7 +69,6 @@ foreach ($pemasokan_list as $row) {
 								<th width="8%" scope="col">QTY</th>
 								<th width="15%" scope="col">HARGA BARANG</th>
 								<th width="15%" style="text-align:center" scope="col">TOTAL HARGA</th>
-								<th width="15%">BARCODE</th>
 								<th width="15%">KODE UNIK</th>
 							</tr>
 
@@ -85,7 +84,6 @@ foreach ($pemasokan_list as $row) {
 									<td width="8%"><?= ($row->total_hrg / $row->hrg_distributor); ?></td>
 									<td width="15%" style="text-align:right"><?= rupiah($row->hrg_distributor) ?></td>
 									<td width="15%" style="text-align:right"><?= rupiah($row->total_hrg) ?></td>
-									<td width="15%"><?= $row->barcode; ?></td>
 									<td width="15%"><?= $row->kode_unik; ?></td>
 								</tr>
 							<?php $no = $no + 1;
