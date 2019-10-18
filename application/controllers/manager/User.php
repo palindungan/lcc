@@ -60,7 +60,6 @@ class User extends CI_controller
 	{
 		$where = array('id_user' => $id);
 		$data['edit'] = $this->M_user->edit($where, 'user');
-		$data['toko'] = $this->M_toko->tampil();
 		$this->template->load('view_1/template/manager', 'view_1/konten/manager/user/edit', $data);
 	}
 	function ganti_password($id)
