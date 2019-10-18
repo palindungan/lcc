@@ -341,23 +341,6 @@
                 }
             });
 
-            $(".barcode_nya").autocomplete({
-                source: function(request, response) {
-                    // Fetch data
-                    $.ajax({
-                        url: "<?php echo base_url() . 'manager/pemasokan/get_autocomplete_barcode'; ?>",
-                        type: 'post',
-                        dataType: "json",
-                        data: {
-                            nilai: request.term
-                        },
-                        success: function(data) {
-                            response(data);
-                        }
-                    });
-                }
-            });
-
         });
 
     }

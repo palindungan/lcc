@@ -204,21 +204,6 @@ class Pemasokan extends CI_Controller
         }
     }
 
-    function get_autocomplete_barcode()
-    {
-
-        $nilai = $this->input->post('nilai');
-
-        if (isset($nilai)) {
-            $result = $this->M_pemasokan->search_autocomplete('barcode', $nilai);
-            if (count($result) > 0) {
-                foreach ($result as $row)
-                    $arr_result[] = $row->barcode;
-                echo json_encode($arr_result);
-            }
-        }
-    }
-
     public function validation_form_transaksi()
     {
         if (isset($_POST['kode_atau_barcode'])) {
