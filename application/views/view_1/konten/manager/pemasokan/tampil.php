@@ -289,31 +289,17 @@
         // mengambil nilai di dalam form
         var form_data = $(this).serialize();
 
-        // validasi proses
+        // tambah ke database
         $.ajax({
-            url: "<?php echo base_url() . 'manager/pemasokan/validation_form_transaksi'; ?>",
+            url: "<?php echo base_url() . 'manager/pemasokan/input_transaksi_form'; ?>",
             method: "POST",
             data: form_data,
             success: function(data) {
-
-                var n = data.length;
-                if (n > 1) {
-                    alert(data);
-                } else {
-                    // tambah ke database
-                    $.ajax({
-                        url: "<?php echo base_url() . 'manager/pemasokan/input_transaksi_form'; ?>",
-                        method: "POST",
-                        data: form_data,
-                        success: function(data) {
-                            alert("Data berhasil Ditambahkan");
-                            location.reload();
-                        }
-                    });
-                    // tambah ke database
-                }
+                alert("Data berhasil Ditambahkan");
+                location.reload();
             }
         });
+        // tambah ke database
 
     });
     // validasi form
