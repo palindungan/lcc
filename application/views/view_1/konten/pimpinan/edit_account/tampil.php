@@ -29,11 +29,14 @@
 				<div class="form-element-list">
 					<div class="row">
 						<form action="<?php echo base_url("pimpinan/edit_account/ubah_biodata") ?>" method="post">
+
 							<div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
 								<div class="form-group">
 									<div class="form-ic-cmp">
 									</div>
 									<label>Nama</label>
+									<input type="hidden" class="form-control" placeholder="Masukan Nama" name="id"
+										value="<?= $id ?>">
 									<input type="text" class="form-control" placeholder="Masukan Nama" name="nama"
 										value="<?= $nama ?>">
 								</div>
