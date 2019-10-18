@@ -63,8 +63,9 @@ class M_pemasokan extends CI_Model
         $field = "id_pemasokan";
         $tabel = "pemasokan";
         $digit = "2";
+        $ymd = date('ymd');
 
-        $q = $this->db->query("SELECT MAX(RIGHT($field,$digit)) AS kd_max FROM $tabel LIMIT 1");
+        $q = $this->db->query("SELECT MAX(RIGHT($field,$digit)) AS kd_max FROM $tabel WHERE SUBSTR($field, 2, 6) = $ymd LIMIT 1");
         $kd = "";
         if ($q->num_rows() > 0) {
             foreach ($q->result() as $k) {
@@ -75,15 +76,16 @@ class M_pemasokan extends CI_Model
             $kd = "01";
         }
         date_default_timezone_set('Asia/Jakarta');
-        return 'M' . date('dmy') . $kd;
+        return 'M' . date('ymd') . $kd;
     }
 
     function get_kode_unik($tabel)
     {
         $field = "kode_unik";
         $digit = "3";
+        $ymd = date('ymd');
 
-        $q = $this->db->query("SELECT MAX(RIGHT($field,$digit)) AS kd_max FROM $tabel LIMIT 1");
+        $q = $this->db->query("SELECT MAX(RIGHT($field,$digit)) AS kd_max FROM $tabel WHERE SUBSTR($field, 4, 6) = $ymd LIMIT 1");
         $kd = "";
         if ($q->num_rows() > 0) {
             foreach ($q->result() as $k) {
@@ -94,7 +96,7 @@ class M_pemasokan extends CI_Model
             $kd = "001";
         }
         date_default_timezone_set('Asia/Jakarta');
-        return date('dmy') . $kd;
+        return date('ymd') . $kd;
     }
 
     function search_autocomplete($field, $data)
