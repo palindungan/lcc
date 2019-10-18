@@ -37,7 +37,10 @@ class Edit_account extends CI_Controller
         'id_user_p' => $id
         );
         $this->M_edit_account->update($where,$data,'pimpinan');
-        redirect('edit_account');
+        echo "<script>
+        	alert('Sukses Ubah Biodata');
+        	window.location = '" . base_url("edit_account") . "';
+        </script>";
     }
     function ubah_password()
     {
