@@ -43,31 +43,27 @@
 								</tr>
 							</thead>
 							<tbody>
-								<?php 
-                                    $no = 1;
-                                    foreach($user as $data){
-                                    ?>
-								<tr>
-									<td><?php echo $no++ ?></td>
-									<td><?php echo $data->nama_user?></td>
-									<td><?php echo $data->username ?></td>
-									<td><?php echo $data->jenis_akses ?></td>
-									<td><?php echo $data->id_toko ?></td>
-									<td>
-										<div class="table-actions">
-											<a class="btn btn-primary fa fa-pencil-square"
-												href="<?php echo base_url("pimpinan/user/edit/".$data->id_user) ?>"></a>
-											<a class="btn btn-danger fa fa-trash"
-												onclick="return confirm('anda yakin ingin menghapus data ?')"
-												href="<?php echo base_url("pimpinan/user/hapus/".$data->id_user) ?>"></a>
-											<a class="btn btn-warning fa fa-recycle"
-												href="<?php echo base_url("pimpinan/user/ganti_password/".$data->id_user) ?>"></a>
+								<?php
+								$no = 1;
+								foreach ($user as $data) {
+									?>
+									<tr>
+										<td><?php echo $no++ ?></td>
+										<td><?php echo $data->nama_user ?></td>
+										<td><?php echo $data->username ?></td>
+										<td><?php echo $data->jenis_akses ?></td>
+										<td><?php echo $data->id_toko ?></td>
+										<td>
+											<div class="table-actions">
+												<a class="btn btn-primary fa fa-pencil-square" href="<?php echo base_url("pimpinan/user/edit/" . $data->id_user) ?>"></a>
+												<a class="btn btn-danger fa fa-trash" onclick="return confirm('anda yakin ingin menghapus data ?')" href="<?php echo base_url("pimpinan/user/hapus/" . $data->id_user) ?>"></a>
+												<a class="btn btn-warning fa fa-recycle" href="<?php echo base_url("pimpinan/user/ganti_password/" . $data->id_user) ?>"></a>
 
 
-										</div>
-									</td>
-								</tr>
-								<?php  }?>
+											</div>
+										</td>
+									</tr>
+								<?php  } ?>
 							</tbody>
 						</table>
 					</div>
