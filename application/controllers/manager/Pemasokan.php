@@ -109,11 +109,11 @@ class Pemasokan extends CI_Controller
                     $id_toko = $this->session->userdata('id_toko'); // session
 
                     if ($id_toko == "T1") {
-                        $kode_unik =  'LCC' . $this->M_pemasokan->get_kode_unik(); // generate
+                        $kode_unik =  'LCC' . $this->M_pemasokan->get_kode_unik('stok_toko_lcc'); // generate
                     } elseif ($id_toko == "T2") {
-                        $kode_unik =  'CMC' . $this->M_pemasokan->get_kode_unik(); // generate
+                        $kode_unik =  'CMC' . $this->M_pemasokan->get_kode_unik('stok_toko_cmc'); // generate
                     } elseif ($id_toko == "T3") {
-                        $kode_unik =  'PBL' . $this->M_pemasokan->get_kode_unik(); // generate
+                        $kode_unik =  'PBL' . $this->M_pemasokan->get_kode_unik('stok_toko_pbl'); // generate
                     }
                 }
 

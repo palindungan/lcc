@@ -73,10 +73,9 @@ class M_pemasokan extends CI_Model
         return 'M' . date('dmy') . $kd;
     }
 
-    function get_kode_unik()
+    function get_kode_unik($tabel)
     {
         $field = "kode_unik";
-        $tabel = "stok_barang";
         $digit = "3";
 
         $q = $this->db->query("SELECT MAX(RIGHT($field,$digit)) AS kd_max FROM $tabel LIMIT 1");
