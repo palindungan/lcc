@@ -175,7 +175,12 @@
             <div id="row` + count1 + `" class="row">
                 <br />
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <input required="" type="text" class="form-control barcode_nya" id="kode_atau_barcode` + count1 + `" name="kode_atau_barcode[]" placeholder="Kode/Barcode" value="">
+                    <div class="form-group ic-cmp-int">
+                            <div class="form-ic-cmp">
+                                <label><input type="checkbox" class="cekbox"></label>
+                            </div>
+                            <input required="" type="text" class="form-control barcode_nya" id="kode_atau_barcode` + count1 + `" name="kode_atau_barcode[]" placeholder="Kode/Barcode" value="">
+                    </div>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                     <input required="" type="text" class="form-control nama_nya" id="nama` + count1 + `" name="nama[]" placeholder="Nama Barang" value="">
@@ -256,7 +261,12 @@
             <div id="row` + count1 + `" class="row">
                 <br />
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <input required="" type="text" class="form-control barcode_nya" id="kode_atau_barcode` + count1 + `" name="kode_atau_barcode[]" placeholder="Kode/Barcode" value="">
+                    <div class="form-group ic-cmp-int">
+                        <div class="form-ic-cmp">
+                            <label><input type="checkbox" class="cekbox"></label>
+                        </div>
+                        <input required="" type="text" class="form-control barcode_nya" id="kode_atau_barcode` + count1 + `" name="kode_atau_barcode[]" placeholder="Kode/Barcode" value="">
+                    </div>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                     <input required="" type="text" class="form-control nama_nya" id="nama` + count1 + `" name="nama[]" placeholder="Nama Barang" value="` + nama + `">
