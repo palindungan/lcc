@@ -28,8 +28,9 @@ class M_pengeluaran_lain extends CI_Model
         $field = "id_pengeluaran_l";
         $tabel = "pengeluaran_lain";
         $digit = "2";
+        $ymd = date('ymd');
 
-        $q = $this->db->query("SELECT MAX(RIGHT($field,$digit)) AS kd_max FROM $tabel LIMIT 1");
+        $q = $this->db->query("SELECT MAX(RIGHT($field,$digit)) AS kd_max FROM $tabel WHERE SUBSTR($field, 2, 6) = $ymd LIMIT 1");
         $kd = "";
         if ($q->num_rows() > 0) {
             foreach ($q->result() as $k) {
@@ -40,6 +41,6 @@ class M_pengeluaran_lain extends CI_Model
             $kd = "01";
         }
         date_default_timezone_set('Asia/Jakarta');
-        return 'L' . date('dmy') . $kd;
+        return 'L' . date('ymd') . $kd;
     }
 }
