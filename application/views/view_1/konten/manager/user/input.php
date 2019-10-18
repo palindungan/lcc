@@ -32,33 +32,35 @@
 					<div class="row">
 						<form action="<?php echo base_url("manager/user/insert_data") ?>" method="post">
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-								<div
-									class="form-group  <?php if(form_error('nama_user')== true) { echo "has-error";} ?> ">
+								<div class="form-group  <?php if (form_error('nama_user') == true) {
+															echo "has-error";
+														} ?> ">
 									<div class="form-ic-cmp">
 									</div>
 									<label>Nama</label>
-									<input type="text" class="form-control" placeholder="Masukan Nama" name="nama_user"
-										value="<?= set_value('nama_user') ?>" class="form-control">
+									<input type="text" class="form-control" placeholder="Masukan Nama" name="nama_user" value="<?= set_value('nama_user') ?>" class="form-control">
 									<span class="help-block"><?php echo form_error('nama_user'); ?></span>
 								</div>
 							</div>
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-								<div class="form-group <?php if(form_error('username')== true) { echo "has-error";} ?>">
+								<div class="form-group <?php if (form_error('username') == true) {
+															echo "has-error";
+														} ?>">
 									<div class="form-ic-cmp">
 									</div>
 									<label>Username</label>
-									<input type="text" class="form-control" placeholder="Masukan Username"
-										name="username" value="<?= set_value('nama_user') ?>">
+									<input type="text" class="form-control" placeholder="Masukan Username" name="username" value="<?= set_value('nama_user') ?>">
 									<span class="help-block"><?php echo form_error('username'); ?></span>
 								</div>
 							</div>
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-								<div class="form-group <?php if(form_error('password')== true) { echo "has-error";} ?>">
+								<div class="form-group <?php if (form_error('password') == true) {
+															echo "has-error";
+														} ?>">
 									<div class="form-ic-cmp">
 									</div>
 									<label>password</label>
-									<input type="password" class="form-control" placeholder="Masukan password"
-										name="password" value="<?= set_value('password') ?>">
+									<input type="password" class="form-control" placeholder="Masukan password" name="password" value="<?= set_value('password') ?>">
 									<span class="help-block"><?php echo form_error('password'); ?></span>
 								</div>
 							</div>

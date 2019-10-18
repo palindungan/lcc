@@ -1,17 +1,16 @@
-<?php 
-/**
- * 
- */
+<?php
 class M_user extends CI_model
 {
-    function tampil(){
-		$id_toko = $this->session->userdata('id_toko');
+    function tampil()
+    {
+        $id_toko = $this->session->userdata('id_toko');
         return $this->db->query("SELECT * FROM user JOIN toko USING(id_toko) WHERE jenis_akses='Kasir' AND id_toko='$id_toko'")->result();
     }
-		function input($data){
-		return $this->db->insert('user', $data);
-	}
-	function get_no()
+    function input($data)
+    {
+        return $this->db->insert('user', $data);
+    }
+    function get_no()
     {
         $field = "id_user";
         $tabel = "user";
@@ -29,18 +28,21 @@ class M_user extends CI_model
         }
         return $kd;
     }
-    function edit($where,$table){
-        return $this->db->get_where($table,$where)->result();
+    function edit($where, $table)
+    {
+        return $this->db->get_where($table, $where)->result();
     }
-    function update($where,$data,$table){
+    function update($where, $data, $table)
+    {
         $this->db->where($where);
-        $this->db->update($table,$data);
+        $this->db->update($table, $data);
     }
-    function hapus_data($where,$table){
+    function hapus_data($where, $table)
+    {
         $this->db->where($where);
         $this->db->delete($table);
     }
-     function ambil_data($nama_user)
+    function ambil_data($nama_user)
     {
         $this->db->select('*');
         $this->db->from('user u');
