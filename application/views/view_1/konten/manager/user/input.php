@@ -72,7 +72,7 @@
 								</div>
 								<div class="nk-int-st">
 									<button type="submit" class="btn btn-primary">Simpan</button>
-									<a onclick=self.history.back() class="btn btn-danger">Kembali</a>
+									<a href="<?php echo base_url('user_kasir'); ?>" class="btn btn-danger">Kembali</a>
 
 									<!-- <a onclick=self.history.back() class="btn btn-danger">Kembali</a> -->
 								</div>
