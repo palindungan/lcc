@@ -93,86 +93,56 @@ class Pemasokan extends CI_Controller
 
                 $kode = "kosong";
                 $nama = $this->input->post('nama')[$i];
-                $barcode = "kosong";
 
                 // data stok
                 $qty = $this->input->post('qty')[$i];
+
                 $hrg_distributor_temp = $this->input->post('hrg_distributor')[$i];
                 $hrg_distributor = preg_replace("/[^0-9]/", "", $hrg_distributor_temp);
+
                 $total_hrg = $qty * $hrg_distributor;
-                $kode_unik = "kosong";
+                $kode_unik = $this->input->post('kode_atau_barcode')[$i];
 
-                // validasi barcode dan kode_unik 
-                $kode_atau_barcode = $this->input->post('kode_atau_barcode')[$i];
-                $validasi = substr($kode_atau_barcode, 0, 3); // CD-
+                if ($kode_unik == "KODE GENERATE") {
+                    // jika pakai generate kode
 
-                if ($validasi == "CD-") {
-                    $barcode = $kode_atau_barcode;
-                } else {
-                    $kode_unik = $kode_atau_barcode;
+                    $id_toko = $this->session->userdata('id_toko'); // session
+
+                    if ($id_toko == "T1") {
+                        $kode_unik =  'LCC' . $this->M_pemasokan->get_kode_unik(); // generate
+                    } elseif ($id_toko == "T2") {
+                        $kode_unik =  'CMC' . $this->M_pemasokan->get_kode_unik(); // generate
+                    } elseif ($id_toko == "T3") {
+                        $kode_unik =  'PBL' . $this->M_pemasokan->get_kode_unik(); // generate
+                    }
                 }
 
-                if ($barcode != "kosong") {
+                // deteksi apakah ada nama yang sama di database (barang terdaftar)
+                $data_nama = array(
+                    'nama' => $nama
+                );
+                $cek = $this->M_pemasokan->get_data("barang_terdaftar", $data_nama)->num_rows();
 
-                    // deteksi apakah ada barcode yang sama di database
-                    $data_barcode = array(
-                        'barcode' => $barcode
-                    );
-                    $cek = $this->M_pemasokan->get_data("barang_terdaftar_barcode", $data_barcode)->num_rows();
+                if ($cek >= 1) {
 
-                    if ($cek >= 1) {
+                    // jika nama sudah ada maka akan memakai data yang lama
 
-                        // jika barcode sudah ada maka akan memakai data yang lama
-
-                        // mengambil kode dari barang terdaftar
-                        $query = $this->M_pemasokan->get_data("barang_terdaftar_barcode", $data_barcode);
-                        foreach ($query->result_array() as $row) {
-                            $kode = $row["kode"];
-                        }
-                    } else {
-
-                        // jika barcode belum ada maka akan menambahkan data baru
-
-                        $kode = $this->M_pemasokan->get_no_barang_terdaftar(); // generate
-
-                        $data = array(
-                            'kode' => $kode,
-                            'nama' => $nama,
-                            'barcode' => $barcode
-                        );
-
-                        $this->M_pemasokan->input_data('barang_terdaftar', $data);
+                    // mengambil nama dari barang terdaftar
+                    $query = $this->M_pemasokan->get_data("barang_terdaftar", $data_nama);
+                    foreach ($query->result_array() as $row) {
+                        $kode = $row["kode"];
                     }
                 } else {
 
-                    // deteksi apakah ada nama yang sama di database (barang terdaftar)
-                    $data_nama = array(
+                    // jika nama belum ada maka akan menambahkan data baru
+                    $kode = $this->M_pemasokan->get_no_barang_terdaftar(); // generate
+
+                    $data = array(
+                        'kode' => $kode,
                         'nama' => $nama
                     );
-                    $cek = $this->M_pemasokan->get_data("barang_terdaftar_bukan_barcode", $data_nama)->num_rows();
 
-                    if ($cek >= 1) {
-
-                        // jika nama sudah ada maka akan memakai data yang lama
-
-                        // mengambil nama dari barang terdaftar
-                        $query = $this->M_pemasokan->get_data("barang_terdaftar_bukan_barcode", $data_nama);
-                        foreach ($query->result_array() as $row) {
-                            $kode = $row["kode"];
-                        }
-                    } else {
-
-                        // jika nama belum ada maka akan menambahkan data baru
-                        $kode = $this->M_pemasokan->get_no_barang_terdaftar(); // generate
-
-                        $data = array(
-                            'kode' => $kode,
-                            'nama' => $nama,
-                            'barcode' => $barcode
-                        );
-
-                        $this->M_pemasokan->input_data('barang_terdaftar', $data);
-                    }
+                    $this->M_pemasokan->input_data('barang_terdaftar', $data);
                 }
 
                 // proses pemasukan ke dalam database stok barang
@@ -201,68 +171,6 @@ class Pemasokan extends CI_Controller
                     $arr_result[] = $row->nama;
                 echo json_encode($arr_result);
             }
-        }
-    }
-
-    public function validation_form_transaksi()
-    {
-        if (isset($_POST['kode_atau_barcode'])) {
-
-            // tambah detail transaksi
-            for ($i = 0; $i < count($this->input->post('kode_atau_barcode')); $i++) {
-
-                $nama = $this->input->post('nama')[$i];
-                $kode_atau_barcode = $this->input->post('kode_atau_barcode')[$i];
-
-                // deteksi apakah ada barcode yang sama di database
-                $data_barcode = array(
-                    'barcode' => $kode_atau_barcode
-                );
-                $cek = $this->M_pemasokan->get_data("barang_terdaftar", $data_barcode)->num_rows();
-
-                // cek apakah barcode ada yang sama
-                if ($cek >= 1) {
-
-                    // mengambil kode dari barang terdaftar
-                    $query = $this->M_pemasokan->get_data("barang_terdaftar", $data_barcode);
-                    foreach ($query->result_array() as $row) {
-                        $nama_db = $row["nama"];
-                    }
-
-                    if ($nama_db == $nama) {
-                        echo '';
-                    } else {
-                        echo 'Gagal! , Barang Dengan Kode ' . $kode_atau_barcode . ' Memiliki Nama Berbeda Dengan Database. ';
-                    }
-                } else {
-
-                    $data_nama = array(
-                        'nama' => $nama
-                    );
-                    $cek_2 = $this->M_pemasokan->get_data("barang_terdaftar", $data_nama)->num_rows();
-
-                    // cek jika barcode berbeda dan ada nama yang sama
-                    if ($cek_2 >= 1) {
-
-                        // mengambil kode dari barang terdaftar
-                        $query = $this->M_pemasokan->get_data("barang_terdaftar", $data_nama);
-                        foreach ($query->result_array() as $row) {
-                            $barcode_db = $row["barcode"];
-                        }
-
-                        $validasi = substr($barcode_db, 0, 3); // CD-
-                        if ($validasi == "CD-") {
-                            echo 'Gagal! , Barang ' . $nama . ' Tidak Boleh Menggunakan Barcode Tersebut. ';
-                        } else {
-                            echo '';
-                        }
-                    } else {
-                        echo '';
-                    }
-                }
-            }
-        } else {
-            echo 'Harus Ada Barang!! ';
         }
     }
 }

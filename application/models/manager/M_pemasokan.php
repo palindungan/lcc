@@ -73,6 +73,26 @@ class M_pemasokan extends CI_Model
         return 'M' . date('dmy') . $kd;
     }
 
+    function get_kode_unik()
+    {
+        $field = "kode_unik";
+        $tabel = "stok_barang";
+        $digit = "3";
+
+        $q = $this->db->query("SELECT MAX(RIGHT($field,$digit)) AS kd_max FROM $tabel LIMIT 1");
+        $kd = "";
+        if ($q->num_rows() > 0) {
+            foreach ($q->result() as $k) {
+                $tmp = ((int) $k->kd_max) + 1;
+                $kd = sprintf("%04s", $tmp);
+            }
+        } else {
+            $kd = "001";
+        }
+        date_default_timezone_set('Asia/Jakarta');
+        return date('dmy') . $kd;
+    }
+
     function search_autocomplete($field, $data)
     {
         $this->db->like($field, $data, 'both');
