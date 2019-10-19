@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Waktu pembuatan: 18 Okt 2019 pada 03.49
+-- Waktu pembuatan: 19 Okt 2019 pada 06.05
 -- Versi server: 10.4.6-MariaDB
 -- Versi PHP: 7.3.9
 
@@ -77,7 +77,13 @@ INSERT INTO `barang_terdaftar` (`kode`, `nama`) VALUES
 ('B00009', 'OPPO f9'),
 ('B00010', 'Printer Epson Scan'),
 ('B00011', 'Flasdis Toshiba Ram 16'),
-('B00012', 'ROG Strix 512');
+('B00012', 'ROG Strix 512'),
+('B00013', 'Acer Aspire 3'),
+('B00014', 'Sandisk 32 gb'),
+('B00015', 'Asus Core 15'),
+('B00016', 'Keyboard Alcatroz'),
+('B00017', 'Hardisk Baracuda'),
+('B00018', 'Keyboard Mechanical');
 
 -- --------------------------------------------------------
 
@@ -155,13 +161,13 @@ CREATE TABLE `barang_toko` (
 -- (Lihat di bawah untuk tampilan aktual)
 --
 CREATE TABLE `barang_toko_barcode` (
-`kode` char(6)
-,`id_stok_b` int(7)
-,`stok` decimal(32,0)
+`id_stok_b` int(7)
 ,`kode_unik` varchar(30)
 ,`nama` varchar(50)
+,`tanggal` timestamp
 ,`id_toko` char(2)
 ,`hrg_distributor` int(10)
+,`qty` int(3)
 );
 
 -- --------------------------------------------------------
@@ -312,7 +318,11 @@ INSERT INTO `pemasokan` (`id_pemasokan`, `id_user`, `id_distributor`, `tanggal`,
 ('M1210190004', 'U04', 'D01', '2019-10-12 02:38:06', 6000000),
 ('M1210190005', 'U05', 'D02', '2019-10-12 02:49:09', 13980000),
 ('M1210190006', 'U06', 'D02', '2019-10-12 02:54:54', 7500000),
-('M1210190007', 'U04', 'D01', '2019-10-12 06:29:45', 23050000);
+('M1210190007', 'U04', 'D01', '2019-10-12 06:29:45', 23050000),
+('M1910190001', 'U04', 'D03', '2019-10-19 01:29:38', 6100000),
+('M1910190002', 'U05', 'D02', '2019-10-19 01:42:45', 8000000),
+('M1910190003', 'U04', 'D02', '2019-10-19 01:47:41', 6000000),
+('M1910190004', 'U06', 'D01', '2019-10-19 01:49:01', 5000000);
 
 -- --------------------------------------------------------
 
@@ -420,7 +430,7 @@ CREATE TABLE `pimpinan` (
 --
 
 INSERT INTO `pimpinan` (`id_user_p`, `nama`, `username`, `password`, `jenis_akses`) VALUES
-(1, 'pimpinan', 'pimpinan', '$2y$10$6C4s0s9NIaw.2OwbxT/9heJWuiSeECWOVkasFYBfKnvJKdwmF3Nwa', 'Pimpinan');
+(1, 'kika', 'kika', '$2y$10$d5oemiM1PTCpefGgJb/ys.F3mtftDILSfnsgR9S13Ek6aU4qRmlyu', 'Pimpinan');
 
 -- --------------------------------------------------------
 
@@ -446,16 +456,16 @@ INSERT INTO `stok_barang` (`id_stok_b`, `id_pemasokan`, `kode`, `qty`, `hrg_dist
 (1, 'M0310190001', 'B00001', 1, 5000000, 5000000, 'LKM11000KA'),
 (2, 'M0310190001', 'B00002', 1, 4000000, 4000000, 'ZXC100912M'),
 (3, 'M0310190001', 'B00001', 1, 5000000, 5000000, 'MKL100MA1'),
-(4, 'M0310190001', 'B00003', 3, 100000, 500000, 'LCC12732222'),
-(5, 'M0310190001', 'B00004', 4, 200000, 1000000, 'kosong'),
+(4, 'M0310190001', 'B00003', 3, 100000, 500000, 'LCC0310190001'),
+(5, 'M0310190001', 'B00004', 4, 200000, 1000000, 'LCC0310190002'),
 (6, 'M0310190001', 'B00005', 0, 3000000, 3000000, '582135128236'),
 (7, 'M0310190001', 'B00006', 1, 3000000, 3000000, '353682391692'),
 (8, 'M0310190002', 'B00007', 1, 6000000, 6000000, 'LK99897MA'),
 (9, 'M0310190002', 'B00002', 1, 4000000, 4000000, 'XM31298PX'),
-(10, 'M0310190002', 'B00003', 5, 100000, 500000, 'kosong'),
+(10, 'M0310190002', 'B00003', 5, 100000, 500000, 'CMC0310190001'),
 (11, 'M0310190003', 'B00002', 1, 4000000, 4000000, 'LK9983123M'),
 (12, 'M0310190003', 'B00001', 1, 5000000, 5000000, 'ZXC123981X'),
-(13, 'M0310190003', 'B00003', 5, 100000, 500000, 'kosong'),
+(13, 'M0310190003', 'B00003', 5, 100000, 500000, 'PBL0310190001'),
 (14, 'M1210190004', 'B00002', 1, 3500000, 3500000, 'ZXC1000292M'),
 (15, 'M1210190004', 'B00006', 0, 2500000, 2500000, '36482182698'),
 (16, 'M1210190005', 'B00008', 1, 5000000, 5000000, 'MN123456'),
@@ -466,7 +476,46 @@ INSERT INTO `stok_barang` (`id_stok_b`, `id_pemasokan`, `kode`, `qty`, `hrg_dist
 (21, 'M1210190006', 'B00001', 1, 4000000, 4000000, 'XPA12931P'),
 (22, 'M1210190007', 'B00001', 1, 3000000, 3000000, 'ZXBA1000MN'),
 (23, 'M1210190007', 'B00012', 1, 20000000, 20000000, 'ZXF9821826'),
-(24, 'M1210190007', 'B00003', 0, 50000, 150000, 'kosong');
+(24, 'M1210190007', 'B00003', 0, 50000, 150000, 'LCC1210190001'),
+(25, 'M1910190001', 'B00013', 1, 6000000, 6000000, 'DKL100010LX'),
+(26, 'M1910190001', 'B00014', 5, 100000, 500000, 'LCC1910190001'),
+(27, 'M1910190002', 'B00015', 1, 7000000, 7000000, 'JGK1001298'),
+(28, 'M1910190002', 'B00016', 5, 200000, 1000000, 'CMC1910190001'),
+(29, 'M1910190003', 'B00017', 3, 2000000, 6000000, 'LCC1910190002'),
+(30, 'M1910190004', 'B00018', 5, 1000000, 5000000, 'PBL1910190001');
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in struktur untuk tampilan `stok_toko_cmc`
+-- (Lihat di bawah untuk tampilan aktual)
+--
+CREATE TABLE `stok_toko_cmc` (
+`id_stok_b` int(7)
+,`kode_unik` varchar(30)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in struktur untuk tampilan `stok_toko_lcc`
+-- (Lihat di bawah untuk tampilan aktual)
+--
+CREATE TABLE `stok_toko_lcc` (
+`id_stok_b` int(7)
+,`kode_unik` varchar(30)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in struktur untuk tampilan `stok_toko_pbl`
+-- (Lihat di bawah untuk tampilan aktual)
+--
+CREATE TABLE `stok_toko_pbl` (
+`id_stok_b` int(7)
+,`kode_unik` varchar(30)
+);
 
 -- --------------------------------------------------------
 
@@ -590,7 +639,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `barang_toko_barcode`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `barang_toko_barcode`  AS  select `barang_toko`.`kode` AS `kode`,`barang_toko`.`id_stok_b` AS `id_stok_b`,`barang_toko`.`stok` AS `stok`,`barang_toko`.`kode_unik` AS `kode_unik`,`barang_toko`.`nama` AS `nama`,`barang_toko`.`id_toko` AS `id_toko`,`barang_toko`.`hrg_distributor` AS `hrg_distributor` from `barang_toko` where substr(`barang_toko`.`kode_unik`,1,3) = 'LCC' or substr(`barang_toko`.`kode_unik`,1,3) = 'CMC' or substr(`barang_toko`.`kode_unik`,1,3) = 'PBL' and `barang_toko`.`stok` > 0 ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `barang_toko_barcode`  AS  select `barang_kasir`.`id_stok_b` AS `id_stok_b`,`barang_kasir`.`kode_unik` AS `kode_unik`,`barang_kasir`.`nama` AS `nama`,`barang_kasir`.`tanggal` AS `tanggal`,`barang_kasir`.`id_toko` AS `id_toko`,`barang_kasir`.`hrg_distributor` AS `hrg_distributor`,`barang_kasir`.`qty` AS `qty` from `barang_kasir` where (substr(`barang_kasir`.`kode_unik`,1,3) = 'LCC' or substr(`barang_kasir`.`kode_unik`,1,3) = 'CMC' or substr(`barang_kasir`.`kode_unik`,1,3) = 'PBL') and `barang_kasir`.`qty` > 0 ;
 
 -- --------------------------------------------------------
 
@@ -636,6 +685,33 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 DROP TABLE IF EXISTS `pemasokan_list_detail`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `pemasokan_list_detail`  AS  select `p`.`id_pemasokan` AS `id_pemasokan`,`bt`.`nama` AS `nama`,`sb`.`qty` AS `qty`,`sb`.`hrg_distributor` AS `hrg_distributor`,`sb`.`total_hrg` AS `total_hrg`,`sb`.`kode_unik` AS `kode_unik` from ((`stok_barang` `sb` join `pemasokan` `p` on(`sb`.`id_pemasokan` = `p`.`id_pemasokan`)) join `barang_terdaftar` `bt` on(`sb`.`kode` = `bt`.`kode`)) ;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur untuk view `stok_toko_cmc`
+--
+DROP TABLE IF EXISTS `stok_toko_cmc`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `stok_toko_cmc`  AS  select `sb`.`id_stok_b` AS `id_stok_b`,`sb`.`kode_unik` AS `kode_unik` from `stok_barang` `sb` where substr(`sb`.`kode_unik`,1,3) = 'CMC' ;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur untuk view `stok_toko_lcc`
+--
+DROP TABLE IF EXISTS `stok_toko_lcc`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `stok_toko_lcc`  AS  select `sb`.`id_stok_b` AS `id_stok_b`,`sb`.`kode_unik` AS `kode_unik` from `stok_barang` `sb` where substr(`sb`.`kode_unik`,1,3) = 'LCC' ;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur untuk view `stok_toko_pbl`
+--
+DROP TABLE IF EXISTS `stok_toko_pbl`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `stok_toko_pbl`  AS  select `sb`.`id_stok_b` AS `id_stok_b`,`sb`.`kode_unik` AS `kode_unik` from `stok_barang` `sb` where substr(`sb`.`kode_unik`,1,3) = 'PBL' ;
 
 --
 -- Indexes for dumped tables
@@ -727,7 +803,7 @@ ALTER TABLE `pimpinan`
 -- AUTO_INCREMENT untuk tabel `stok_barang`
 --
 ALTER TABLE `stok_barang`
-  MODIFY `id_stok_b` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id_stok_b` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
