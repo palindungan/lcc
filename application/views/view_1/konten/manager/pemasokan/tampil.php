@@ -60,13 +60,13 @@
                             <div class="row">
                                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                                     <div class="form-group">
-                                        <button type="button" id="add_baris" class="form-control btn btn-primary">+ Tambah Baris</button>
+                                        <button type="button" id="add_baris" class="form-control btn btn-success">+ Tambah Baris</button>
                                     </div>
                                 </div>
 
                                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                                     <div class="form-group">
-                                        <button id="btn_search" type="button" class="form-control btn btn-success" data-toggle="modal" data-target="#myModalthree"><i class="notika-icon notika-search"></i> Cari Barang</button>
+                                        <button id="btn_search" type="button" class="form-control btn btn-default notika-btn-default" data-toggle="modal" data-target="#myModalthree"><i class="notika-icon notika-search"></i> Cari Barang</button>
                                     </div>
                                 </div>
 
@@ -74,7 +74,7 @@
 
                                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                                     <div class="form-group">
-                                        <button onclick="return confirm('Lakukan Pemasokan ?')" id="action" type="submit" name="simpan" class="form-control btn btn-danger">Simpan Pemasokan</button>
+                                        <button onclick="return confirm('Lakukan Pemasokan ?')" id="action" type="submit" name="simpan" class="form-control btn btn-primary">Simpan Pemasokan</button>
                                     </div>
                                 </div>
 
@@ -321,7 +321,7 @@
             method: "POST",
             data: form_data,
             success: function(data) {
-                alert("Data berhasil Ditambahkan");
+                alert(data);
                 location.reload();
             }
         });

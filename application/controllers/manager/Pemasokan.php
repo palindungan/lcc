@@ -66,27 +66,28 @@ class Pemasokan extends CI_Controller
 
     public function input_transaksi_form()
     {
-        date_default_timezone_set('Asia/Jakarta');
-
-        // data pemasokan 
-        $id_pemasokan = $this->M_pemasokan->get_no(); // generate
-        $id_user = $this->session->userdata('id_user'); // session
-        $id_distributor = $this->input->post('id_distributor');
-        $tanggal = date('Y-m-d H:i:s');
-        $total_tmp = $this->input->post('total');
-        $total = preg_replace("/[^0-9]/", "", $total_tmp);
-
-        $data = array(
-            'id_pemasokan' => $id_pemasokan,
-            'id_user' => $id_user,
-            'id_distributor' => $id_distributor,
-            'tanggal' => $tanggal,
-            'total' => $total
-        );
-
-        $this->M_pemasokan->input_data('pemasokan', $data);
-
         if (isset($_POST['kode_atau_barcode'])) {
+
+            date_default_timezone_set('Asia/Jakarta');
+
+            // data pemasokan 
+            $id_pemasokan = $this->M_pemasokan->get_no(); // generate
+            $id_user = $this->session->userdata('id_user'); // session
+            $id_distributor = $this->input->post('id_distributor');
+            $tanggal = date('Y-m-d H:i:s');
+            $total_tmp = $this->input->post('total');
+            $total = preg_replace("/[^0-9]/", "", $total_tmp);
+
+            $data = array(
+                'id_pemasokan' => $id_pemasokan,
+                'id_user' => $id_user,
+                'id_distributor' => $id_distributor,
+                'tanggal' => $tanggal,
+                'total' => $total
+            );
+
+            $this->M_pemasokan->input_data('pemasokan', $data);
+
 
             // tambah detail transaksi
             for ($i = 0; $i < count($this->input->post('kode_atau_barcode')); $i++) {
@@ -157,6 +158,11 @@ class Pemasokan extends CI_Controller
 
                 $this->M_pemasokan->input_data('stok_barang', $data);
             }
+
+            echo "Data berhasil Ditambahkan";
+        } else {
+
+            echo "Harus Ada Barang Detail Pemasokan !!";
         }
     }
 
