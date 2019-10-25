@@ -39,11 +39,10 @@
 					<form action="" method="post" id="myform">
 						<select name="toko" id="toko" class="form-control">
 							<option value="semua" selected>Semua Toko</option>
-							<?php 
-								foreach($data_toko as $row)
-								{
+							<?php
+							foreach ($data_toko as $row) {
 								?>
-							<option value="<?= $row->id_toko ?>"><?= $row->nama_toko ?></option>
+								<option value="<?= $row->id_toko ?>"><?= $row->nama_toko ?></option>
 							<?php } ?>
 						</select>
 				</div>
@@ -63,11 +62,11 @@
 <script src="<?= base_url() ?>assets/vendor/auto_complete/jquery-3.4.1.min.js"></script>
 <script>
 	hari_ini();
-	$(document).on('change', '#toko', function (event) {
+	$(document).on('change', '#toko', function(event) {
 		event.preventDefault();
 		hari_ini();
 	});
-	$(document).on('change', '#tanggal', function (event) {
+	$(document).on('change', '#tanggal', function(event) {
 		event.preventDefault();
 		hari_ini();
 	});
@@ -78,12 +77,11 @@
 			url: "<?php echo base_url(); ?>pimpinan/home/tampil",
 			method: "POST",
 			data: form_data,
-			success: function (data) {
+			success: function(data) {
 				$("#muncul").html(data);
 			}
 		});
 	}
-
 </script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
@@ -105,7 +103,7 @@
 		]);
 
 		var options = {
-			title: 'Total Aset Semua Toko : ' + total
+			title: 'Total Aset Semua Toko : ' + 'Rp ' + formatRupiah(total) + ',00'
 
 		};
 
@@ -114,4 +112,19 @@
 		chart.draw(data, options);
 	}
 
+	/* Fungsi formatRupiah */
+	function formatRupiah(angka, prefix) {
+		var number_string = angka.toString().replace(/[^,\d]/g, ''),
+			split = number_string.split(','),
+			sisa = split[0].length % 3,
+			rupiah = split[0].substr(0, sisa),
+			ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+		// tambahkan titik jika yang di input sudah menjadi angka ribuan
+		if (ribuan) {
+			separator = sisa ? '.' : '';
+			rupiah += separator + ribuan.join('.');
+		}
+		rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+		return prefix == undefined ? rupiah : (rupiah ? +rupiah : '');
+	}
 </script>
