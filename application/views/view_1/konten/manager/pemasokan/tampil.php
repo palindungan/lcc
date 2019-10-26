@@ -48,7 +48,11 @@
                                     </div>
                                 </div>
 
-                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12"></div>
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <div class="form-group">
+                                        <input required="" type="text" class="form-control rupiah_2" name="jumlah_pengeluaran" id="jumlah_pengeluaran" placeholder="Ongkos Kirim">
+                                    </div>
+                                </div>
 
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <div class="form-group">

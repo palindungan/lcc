@@ -106,4 +106,25 @@ class M_pemasokan extends CI_Model
         $this->db->limit(10);
         return $this->db->get('barang_terdaftar')->result();
     }
+
+    function get_no_pengeluaran_lain()
+    {
+        $field = "id_pengeluaran_l";
+        $tabel = "pengeluaran_lain";
+        $digit = "2";
+        $ymd = date('ymd');
+
+        $q = $this->db->query("SELECT MAX(RIGHT($field,$digit)) AS kd_max FROM $tabel WHERE SUBSTR($field, 2, 6) = $ymd LIMIT 1");
+        $kd = "";
+        if ($q->num_rows() > 0) {
+            foreach ($q->result() as $k) {
+                $tmp = ((int) $k->kd_max) + 1;
+                $kd = sprintf("%04s", $tmp);
+            }
+        } else {
+            $kd = "01";
+        }
+        date_default_timezone_set('Asia/Jakarta');
+        return 'L' . date('ymd') . $kd;
+    }
 }

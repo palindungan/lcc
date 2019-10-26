@@ -87,7 +87,27 @@ class Pemasokan extends CI_Controller
             );
 
             $this->M_pemasokan->input_data('pemasokan', $data);
+            // end of data pemasokan 
 
+            // data pengeluaran lain
+            $id_pengeluaran_l = $this->M_pemasokan->get_no_pengeluaran_lain();
+            $id_user = $this->session->userdata('id_user');
+
+            $jumlah_pengeluaran = $this->input->post('jumlah_pengeluaran');
+            $harga = preg_replace("/[^0-9]/", "", $jumlah_pengeluaran);
+            $total = (int) $harga;
+
+            $deskripsi = 'Ongkos Kirim Pemasokan Kode : ' . $id_pemasokan;
+
+            $data = array(
+                'id_pengeluaran_l' => $id_pengeluaran_l,
+                'id_user' => $id_user,
+                'tanggal' => $tanggal,
+                'total' => $total,
+                'deskripsi' => $deskripsi
+            );
+            $this->M_pemasokan->input_data('pengeluaran_lain', $data);
+            // end of data pengeluaran lain
 
             // tambah detail transaksi
             for ($i = 0; $i < count($this->input->post('kode_atau_barcode')); $i++) {
