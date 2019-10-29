@@ -44,7 +44,7 @@
             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
                 <div class="input-group">
                     <span class="input-group-btn">
-                        <button type="submit" class="btn btn-primary btn-block">Print</button>
+                        <button type="submit" class="btn btn-primary btn-block"><i class="glyphicon glyphicon-search"></i> PDF</button>
                     </span>
                 </div><!-- /input-group -->
             </div>
@@ -66,10 +66,10 @@
                                                     <span class="input-group-btn">
                                                         <a style="margin-right:20px" target="_blank" class="btn btn-primary"
                                                             href="<?php echo base_url().'laporan_manager/hari_ini' ?>"><i
-                                                                class="glyphicon glyphicon-search"></i> Preview</a>
+                                                                class="glyphicon glyphicon-search"></i> PDF</a>
                                                             <a class="btn btn-success"
                                                                 href="<?php echo base_url().'laporan_manager/excel_hari' ?>"><i
-                                                                    class="glyphicon glyphicon-print"></i> Print Data</a>
+                                                                    class="glyphicon glyphicon-print"></i> Excel</a>
                                                     </span>
                                                 </div><!-- /input-group -->
                                         </div>
@@ -146,10 +146,10 @@
                                                 <span class="input-group-btn">
                                                     <a style="margin-right:20px" target="_blank" class="btn btn-primary"
                                                         href="<?php echo base_url().'laporan_manager/bulan_ini' ?>"><i
-                                                            class="glyphicon glyphicon-search"></i> Preview</a>
+                                                            class="glyphicon glyphicon-search"></i> PDF</a>
                                                     <a class="btn btn-success"
                                                         href="<?php echo base_url().'laporan_manager/excel_bulan' ?>"><i
-                                                            class="glyphicon glyphicon-print"></i> Print Data</a>
+                                                            class="glyphicon glyphicon-print"></i> Excel</a>
                                                 </span>
                                             </div><!-- /input-group -->
                                         </div>
