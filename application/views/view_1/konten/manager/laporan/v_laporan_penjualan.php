@@ -34,7 +34,7 @@
                                         <label>Tanggal Mulai</label>
                                         <div class="input-group date nk-int-st">
                                             <span class="input-group-addon"></span>
-                                            <input type="text" class="form-control" name="tgl_mulai" required>
+                                            <input type="text" class="form-control" name="tgl_mulai" placeholder="Masukan tanggal mulai" required>
                                         </div>
                                     </div>
                                 </div>
@@ -43,7 +43,7 @@
                                         <label>Tanggal Akhir</label>
                                         <div class="input-group date nk-int-st">
                                             <span class="input-group-addon"></span>
-                                            <input type="text" class="form-control" name="tgl_akhir" required>
+                                            <input type="text" class="form-control" name="tgl_akhir" placeholder="Masukan tanggal akhir" required>
                                         </div>
                                     </div>
                                 </div>
@@ -69,7 +69,7 @@
                                             <label>Tanggal Mulai</label>
                                             <div class="input-group date nk-int-st">
                                                 <span class="input-group-addon"></span>
-                                                <input type="text" class="form-control" name="tgl_mulai" required>
+                                                <input type="text" class="form-control" name="tgl_mulai" placeholder="Masukan tanggal mulai" required>
                                             </div>
                                         </div>
                                     </div>
@@ -78,7 +78,7 @@
                                             <label>Tanggal Akhir</label>
                                             <div class="input-group date nk-int-st">
                                                 <span class="input-group-addon"></span>
-                                                <input type="text" class="form-control" name="tgl_akhir" required>
+                                                <input type="text" class="form-control" name="tgl_akhir" placeholder="Masukan tanggal akhir" required>
                                             </div>
                                         </div>
                                     </div>
