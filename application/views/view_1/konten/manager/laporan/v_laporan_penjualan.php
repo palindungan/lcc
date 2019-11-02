@@ -1,4 +1,4 @@
-<div class="breadcomb-area">
+    <div class="breadcomb-area">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -19,36 +19,84 @@
             </div>
         </div>
     </div>
-</div>
-<div class="data-table-area">
+    </div>
+    <div class="data-table-area">
     <div class="container">
         <h4>Laporan Periode</h4>
+        <div class="row">
+                <div style="margin-bottom: 30px;" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div style="padding:10px" class="contact-inner">
+                        <div class="datepicker-int">
+                            <form action="<?php echo base_url('laporan_manager/custom') ?>" method="post" target="_blank">
+                            <div class="row">
+                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                                    <div class="form-group nk-datapk-ctm form-elet-mg" id="data_1">
+                                        <label>Tanggal Mulai</label>
+                                        <div class="input-group date nk-int-st">
+                                            <span class="input-group-addon"></span>
+                                            <input type="text" class="form-control" name="tgl_mulai">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                                    <div class="form-group nk-datapk-ctm form-elet-mg" id="data_1">
+                                        <label>Tanggal Akhir</label>
+                                        <div class="input-group date nk-int-st">
+                                            <span class="input-group-addon"></span>
+                                            <input type="text" class="form-control" name="tgl_akhir">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                    <div class="form-group nk-datapk-ctm form-elet-mg" id="data_3">
+                                        <label>&nbsp</label>
+                                        <button type="submit" class="btn btn-primary btn-block">PDF</button>
+                                    </div>
+                                </div>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-bottom: 30px;" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <div style="padding:10px" class="contact-inner">
+                        <div class="datepicker-int">
+                            <form action="<?php echo base_url('laporan_manager/custom_excel') ?>" method="post"
+                                target="_blank">
+                                <div class="row">
+                                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                                        <div class="form-group nk-datapk-ctm form-elet-mg" id="data_1">
+                                            <label>Tanggal Mulai</label>
+                                            <div class="input-group date nk-int-st">
+                                                <span class="input-group-addon"></span>
+                                                <input type="text" class="form-control" name="tgl_mulai">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                                        <div class="form-group nk-datapk-ctm form-elet-mg" id="data_1">
+                                            <label>Tanggal Akhir</label>
+                                            <div class="input-group date nk-int-st">
+                                                <span class="input-group-addon"></span>
+                                                <input type="text" class="form-control" name="tgl_akhir">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                        <div class="form-group nk-datapk-ctm form-elet-mg" id="data_3">
+                                            <label>&nbsp</label>
+                                            <button type="submit" class="btn btn-success btn-block">Excel</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            
+        </div>
+        
         <div class="row" style="margin-bottom:27px;">
-            <form action="<?php echo base_url('laporan_manager/custom') ?>" method="post" target="_blank">
-            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12" style="margin-bottom:27px;">
-                <div id="data_1">
-                    <div class="input-group date nk-int-st">
-                        <span class="input-group-addon"></span>
-                        <input type="text" class="form-control" name="tgl_mulai"  placeholder="Tanggal Mulai">
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12" style="margin-bottom:27px;">
-                <div id="data_1">
-                    <div class="input-group date nk-int-st">
-                        <span class="input-group-addon"></span>
-                        <input type="text" class="form-control" name="tgl_akhir" placeholder="Tanggal Akhir">
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-                <div class="input-group">
-                    <span class="input-group-btn">
-                        <button type="submit" class="btn btn-primary btn-block"><i class="glyphicon glyphicon-search"></i> PDF</button>
-                    </span>
-                </div><!-- /input-group -->
-            </div>
-            </form>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="widget-tabs-int">
                     <div class="widget-tabs-list">
@@ -231,6 +279,6 @@
         </div>
     </div>
 
-</div>
-<!-- Breadcomb area End-->
-<!-- Data Table area Start-->
+    </div>
+    <!-- Breadcomb area End-->
+    <!-- Data Table area Start-->
