@@ -73,7 +73,7 @@
 										<div class="form-group">
 											<label for="inputEmail3" class="col-sm-2 control-label">Bayar</label>
 											<div class="col-sm-10">
-												<input type="text" name="bayar" class="form-control text-right bayar rupiah_2" id="bayar" placeholder="Masukan Jumlah Bayar" onkeyup="update_kembalian()">
+												<input type="text" name="bayar" class="form-control text-right bayar rupiah_2" id="bayar" placeholder="Masukan Jumlah Bayar" onkeyup="update_kembalian()" required>
 
 											</div>
 										</div>
