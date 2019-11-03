@@ -96,8 +96,9 @@ class Pemasokan extends CI_Controller
             $jumlah_pengeluaran = $this->input->post('jumlah_pengeluaran');
             $harga = preg_replace("/[^0-9]/", "", $jumlah_pengeluaran);
             $total = (int) $harga;
-
-            $deskripsi = 'Ongkos Kirim ' . $id_pemasokan;
+            $ambil_distributor = $this->db->query("SELECT * FROM distributor WHERE id_distributor='$id_distributor'")->result_array();
+            $nama_distributor = $ambil_distributor[0]['nama'];
+            $deskripsi = 'Ongkos Kirim ' . $nama_distributor;
 
             $data = array(
                 'id_pengeluaran_l' => $id_pengeluaran_l,
