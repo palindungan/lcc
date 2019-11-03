@@ -97,7 +97,7 @@ class Pemasokan extends CI_Controller
             $harga = preg_replace("/[^0-9]/", "", $jumlah_pengeluaran);
             $total = (int) $harga;
 
-            $deskripsi = 'Ongkos Kirim Pemasokan Kode : ' . $id_pemasokan;
+            $deskripsi = 'Ongkos Kirim ' . $id_pemasokan;
 
             $data = array(
                 'id_pengeluaran_l' => $id_pengeluaran_l,
