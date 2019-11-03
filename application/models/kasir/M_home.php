@@ -57,9 +57,9 @@ class M_home extends CI_Model
         $this->db->select('*');
         $this->db->from('barang_kasir bk');
 
-        $where = "(bk.nama like '%" . $keyword . "%' OR bk.kode_unik like '%" . $keyword . "%') && bk.id_toko = '" . $id_toko . "' && bk.qty > 0";
+        $where = "(bk.nama_barang like '%" . $keyword . "%' OR bk.kode_unik like '%" . $keyword . "%') && bk.id_toko = '" . $id_toko . "' && bk.qty > 0";
         $this->db->where($where);
-        $this->db->order_by('bk.nama', 'ASC');
+        $this->db->order_by('bk.nama_barang', 'ASC');
 
         return $this->db->get()->result();
     }

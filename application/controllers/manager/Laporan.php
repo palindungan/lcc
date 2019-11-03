@@ -213,7 +213,7 @@ class Laporan extends CI_Controller
     header('Cache-Control: max-age=0');
 
     $writer->save('php://output');
-\
+
   }
   public function cetak_hari()
   {
