@@ -33,8 +33,11 @@
 								<tr>
 									<th width="5%">No</th>
 									<th width="17%">Nama Barang</th>
-									<th width="25%">Barcode</th>
-									<th width="25%">Aksi</th>
+									<th width="17%">Nama Distributor</th>
+									<th style="text-align:center" width="15%">Tanggal</th>
+									<th style="text-align:center" width="10%">Waktu</th>
+									<th width="15%">Barcode</th>
+									<th width="10%">Aksi</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -44,7 +47,14 @@
                                 ?>
 								<tr>
 									<td><?= $no++; ?></td>
-									<td><?= $row->nama; ?></td>
+									<td><?= $row->nama_barang; ?></td>
+									<td><?= $row->nama_distributor; ?></td>
+									<td style="text-align:center;">
+										<?= date('d F Y', strtotime($row->tanggal)); ?>
+									</td>
+									<td style="text-align:center;">
+										<?= date('H:i:s', strtotime($row->tanggal)); ?>
+									</td>
 									<td><?= $row->kode_unik; ?></td>
 									<td>
 										<a class="btn btn-custom" target="_blank"
