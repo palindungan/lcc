@@ -127,8 +127,8 @@
                                                     <tr>
                                                         <th style="text-align: center;">No</th>
                                                         <th style="text-align: center;">Nama Customer</th>
-                                                        <th style="text-align: center;">Tanggal & Waktu</th>
                                                         <th style="text-align: center;">Nama Barang</th>
+                                                        <th style="text-align: center;">Tanggal & Waktu</th>
                                                         <th style="text-align: center;">Harga Beli</th>
                                                         <th style="text-align: center;">Harga Jual</th>
                                                         <th style="text-align: center;">Qty</th>
@@ -148,9 +148,10 @@
                                                         <tr>
                                                             <td style="text-align: center;"><?= $no_hari++; ?></td>
                                                             <td><?= $row_hari->nama_customer; ?></td>
-                                                            <td><?= date('d/m/Y H:i:s', strtotime($row_hari->tanggal_penjualan)); ?>
+                                                            <td style="text-align: center;">
+                                                                <?= $row_hari->nama_barang; ?></td>
+                                                            <td style="text-align:center;"><?= date('d/m/Y H:i:s', strtotime($row_hari->tanggal_penjualan)); ?>
                                                             </td>
-                                                            <td style="text-align: center;"><?= $row_hari->nama_barang; ?></td>
                                                             <td style="text-align: right;"><?= rupiah($row_hari->hrg_distributor) ?>
                                                             </td>
                                                             <td style="text-align: right;">
@@ -207,8 +208,8 @@
                                                     <tr>
                                                         <th style="text-align: center;">No</th>
                                                         <th style="text-align: center;">Nama Customer</th>
-                                                        <th style="text-align: center;">Tanggal & Waktu</th>
                                                         <th style="text-align: center;">Nama Barang</th>
+                                                        <th style="text-align: center;">Tanggal & Waktu</th>
                                                         <th style="text-align: center;">Harga Beli</th>
                                                         <th style="text-align: center;">Harga Jual</th>
                                                         <th style="text-align: center;">Qty</th>
@@ -228,10 +229,10 @@
                                                     <tr>
                                                         <td style="text-align: center;"><?= $no_bulan++; ?></td>
                                                         <td><?= $row_bulan->nama_customer; ?></td>
-                                                        <td>
-                                                            <?= date('d/m/Y H:i:s', strtotime($row_bulan->tanggal_penjualan)); ?>
-                                                        </td>
                                                         <td style="text-align: center;"><?= $row_bulan->nama_barang; ?>
+                                                        </td>
+                                                        <td style="text-align:center;">
+                                                            <?= date('d/m/Y H:i:s', strtotime($row_bulan->tanggal_penjualan)); ?>
                                                         </td>
                                                         <td style="text-align: right;">
                                                             <?= rupiah($row_bulan->hrg_distributor) ?>

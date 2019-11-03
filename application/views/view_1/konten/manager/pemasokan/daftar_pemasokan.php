@@ -48,18 +48,19 @@
 								<?php
 								foreach ($pemasokan_list as $row) {
 									?>
-									<tr>
-										<td><?= $row->id_pemasokan; ?></td>
-										<td><?= $row->nama; ?></td>
-										<td style="text-align:center"><?= date('d F Y', strtotime($row->tanggal)) ?></td>
-										<td style="text-align:center"><?= date('h:i:s', strtotime($row->tanggal)) ?></td>
-										<td style="text-align:right"><?= rupiah($row->total) ?></td>
-										<td>
-											<div class="table-actions">
-												<a class="btn btn-primary fa fa-search" href="<?php echo base_url("pemasokan/detail_pemasokan?id_pemasokan=" . $row->id_pemasokan) ?>"></a>
-											</div>
-										</td>
-									</tr>
+								<tr>
+									<td><?= $row->id_pemasokan; ?></td>
+									<td><?= $row->nama; ?></td>
+									<td style="text-align:center"><?= date('d F Y', strtotime($row->tanggal)) ?></td>
+									<td style="text-align:center"><?= date('H:i:s', strtotime($row->tanggal)) ?></td>
+									<td style="text-align:right"><?= rupiah($row->total) ?></td>
+									<td>
+										<div class="table-actions">
+											<a class="btn btn-primary fa fa-search"
+												href="<?php echo base_url("pemasokan/detail_pemasokan?id_pemasokan=" . $row->id_pemasokan) ?>"></a>
+										</div>
+									</td>
+								</tr>
 								<?php
 								}
 								?>

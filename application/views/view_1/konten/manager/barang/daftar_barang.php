@@ -55,7 +55,7 @@
 									<td style="text-align:center"><?= $row->qty ?></td>
 									<td style="text-align:right;"><?= rupiah($row->hrg_distributor) ?></td>
 									<td style="text-align:center"><?= date('d F Y', strtotime($row->tanggal)) ?></td>
-									<td style="text-align:center"><?= date('h:i:s', strtotime($row->tanggal)) ?></td>
+									<td style="text-align:center"><?= date('H:i:s', strtotime($row->tanggal)) ?></td>
 								</tr>
 
 								<?php 

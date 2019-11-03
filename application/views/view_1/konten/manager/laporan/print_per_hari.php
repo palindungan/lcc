@@ -20,8 +20,8 @@
 				<tr>
 					<th width="3%" style="text-align: center;background:black;color:white;">No</th>
 					<th width="16%" style="text-align: center;background:black;color:white;">Nama Customer</th>
-					<th width="16%" style="text-align: center;background:black;color:white;">Tanggal & Waktu</th>
 					<th width="18%" style="text-align: center;background:black;color:white;">Nama Barang</th>
+					<th width="16%" style="text-align: center;background:black;color:white;">Tanggal & Waktu</th>
 					<th width="14%" style="text-align: center;background:black;color:white;">Harga Beli</th>
 					<th width="14%" style="text-align: center;background:black;color:white;">Harga Jual</th>
 					<th width="5%" style="text-align: center;background:black;color:white;">Qty</th>
@@ -38,9 +38,9 @@
 				<tr>
 					<td style="text-align: center;"><?= $no_hari++; ?></td>
 					<td style="text-align: left;"><?= $row_hari->nama_customer; ?></td>
+					<td style="text-align: center;"><?= $row_hari->nama_barang; ?></td>
 					<td style="text-align: center;">
 						<?= date('d/m/Y H:i:s', strtotime($row_hari->tanggal_penjualan)); ?></td>
-					<td style="text-align: center;"><?= $row_hari->nama_barang; ?></td>
 					<td style="text-align: right;"><?= rupiah($row_hari->hrg_distributor) ?></td>
 					<td style="text-align: right;"><?= rupiah($row_hari->harga_jual) ?></td>
 					<td style="text-align: center;"><?= $row_hari->jumlah_barang; ?></td>
