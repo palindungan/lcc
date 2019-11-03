@@ -96,7 +96,7 @@
                                 <label>Qty</label>
                             </div>
                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                <label>Harga</label>
+                                <label>Harga / item</label>
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                                 <label>Hapus</label>
@@ -193,7 +193,7 @@
                     <input required="" type="number" class="form-control" id="qty` + count1 + `" name="qty[]" placeholder="qty" value=""  min="1" max="999">
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <input required="" type="text" class="form-control rupiah_2" id="hrg_distributor` + count1 + `" name="hrg_distributor[]" placeholder="Harga" value="">
+                    <input required="" type="text" class="form-control rupiah_2" id="hrg_distributor` + count1 + `" name="hrg_distributor[]" placeholder="Harga / item" value="">
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                     <button type="button" id="` + count1 + `" class="remove_baris btn btn-danger"><i class="notika-icon notika-trash"></i></button>

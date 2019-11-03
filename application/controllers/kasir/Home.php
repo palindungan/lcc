@@ -148,10 +148,10 @@ class Home extends CI_Controller
             <table class="table">
                 <thead>
                     <tr>
-                        <th class="text-center" width="58%">NAMA</th>
-                        <th class="text-center" width="40%">HARGA</th>
-                        <th width="1%">QTY</th>
-                        <th width="1%">.</th>
+                        <th class="text-center" width="58%">Nama</th>
+                        <th class="text-center" width="40%">Harga / item</th>
+                        <th width="1%">Qty</th>
+                        <th width="1%">&nbsp</th>
                     </tr>
                 </thead>
                 <tbody>
