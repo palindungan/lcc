@@ -103,6 +103,9 @@
 							<li>
 								<a href="<?= base_url('laporan_manager'); ?>">Laporan</a>
 							</li>
+							<li>
+								<a href="<?= base_url('laporan_manager/garansi'); ?>">Garansi</a>
+							</li>
 						</ul>
 					</div>
 
