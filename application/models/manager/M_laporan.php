@@ -50,6 +50,6 @@ class M_laporan extends CI_Model
 
 	function get_data($table, $where)
 	{
-		return $this->db->get_where($table, $where);
+		return $this->db->order_by('tanggal', 'DESC')->get_where($table, $where);
 	}
 }
