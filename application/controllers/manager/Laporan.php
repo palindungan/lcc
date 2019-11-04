@@ -572,6 +572,13 @@ class Laporan extends CI_Controller
 
   public function garansi()
   {
-    $this->template->load('view_1/template/manager', 'view_1/konten/manager/laporan/v_garansi');
+    $id_toko = $this->session->userdata('id_toko'); // session
+
+    $data_id = array(
+      'id_toko' => $id_toko
+    );
+
+    $data['record'] = $this->M_laporan->get_data('barang_garansi', $data_id)->result();
+    $this->template->load('view_1/template/manager', 'view_1/konten/manager/laporan/v_garansi', $data);
   }
 }

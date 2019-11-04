@@ -33,26 +33,31 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
+                                    <th>Nama pelanggan</th>
                                     <th>Nama Barang</th>
                                     <th>Tanggal Pembelian</th>
                                     <th>Kode Unik</th>
-                                    <th>Garansi</th>
-                                    <th>Aksi</th>
+                                    <th>Garansi Telah Berjalan</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Acer Aspire E14</td>
-                                    <td>01-10-2019</td>
-                                    <td>123812812</td>
-                                    <td>120 Hari</td>
-                                    <td>
-                                        <div class="table-actions">
-                                            <a class="btn btn-primary fa fa-search" href="<?php echo base_url("pemasokan/detail_pemasokan?id_pemasokan=") ?>"></a>
-                                        </div>
-                                    </td>
-                                </tr>
+                                <?php
+                                $no = 1;
+                                foreach ($record as $row) {
+                                    ?>
+
+                                    <tr>
+                                        <td><?= $no++; ?></td>
+                                        <td><?= $row->nama_customer; ?></td>
+                                        <td><?= $row->nama_barang; ?></td>
+                                        <td><?= $row->tanggal; ?></td>
+                                        <td><?= $row->kode_unik; ?></td>
+                                        <td><?= $row->garansi_berjalan . ' Hari'; ?></td>
+                                    </tr>
+
+                                <?php
+                                }
+                                ?>
                             </tbody>
                         </table>
                     </div>
