@@ -67,8 +67,8 @@ foreach ($user as $data) {
 										<div class="form-ic-cmp">
 										</div>
 										<div class="nk-int-st">
-											<button type="submit" class="btn btn-primary">simpan</button>
-											<a href="<?php echo base_url('user_manager'); ?>" class="btn btn-danger">Kembali</a>
+											<button type="submit" class="btn btn-warning">Update</button>
+											<a href="<?php echo base_url('user_manager'); ?>" class="btn btn-link">Kembali</a>
 										</div>
 									</div>
 								</div>

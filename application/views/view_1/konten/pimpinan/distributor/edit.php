@@ -35,48 +35,33 @@ foreach ($distributor as $data) {
 						<div class="row">
 							<form action="<?php echo base_url("pimpinan/distributor/update") ?>" method="post">
 								<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-									<div class="form-group <?php if (form_error('nama') == true) {
-																	echo "has-error";
-																} ?>">
-										<div class="form-ic-cmp">
-										</div>
+									<div class="form-group">
 										<div class="nk-int-st">
 											<label>Nama</label>
 											<input type="hidden" name="id_distributor" value="<?php echo $data->id_distributor ?>">
-											<input type="text" class="form-control" value="<?php echo $data->nama ?>" name="nama">
-											<span class="help-block"><?php echo form_error('nama'); ?></span>
+											<input type="text" class="form-control karakter" value="<?php echo $data->nama ?>" name="nama" required>
 										</div>
 									</div>
 								</div>
 								<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-									<div class="form-group <?php if (form_error('alamat') == true) {
-																	echo "has-error";
-																} ?>">
-										<div class="form-ic-cmp">
-										</div>
+									<div class="form-group">
 										<div class="nk-int-st">
 											<label>Alamat</label>
-											<input type="text" class="form-control" value="<?php echo $data->alamat ?>" name="alamat">
-											<span class="help-block"><?php echo form_error('alamat'); ?></span>
+											<input type="text" class="form-control" value="<?php echo $data->alamat ?>" name="alamat" required>
 										</div>
 									</div>
 								</div>
 								<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-									<div class="form-group  <?php if (form_error('no_hp') == true) {
-																	echo "has-error";
-																} ?>">
-										<div class="form-ic-cmp">
-										</div>
+									<div class="form-group">
 										<div class="nk-int-st">
 											<label>No Hp</label>
-											<input type="text" class="form-control" value="<?php echo $data->no_hp ?>" name="no_hp">
-											<span class="help-block"><?php echo form_error('no_hp'); ?></span>
+											<input type="text" class="form-control hp" value="<?php echo noHp($data->no_hp) ?>" name="no_hp" required>
 										</div>
 									</div>
 								</div>
 						</div>
-						<button type="submit" class="btn btn-primary">Simpan</button>
-						<a href="<?php echo base_url('distributor'); ?>" class="btn btn-danger">Kembali</a>
+						<button type="submit" class="btn btn-warning">Update</button>
+						<a href="<?php echo base_url('distributor'); ?>" class="btn btn-link">Kembali</a>
 
 					</div>
 					</form>

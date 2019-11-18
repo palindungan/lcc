@@ -15,7 +15,6 @@ class Distributor extends CI_Controller
 			redirect('login/logout');
 		}
 		$this->load->model('kasir/M_distributor');
-		$this->load->library('form_validation');
 	}
 	function index()
 	{
@@ -28,26 +27,16 @@ class Distributor extends CI_Controller
 	}
 	function insert_data()
 	{
-		$this->form_validation->set_rules('nama', 'nama', 'required');
-		$this->form_validation->set_rules('alamat', 'alamat', 'required');
-		$this->form_validation->set_rules('no_hp', 'no hp', 'required');
-		if ($this->form_validation->run() == TRUE) {
-			$kode = $this->M_distributor->get_no();
-			$data = array(
-				'id_distributor' => $kode,
-				'nama' => $this->input->post('nama'),
-				'alamat' => $this->input->post('alamat'),
-				'no_hp' => $this->input->post('no_hp')
-			);
-			$input = $this->M_distributor->input($data);
-			if ($input) {
-				redirect("pimpinan/distributor");
-			} else {
-				echo "gagal";
-			}
-		} else {
-			$this->template->load('view_1/template/pimpinan', 'view_1/konten/pimpinan/distributor/input');
-		}
+		$kode = $this->M_distributor->get_no();
+		$no_hp = str_replace("-", "", $this->input->post('no_hp'));
+		$data = array(
+			'id_distributor' => $kode,
+			'nama' => $this->input->post('nama'),
+			'alamat' => $this->input->post('alamat'),
+			'no_hp' => $no_hp
+		);
+		$input = $this->M_distributor->input($data);
+		redirect("pimpinan/distributor");
 	}
 	function edit($id)
 	{
@@ -57,27 +46,20 @@ class Distributor extends CI_Controller
 	}
 	function update()
 	{
-		$id_distributor = $this->input->post('id_distributor');
-		$this->form_validation->set_rules('nama', 'nama', 'required');
-		$this->form_validation->set_rules('alamat', 'alamat', 'required');
-		$this->form_validation->set_rules('no_hp', 'no hp', 'required');
-		if ($this->form_validation->run() == TRUE) {
-			$nama = $this->input->post('nama');
-			$alamat = $this->input->post('alamat');
-			$no_hp = $this->input->post('no_hp');
-			$data = array(
-				'nama'  => $nama,
-				'alamat' => $alamat,
-				'no_hp' => $no_hp
-			);
-			$where = array(
-				'id_distributor' => $id_distributor
-			);
-			$this->M_distributor->update($where, $data, 'distributor');
-			redirect('pimpinan/distributor');
-		} else {
-			$this->edit($id_distributor);
-		}
+		$no_hp = str_replace("-", "", $this->input->post('no_hp'));
+		$nama = $this->input->post('nama');
+		$alamat = $this->input->post('alamat');
+		$data = array(
+			'nama'  => $nama,
+			'alamat' => $alamat,
+			'no_hp' => $no_hp
+		);
+		$where = array(
+			'id_distributor' => $id_distributor
+		);
+		$this->M_distributor->update($where, $data, 'distributor');
+		redirect('pimpinan/distributor');
+		
 	}
 	function hapus($id)
 	{

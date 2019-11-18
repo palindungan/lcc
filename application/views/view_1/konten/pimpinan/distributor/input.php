@@ -32,47 +32,30 @@
 					<div class="row">
 						<form action="<?php echo base_url("pimpinan/distributor/insert_data") ?>" method="post">
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-								<div class="form-group  <?php if (form_error('nama') == true) {
-															echo "has-error";
-														} ?>">
-									<div class="form-ic-cmp">
-									</div>
+								<div class="form-group">
 									<label>Nama</label>
-									<input type="text" class="form-control" placeholder="Masukan Nama" name="nama" value="<?= set_value('nama') ?>">
-									<span class="help-block"><?php echo form_error('nama'); ?></span>
+									<input type="text" class="form-control karakter" placeholder="Masukan Nama" name="nama" required>
 								</div>
 							</div>
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-								<div class="form-group <?php if (form_error('alamat') == true) {
-															echo "has-error";
-														} ?>">
-									<div class="form-ic-cmp">
-									</div>
+								<div class="form-group">
 									<label>Alamat</label>
-									<input type="text" class="form-control" placeholder="Masukan Alamat" name="alamat" value="<?= set_value('alamat') ?>">
-									<span class="help-block"><?php echo form_error('alamat'); ?></span>
+									<input type="text" class="form-control" placeholder="Masukan Alamat" name="alamat" required>
 								</div>
 							</div>
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-								<div class="form-group <?php if (form_error('no_hp') == true) {
-															echo "has-error";
-														} ?>">
-									<div class="form-ic-cmp">
-									</div>
+								<div class="form-group">
 									<label>No Hp</label>
-									<input type="text" class="form-control" placeholder="Masukan No Hp" name="no_hp" value="<?= set_value('no_hp') ?>">
-									<span class="help-block"><?php echo form_error('no_hp'); ?></span>
+									<input type="text" class="form-control hp" placeholder="Masukan No Hp" name="no_hp" required>
 								</div>
 							</div>
 					</div>
 					<div class="row">
 						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 							<div class="form-group ic-cmp-int">
-								<div class="form-ic-cmp">
-								</div>
 								<div class="nk-int-st">
 									<button type="submit" class="btn btn-primary">Simpan</button>
-									<a href="<?php echo base_url('distributor'); ?>" class="btn btn-danger">Kembali</a>
+									<a href="<?php echo base_url('distributor'); ?>" class="btn btn-link">Kembali</a>
 								</div>
 							</div>
 						</div>

@@ -52,11 +52,11 @@
 										<td><?php echo $no++; ?></td>
 										<td><?php echo $a->nama; ?></td>
 										<td><?php echo $a->alamat; ?></td>
-										<td><?php echo $a->no_hp; ?></td>
+										<td><?php echo noHp($a->no_hp); ?></td>
 										<td>
 											<div class="table-actions">
-												<a href="<?php echo base_url("distributor/edit/" . $a->id_distributor) ?>" type='button' class='btn btn-primary fa fa-pencil-square'></a>
-												<a href="<?php echo base_url("distributor/hapus/" . $a->id_distributor) ?>" type='button' class='btn btn-danger fa fa-trash' onclick="return confirm('anda yakin ingin menghapus data ?')"></a>
+												<a href="<?php echo base_url("distributor/edit/" . $a->id_distributor) ?>" type='button' class='btn btn-primary'>Edit</a>
+												<a href="<?php echo base_url("distributor/hapus/" . $a->id_distributor) ?>" type='button' class='btn btn-danger' onclick="return confirm('anda yakin ingin menghapus data ?')">Hapus</a>
 											</div>
 										</td>
 									</tr>

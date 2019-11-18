@@ -33,30 +33,26 @@
 								<form action="<?php echo base_url("pimpinan/edit_account/ubah_biodata") ?>" method="post">
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 										<div class="form-group">
-											<div class="form-ic-cmp">
-											</div>
 											<div class="nk-int-st">
 												<label>Nama</label>
 												<input type="hidden" name="id" value="<?= $id ?>">
-												<input type="text" class="form-control" name="nama" value="<?= $nama ?>">
+												<input type="text" class="form-control karakter" name="nama" value="<?= $nama ?>" required>
 											</div>
 										</div>
 									</div>
 									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 										<div class="form-group">
-											<div class="form-ic-cmp">
-											</div>
 											<div class="nk-int-st">
 												<label>Username</label>
-												<input type="text" class="form-control" name="username" value="<?= $username ?>">
+												<input type="text" class="form-control" name="username" value="<?= $username ?>" required>
 											</div>
 										</div>
 									</div>
 							</div>
 							<div class="row">
 								<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-									<button type="submit" class="btn btn-primary">Simpan</button>
-									<a onclick=self.history.back() class="btn btn-danger">Kembali</a>
+									<button type="submit" class="btn btn-warning">Update</button>
+									<a onclick=self.history.back() class="btn btn-link">Kembali</a>
 								</div>
 							</div>
 						</div>
@@ -80,32 +76,24 @@
 														<form method="POST" action="<?php echo base_url("pimpinan/edit_account/ubah_password") ?>">
 															<div class="modal-body">
 																<div class="form-group">
-																	<div class="form-ic-cmp">
-																	</div>
 																	<div class="nk-int-st">
 																		<label>Password Lama</label>
-																		<input type="password" class="form-control" name="confirm_lama">
+																		<input type="password" class="form-control" name="confirm_lama" placeholder="Masukan password lama" required>
 																	</div>
 																</div>
 																<div class="form-group">
-																	<div class="form-ic-cmp">
-																	</div>
 																	<div class="nk-int-st">
 																		<label>Password Baru</label>
-																		<input type="password" class="form-control" name="password_baru">
+																		<input type="password" class="form-control" placeholder="Masukan password baru" name="password_baru" required> 
 																	</div>
 																</div>
 																<div class="form-group">
-																	<div class="form-ic-cmp">
-																	</div>
 																	<div class="nk-int-st">
 																		<label>Konfirmasi Password Baru</label>
-																		<input type="password" class="form-control" name="confirm_password">
+																		<input type="password" class="form-control" name="confirm_password" placeholder="Konfirmasi password baru" required>
 																	</div>
 																</div>
 																<div class="form-group">
-																	<div class="form-ic-cmp">
-																	</div>
 																	<div class="nk-int-st">
 																		<button type="submit" class="btn btn-primmary">Simpan</button>
 																	</div>

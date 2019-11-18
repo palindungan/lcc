@@ -5,4 +5,7 @@ if (!function_exists('rupiah')) {
     $hasil_rupiah = number_format($angka,0,',','.');
     return $hasil_rupiah;
     }
+    function noHp($str) {
+        return implode("-", str_split($str, 4));
+    }
 }

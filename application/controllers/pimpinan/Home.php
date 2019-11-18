@@ -141,12 +141,20 @@ class Home extends CI_Controller
         if($select_toko == "semua" && $select_tanggal == "hari")
         {
             echo '<div class="row">
-                <div style="margin-bottom:16px;" class="col-md-12">
+                <div style="margin-bottom:16px;" class="col-md-6">
                     <div class="contact-inner" style="height:135px">
-                        <h2 class="text-right">
+                        <h3 class="text-right">
                             '.rupiah($pemasukan_semua_hari).'
-                        </h2>
-                        <span><strong>TOTAL PEMASUKAN</strong></span>
+                        </h3>
+                        <span><strong>Pemasukan</strong></span>
+                    </div>
+                </div>
+                <div style="margin-bottom:16px;" class="col-md-6">
+                    <div class="contact-inner" style="height:135px">
+                        <h3 class="text-right">
+                            '.rupiah($pengeluaran_semua_hari).'
+                        </h3>
+                        <span><strong>Pengeluaran</strong></span>
                     </div>
                 </div>
             </div>
@@ -154,22 +162,30 @@ class Home extends CI_Controller
                 <div class="col-md-12">
                     <div class="contact-inner" style="height:135px">
                         <h2 class="text-right">
-                            '.rupiah($pengeluaran_semua_hari).'                            
-                        </h2>
-                        <span><strong>TOTAL PENGELUARAN</strong></span>
+                            '.rupiah($pemasukan_semua_hari - $pengeluaran_semua_hari).'        </h2>
+                        <span><strong>Keuntungan Bersih</strong></span>
                     </div>
                 </div>
-            </div>';
+            </div>
+            ';
         }
         else if($select_toko == "semua" && $select_tanggal == "bulan")
         {
             echo '<div class="row">
-                <div style="margin-bottom:16px;" class="col-md-12">
+                <div style="margin-bottom:16px;" class="col-md-6">
                     <div class="contact-inner" style="height:135px">
-                        <h2 class="text-right">
+                        <h3 class="text-right">
                             '.rupiah($pemasukan_semua_bulan).'
-                        </h2>
-                        <span><strong>TOTAL PEMASUKAN</strong></span>
+                        </h3>
+                        <span><strong>Pemasukan</strong></span>
+                    </div>
+                </div>
+                <div style="margin-bottom:16px;" class="col-md-6">
+                    <div class="contact-inner" style="height:135px">
+                        <h3 class="text-right">
+                            '.rupiah($pengeluaran_semua_bulan).'
+                        </h3>
+                        <span><strong>Pengeluaran</strong></span>
                     </div>
                 </div>
             </div>
@@ -177,9 +193,9 @@ class Home extends CI_Controller
                 <div class="col-md-12">
                     <div class="contact-inner" style="height:135px">
                         <h2 class="text-right">
-                            '.rupiah($pengeluaran_semua_bulan).'                            
+                            '.rupiah($pemasukan_semua_bulan - $pengeluaran_semua_bulan).'                            
                         </h2>
-                        <span><strong>TOTAL PENGELUARAN</strong></span>
+                        <span><strong>Keuntungan Bersih</strong></span>
                     </div>
                 </div>
             </div>';
@@ -187,12 +203,20 @@ class Home extends CI_Controller
         else if($select_toko == "T1" && $select_tanggal=="hari")
         {
             echo '<div class="row">
-                <div style="margin-bottom:16px;" class="col-md-12">
+                <div style="margin-bottom:16px;" class="col-md-6">
                     <div class="contact-inner" style="height:135px">
-                        <h2 class="text-right">
+                        <h3 class="text-right">
                             '.rupiah($pemasukan_lcc_hari).'
-                        </h2>
-                        <span><strong>TOTAL PEMASUKAN</strong></span>
+                        </h3>
+                        <span><strong>Pemasukan</strong></span>
+                    </div>
+                </div>
+                <div style="margin-bottom:16px;" class="col-md-6">
+                    <div class="contact-inner" style="height:135px">
+                        <h3 class="text-right">
+                            '.rupiah($pengeluaran_lcc_hari).'
+                        </h3>
+                        <span><strong>Pengeluaran</strong></span>
                     </div>
                 </div>
             </div>
@@ -200,9 +224,9 @@ class Home extends CI_Controller
                 <div class="col-md-12">
                     <div class="contact-inner" style="height:135px">
                         <h2 class="text-right">
-                            '.rupiah($pengeluaran_lcc_hari).'                            
+                            '.rupiah($pemasukan_lcc_hari - $pengeluaran_lcc_hari).'                            
                         </h2>
-                        <span><strong>TOTAL PENGELUARAN</strong></span>
+                        <span><strong>Keuntungan Bersih</strong></span>
                     </div>
                 </div>
             </div>';
@@ -210,12 +234,20 @@ class Home extends CI_Controller
         else if($select_toko == "T1" && $select_tanggal=="bulan")
         {
             echo '<div class="row">
-                <div style="margin-bottom:16px;" class="col-md-12">
+                <div style="margin-bottom:16px;" class="col-md-6">
                     <div class="contact-inner" style="height:135px">
-                        <h2 class="text-right">
+                        <h3 class="text-right">
                             '.rupiah($pemasukan_lcc_bulan).'
-                        </h2>
-                        <span><strong>TOTAL PEMASUKAN</strong></span>
+                        </h3>
+                        <span><strong>Pemasukan</strong></span>
+                    </div>
+                </div>
+                <div style="margin-bottom:16px;" class="col-md-6">
+                    <div class="contact-inner" style="height:135px">
+                        <h3 class="text-right">
+                            '.rupiah($pengeluaran_lcc_bulan).'
+                        </h3>
+                        <span><strong>Pengeluaran</strong></span>
                     </div>
                 </div>
             </div>
@@ -223,9 +255,9 @@ class Home extends CI_Controller
                 <div class="col-md-12">
                     <div class="contact-inner" style="height:135px">
                         <h2 class="text-right">
-                            '.rupiah($pengeluaran_lcc_bulan).'                            
+                            '.rupiah($pemasukan_lcc_bulan - $pengeluaran_lcc_bulan).'                            
                         </h2>
-                        <span><strong>TOTAL PENGELUARAN</strong></span>
+                        <span><strong>Keuntungan Bersih</strong></span>
                     </div>
                 </div>
             </div>';
@@ -233,12 +265,20 @@ class Home extends CI_Controller
         else if($select_toko == "T2" && $select_tanggal=="hari")
         {
             echo '<div class="row">
-                <div style="margin-bottom:16px;" class="col-md-12">
+                <div style="margin-bottom:16px;" class="col-md-6">
                     <div class="contact-inner" style="height:135px">
-                        <h2 class="text-right">
+                        <h3 class="text-right">
                             '.rupiah($pemasukan_cmc_hari).'
-                        </h2>
-                        <span><strong>TOTAL PEMASUKAN</strong></span>
+                        </h3>
+                        <span><strong>Pemasukan</strong></span>
+                    </div>
+                </div>
+                <div style="margin-bottom:16px;" class="col-md-6">
+                    <div class="contact-inner" style="height:135px">
+                        <h3 class="text-right">
+                            '.rupiah($pengeluaran_cmc_hari).'
+                        </h3>
+                        <span><strong>Pengeluaran</strong></span>
                     </div>
                 </div>
             </div>
@@ -246,9 +286,9 @@ class Home extends CI_Controller
                 <div class="col-md-12">
                     <div class="contact-inner" style="height:135px">
                         <h2 class="text-right">
-                            '.rupiah($pengeluaran_cmc_hari).'                            
+                            '.rupiah($pemasukan_cmc_hari - $pengeluaran_cmc_hari).'                            
                         </h2>
-                        <span><strong>TOTAL PENGELUARAN</strong></span>
+                        <span><strong>Keuntungan Bersih</strong></span>
                     </div>
                 </div>
             </div>';
@@ -256,12 +296,20 @@ class Home extends CI_Controller
         else if($select_toko == "T2" && $select_tanggal=="bulan")
         {
             echo '<div class="row">
-                <div style="margin-bottom:16px;" class="col-md-12">
+                <div style="margin-bottom:16px;" class="col-md-6">
                     <div class="contact-inner" style="height:135px">
-                        <h2 class="text-right">
+                        <h3 class="text-right">
                             '.rupiah($pemasukan_cmc_bulan).'
-                        </h2>
-                        <span><strong>TOTAL PEMASUKAN</strong></span>
+                        </h3>
+                        <span><strong>Pemasukan</strong></span>
+                    </div>
+                </div>
+                <div style="margin-bottom:16px;" class="col-md-6">
+                    <div class="contact-inner" style="height:135px">
+                        <h3 class="text-right">
+                            '.rupiah($pengeluaran_cmc_bulan).'
+                        </h3>
+                        <span><strong>Pengeluaran</strong></span>
                     </div>
                 </div>
             </div>
@@ -269,9 +317,9 @@ class Home extends CI_Controller
                 <div class="col-md-12">
                     <div class="contact-inner" style="height:135px">
                         <h2 class="text-right">
-                            '.rupiah($pengeluaran_cmc_bulan).'                            
+                            '.rupiah($pemasukan_cmc_bulan - $pengeluaran_cmc_bulan).'                            
                         </h2>
-                        <span><strong>TOTAL PENGELUARAN</strong></span>
+                        <span><strong>Keuntungan Bersih</strong></span>
                     </div>
                 </div>
             </div>';
@@ -279,12 +327,20 @@ class Home extends CI_Controller
         else if($select_toko == "T3" && $select_tanggal=="hari")
         {
             echo '<div class="row">
-                <div style="margin-bottom:16px;" class="col-md-12">
+                <div style="margin-bottom:16px;" class="col-md-6">
                     <div class="contact-inner" style="height:135px">
-                        <h2 class="text-right">
+                        <h3 class="text-right">
                             '.rupiah($pemasukan_probolinggo_hari).'
-                        </h2>
-                        <span><strong>TOTAL PEMASUKAN</strong></span>
+                        </h3>
+                        <span><strong>Pemasukan</strong></span>
+                    </div>
+                </div>
+                <div style="margin-bottom:16px;" class="col-md-6">
+                    <div class="contact-inner" style="height:135px">
+                        <h3 class="text-right">
+                            '.rupiah($pengeluaran_probolinggo_hari).'
+                        </h3>
+                        <span><strong>Pengeluaran</strong></span>
                     </div>
                 </div>
             </div>
@@ -292,9 +348,9 @@ class Home extends CI_Controller
                 <div class="col-md-12">
                     <div class="contact-inner" style="height:135px">
                         <h2 class="text-right">
-                            '.rupiah($pengeluaran_probolinggo_hari).'                            
+                            '.rupiah($pemasukan_probolinggo_hari - $pengeluaran_probolinggo_hari).'                            
                         </h2>
-                        <span><strong>TOTAL PENGELUARAN</strong></span>
+                        <span><strong>Keuntungan Bersih</strong></span>
                     </div>
                 </div>
             </div>';
@@ -302,12 +358,20 @@ class Home extends CI_Controller
         else if($select_toko == "T3" && $select_tanggal=="bulan")
         {
             echo '<div class="row">
-                <div style="margin-bottom:16px;" class="col-md-12">
+                <div style="margin-bottom:16px;" class="col-md-6">
                     <div class="contact-inner" style="height:135px">
-                        <h2 class="text-right">
+                        <h3 class="text-right">
                             '.rupiah($pemasukan_probolinggo_bulan).'
-                        </h2>
-                        <span><strong>TOTAL PEMASUKAN</strong></span>
+                        </h3>
+                        <span><strong>Pemasukan</strong></span>
+                    </div>
+                </div>
+                <div style="margin-bottom:16px;" class="col-md-6">
+                    <div class="contact-inner" style="height:135px">
+                        <h3 class="text-right">
+                            '.rupiah($pengeluaran_probolinggo_bulan).'
+                        </h3>
+                        <span><strong>Pengeluaran</strong></span>
                     </div>
                 </div>
             </div>
@@ -315,9 +379,9 @@ class Home extends CI_Controller
                 <div class="col-md-12">
                     <div class="contact-inner" style="height:135px">
                         <h2 class="text-right">
-                            '.rupiah($pengeluaran_probolinggo_bulan).'                            
+                            '.rupiah($pemasukan_probolinggo_bulan - $pengeluaran_probolinggo_bulan).'                            
                         </h2>
-                        <span><strong>TOTAL PENGELUARAN</strong></span>
+                        <span><strong>Keuntungan Bersih</strong></span>
                     </div>
                 </div>
             </div>';
