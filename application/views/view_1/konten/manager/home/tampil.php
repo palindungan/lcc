@@ -52,7 +52,7 @@
 						<h2 class="text-right">
 							<?= $kasir->jumlah_kasir ?>
 						</h2>
-						<span><strong>JUMLAH KASIR</strong></span>
+						<span><strong>Jumlah Kasir</strong></span>
 					</div>
 				</div>
 			</div>
@@ -64,7 +64,7 @@
 						<h2 class="text-right">
 							<?= $barang->jenis_barang ?>
 						</h2>
-						<span><strong>JENIS BARANG</strong></span>
+						<span><strong>Jenis Barang</strong></span>
 					</div>
 				</div>
 			</div>
@@ -77,7 +77,7 @@
 						<h2 class="text-right">
 							<?= $stok_habis->jumlah_habis ?>
 						</h2>
-						<span><strong>STOK HABIS</strong></span>
+						<span><strong>Stok Habis</strong></span>
 					</div>
 				</div>
 			</div>

@@ -31,8 +31,8 @@
 						<table width="100%" id="data-table-basic" class="table table-striped">
 							<thead>
 								<tr>
-									<th width="5%">No</th>
-									<th width="17%">Nama Barang</th>
+									<th width="3%" class="text-center">No</th>
+									<th width="25%">Nama Barang</th>
 									<th width="25%">Stok Tersisa</th>
 								</tr>
 							</thead>
@@ -42,7 +42,7 @@
                                 foreach($record as $row){
                                 ?>
 								<tr>
-									<td><?= $no++; ?></td>
+									<td class="text-center"><?= $no++; ?></td>
 									<td><?= $row->nama; ?></td>
 									<td><?= $row->stok; ?></td>
 								</tr>

@@ -95,6 +95,49 @@
 		============================================ -->
 <script src="<?= base_url(); ?>assets/notika/js/data-table/jquery.dataTables.min.js"></script>
 <script src="<?= base_url(); ?>assets/notika/js/data-table/data-table-act.js"></script>
+<script src="<?= base_url(); ?>assets/vendor/auto_complete/jquery-ui/jquery-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
+<!-- Validasi -->
+<!-- validasi inputan rupiah -->
+<script type="text/javascript">
+	$(document).ready(function () {
+		$('.rupiah').mask('000.000.000', {
+			reverse: true
+		});
+		$('.hp').mask('0000-0000-0000-000');
+		$('.nik').mask('0000000000000000');
+		$('.min_stok').mask('000');
+	})
+
+</script>
+<!-- Validasi hanya karakter -->
+<script>
+	$('.karakter').keypress(function (e) {
+		var regex = new RegExp(/^[a-zA-Z\s]+$/);
+		var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+		if (regex.test(str)) {
+			return true;
+		} else {
+			e.preventDefault();
+			return false;
+		}
+	});
+
+</script>
+<script>
+	$('.karakterAngka').keypress(function (e) {
+		var regex = new RegExp(/^[a-z0-9\s]+$/i);
+		var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+		if (regex.test(str)) {
+			return true;
+		} else {
+			e.preventDefault();
+			return false;
+		}
+	});
+
+</script>
+
 <script>
 	$('#data-table-basic').DataTable({
 		ordering: false
@@ -118,5 +161,3 @@
 	$("form :input").attr("autocomplete", "off");
 
 </script>
-
-<script src="<?= base_url(); ?>assets/vendor/auto_complete/jquery-ui/jquery-ui.js"></script>

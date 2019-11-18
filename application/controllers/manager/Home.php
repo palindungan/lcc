@@ -126,38 +126,49 @@ class Home extends CI_Controller
         if($select=='hari')
         {
 		echo '<a style="color:black" href="'.base_url('laporan_manager').'">
-			<div style="margin-bottom: 30px;" class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+			<div style="margin-bottom: 30px;" class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 				<div class="contact-inner">
 					<div class="contact-inner">
-						<h2 class="text-right">
+						<h4 class="text-right">
 							'.$data['hari']->jumlah_hari.'
-						</h2>
-						<span><strong>JUMLAH TRANSAKSI</strong></span>
+						</h4>
+						<span><strong>Jumlah Transaksi</strong></span>
 					</div>
 				</div>
 			</div>
 		</a>
 		<a style="color:black" href="'.base_url('laporan_manager').'">
-			<div style="margin-bottom: 30px;" class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+			<div style="margin-bottom: 30px;" class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 				<div class="contact-inner">
 					<div class="contact-inner">
-						<h2 class="text-right">
+						<h4 class="text-right">
 							'.rupiah($untung_hari).'
-						</h2>
-						<span><strong>PEMASUKAN</strong></span>
+						</h4>
+						<span><strong>Pemasukan</strong></span>
 					</div>
 				</div>
 			</div>
 		</a>
-
 		<a style="color:black" href="'.base_url('pengeluaran_lain').'">
-			<div style="margin-bottom: 30px;" class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+			<div style="margin-bottom: 30px;" class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
 				<div class="contact-inner">
 					<div class="contact-inner">
-						<h2 class="text-right">
+						<h4 class="text-right">
 							'.rupiah($pengeluaran_hari).'
-						</h2>
-						<span><strong>PENGELUARAN</strong></span>
+						</h4>
+						<span><strong>Pengeluaran</strong></span>
+					</div>
+				</div>
+			</div>
+		</a>
+		<a style="color:black" href="'.base_url('laporan_manager').'">
+			<div style="margin-bottom: 30px;" class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+				<div class="contact-inner">
+					<div class="contact-inner">
+						<h4 class="text-right">
+							'.rupiah($untung_hari - $pengeluaran_hari).'
+						</h4>
+						<span><strong>Keuntungan Bersih</strong></span>
 					</div>
 				</div>
 			</div>
@@ -166,41 +177,53 @@ class Home extends CI_Controller
 		else if ($select=='bulan')
 		{
 		echo '<a style="color:black" href="'.base_url('laporan_manager').'">
-		<div style="margin-bottom: 30px;" class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+		<div style="margin-bottom: 30px;" class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 			<div class="contact-inner">
 				<div class="contact-inner">
-					<h2 class="text-right">
+					<h4 class="text-right">
 						'.$data['bulan']->jumlah_bulan.'
-					</h2>
-					<span><strong>JUMLAH TRANSAKSI</strong></span>
+					</h4>
+					<span><strong>Jumlah Transaksi</strong></span>
 				</div>
 			</div>
 		</div>
 		</a>
 		<a style="color:black" href="'.base_url('laporan_manager').'">
-		<div style="margin-bottom: 30px;" class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+		<div style="margin-bottom: 30px;" class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 			<div class="contact-inner">
 				<div class="contact-inner">
-					<h2 class="text-right">
+					<h4 class="text-right">
 						'.rupiah($untung_bulan).'
-					</h2>
-					<span><strong>PEMASUKAN</strong></span>
+					</h4>
+					<span><strong>Pemasukan</strong></span>
 				</div>
 			</div>
 		</div>
 		</a>
 
 		<a style="color:black" href="'.base_url('pengeluaran_lain').'">
-		<div style="margin-bottom: 30px;" class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+		<div style="margin-bottom: 30px;" class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 			<div class="contact-inner">
 				<div class="contact-inner">
-					<h2 class="text-right">
+					<h4 class="text-right">
 						'.rupiah($pengeluaran_bulan).'
-					</h2>
-					<span><strong>PENGELUARAN</strong></span>
+					</h4>
+					<span><strong>Pengeluaran</strong></span>
 				</div>
 			</div>
 		</div>
+		</a>
+		<a style="color:black" href="'.base_url('laporan_manager').'">
+			<div style="margin-bottom: 30px;" class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+				<div class="contact-inner">
+					<div class="contact-inner">
+						<h4 class="text-right">
+							'.rupiah($untung_bulan - $pengeluaran_bulan).'
+						</h4>
+						<span><strong>Keuntungan Bersih</strong></span>
+					</div>
+				</div>
+			</div>
 		</a>';
 		}
     }

@@ -33,12 +33,12 @@
 								<tr>
 									<th width="1%">No</th>
 									<th width="15%">Kode</th>
-									<th width="25%">Nama</th>
+									<th width="24%">Nama</th>
 									<th width="15%">Nama Distributor</th>
-									<th style="text-align:center" width="2%">Stok</th>
-									<th width="12%" style="text-align:center">Harga Beli</th>
-									<th width="12%" style="text-align:center">Tanggal Suplai</th>
+									<th width="14%" style="text-align:center">Tanggal Suplai</th>
 									<th style="text-align:center" width="8%">Jam</th>
+									<th style="text-align:center" width="2%">Stok</th>
+									<th width="11%" style="text-align:center">Harga Beli</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -52,10 +52,10 @@
 									<td><?= $row->kode_unik; ?></td>
 									<td><?= $row->nama_barang; ?></td>
 									<td><?= $row->nama_distributor; ?></td>
-									<td style="text-align:center"><?= $row->qty ?></td>
-									<td style="text-align:right;"><?= rupiah($row->hrg_distributor) ?></td>
 									<td style="text-align:center"><?= date('d F Y', strtotime($row->tanggal)) ?></td>
 									<td style="text-align:center"><?= date('H:i:s', strtotime($row->tanggal)) ?></td>
+									<td style="text-align:right"><?= $row->qty ?></td>
+									<td style="text-align:right;"><?= rupiah($row->hrg_distributor) ?></td>
 								</tr>
 
 								<?php 
@@ -63,7 +63,7 @@
                                 $grand += $sub_total;  
                             }
                                 ?>
-								<h3 style="margin-left:10px;margin-bottom:10px;">Aset Toko : <?= rupiah($grand) ?></h3>
+								<h3 style="margin-left:10px;margin-bottom:30px;">Aset Toko : <?= rupiah($grand) ?></h3>
 							</tbody>
 						</table>
 					</div>

@@ -31,15 +31,15 @@
 						<a class="btn btn-primary" href="<?php echo base_url("user_kasir/add") ?>">Tambah</a>
 					</div>
 					<div class="table-responsive">
-						<table id="data-table-basic" class="table table-striped">
+						<table width="100%" id="data-table-basic" class="table table-striped">
 							<thead>
 								<tr>
-									<th>No</th>
-									<th>Nama User</th>
-									<th>username</th>
-									<th>Jenis Akses</th>
-									<th>toko</th>
-									<th>aksi</th>
+									<th width="5%">No</th>
+									<th width="20%">Nama User</th>
+									<th width="20%">Username</th>
+									<th width="20%">Jenis Akses</th>
+									<th width="15%" class="text-center">Ganti Password</th>
+									<th width="20%" class="text-center">Aksi</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -47,20 +47,25 @@
 								$no = 1;
 								foreach ($user as $data) {
 									?>
-									<tr>
-										<td><?php echo $no++ ?></td>
-										<td><?php echo $data->nama_user ?></td>
-										<td><?php echo $data->username ?></td>
-										<td><?php echo $data->jenis_akses ?></td>
-										<td><?php echo $data->id_toko ?></td>
-										<td>
-											<div class="table-actions">
-												<a class="btn btn-primary fa fa-pencil-square" href="<?php echo base_url("user_kasir/edit/" . $data->id_user) ?>"></a>
-												<a class="btn btn-danger fa fa-trash" onclick="return confirm('anda yakin ingin menghapus data ?')" href="<?php echo base_url("user_kasir/hapus/" . $data->id_user) ?>"></a>
-												<a class="btn btn-warning fa fa-recycle" href="<?php echo base_url("user_kasir/ganti_password/" . $data->id_user) ?>"></a>
-											</div>
-										</td>
-									</tr>
+								<tr>
+									<td><?php echo $no++ ?></td>
+									<td><?php echo $data->nama_user ?></td>
+									<td><?php echo $data->username ?></td>
+									<td><?php echo $data->jenis_akses ?></td>
+									<td class="text-center"><a class="btn btn-success"
+											href="<?php echo base_url("user_kasir/ganti_password/" . $data->id_user) ?>">Ganti
+											Password</a>
+									</td>
+									<td class="text-center">
+										<div class="table-actions">
+											<a class="btn btn-primary"
+												href="<?php echo base_url("user_kasir/edit/" . $data->id_user) ?>">Edit</a>
+											<a class="btn btn-danger"
+												onclick="return confirm('anda yakin ingin menghapus data ?')"
+												href="<?php echo base_url("user_kasir/hapus/" . $data->id_user) ?>">Hapus</a>
+										</div>
+									</td>
+								</tr>
 								<?php  } ?>
 							</tbody>
 						</table>

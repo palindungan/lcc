@@ -23,11 +23,6 @@ class Pengeluaran_lain extends CI_Controller
     }
     public function store()
     {
-        $this->form_validation->set_rules('deskripsi', 'deskripsi pengeluaran', 'required');
-        $this->form_validation->set_rules('jumlah_pengeluaran', 'jumlah_pengeluaran', 'required');
-        if ($this->form_validation->run() == FALSE) {
-            $this->template->load('view_1/template/manager', 'view_1/konten/manager/pengeluaran_lain/tambah');
-        } else {
             date_default_timezone_set("Asia/Jakarta");
             $tanggal = Date('Y-m-d H:i:s');
             $id_pengeluaran_l = $this->M_pengeluaran_lain->get_no();
@@ -46,7 +41,6 @@ class Pengeluaran_lain extends CI_Controller
             );
             $this->M_pengeluaran_lain->input_data($data, 'pengeluaran_lain');
             redirect('pengeluaran_lain');
-        }
     }
     public function delete($id)
     {
