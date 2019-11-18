@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Waktu pembuatan: 04 Nov 2019 pada 16.36
--- Versi server: 10.1.37-MariaDB
--- Versi PHP: 7.3.0
+-- Host: localhost
+-- Waktu pembuatan: 18 Nov 2019 pada 05.33
+-- Versi server: 10.4.6-MariaDB
+-- Versi PHP: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -101,7 +101,8 @@ INSERT INTO `barang_terdaftar` (`kode`, `nama`) VALUES
 ('B00016', 'Keyboard Alcatroz'),
 ('B00017', 'Hardisk Baracuda'),
 ('B00018', 'Keyboard Mechanical'),
-('B00019', 'Flashdisk toshiba 64 gb ');
+('B00019', 'Flashdisk toshiba 64 gb '),
+('B00020', 'Acer Swift 5 ');
 
 -- --------------------------------------------------------
 
@@ -251,7 +252,10 @@ INSERT INTO `customer` (`id_customer`, `nama`, `no_hp`) VALUES
 ('C1710190007', 'aisyah', '089162812551'),
 ('C1810190008', 'kika', '08746238152'),
 ('C1911020001', 'ali', '08772347'),
-('C1911030001', 'dani', '089791528');
+('C1911030001', 'dani', '089791528'),
+('C1911030002', 'zeus', '099696123'),
+('C1911100001', 'adi', '098567342'),
+('C1911100002', 'asd', '73412313213');
 
 -- --------------------------------------------------------
 
@@ -282,7 +286,10 @@ INSERT INTO `detail_penjualan` (`id_detail_pj`, `id_penjualan`, `id_stok_b`, `ha
 (7, 'P1710190007', '5', 250000, 1, 250000),
 (8, 'P1810190008', '15', 3000000, 1, 3000000),
 (9, 'P1911020001', '4', 120000, 1, 120000),
-(10, 'P1911030001', '33', 100000, 2, 200000);
+(10, 'P1911030001', '33', 100000, 2, 200000),
+(11, 'P1911030002', '4', 150000, 1, 150000),
+(12, 'P1911100001', '31', 850000, 1, 850000),
+(13, 'P1911100002', '31', 850000, 1, 850000);
 
 --
 -- Trigger `detail_penjualan`
@@ -326,7 +333,7 @@ CREATE TABLE `pemasokan` (
   `id_pemasokan` char(11) NOT NULL,
   `id_user` char(3) NOT NULL,
   `id_distributor` char(3) NOT NULL,
-  `tanggal` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `tanggal` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `total` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -348,7 +355,8 @@ INSERT INTO `pemasokan` (`id_pemasokan`, `id_user`, `id_distributor`, `tanggal`,
 ('M1910190004', 'U06', 'D01', '2019-10-19 01:49:01', 5000000),
 ('M1911020001', 'U04', 'D01', '2019-11-02 06:34:01', 850000),
 ('M1911020002', 'U04', 'D02', '2019-11-02 06:34:57', 450000),
-('M1911030001', 'U04', 'D02', '2019-11-03 12:20:03', 850000);
+('M1911030001', 'U04', 'D02', '2019-11-03 12:20:03', 850000),
+('M1911030002', 'U04', 'D01', '2019-11-03 13:47:43', 5100000);
 
 -- --------------------------------------------------------
 
@@ -391,7 +399,7 @@ CREATE TABLE `pemasokan_list_detail` (
 CREATE TABLE `pengeluaran_lain` (
   `id_pengeluaran_l` char(11) NOT NULL,
   `id_user` char(3) NOT NULL,
-  `tanggal` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `tanggal` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `total` int(10) NOT NULL,
   `deskripsi` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -408,7 +416,8 @@ INSERT INTO `pengeluaran_lain` (`id_pengeluaran_l`, `id_user`, `tanggal`, `total
 ('L1710190005', 'U04', '2019-10-16 18:38:36', 100000, 'pembayaran PDAM'),
 ('L1911020001', 'U04', '2019-11-02 06:34:01', 50000, 'Ongkos Kirim Pemasokan Kode : M1911020001'),
 ('L1911020002', 'U04', '2019-11-02 06:34:57', 50000, 'Ongkos Kirim Pemasokan Kode : M1911020002'),
-('L1911030001', 'U04', '2019-11-03 12:20:03', 50000, 'Ongkos Kirim Pemasokan Kode : M1911030001');
+('L1911030001', 'U04', '2019-11-03 12:20:03', 50000, 'Ongkos Kirim Pemasokan Kode : M1911030001'),
+('L1911030002', 'U04', '2019-11-03 13:47:43', 100000, 'Ongkos Kirim PT surya jaya');
 
 -- --------------------------------------------------------
 
@@ -420,7 +429,7 @@ CREATE TABLE `penjualan` (
   `id_penjualan` char(12) NOT NULL,
   `id_user` char(3) NOT NULL,
   `id_customer` char(12) NOT NULL,
-  `tanggal` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `tanggal` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `total` int(10) NOT NULL,
   `bayar` int(10) NOT NULL,
   `kembalian` int(10) NOT NULL
@@ -440,7 +449,10 @@ INSERT INTO `penjualan` (`id_penjualan`, `id_user`, `id_customer`, `tanggal`, `t
 ('P1710190007', 'U01', 'C1710190007', '2019-10-16 18:41:12', 250000, 250000, 0),
 ('P1810190008', 'U01', 'C1810190008', '2019-10-17 17:16:37', 3000000, 3000000, 0),
 ('P1911020001', 'U01', 'C1911020001', '2019-11-02 06:40:58', 120000, 150000, 30000),
-('P1911030001', 'U01', 'C1911030001', '2019-11-03 12:56:28', 200000, 200000, 0);
+('P1911030001', 'U01', 'C1911030001', '2019-11-03 12:56:28', 200000, 200000, 0),
+('P1911030002', 'U01', 'C1911030002', '2019-11-03 13:37:37', 150000, 150000, 0),
+('P1911100001', 'U01', 'C1911100001', '2019-11-10 13:22:17', 850000, 850000, 0),
+('P1911100002', 'U01', 'C1911100002', '2019-11-10 13:23:11', 850000, 850000, 0);
 
 -- --------------------------------------------------------
 
@@ -487,7 +499,7 @@ INSERT INTO `stok_barang` (`id_stok_b`, `id_pemasokan`, `kode`, `qty`, `hrg_dist
 (1, 'M0310190001', 'B00001', 1, 5000000, 5000000, 'LKM11000KA'),
 (2, 'M0310190001', 'B00002', 1, 4000000, 4000000, 'ZXC100912M'),
 (3, 'M0310190001', 'B00001', 1, 5000000, 5000000, 'MKL100MA1'),
-(4, 'M0310190001', 'B00003', 2, 100000, 500000, 'LCC0310190001'),
+(4, 'M0310190001', 'B00003', 1, 100000, 500000, 'LCC0310190001'),
 (5, 'M0310190001', 'B00004', 4, 200000, 1000000, 'LCC0310190002'),
 (6, 'M0310190001', 'B00005', 0, 3000000, 3000000, '582135128236'),
 (7, 'M0310190001', 'B00006', 1, 3000000, 3000000, '353682391692'),
@@ -514,9 +526,10 @@ INSERT INTO `stok_barang` (`id_stok_b`, `id_pemasokan`, `kode`, `qty`, `hrg_dist
 (28, 'M1910190002', 'B00016', 5, 200000, 1000000, 'CMC1910190001'),
 (29, 'M1910190003', 'B00017', 3, 2000000, 6000000, 'LCC1910190002'),
 (30, 'M1910190004', 'B00018', 5, 1000000, 5000000, 'PBL1910190001'),
-(31, 'M1911020001', 'B00019', 10, 800000, 8000000, 'LCC1911020001'),
+(31, 'M1911020001', 'B00019', 8, 800000, 8000000, 'LCC1911020001'),
 (32, 'M1911020002', 'B00019', 5, 400000, 2000000, 'LCC1911020002'),
-(33, 'M1911030001', 'B00019', 8, 80000, 800000, 'LCC1911030001');
+(33, 'M1911030001', 'B00019', 8, 80000, 800000, 'LCC1911030001'),
+(34, 'M1911030002', 'B00020', 1, 5000000, 5000000, 'DFL00120281KL');
 
 -- --------------------------------------------------------
 
@@ -610,7 +623,7 @@ INSERT INTO `user` (`id_user`, `nama_user`, `username`, `password`, `jenis_akses
 --
 DROP TABLE IF EXISTS `barang_garansi`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `barang_garansi`  AS  select `p`.`id_penjualan` AS `id_penjualan`,`t`.`id_toko` AS `id_toko`,`c`.`nama` AS `nama_customer`,`bt`.`nama` AS `nama_barang`,`p`.`tanggal` AS `tanggal`,`sb`.`kode_unik` AS `kode_unik`,(to_days(now()) - to_days(`p`.`tanggal`)) AS `garansi_berjalan` from ((((((`detail_penjualan` `dp` join `stok_barang` `sb` on((`dp`.`id_stok_b` = `sb`.`id_stok_b`))) join `barang_terdaftar` `bt` on((`sb`.`kode` = `bt`.`kode`))) join `penjualan` `p` on((`dp`.`id_penjualan` = `p`.`id_penjualan`))) join `customer` `c` on((`p`.`id_customer` = `c`.`id_customer`))) join `user` `u` on((`p`.`id_user` = `u`.`id_user`))) join `toko` `t` on((`u`.`id_toko` = `t`.`id_toko`))) where ((substr(`sb`.`kode_unik`,1,3) <> 'LCC') and (substr(`sb`.`kode_unik`,1,3) <> 'CMC') and (substr(`sb`.`kode_unik`,1,3) <> 'PBL')) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `barang_garansi`  AS  select `p`.`id_penjualan` AS `id_penjualan`,`t`.`id_toko` AS `id_toko`,`c`.`nama` AS `nama_customer`,`bt`.`nama` AS `nama_barang`,`p`.`tanggal` AS `tanggal`,`sb`.`kode_unik` AS `kode_unik`,to_days(current_timestamp()) - to_days(`p`.`tanggal`) AS `garansi_berjalan` from ((((((`detail_penjualan` `dp` join `stok_barang` `sb` on(`dp`.`id_stok_b` = `sb`.`id_stok_b`)) join `barang_terdaftar` `bt` on(`sb`.`kode` = `bt`.`kode`)) join `penjualan` `p` on(`dp`.`id_penjualan` = `p`.`id_penjualan`)) join `customer` `c` on(`p`.`id_customer` = `c`.`id_customer`)) join `user` `u` on(`p`.`id_user` = `u`.`id_user`)) join `toko` `t` on(`u`.`id_toko` = `t`.`id_toko`)) where substr(`sb`.`kode_unik`,1,3) <> 'LCC' and substr(`sb`.`kode_unik`,1,3) <> 'CMC' and substr(`sb`.`kode_unik`,1,3) <> 'PBL' ;
 
 -- --------------------------------------------------------
 
@@ -619,7 +632,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `barang_habis_toko`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `barang_habis_toko`  AS  select `barang_terdaftar`.`nama` AS `nama`,sum(`stok_barang`.`qty`) AS `stok`,`user`.`id_toko` AS `id_toko` from ((((`stok_barang` join `barang_terdaftar` on((`stok_barang`.`kode` = `barang_terdaftar`.`kode`))) join `pemasokan` on((`stok_barang`.`id_pemasokan` = `pemasokan`.`id_pemasokan`))) join `user` on((`pemasokan`.`id_user` = `user`.`id_user`))) join `toko` on((`user`.`id_toko` = `toko`.`id_toko`))) group by `barang_terdaftar`.`nama`,`user`.`id_toko` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `barang_habis_toko`  AS  select `barang_terdaftar`.`nama` AS `nama`,sum(`stok_barang`.`qty`) AS `stok`,`user`.`id_toko` AS `id_toko` from ((((`stok_barang` join `barang_terdaftar` on(`stok_barang`.`kode` = `barang_terdaftar`.`kode`)) join `pemasokan` on(`stok_barang`.`id_pemasokan` = `pemasokan`.`id_pemasokan`)) join `user` on(`pemasokan`.`id_user` = `user`.`id_user`)) join `toko` on(`user`.`id_toko` = `toko`.`id_toko`)) group by `barang_terdaftar`.`nama`,`user`.`id_toko` ;
 
 -- --------------------------------------------------------
 
@@ -628,7 +641,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `barang_kasir`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `barang_kasir`  AS  select `stok_barang`.`id_stok_b` AS `id_stok_b`,`stok_barang`.`kode_unik` AS `kode_unik`,`barang_terdaftar`.`nama` AS `nama_barang`,`pemasokan`.`tanggal` AS `tanggal`,`user`.`id_toko` AS `id_toko`,`stok_barang`.`hrg_distributor` AS `hrg_distributor`,`stok_barang`.`qty` AS `qty`,`distributor`.`nama` AS `nama_distributor` from (((((`stok_barang` join `barang_terdaftar` on((`stok_barang`.`kode` = `barang_terdaftar`.`kode`))) join `pemasokan` on((`stok_barang`.`id_pemasokan` = `pemasokan`.`id_pemasokan`))) join `distributor` on((`pemasokan`.`id_distributor` = `distributor`.`id_distributor`))) join `user` on((`pemasokan`.`id_user` = `user`.`id_user`))) join `toko` on((`user`.`id_toko` = `toko`.`id_toko`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `barang_kasir`  AS  select `stok_barang`.`id_stok_b` AS `id_stok_b`,`stok_barang`.`kode_unik` AS `kode_unik`,`barang_terdaftar`.`nama` AS `nama_barang`,`pemasokan`.`tanggal` AS `tanggal`,`user`.`id_toko` AS `id_toko`,`stok_barang`.`hrg_distributor` AS `hrg_distributor`,`stok_barang`.`qty` AS `qty`,`distributor`.`nama` AS `nama_distributor` from (((((`stok_barang` join `barang_terdaftar` on(`stok_barang`.`kode` = `barang_terdaftar`.`kode`)) join `pemasokan` on(`stok_barang`.`id_pemasokan` = `pemasokan`.`id_pemasokan`)) join `distributor` on(`pemasokan`.`id_distributor` = `distributor`.`id_distributor`)) join `user` on(`pemasokan`.`id_user` = `user`.`id_user`)) join `toko` on(`user`.`id_toko` = `toko`.`id_toko`)) ;
 
 -- --------------------------------------------------------
 
@@ -646,7 +659,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `barang_terjual_bulan`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `barang_terjual_bulan`  AS  select `detail_penjualan`.`qty` AS `qty`,`barang_terdaftar`.`nama` AS `nama`,`penjualan`.`tanggal` AS `tanggal`,`stok_barang`.`kode` AS `kode`,`user`.`id_toko` AS `id_toko` from (((((`detail_penjualan` join `penjualan` on((`detail_penjualan`.`id_penjualan` = `penjualan`.`id_penjualan`))) join `stok_barang` on((`detail_penjualan`.`id_stok_b` = `stok_barang`.`id_stok_b`))) join `barang_terdaftar` on((`stok_barang`.`kode` = `barang_terdaftar`.`kode`))) join `user` on((`penjualan`.`id_user` = `user`.`id_user`))) join `toko` on((`user`.`id_toko` = `toko`.`id_toko`))) where (month(`penjualan`.`tanggal`) = month(curdate())) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `barang_terjual_bulan`  AS  select `detail_penjualan`.`qty` AS `qty`,`barang_terdaftar`.`nama` AS `nama`,`penjualan`.`tanggal` AS `tanggal`,`stok_barang`.`kode` AS `kode`,`user`.`id_toko` AS `id_toko` from (((((`detail_penjualan` join `penjualan` on(`detail_penjualan`.`id_penjualan` = `penjualan`.`id_penjualan`)) join `stok_barang` on(`detail_penjualan`.`id_stok_b` = `stok_barang`.`id_stok_b`)) join `barang_terdaftar` on(`stok_barang`.`kode` = `barang_terdaftar`.`kode`)) join `user` on(`penjualan`.`id_user` = `user`.`id_user`)) join `toko` on(`user`.`id_toko` = `toko`.`id_toko`)) where month(`penjualan`.`tanggal`) = month(curdate()) ;
 
 -- --------------------------------------------------------
 
@@ -655,7 +668,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `barang_terjual_minggu`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `barang_terjual_minggu`  AS  select `detail_penjualan`.`qty` AS `qty`,`barang_terdaftar`.`nama` AS `nama`,`penjualan`.`tanggal` AS `tanggal`,`stok_barang`.`kode` AS `kode`,`user`.`id_toko` AS `id_toko` from (((((`detail_penjualan` join `penjualan` on((`detail_penjualan`.`id_penjualan` = `penjualan`.`id_penjualan`))) join `stok_barang` on((`detail_penjualan`.`id_stok_b` = `stok_barang`.`id_stok_b`))) join `barang_terdaftar` on((`stok_barang`.`kode` = `barang_terdaftar`.`kode`))) join `user` on((`penjualan`.`id_user` = `user`.`id_user`))) join `toko` on((`user`.`id_toko` = `toko`.`id_toko`))) where (`penjualan`.`tanggal` between (now() - interval 7 day) and now()) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `barang_terjual_minggu`  AS  select `detail_penjualan`.`qty` AS `qty`,`barang_terdaftar`.`nama` AS `nama`,`penjualan`.`tanggal` AS `tanggal`,`stok_barang`.`kode` AS `kode`,`user`.`id_toko` AS `id_toko` from (((((`detail_penjualan` join `penjualan` on(`detail_penjualan`.`id_penjualan` = `penjualan`.`id_penjualan`)) join `stok_barang` on(`detail_penjualan`.`id_stok_b` = `stok_barang`.`id_stok_b`)) join `barang_terdaftar` on(`stok_barang`.`kode` = `barang_terdaftar`.`kode`)) join `user` on(`penjualan`.`id_user` = `user`.`id_user`)) join `toko` on(`user`.`id_toko` = `toko`.`id_toko`)) where `penjualan`.`tanggal` between current_timestamp() - interval 7 day and current_timestamp() ;
 
 -- --------------------------------------------------------
 
@@ -664,7 +677,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `barang_terjual_tahun`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `barang_terjual_tahun`  AS  select `detail_penjualan`.`qty` AS `qty`,`barang_terdaftar`.`nama` AS `nama`,`penjualan`.`tanggal` AS `tanggal`,`stok_barang`.`kode` AS `kode`,`user`.`id_toko` AS `id_toko` from (((((`detail_penjualan` join `penjualan` on((`detail_penjualan`.`id_penjualan` = `penjualan`.`id_penjualan`))) join `stok_barang` on((`detail_penjualan`.`id_stok_b` = `stok_barang`.`id_stok_b`))) join `barang_terdaftar` on((`stok_barang`.`kode` = `barang_terdaftar`.`kode`))) join `user` on((`penjualan`.`id_user` = `user`.`id_user`))) join `toko` on((`user`.`id_toko` = `toko`.`id_toko`))) where (year(`penjualan`.`tanggal`) = year(curdate())) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `barang_terjual_tahun`  AS  select `detail_penjualan`.`qty` AS `qty`,`barang_terdaftar`.`nama` AS `nama`,`penjualan`.`tanggal` AS `tanggal`,`stok_barang`.`kode` AS `kode`,`user`.`id_toko` AS `id_toko` from (((((`detail_penjualan` join `penjualan` on(`detail_penjualan`.`id_penjualan` = `penjualan`.`id_penjualan`)) join `stok_barang` on(`detail_penjualan`.`id_stok_b` = `stok_barang`.`id_stok_b`)) join `barang_terdaftar` on(`stok_barang`.`kode` = `barang_terdaftar`.`kode`)) join `user` on(`penjualan`.`id_user` = `user`.`id_user`)) join `toko` on(`user`.`id_toko` = `toko`.`id_toko`)) where year(`penjualan`.`tanggal`) = year(curdate()) ;
 
 -- --------------------------------------------------------
 
@@ -673,7 +686,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `barang_toko`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `barang_toko`  AS  select `stok_barang`.`kode` AS `kode`,`stok_barang`.`id_stok_b` AS `id_stok_b`,sum(`stok_barang`.`qty`) AS `stok`,`stok_barang`.`kode_unik` AS `kode_unik`,`barang_terdaftar`.`nama` AS `nama`,`user`.`id_toko` AS `id_toko`,`stok_barang`.`hrg_distributor` AS `hrg_distributor` from ((((`stok_barang` join `barang_terdaftar` on((`stok_barang`.`kode` = `barang_terdaftar`.`kode`))) join `pemasokan` on((`stok_barang`.`id_pemasokan` = `pemasokan`.`id_pemasokan`))) join `user` on((`pemasokan`.`id_user` = `user`.`id_user`))) join `toko` on((`user`.`id_toko` = `toko`.`id_toko`))) group by `barang_terdaftar`.`nama`,`user`.`id_toko` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `barang_toko`  AS  select `stok_barang`.`kode` AS `kode`,`stok_barang`.`id_stok_b` AS `id_stok_b`,sum(`stok_barang`.`qty`) AS `stok`,`stok_barang`.`kode_unik` AS `kode_unik`,`barang_terdaftar`.`nama` AS `nama`,`user`.`id_toko` AS `id_toko`,`stok_barang`.`hrg_distributor` AS `hrg_distributor` from ((((`stok_barang` join `barang_terdaftar` on(`stok_barang`.`kode` = `barang_terdaftar`.`kode`)) join `pemasokan` on(`stok_barang`.`id_pemasokan` = `pemasokan`.`id_pemasokan`)) join `user` on(`pemasokan`.`id_user` = `user`.`id_user`)) join `toko` on(`user`.`id_toko` = `toko`.`id_toko`)) group by `barang_terdaftar`.`nama`,`user`.`id_toko` ;
 
 -- --------------------------------------------------------
 
@@ -682,7 +695,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `barang_toko_barcode`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `barang_toko_barcode`  AS  select `barang_kasir`.`id_stok_b` AS `id_stok_b`,`barang_kasir`.`kode_unik` AS `kode_unik`,`barang_kasir`.`nama_barang` AS `nama_barang`,`barang_kasir`.`tanggal` AS `tanggal`,`barang_kasir`.`id_toko` AS `id_toko`,`barang_kasir`.`hrg_distributor` AS `hrg_distributor`,`barang_kasir`.`qty` AS `qty`,`barang_kasir`.`nama_distributor` AS `nama_distributor` from `barang_kasir` where (((substr(`barang_kasir`.`kode_unik`,1,3) = 'LCC') or (substr(`barang_kasir`.`kode_unik`,1,3) = 'CMC') or (substr(`barang_kasir`.`kode_unik`,1,3) = 'PBL')) and (`barang_kasir`.`qty` > 0)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `barang_toko_barcode`  AS  select `barang_kasir`.`id_stok_b` AS `id_stok_b`,`barang_kasir`.`kode_unik` AS `kode_unik`,`barang_kasir`.`nama_barang` AS `nama_barang`,`barang_kasir`.`tanggal` AS `tanggal`,`barang_kasir`.`id_toko` AS `id_toko`,`barang_kasir`.`hrg_distributor` AS `hrg_distributor`,`barang_kasir`.`qty` AS `qty`,`barang_kasir`.`nama_distributor` AS `nama_distributor` from `barang_kasir` where (substr(`barang_kasir`.`kode_unik`,1,3) = 'LCC' or substr(`barang_kasir`.`kode_unik`,1,3) = 'CMC' or substr(`barang_kasir`.`kode_unik`,1,3) = 'PBL') and `barang_kasir`.`qty` > 0 ;
 
 -- --------------------------------------------------------
 
@@ -718,7 +731,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `pemasokan_list`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `pemasokan_list`  AS  select `p`.`id_pemasokan` AS `id_pemasokan`,`p`.`tanggal` AS `tanggal`,`p`.`total` AS `total`,`d`.`id_distributor` AS `id_distributor`,`d`.`nama` AS `nama`,`u`.`id_user` AS `id_user`,`u`.`nama_user` AS `nama_user`,`t`.`id_toko` AS `id_toko` from (((`pemasokan` `p` join `user` `u` on((`p`.`id_user` = `u`.`id_user`))) join `distributor` `d` on((`p`.`id_distributor` = `d`.`id_distributor`))) join `toko` `t` on((`u`.`id_toko` = `t`.`id_toko`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `pemasokan_list`  AS  select `p`.`id_pemasokan` AS `id_pemasokan`,`p`.`tanggal` AS `tanggal`,`p`.`total` AS `total`,`d`.`id_distributor` AS `id_distributor`,`d`.`nama` AS `nama`,`u`.`id_user` AS `id_user`,`u`.`nama_user` AS `nama_user`,`t`.`id_toko` AS `id_toko` from (((`pemasokan` `p` join `user` `u` on(`p`.`id_user` = `u`.`id_user`)) join `distributor` `d` on(`p`.`id_distributor` = `d`.`id_distributor`)) join `toko` `t` on(`u`.`id_toko` = `t`.`id_toko`)) ;
 
 -- --------------------------------------------------------
 
@@ -727,7 +740,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `pemasokan_list_detail`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `pemasokan_list_detail`  AS  select `p`.`id_pemasokan` AS `id_pemasokan`,`bt`.`nama` AS `nama`,`sb`.`qty` AS `qty`,`sb`.`hrg_distributor` AS `hrg_distributor`,`sb`.`total_hrg` AS `total_hrg`,`sb`.`kode_unik` AS `kode_unik` from ((`stok_barang` `sb` join `pemasokan` `p` on((`sb`.`id_pemasokan` = `p`.`id_pemasokan`))) join `barang_terdaftar` `bt` on((`sb`.`kode` = `bt`.`kode`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `pemasokan_list_detail`  AS  select `p`.`id_pemasokan` AS `id_pemasokan`,`bt`.`nama` AS `nama`,`sb`.`qty` AS `qty`,`sb`.`hrg_distributor` AS `hrg_distributor`,`sb`.`total_hrg` AS `total_hrg`,`sb`.`kode_unik` AS `kode_unik` from ((`stok_barang` `sb` join `pemasokan` `p` on(`sb`.`id_pemasokan` = `p`.`id_pemasokan`)) join `barang_terdaftar` `bt` on(`sb`.`kode` = `bt`.`kode`)) ;
 
 -- --------------------------------------------------------
 
@@ -736,7 +749,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `stok_toko_cmc`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `stok_toko_cmc`  AS  select `sb`.`id_stok_b` AS `id_stok_b`,`sb`.`kode_unik` AS `kode_unik` from `stok_barang` `sb` where (substr(`sb`.`kode_unik`,1,3) = 'CMC') ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `stok_toko_cmc`  AS  select `sb`.`id_stok_b` AS `id_stok_b`,`sb`.`kode_unik` AS `kode_unik` from `stok_barang` `sb` where substr(`sb`.`kode_unik`,1,3) = 'CMC' ;
 
 -- --------------------------------------------------------
 
@@ -745,7 +758,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `stok_toko_lcc`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `stok_toko_lcc`  AS  select `sb`.`id_stok_b` AS `id_stok_b`,`sb`.`kode_unik` AS `kode_unik` from `stok_barang` `sb` where (substr(`sb`.`kode_unik`,1,3) = 'LCC') ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `stok_toko_lcc`  AS  select `sb`.`id_stok_b` AS `id_stok_b`,`sb`.`kode_unik` AS `kode_unik` from `stok_barang` `sb` where substr(`sb`.`kode_unik`,1,3) = 'LCC' ;
 
 -- --------------------------------------------------------
 
@@ -754,7 +767,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `stok_toko_pbl`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `stok_toko_pbl`  AS  select `sb`.`id_stok_b` AS `id_stok_b`,`sb`.`kode_unik` AS `kode_unik` from `stok_barang` `sb` where (substr(`sb`.`kode_unik`,1,3) = 'PBL') ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `stok_toko_pbl`  AS  select `sb`.`id_stok_b` AS `id_stok_b`,`sb`.`kode_unik` AS `kode_unik` from `stok_barang` `sb` where substr(`sb`.`kode_unik`,1,3) = 'PBL' ;
 
 --
 -- Indexes for dumped tables
@@ -834,7 +847,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `detail_penjualan`
 --
 ALTER TABLE `detail_penjualan`
-  MODIFY `id_detail_pj` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_detail_pj` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT untuk tabel `pimpinan`
@@ -846,7 +859,7 @@ ALTER TABLE `pimpinan`
 -- AUTO_INCREMENT untuk tabel `stok_barang`
 --
 ALTER TABLE `stok_barang`
-  MODIFY `id_stok_b` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id_stok_b` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
