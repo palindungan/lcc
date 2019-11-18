@@ -35,8 +35,9 @@
                                     <th>No</th>
                                     <th>Nama pelanggan</th>
                                     <th>Nama Barang</th>
-                                    <th>Tanggal Pembelian</th>
-                                    <th>Kode Unik</th>
+                                    <th>Tanggal</th>
+                                    <th>Waktu</th>
+                                    <th>SN / Imei</th>
                                     <th>Garansi Telah Berjalan</th>
                                 </tr>
                             </thead>
@@ -50,7 +51,8 @@
                                         <td><?= $no++; ?></td>
                                         <td><?= $row->nama_customer; ?></td>
                                         <td><?= $row->nama_barang; ?></td>
-                                        <td><?= $row->tanggal; ?></td>
+                                        <td><?= date('d F Y',strtotime($row->tanggal)); ?></td>
+                                        <td><?= date('H:i:s',strtotime($row->tanggal)); ?></td>
                                         <td><?= $row->kode_unik; ?></td>
                                         <td><?= $row->garansi_berjalan . ' Hari'; ?></td>
                                     </tr>

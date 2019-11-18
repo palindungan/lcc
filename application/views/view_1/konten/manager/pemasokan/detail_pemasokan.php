@@ -66,10 +66,10 @@ foreach ($pemasokan_list as $row) {
 							<tr>
 								<th width="7%" scope="col">NO</th>
 								<th width="25%" scope="col">NAMA BARANG</th>
+								<th width="15%">KODE UNIK</th>
 								<th width="8%" scope="col">QTY</th>
 								<th width="15%" scope="col">HARGA BARANG</th>
 								<th width="15%" style="text-align:center" scope="col">TOTAL HARGA</th>
-								<th width="15%">KODE UNIK</th>
 							</tr>
 
 						</thead>
@@ -78,14 +78,14 @@ foreach ($pemasokan_list as $row) {
 							$no = 1;
 							foreach ($pemasokan_list_detail as $row) {
 								?>
-								<tr>
-									<td width="7%" scope="row"><?= $no; ?></td>
-									<td width="25%"><?= $row->nama; ?></td>
-									<td width="8%"><?= ($row->total_hrg / $row->hrg_distributor); ?></td>
-									<td width="15%" style="text-align:right"><?= rupiah($row->hrg_distributor) ?></td>
-									<td width="15%" style="text-align:right"><?= rupiah($row->total_hrg) ?></td>
-									<td width="15%"><?= $row->kode_unik; ?></td>
-								</tr>
+							<tr>
+								<td width="7%" scope="row"><?= $no; ?></td>
+								<td width="25%"><?= $row->nama; ?></td>
+								<td width="15%"><?= $row->kode_unik; ?></td>
+								<td width="8%"><?= ($row->total_hrg / $row->hrg_distributor); ?></td>
+								<td width="15%" style="text-align:right"><?= rupiah($row->hrg_distributor) ?></td>
+								<th width="15%" style="text-align:right"><?= rupiah($row->total_hrg) ?></th>
+							</tr>
 							<?php $no = $no + 1;
 							} ?>
 						</tbody>
@@ -94,7 +94,13 @@ foreach ($pemasokan_list as $row) {
 						<tr>
 							<th width="7%"></th>
 							<th width="59%"></th>
-							<th style="text-align:right" width="22%">Total</th>
+							<th style="text-align:right" width="22%">Ongkos Kirim</th>
+							<th style="text-align:right"><?= rupiah($total - $row->total_hrg) ?></th>
+						</tr>
+						<tr>
+							<th width="7%"></th>
+							<th width="59%"></th>
+							<th style="text-align:right" width="22%">Grand Total</th>
 							<th style="text-align:right"><?= rupiah($total) ?></th>
 						</tr>
 					</table>

@@ -32,12 +32,12 @@
 							<thead>
 								<tr>
 									<th width="5%">No</th>
-									<th width="17%">Nama Barang</th>
+									<th width="22%">Nama Barang</th>
 									<th width="17%">Nama Distributor</th>
-									<th style="text-align:center" width="15%">Tanggal</th>
-									<th style="text-align:center" width="10%">Waktu</th>
-									<th width="15%">Barcode</th>
-									<th width="10%">Aksi</th>
+									<th style="text-align:center" width="13%">Tanggal</th>
+									<th style="text-align:center" width="12%">Harga Beli</th>
+									<th width="10%">Barcode</th>
+									<th width="5%">Aksi</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -52,14 +52,13 @@
 									<td style="text-align:center;">
 										<?= date('d F Y', strtotime($row->tanggal)); ?>
 									</td>
-									<td style="text-align:center;">
-										<?= date('H:i:s', strtotime($row->tanggal)); ?>
+									<td style="text-align:right;">
+										<?= rupiah($row->hrg_distributor); ?>
 									</td>
 									<td><?= $row->kode_unik; ?></td>
 									<td>
 										<a class="btn btn-custom" target="_blank"
-											href="<?= base_url(); ?>barang_barcode/<?= $row->kode_unik ?>">Print
-											Barcode</a>
+											href="<?= base_url(); ?>barang_barcode/<?= $row->kode_unik ?>">Print</a>
 									</td>
 								</tr>
 								<?php   
