@@ -6,7 +6,8 @@
 					<div class="row">
 						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 							<div style="margin-bottom:20px;">
-								<input autofocus id="keyword" type="text" class="form-control" placeholder="Cari Barang...">
+								<input autofocus id="keyword" type="text" class="form-control"
+									placeholder="Cari Barang...">
 							</div>
 						</div>
 					</div>
@@ -25,22 +26,18 @@
 								<h4 class="text-center">Customer</h4>
 								<div style="padding-left:20px;padding-right:20px;" class="row">
 									<div class="form-horizontal">
-										<div class="form-group <?php if (form_error('nama_customer') == true) {
-																	echo "has-error";
-																} ?>">
+										<div class="form-group">
 											<label for="inputEmail3" class="col-sm-2 control-label">Nama</label>
 											<div class="col-sm-10">
-												<input type="text" name="nama_customer" value="<?= set_value('nama_customer') ?>" class="form-control" id="inputEmail3" placeholder="Masukan nama customer">
-												<span class="help-block"><?php echo form_error('nama_customer'); ?></span>
+												<input type="text" name="nama_customer" class="form-control karakter"
+													id="inputEmail3" placeholder="Masukan nama customer" required>
 											</div>
 										</div>
-										<div class="form-group <?php if (form_error('no_hp_customer') == true) {
-																	echo "has-error";
-																} ?>">
+										<div class="form-group">
 											<label for="inputEmail3" class="col-sm-2 control-label">No.HP</label>
 											<div class="col-sm-10">
-												<input type="text" name="no_hp_customer" class="form-control" id="inputEmail3" placeholder="Masukan nomor hp customer">
-												<span class="help-block"><?php echo form_error('no_hp_customer'); ?></span>
+												<input type="text" name="no_hp_customer" class="form-control hp"
+													id="inputEmail3" placeholder="Masukan nomor hp customer" required>
 											</div>
 										</div>
 									</div>
@@ -67,20 +64,27 @@
 										<div class="form-group">
 											<label for="inputEmail3" class="col-sm-2 control-label">Total</label>
 											<div class="col-sm-10">
-												<input type="text" name="total" readonly class="form-control text-right total_harga" id="total_harga" placeholder="Jumlah Total">
+												<input type="text" name="total" readonly
+													class="form-control text-right total_harga" id="total_harga"
+													placeholder="Jumlah Total">
 											</div>
 										</div>
 										<div class="form-group">
 											<label for="inputEmail3" class="col-sm-2 control-label">Bayar</label>
 											<div class="col-sm-10">
-												<input type="text" name="bayar" class="form-control text-right bayar rupiah_2" id="bayar" placeholder="Masukan Jumlah Bayar" onkeyup="update_kembalian()" required>
+												<input type="text" name="bayar"
+													class="form-control text-right bayar rupiah_2" id="bayar"
+													placeholder="Masukan Jumlah Bayar" onkeyup="update_kembalian()"
+													required>
 
 											</div>
 										</div>
 										<div class="form-group">
 											<label for="inputEmail3" class="col-sm-2 control-label">Kembali</label>
 											<div class="col-sm-10">
-												<input type="text" name="kembalian" readonly class="form-control text-right" id="kembalian" placeholder="Jumlah Kembalian">
+												<input type="text" name="kembalian" readonly
+													class="form-control text-right" id="kembalian"
+													placeholder="Jumlah Kembalian">
 											</div>
 										</div>
 										<div class="form-group">
@@ -101,10 +105,10 @@
 </div>
 <script src="<?= base_url() ?>assets/vendor/auto_complete/jquery-3.4.1.min.js"></script>
 <script>
-	$(document).ready(function() {
+	$(document).ready(function () {
 
 		// untuk button menambah cart
-		$('.add_cart').click(function() {
+		$('.add_cart').click(function () {
 			var product_id = $(this).data("productid");
 			var product_name = $(this).data("productname");
 			var product_price = $(this).data("price");
@@ -118,7 +122,7 @@
 					product_price: product_price,
 					quantity: quantity
 				},
-				success: function(data) {
+				success: function (data) {
 					$('#cart_details').html(data);
 					$("#keyword").val('');
 					$("#keyword").focus();
@@ -130,7 +134,7 @@
 		$('#cart_details').load("<?php echo base_url(); ?>kasir/home/load");
 
 		// untuk menghapus detail keranjang / cart
-		$(document).on('click', '.remove_inventory', function() {
+		$(document).on('click', '.remove_inventory', function () {
 			var row_id = $(this).attr("id");
 			$.ajax({
 				url: "<?php echo base_url(); ?>kasir/home/delete_cart",
@@ -138,7 +142,7 @@
 				data: {
 					row_id: row_id
 				},
-				success: function(data) {
+				success: function (data) {
 					$('#cart_details').html(data);
 					$("#keyword").val('');
 					$("#keyword").focus();
@@ -156,7 +160,7 @@
 			url: "<?php echo base_url() . 'kasir/home/ambil_total'; ?>",
 			method: "POST",
 			data: form_data,
-			success: function(data) {
+			success: function (data) {
 				$('#total_harga').val(formatRupiah(data));
 				update_kembalian();
 			}
@@ -190,13 +194,14 @@
 			}
 		}
 	}
+
 </script>
 <script>
-	$(document).ready(function() {
+	$(document).ready(function () {
 
 		// pencarian start
 
-		$("#keyword").keypress(function() { // Ketika tombol simpan di klik
+		$("#keyword").keypress(function () { // Ketika tombol simpan di klik
 			// Ubah text tombol search menjadi SEARCHING...
 			// Dan tambahkan atribut disable pada tombol nya agar tidak bisa diklik lagi
 			var keycode = (event.keyCode ? event.keyCode : event.which);
@@ -209,12 +214,12 @@
 						keyword: $("#keyword").val()
 					}, // Set data yang akan dikirim
 					dataType: "json",
-					beforeSend: function(e) {
+					beforeSend: function (e) {
 						if (e && e.overrideMimeType) {
 							e.overrideMimeType("application/json;charset=UTF-8");
 						}
 					},
-					success: function(response) {
+					success: function (response) {
 
 						// Ketika proses pengiriman berhasil
 						// Ubah kembali text button search menjadi SEARCH
@@ -227,7 +232,7 @@
 						$("#view").html(response.hasil);
 
 						// untuk button menambah cart
-						$('.add_cart').click(function() {
+						$('.add_cart').click(function () {
 							var product_id = $(this).data("productid");
 							var product_name = $(this).data("productname");
 							var product_price = $(this).data("price");
@@ -241,7 +246,7 @@
 									product_price: product_price,
 									quantity: quantity
 								},
-								success: function(data) {
+								success: function (data) {
 									$('#cart_details').html(data);
 									$("#keyword").val('');
 									$("#keyword").focus();
@@ -253,7 +258,7 @@
 						$('#cart_details').load("<?php echo base_url(); ?>kasir/home/load");
 
 						// untuk menghapus detail keranjang / cart
-						$(document).on('click', '.remove_inventory', function() {
+						$(document).on('click', '.remove_inventory', function () {
 							var row_id = $(this).attr("id");
 							$.ajax({
 								url: "<?php echo base_url(); ?>kasir/home/delete_cart",
@@ -261,7 +266,7 @@
 								data: {
 									row_id: row_id
 								},
-								success: function(data) {
+								success: function (data) {
 									$('#cart_details').html(data);
 									$("#keyword").val('');
 									$("#keyword").focus();
@@ -270,17 +275,18 @@
 							});
 						});
 					},
-					error: function(xhr, ajaxOptions, thrownError) { // Ketika terjadi error
+					error: function (xhr, ajaxOptions, thrownError) { // Ketika terjadi error
 						alert(xhr.responseText); // munculkan alert
 					}
 				});
 			}
 		});
 	});
+
 </script>
 
 <script type="text/javascript">
-	$(document).on('keyup', '.rupiah_2', function() {
+	$(document).on('keyup', '.rupiah_2', function () {
 		var row_id = $(this).attr("id");
 		var rupiah_2 = document.getElementById(row_id);
 
@@ -304,4 +310,5 @@
 		rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
 		return prefix == undefined ? rupiah : (rupiah ? +rupiah : '');
 	}
+
 </script>
