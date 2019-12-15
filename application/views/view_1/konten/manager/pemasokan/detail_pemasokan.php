@@ -78,25 +78,19 @@ foreach ($pemasokan_list as $row) {
 							$no = 1;
 							foreach ($pemasokan_list_detail as $row) {
 								?>
-							<tr>
-								<td width="7%" scope="row"><?= $no; ?></td>
-								<td width="25%"><?= $row->nama; ?></td>
-								<td width="15%"><?= $row->kode_unik; ?></td>
-								<td width="8%"><?= ($row->total_hrg / $row->hrg_distributor); ?></td>
-								<td width="15%" style="text-align:right"><?= rupiah($row->hrg_distributor) ?></td>
-								<th width="15%" style="text-align:right"><?= rupiah($row->total_hrg) ?></th>
-							</tr>
+								<tr>
+									<td width="7%" scope="row"><?= $no; ?></td>
+									<td width="25%"><?= $row->nama; ?></td>
+									<td width="15%"><?= $row->kode_unik; ?></td>
+									<td width="8%"><?= ($row->total_hrg / $row->hrg_distributor); ?></td>
+									<td width="15%" style="text-align:right"><?= rupiah($row->hrg_distributor) ?></td>
+									<th width="15%" style="text-align:right"><?= rupiah($row->total_hrg) ?></th>
+								</tr>
 							<?php $no = $no + 1;
 							} ?>
 						</tbody>
 					</table>
 					<table class="table table-sm table-borderless">
-						<tr>
-							<th width="7%"></th>
-							<th width="59%"></th>
-							<th style="text-align:right" width="22%">Ongkos Kirim</th>
-							<th style="text-align:right"><?= rupiah($total - $row->total_hrg) ?></th>
-						</tr>
 						<tr>
 							<th width="7%"></th>
 							<th width="59%"></th>
