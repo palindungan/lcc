@@ -96,7 +96,7 @@
 <script src="<?= base_url(); ?>assets/notika/js/data-table/jquery.dataTables.min.js"></script>
 <script src="<?= base_url(); ?>assets/notika/js/data-table/data-table-act.js"></script>
 <script src="<?= base_url(); ?>assets/vendor/auto_complete/jquery-ui/jquery-ui.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
+<script src="<?= base_url(); ?>assets/vendor/js/jquery.mask.js"></script>
 <!-- Validasi -->
 <!-- validasi inputan rupiah -->
 <script type="text/javascript">

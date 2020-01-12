@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Waktu pembuatan: 18 Nov 2019 pada 05.33
+-- Waktu pembuatan: 12 Jan 2020 pada 13.48
 -- Versi server: 10.4.6-MariaDB
 -- Versi PHP: 7.3.9
 
@@ -255,7 +255,10 @@ INSERT INTO `customer` (`id_customer`, `nama`, `no_hp`) VALUES
 ('C1911030001', 'dani', '089791528'),
 ('C1911030002', 'zeus', '099696123'),
 ('C1911100001', 'adi', '098567342'),
-('C1911100002', 'asd', '73412313213');
+('C1911100002', 'asd', '73412313213'),
+('C1911180001', 'asd', '122213'),
+('C2001110001', 'ali rahmat', '082213123123'),
+('C2001110002', 'Rizkika', '08212213123');
 
 -- --------------------------------------------------------
 
@@ -289,7 +292,11 @@ INSERT INTO `detail_penjualan` (`id_detail_pj`, `id_penjualan`, `id_stok_b`, `ha
 (10, 'P1911030001', '33', 100000, 2, 200000),
 (11, 'P1911030002', '4', 150000, 1, 150000),
 (12, 'P1911100001', '31', 850000, 1, 850000),
-(13, 'P1911100002', '31', 850000, 1, 850000);
+(13, 'P1911100002', '31', 850000, 1, 850000),
+(14, 'P1911180001', '31', 850000, 1, 850000),
+(15, 'P2001110001', '37', 150000, 1, 150000),
+(16, 'P2001110002', '31', 900000, 1, 900000),
+(17, 'P2001110002', '37', 200000, 1, 200000);
 
 --
 -- Trigger `detail_penjualan`
@@ -356,7 +363,9 @@ INSERT INTO `pemasokan` (`id_pemasokan`, `id_user`, `id_distributor`, `tanggal`,
 ('M1911020001', 'U04', 'D01', '2019-11-02 06:34:01', 850000),
 ('M1911020002', 'U04', 'D02', '2019-11-02 06:34:57', 450000),
 ('M1911030001', 'U04', 'D02', '2019-11-03 12:20:03', 850000),
-('M1911030002', 'U04', 'D01', '2019-11-03 13:47:43', 5100000);
+('M1911030002', 'U04', 'D01', '2019-11-03 13:47:43', 5100000),
+('M1911180001', 'U04', 'D01', '2019-11-18 04:59:02', 250000),
+('M2001110001', 'U04', 'D01', '2020-01-11 06:00:31', 5150000);
 
 -- --------------------------------------------------------
 
@@ -417,7 +426,10 @@ INSERT INTO `pengeluaran_lain` (`id_pengeluaran_l`, `id_user`, `tanggal`, `total
 ('L1911020001', 'U04', '2019-11-02 06:34:01', 50000, 'Ongkos Kirim Pemasokan Kode : M1911020001'),
 ('L1911020002', 'U04', '2019-11-02 06:34:57', 50000, 'Ongkos Kirim Pemasokan Kode : M1911020002'),
 ('L1911030001', 'U04', '2019-11-03 12:20:03', 50000, 'Ongkos Kirim Pemasokan Kode : M1911030001'),
-('L1911030002', 'U04', '2019-11-03 13:47:43', 100000, 'Ongkos Kirim PT surya jaya');
+('L1911030002', 'U04', '2019-11-03 13:47:43', 100000, 'Ongkos Kirim PT surya jaya'),
+('L1911180001', 'U04', '2019-11-18 04:59:02', 50000, 'Ongkos Kirim PT surya jaya'),
+('L1911180002', 'U04', '2019-11-18 05:02:02', 50000, 'Beli Rokok dan makan'),
+('L2001110001', 'U04', '2020-01-11 06:00:31', 50000, 'Ongkos Kirim PT surya jaya');
 
 -- --------------------------------------------------------
 
@@ -452,7 +464,10 @@ INSERT INTO `penjualan` (`id_penjualan`, `id_user`, `id_customer`, `tanggal`, `t
 ('P1911030001', 'U01', 'C1911030001', '2019-11-03 12:56:28', 200000, 200000, 0),
 ('P1911030002', 'U01', 'C1911030002', '2019-11-03 13:37:37', 150000, 150000, 0),
 ('P1911100001', 'U01', 'C1911100001', '2019-11-10 13:22:17', 850000, 850000, 0),
-('P1911100002', 'U01', 'C1911100002', '2019-11-10 13:23:11', 850000, 850000, 0);
+('P1911100002', 'U01', 'C1911100002', '2019-11-10 13:23:11', 850000, 850000, 0),
+('P1911180001', 'U01', 'C1911180001', '2019-11-18 14:23:09', 850000, 900000, 50000),
+('P2001110001', 'U01', 'C2001110001', '2020-01-11 07:00:15', 150000, 200000, 50000),
+('P2001110002', 'U01', 'C2001110002', '2020-01-11 07:01:49', 1100000, 1500000, 400000);
 
 -- --------------------------------------------------------
 
@@ -526,10 +541,13 @@ INSERT INTO `stok_barang` (`id_stok_b`, `id_pemasokan`, `kode`, `qty`, `hrg_dist
 (28, 'M1910190002', 'B00016', 5, 200000, 1000000, 'CMC1910190001'),
 (29, 'M1910190003', 'B00017', 3, 2000000, 6000000, 'LCC1910190002'),
 (30, 'M1910190004', 'B00018', 5, 1000000, 5000000, 'PBL1910190001'),
-(31, 'M1911020001', 'B00019', 8, 800000, 8000000, 'LCC1911020001'),
+(31, 'M1911020001', 'B00019', 6, 800000, 8000000, 'LCC1911020001'),
 (32, 'M1911020002', 'B00019', 5, 400000, 2000000, 'LCC1911020002'),
 (33, 'M1911030001', 'B00019', 8, 80000, 800000, 'LCC1911030001'),
-(34, 'M1911030002', 'B00020', 1, 5000000, 5000000, 'DFL00120281KL');
+(34, 'M1911030002', 'B00020', 1, 5000000, 5000000, 'DFL00120281KL'),
+(35, 'M1911180001', 'B00003', 2, 100000, 200000, 'LCC1911180001'),
+(36, 'M2001110001', 'B00001', 1, 5000000, 5000000, 'E9121X1213'),
+(37, 'M2001110001', 'B00003', 18, 100000, 2000000, 'LCC2001110001');
 
 -- --------------------------------------------------------
 
@@ -605,7 +623,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `nama_user`, `username`, `password`, `jenis_akses`, `id_toko`) VALUES
-('U01', 'rizal', 'rizal', '$2y$10$6C4s0s9NIaw.2OwbxT/9heJWuiSeECWOVkasFYBfKnvJKdwmF3Nwa', 'Manager', 'T1'),
+('U01', 'rizalx', 'rizalx', '', 'Manager', 'T1'),
 ('U02', 'ari', 'ari', '$2y$10$Al.0835m/wPVdDRsoe4FX.4YqSRPnM1MqtlIRrxnSiJCDKaPzqquG', 'Manager', 'T1'),
 ('U03', 'ali', 'ali', '$2y$10$.jbQ4C5IOENSgud9wLmysuPH3FJozcAUSn9AykCCK1ybT7YjaKHiq', 'Kasir', 'T1'),
 ('U04', 'lcc', 'lcc', '$2y$10$I/jPGZBxFBBZLSi.cHy8vu6EyWiF6eMQTzm3Fr8/1TShu4BOfO7pW', 'Manager', 'T1'),
@@ -614,7 +632,8 @@ INSERT INTO `user` (`id_user`, `nama_user`, `username`, `password`, `jenis_akses
 ('U07', 'kasir_lcc', 'kasir_lcc', '$2y$10$C.IbD1aPGJmM6Fr2StwLmej5PkrKOIl74nmmWBGEsyibiY8DEMzcq', 'Kasir', 'T1'),
 ('U08', 'kasir_cmc', 'kasir_cmc', '$2y$10$kU3oINfhVVIi/NPIRiQC3.bhLbO7di.GQDuq5J92dowEoKOJYbvjq', 'Kasir', 'T2'),
 ('U09', 'kasir_probolinggo', 'kasir_probolinggo', '$2y$10$qJpFja9mbKbMavlDx/t0BO74EU8ioS9hG/iVJTavPMfp2AnieUUi6', 'Kasir', 'T3'),
-('U10', 'ali_lcc', 'ali_lcc', '$2y$10$UNbOL2uvkowM6w2VrofIcOdD5hYu4FQc4bNG.GuHSuJFzJgujJX0S', 'Kasir', 'T1');
+('U10', 'ali_lcc', 'ali_lcc', '$2y$10$UNbOL2uvkowM6w2VrofIcOdD5hYu4FQc4bNG.GuHSuJFzJgujJX0S', 'Kasir', 'T1'),
+('U11', 'asdx', 'asdp12', '', 'Kasir', 'T1');
 
 -- --------------------------------------------------------
 
@@ -847,7 +866,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `detail_penjualan`
 --
 ALTER TABLE `detail_penjualan`
-  MODIFY `id_detail_pj` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_detail_pj` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT untuk tabel `pimpinan`
@@ -859,7 +878,7 @@ ALTER TABLE `pimpinan`
 -- AUTO_INCREMENT untuk tabel `stok_barang`
 --
 ALTER TABLE `stok_barang`
-  MODIFY `id_stok_b` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id_stok_b` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
