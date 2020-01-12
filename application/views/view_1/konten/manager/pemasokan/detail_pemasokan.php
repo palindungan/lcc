@@ -76,8 +76,10 @@ foreach ($pemasokan_list as $row) {
 						<tbody>
 							<?php
 							$no = 1;
+							$total_harga_barang = 0;
 							foreach ($pemasokan_list_detail as $row) {
-								?>
+								$total_harga_barang += $row->total_hrg;
+							?>
 								<tr>
 									<td width="7%" scope="row"><?= $no; ?></td>
 									<td width="25%"><?= $row->nama; ?></td>
@@ -91,6 +93,12 @@ foreach ($pemasokan_list as $row) {
 						</tbody>
 					</table>
 					<table class="table table-sm table-borderless">
+						<tr>
+							<th width="7%"></th>
+							<th width="59%"></th>
+							<th style="text-align:right" width="22%">Ongkos Kirim</th>
+							<th style="text-align:right"><?= rupiah($total - $total_harga_barang) ?></th>
+						</tr>
 						<tr>
 							<th width="7%"></th>
 							<th width="59%"></th>

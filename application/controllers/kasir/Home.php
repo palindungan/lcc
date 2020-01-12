@@ -158,7 +158,7 @@ class Home extends CI_Controller
             $output .= '
                 <input type="hidden" name="cart[' . $item['id'] . '][id]" value="' . $item['id'] . '" />
                 <input type="hidden" name="cart[' . $item['id'] . '][name]" value="' . $item['name'] . '" />
-                <input type="hidden" id="jumlah_barang" name="cart[' . $item['id'] . '][qty]" value="' . $item['qty'] . '"/>
+                <input type="hidden" id="jumlah_barang' . $count . '" name="cart[' . $item['id'] . '][qty]" value="' . $item['qty'] . '"/>
                     <tr>
                         <td>' . $item['name'] . '</td>
                         <td class="text-right">
