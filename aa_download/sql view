@@ -49,3 +49,11 @@ SELECT *
 FROM barang_kasir 
 
 WHERE (SUBSTR(kode_unik,1,3) = 'LCC' || SUBSTR(kode_unik,1,3) = 'CMC' || SUBSTR(kode_unik,1,3) = 'PBL') && qty > 0 ;
+
+
+
+PIVOT TABLE BUAT LAPORAN RAWAT JALAN
+SELECT  no_bp_p,
+	IF(no_bp_t = 'B002','Ya','Tidak')  AS Periksa
+FROM detail_bp_penanganan
+GROUP BY no_bp_p
