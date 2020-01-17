@@ -60,6 +60,7 @@ class M_pemasokan extends CI_Model
 
     function get_no()
     {
+        date_default_timezone_set('Asia/Jakarta');
         $field = "id_pemasokan";
         $tabel = "pemasokan";
         $digit = "2";
@@ -75,12 +76,13 @@ class M_pemasokan extends CI_Model
         } else {
             $kd = "01";
         }
-        date_default_timezone_set('Asia/Jakarta');
+
         return 'M' . date('ymd') . $kd;
     }
 
     function get_kode_unik($tabel)
     {
+        date_default_timezone_set('Asia/Jakarta');
         $field = "kode_unik";
         $digit = "3";
         $ymd = date('ymd');
@@ -95,7 +97,7 @@ class M_pemasokan extends CI_Model
         } else {
             $kd = "001";
         }
-        date_default_timezone_set('Asia/Jakarta');
+
         return date('ymd') . $kd;
     }
 
@@ -109,6 +111,7 @@ class M_pemasokan extends CI_Model
 
     function get_no_pengeluaran_lain()
     {
+        date_default_timezone_set('Asia/Jakarta');
         $field = "id_pengeluaran_l";
         $tabel = "pengeluaran_lain";
         $digit = "2";
@@ -124,7 +127,7 @@ class M_pemasokan extends CI_Model
         } else {
             $kd = "01";
         }
-        date_default_timezone_set('Asia/Jakarta');
+
         return 'L' . date('ymd') . $kd;
     }
 }

@@ -25,6 +25,7 @@ class M_pengeluaran_lain extends CI_Model
 
     function get_no()
     {
+        date_default_timezone_set('Asia/Jakarta');
         $field = "id_pengeluaran_l";
         $tabel = "pengeluaran_lain";
         $digit = "2";
@@ -40,7 +41,7 @@ class M_pengeluaran_lain extends CI_Model
         } else {
             $kd = "01";
         }
-        date_default_timezone_set('Asia/Jakarta');
+
         return 'L' . date('ymd') . $kd;
     }
 }

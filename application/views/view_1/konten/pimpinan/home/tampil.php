@@ -41,7 +41,7 @@
 							<option value="semua" selected>Semua Toko</option>
 							<?php
 							foreach ($data_toko as $row) {
-								?>
+							?>
 								<option value="<?= $row->id_toko ?>"><?= $row->nama_toko ?></option>
 							<?php } ?>
 						</select>
@@ -83,7 +83,7 @@
 		});
 	}
 </script>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="<?= base_url(); ?>assets/vendor/js/loader.js"></script>
 <script type="text/javascript">
 	google.charts.load('current', {
 		'packages': ['corechart']
