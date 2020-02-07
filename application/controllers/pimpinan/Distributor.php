@@ -49,6 +49,7 @@ class Distributor extends CI_Controller
 		$no_hp = str_replace("-", "", $this->input->post('no_hp'));
 		$nama = $this->input->post('nama');
 		$alamat = $this->input->post('alamat');
+		$id_distributor = $this->input->post('id_distributor');
 		$data = array(
 			'nama'  => $nama,
 			'alamat' => $alamat,
