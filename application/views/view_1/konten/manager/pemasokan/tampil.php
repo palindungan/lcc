@@ -51,7 +51,7 @@
 
 								<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 									<div class="form-group">
-										<input type="text" class="form-control rupiah_2" name="jumlah_pengeluaran"
+										<input type="text" class="form-control rupiah_2 ongkir_update" name="jumlah_pengeluaran"
 											id="jumlah_pengeluaran" placeholder="Ongkos Kirim" required>
 									</div>
 								</div>
@@ -59,7 +59,7 @@
 								<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 									<div class="form-group">
 										<input type="text" class="form-control" name="total" placeholder="Total"
-											id="rupiah" required>
+											id="rupiah" readonly required>
 									</div>
 								</div>
 							</div>
@@ -193,10 +193,10 @@
                     <input required="" type="text" class="form-control nama_nya" id="nama` + count1 + `" name="nama[]" placeholder="Nama Barang" value="">
                 </div>
                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12">
-                    <input required="" type="text" class="form-control qty" id="qty` + count1 + `" name="qty[]" placeholder="qty" value="">
+                    <input required="" type="text" class="form-control cek_qty_pemasokan qty" id="qty` + count1 + `" name="qty[]" placeholder="qty" value="">
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <input required="" type="text" class="form-control rupiah_2" id="hrg_distributor` + count1 + `" name="hrg_distributor[]" placeholder="Harga / item" value="">
+                    <input required="" type="text" class="form-control rupiah_2 harga_pemasokan_update" id="hrg_distributor` + count1 + `" name="hrg_distributor[]" placeholder="Harga / item" value="">
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                     <button type="button" id="` + count1 + `" class="remove_baris btn btn-danger"><i class="notika-icon notika-trash"></i></button>
@@ -221,6 +221,7 @@
 	$(document).on('click', '.remove_baris', function () {
 		var row_no = $(this).attr("id");
 		$('#row' + row_no).remove();
+		update_total();
 	});
 
 	// jika kita tekan cekbox
@@ -299,12 +300,12 @@
 			`" name="nama[]" placeholder="Nama Barang" value="` + nama + `">
                 </div>
                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-12">
-                    <input required="" type="number" class="form-control" id="qty` + count1 + `" name="qty[]" placeholder="qty" value="" min="1" max="999">
+                    <input required="" type="number" class="form-control cek_qty_pemasokan" id="qty` + count1 + `" name="qty[]" placeholder="qty" value="" min="1" max="999">
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <input required="" type="text" class="form-control rupiah_2"  id="hrg_distributor` + count1 + `" name="hrg_distributor[]" placeholder="Harga" value="">
+                    <input required="" type="text" class="form-control rupiah_2 harga_pemasokan_update"  id="hrg_distributor` + count1 + `" name="hrg_distributor[]" placeholder="Harga" value="">
                 </div>
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12"> 
                     <button type="button" id="` + count1 + `" class="remove_baris btn btn-danger"><i class="notika-icon notika-trash"></i></button>
                 </div>
             </div>
@@ -369,6 +370,51 @@
 	}
 
 	// codingan untuk autocomplete end
+
+	// codingan untuk harga total
+    $(document).on('keyup', '.harga_pemasokan_update', function() {
+        update_total();
+    });
+
+    $(document).on('keyup', '.cek_qty_pemasokan', function() {
+        update_total()
+    });
+
+	$(document).on('keyup', '.ongkir_update', function() {
+        update_total()
+    });
+
+	// jumlah_pengeluaran ongkir_update
+
+	function update_total() {
+		// mengambil nilai di dalam form
+		var form_data = $('#transaksi_form').serialize()
+
+		$.ajax({
+			url: "<?php echo base_url() . 'manager/pemasokan/ambil_total_barang'; ?>",
+			method: "POST",
+			data: form_data,
+			success: function(data) {
+
+				if(data==""){
+					data = 0;
+				}
+
+				var jumlah_pengeluaran = $('#jumlah_pengeluaran').val();
+				if(jumlah_pengeluaran==""){
+					jumlah_pengeluaran = 0;
+
+					var grand_total = parseInt(data);
+					$('#rupiah').val(formatRupiah(grand_total));
+				} else{
+					var val_jumlah_pengeluaran = parseInt(jumlah_pengeluaran.split('.').join(''));
+					var grand_total = parseInt(data)+val_jumlah_pengeluaran;
+					$('#rupiah').val(formatRupiah(grand_total));
+				}
+				
+			}
+		});
+	}
 
 </script>
 

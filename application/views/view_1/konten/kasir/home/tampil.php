@@ -74,7 +74,7 @@
 										<div class="form-group">
 											<label for="inputEmail3" class="col-sm-2 control-label">Kembali</label>
 											<div class="col-sm-10">
-												<input type="text" name="kembalian" readonly class="form-control text-right" id="kembalian" placeholder="Jumlah Kembalian">
+												<input type="text" name="kembalian" readonly class="form-control text-right" id="kembalian" placeholder="Jumlah Kembalian" required>
 											</div>
 										</div>
 										<div class="form-group">

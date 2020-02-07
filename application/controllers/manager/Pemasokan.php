@@ -64,6 +64,32 @@ class Pemasokan extends CI_Controller
         echo $data;
     }
 
+    public function ambil_total_barang()
+    {
+        $sub_total = 0;
+        $total = 0;
+
+        if (isset($_POST['kode_atau_barcode']) && isset($_POST['hrg_distributor']) && isset($_POST['qty'])) {
+
+            for ($i = 0; $i < count($this->input->post('kode_atau_barcode')); $i++) {
+
+                $harga_jual_temp = $this->input->post('hrg_distributor')[$i];
+                $harga_jual = (int) preg_replace("/[^0-9]/", "", $harga_jual_temp);
+
+                $qty_temp = $this->input->post('qty')[$i];
+                $qty = (int) $qty_temp;
+
+                $perhitungan = $harga_jual * $qty;
+
+                $sub_total = $sub_total + $perhitungan;
+            }
+
+            $total = $sub_total;
+        }
+
+        echo $total;
+    }
+
     public function input_transaksi_form()
     {
         if (isset($_POST['kode_atau_barcode'])) {
