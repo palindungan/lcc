@@ -5,17 +5,17 @@ class M_laporan extends CI_Model
 	function pengeluaran_custom($tgl_mulai, $tgl_akhir)
 	{
 		$id_toko = $this->session->userdata('id_toko');
-		return $this->db->query("SELECT * FROM pengeluaran_lain JOIN user USING(id_user) JOIN toko USING(id_toko) WHERE tanggal BETWEEN '$tgl_mulai' AND '$tgl_akhir' AND id_toko='$id_toko' ORDER BY id_pengeluaran_l DESC");
+		return $this->db->query("SELECT * FROM pengeluaran_lain JOIN user USING(id_user) JOIN toko USING(id_toko) WHERE tanggal BETWEEN '$tgl_mulai' AND '$tgl_akhir' AND id_toko='$id_toko' ORDER BY id_pengeluaran_l ASC");
 	}
 	function pengeluaran_hari()
 	{
 		$id_toko = $this->session->userdata('id_toko');
-		return $this->db->query("SELECT * FROM pengeluaran_lain JOIN user USING(id_user) JOIN toko USING(id_toko) WHERE DATE(tanggal) = DATE(now()) AND id_toko='$id_toko' ORDER BY id_pengeluaran_l DESC");
+		return $this->db->query("SELECT * FROM pengeluaran_lain JOIN user USING(id_user) JOIN toko USING(id_toko) WHERE DATE(tanggal) = DATE(now()) AND id_toko='$id_toko' ORDER BY id_pengeluaran_l ASC");
 	}
 	function pengeluaran_bulan()
 	{
 		$id_toko = $this->session->userdata('id_toko');
-		return $this->db->query("SELECT * FROM pengeluaran_lain JOIN user USING(id_user) JOIN toko USING(id_toko) WHERE MONTH(tanggal) = MONTH(CURRENT_DATE()) AND id_toko='$id_toko' ORDER BY id_pengeluaran_l DESC");
+		return $this->db->query("SELECT * FROM pengeluaran_lain JOIN user USING(id_user) JOIN toko USING(id_toko) WHERE MONTH(tanggal) = MONTH(CURRENT_DATE()) AND id_toko='$id_toko' ORDER BY id_pengeluaran_l ASC");
 	}
 	function tampil_data2($tgl_mulai, $tgl_akhir)
 	{
